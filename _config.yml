@@ -3,11 +3,12 @@
 # ----------------------- #
 
 url: http://insino.github.io
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+title: DKay's Blog
+subtitle: A blogging for miscellaneous knowledge
+
+author: DKay
 simple_search: https://www.google.com/search
-description:
+description: Blog for Miscellaneous Knowledge
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
@@ -19,7 +20,7 @@ date_format: "ordinal"
 subscribe_rss: /atom.xml
 subscribe_email:
 # RSS feeds can list your email address if you like
-email:
+email: dkay@kaist.ac.kr
 
 # ----------------------- #
 #    Jekyll & Plugins     #
