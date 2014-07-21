@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: 
+Disallow:
 
-Sitemap: http://insino.github.io/sitemap.xml 
+Sitemap: http://insino.github.io/sitemap.xml
