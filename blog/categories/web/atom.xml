@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Web | DKay's Blog]]></title>
+  <link href="http://insino.github.io/blog/categories/web/atom.xml" rel="self"/>
+  <link href="http://insino.github.io/"/>
+  <updated>2014-07-21T17:38:37-07:00</updated>
+  <id>http://insino.github.io/</id>
+  <author>
+    <name><![CDATA[DKay]]></name>
+    <email><![CDATA[dkay@kaist.ac.kr]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[First Setup Octopress]]></title>
+    <link href="http://insino.github.io/blog/2014/07/21/first-setup-octopress/"/>
+    <updated>2014-07-21T16:01:17-07:00</updated>
+    <id>http://insino.github.io/blog/2014/07/21/first-setup-octopress</id>
+    <content type="html"><![CDATA[<p>I just set up my new homepage with octopress themed by whitespace.
+<code>http://insino.github.io</code></p>
+
+<h2><a id="setup"></a>Setup Octopress</h2>
+
+<p>Setting up Octopress is quite easy. The instructions are all in the given <a href="http://octopress.org/docs/setup">url</a>: <code>http://octopress.org/docs/setup/</code>.</p>
+
+<p>Before startup, I&rsquo;d recommend you to make your own io repository on <a href="https://github.com">github</a>. Making github io page is free, and what you have to do is only add an repository as
+<code>http://github.com/your_github_id/your_github_id.github.io</code>. In my case, <code>http://github.com/insino/insino.github.io</code>. Then, download the source via <a href="https://github.com/imathis/octopress">git</a>
+<code>sh
+git clone git://github.com/imathis/octopress.git octopress
+cd octopress
+</code></p>
+
+<p>Next, install dependencies.
+<code>sh
+gem install bundler
+rbenv rehash    # If you use rbenv, rehash to be able to run the bundle command
+bundle install
+</code></p>
+
+<p>Now, setting up the blog!
+<code>sh
+rake install   #installing default blog page
+</code></p>
+
+<p>Really easy, huh?</p>
+
+<h2><a id="branch"></a>Branch Definition</h2>
+
+<p>Actually, there are two branches in Octopress.
+<code>sh
+➜  octopress git:(source) ✗ git branch -v
+  master c977b91 Merge pull request #1609 from alindeman/patch-1
+  * source 732c061 add twitter, github, facebook settings ini config.yml
+</code></p>
+
+<p>You are going to work in <code>source</code> branch, in which you can do whatever you want. After you finish your work and you want to see what&rsquo;s going on try:
+<code>sh
+rake generate   # Generates posts and pages into the public directory
+rake watch      # Watches source/ and sass/ for changes and regenerates
+rake preview    # Watches, and mounts a webserver at http://localhost:4000
+</code></p>
+
+<p>Octopress&rsquo;s preview webserver is <a href="http://www.sinatrarb.com/">Sinatra</a> which is really nice simple webserver. I already used this to make challenge pages for <a href="http://gon.kaist.ac.kr"><code>KAIST GoN</code></a>.
+Anyway, if your hompage looks good, then make your actual output!
+<code>sh
+rake deploy     # make your pages in '_deploy/' directory, push request on your master's branch
+</code></p>
+
+<p>Done! Now enjoy your page at <code>http://your_github_id.github.io</code>.</p>
+]]></content>
+  </entry>
+  
+</feed>
