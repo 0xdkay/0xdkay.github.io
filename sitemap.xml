@@ -3,6 +3,12 @@
   
   
   <url>
+    <loc>http://insino.github.io/blog/2014/07/23/mindrdr-google-glass-app/</loc>
+    <lastmod>2014-07-23T14:33:32-07:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
     <loc>http://insino.github.io/blog/2014/07/21/first-setup-octopress/</loc>
     <lastmod>2014-07-21T16:01:17-07:00</lastmod>
     <priority>0.8</priority>
@@ -11,14 +17,14 @@
   
   <url>
     <loc>http://insino.github.io/blog/archives/</loc>
-    <lastmod>2014-07-21T17:43:44-07:00</lastmod>
+    <lastmod>2014-07-23T16:58:16-07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>http://insino.github.io/</loc>
-    <lastmod>2014-07-21T17:43:44-07:00</lastmod>
+    <lastmod>2014-07-23T16:58:16-07:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>

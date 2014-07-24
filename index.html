@@ -94,6 +94,205 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2014/07/23/mindrdr-google-glass-app/">MindRDR - Google Glass App Control With Your Thoughts</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-23T14:33:32-07:00" pubdate data-updated="true">Jul 23<sup>rd</sup>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A few weeks ago, there was a news from <a href="http://techcrunch.com/2014/07/09/forget-ok-glass-mindrdr-is-a-new-google-glass-app-that-you-control-with-your-thoughts/">TechCrunch</a> announcing <a href="http://www.thisplace.com/works/mindrdr"><code>MindRDR</code></a>, which is a Google Glass app that makes you control activites with your thoughts.</p>
+
+<p><img class="center" src="/images/2014/07/23/tc.png"></p>
+
+<h2><a id="mindrdr"></a>What is MindRDR?</h2>
+
+<p>MindRDR is a Google Glass application which makes you take photos and share them on Twitter and Facebook with your <code>brain wave</code>. When you concentrate, it triggers to take photo and then you can share it again concentrating.</p>
+
+<div style="text-align: center">
+<iframe src="http://player.vimeo.com/video/99915694" width="500" height="281" frameborder="0" allowfullscreen></iframe>
+</div>
+
+
+<p>At first time, I thought that there was a new version of Google Glass has come out, but in fact, it is <strong>just a combination</strong> of <em>Google Glass</em> and <a href="http://store.neurosky.com/products/mindwave-1"><em>Mindwave</em></a> from <a href="http://neurosky.com/">NeuroSky</a>. This means that you need to buy additional device even you already have Google Glass! I would guess not many people would do that.</p>
+
+<p><img class="center" src="/images/2014/07/23/glass_and_wave.png" width="500" height="500"></p>
+
+<h2><a id="neurosky"></a>NeuroSky?</h2>
+
+<p><a href="http://neurosky.com/"><em>NeuroSky</em></a> is a company selling EEG &amp; ECG based devices. They are at the forefront of biosensor innovation, and research new technologies related to our brain.</p>
+
+<blockquote><p>NeuroSky is breaking the boundaries of body and mind monitoring and analysis for consumer-facing, wearable technology products. Our innovative biosensors are used in hundreds of products, brought to market by our partners, for body and mind health. These solutions capture, quantify and reveal unique health and wellness insights and give millions of people the ability to monitor and improve the performance body and mind.</p></blockquote>
+
+<p>USC, Yale, Stanford, UCLA, MIT, and The University of Wollongong have adopted NeuroSky&rsquo;s EEG biosensor solutions for their work. There exist many apps using these devices in the NeuroSky Store, and you can use it.</p>
+
+<p><img class="right" src="http://tahaogulcanyavuz.com/images/emotiv1.jpg" width="300" height="300">
+<a href="http://emotiv.com/"><em>Emotiv</em></a> is another company. One of their famous product is <a href=""><strong>EPOC</strong></a> which has 14 electrodes to receive EEG signals. You can use this devices to measure EEG signals from positions: <em>AF3, F7, F3, FC5, T7, P7, O1, O2, P8, T8, FC6, F4, F8, AF4</em></p>
+
+<p>I used Emotiv EPOC last semester for my term project in <em>Introduction to Brain IT</em>  held by <a href="http://brain.kaist.ac.kr/people_professor.html">Dae-Shik Kim</a>. I would post it later.</p>
+
+<h2><a id="eeg_ecg"></a>EEG &amp; ECG?</h2>
+
+<p><img class="left" src="http://upload.wikimedia.org/wikipedia/commons/b/bf/EEG_cap.jpg" width="200" height="200">
+<a href="http://en.wikipedia.org/wiki/Electroencephalography"><em>EEG</em></a>, <em>Electroencephalography</em>, is the recording of electrical activity along the scalp. EEG measures voltage fluctuations resulting from ionic current flows within the neurons of the brain. In clinical contexts, EEG refers to the recording of the brain&rsquo;s spontaneous electrical activity over a short period of time, usually 20–40 minutes, as recorded from multiple electrodes placed on the scalp. Diagnostic applications generally focus on the spectral content of EEG, that is, the type of neural oscillations that can be observed in EEG signals.
+There are previous researches related to P300, which is a kind of <em>Event Related Potential (ERP)</em>, a EEG signal which can be shown 300ms after a stimuli is given.</p>
+
+<p><img class="right" src="http://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/ECGcolor.svg/345px-ECGcolor.svg.png" width="200" height="200">
+<a href="http://en.wikipedia.org/wiki/Electrocardiography"><em>ECG</em></a>, <em>Electrocardiography</em>, also known as <em>EKG</em>, is the recording of the electrical activity of the heart. Traditionally this is in the form of a transthoracic (across the thorax or chest) interpretation of the electrical activity of the heart over a period of time, as detected by electrodes attached to the surface of the skin and recorded or displayed by a device external to the body. The recording produced by this noninvasive procedure is termed an electrocardiogram (also ECG or EKG). It is possible to record ECGs invasively using an implantable loop recorder.</p>
+
+<p>There are also other kinds: <em>EOG</em>, <em>EMG</em>, and so on. Both EEG and ECG can be used as a reference when police forces a confession from a suspect. Don&rsquo;t lie :)</p>
+
+<h2><a id="analysis"></a>Analysis of MindRDR</h2>
+
+<p>MindRDR is an open source project, so we can access it via <a href="https://github.com/ThisPlace/MindRDR">Github</a>. The code was really simple. They set some <em>TRIGGER_VALUE</em> which distinguish each state of the user. Starting from <em>MIND_TAKING_PHOTO</em> state, it changes to <em>MIND_SHARING</em>, and so on. The trigger value is given by the author in specific value. <em>Mindwave</em> also provides the state of device, so the authors if <em>MindRDR</em> also used this feature in their code.</p>
+
+<figure class='code'><figcaption><span>MindRdrActivity.java</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">thisplace</span><span class="o">.</span><span class="na">mindrdr</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="cm">/* ... */</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MindRdrActivity</span> <span class="kd">extends</span> <span class="n">Activity</span> <span class="o">{</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">final</span> <span class="kd">static</span> <span class="n">String</span> <span class="n">DEBUG_TAG</span> <span class="o">=</span> <span class="s">&quot;MindCameraActivity&quot;</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="cm">/* ... */</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">INTENSITY_TRIGGER</span> <span class="o">=</span> <span class="mi">80</span><span class="o">;</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">LINE_VALUE_MULTIPLIER</span> <span class="o">=</span> <span class="n">LINE_RANGE</span> <span class="o">/</span> <span class="n">INTENSITY_TRIGGER</span><span class="o">;</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">INTENSITY_CANCEL_TRIGGER</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">MIND_TAKING_PHOTO</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">MIND_SHARING</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">MIND_DISABLED</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">MIND_INITIALISING</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="cm">/* ... */</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">case</span> <span class="n">TGDevice</span><span class="o">.</span><span class="na">STATE_IDLE</span><span class="o">:</span>
+</span><span class='line'>    <span class="k">break</span><span class="o">;</span>
+</span><span class='line'>  <span class="k">case</span> <span class="n">TGDevice</span><span class="o">.</span><span class="na">STATE_CONNECTING</span><span class="o">:</span>
+</span><span class='line'>    <span class="k">break</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="cm">/* ... */</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Using state information, <em>MindRDR</em> decides what to do as below.</p>
+
+<figure class='code'><figcaption><span>MindRdrActivity.java start:123</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'>  <span class="k">if</span> <span class="o">(</span><span class="n">mMindControlState</span> <span class="o">!=</span> <span class="n">MIND_DISABLED</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">mMindSession</span><span class="o">.</span><span class="na">updateMindData</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="n">LINE_RANGE</span>
+</span><span class='line'>      <span class="o">-</span> <span class="n">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">LINE_RANGE</span><span class="o">,</span> <span class="n">Math</span><span class="o">.</span><span class="na">round</span><span class="o">(</span><span class="n">mMindSession</span><span class="o">.</span><span class="na">getAttention</span><span class="o">()</span> <span class="o">*</span> <span class="n">LINE_VALUE_MULTIPLIER</span><span class="o">));</span>
+</span><span class='line'>    <span class="n">mLine</span><span class="o">.</span><span class="na">setTranslationY</span><span class="o">(</span><span class="n">LINE_START_Y</span> <span class="o">+</span> <span class="n">value</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">if</span> <span class="o">(</span><span class="n">mMindSession</span><span class="o">.</span><span class="na">getAttention</span><span class="o">()</span> <span class="o">&gt;=</span> <span class="n">INTENSITY_TRIGGER</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">if</span> <span class="o">(</span><span class="n">mMindControlState</span> <span class="o">==</span> <span class="n">MIND_TAKING_PHOTO</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">mMindControlState</span> <span class="o">=</span> <span class="n">MIND_DISABLED</span><span class="o">;</span>
+</span><span class='line'>        <span class="n">takePhoto</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">mMindControlState</span> <span class="o">==</span> <span class="n">MIND_SHARING</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">mMindControlState</span> <span class="o">=</span> <span class="n">MIND_DISABLED</span><span class="o">;</span>
+</span><span class='line'>        <span class="k">if</span> <span class="o">(</span><span class="n">tgDevice</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>          <span class="n">tgDevice</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>        <span class="n">upload</span><span class="o">();</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>    <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">mMindSession</span><span class="o">.</span><span class="na">getAttention</span><span class="o">()</span> <span class="o">&lt;=</span> <span class="n">INTENSITY_CANCEL_TRIGGER</span> <span class="o">&amp;&amp;</span> <span class="n">mMindControlState</span> <span class="o">==</span> <span class="n">MIND_SHARING</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">mCancelText</span><span class="o">.</span><span class="na">setVisibility</span><span class="o">(</span><span class="n">View</span><span class="o">.</span><span class="na">INVISIBLE</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">mSendText</span><span class="o">.</span><span class="na">setVisibility</span><span class="o">(</span><span class="n">View</span><span class="o">.</span><span class="na">INVISIBLE</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">initializeCamera</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">showTakePhotoView</span><span class="o">();</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Simple, simple, simple. I don&rsquo;t know if it works for everyone because EEG signal strength is different among people, and even different by environment.</p>
+
+<h2><a id="lesson"></a>Lessons Learned</h2>
+
+<blockquote><p>If you have an idea, think it, try faster.</p></blockquote>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2014/07/21/first-setup-octopress/">First Setup Octopress</a></h1>
     
     
