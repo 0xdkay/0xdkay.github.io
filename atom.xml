@@ -4,7 +4,7 @@
   <title><![CDATA[DKay's Blog]]></title>
   <link href="http://insino.github.io/atom.xml" rel="self"/>
   <link href="http://insino.github.io/"/>
-  <updated>2014-07-23T16:53:56-07:00</updated>
+  <updated>2014-07-23T17:06:16-07:00</updated>
   <id>http://insino.github.io/</id>
   <author>
     <name><![CDATA[DKay]]></name>
@@ -59,7 +59,7 @@ There are previous researches related to P300, which is a kind of <em>Event Rela
 
 <p>There are also other kinds: <em>EOG</em>, <em>EMG</em>, and so on. Both EEG and ECG can be used as a reference when police forces a confession from a suspect. Don&rsquo;t lie :)</p>
 
-<h2><a id="analysis"></a>Analysis of MindRDR</h2>
+<h2><a id="analysis"></a>MindRDR Source Code Analysis</h2>
 
 <p>MindRDR is an open source project, so we can access it via <a href="https://github.com/ThisPlace/MindRDR">Github</a>. The code was really simple. They set some <em>TRIGGER_VALUE</em> which distinguish each state of the user. Starting from <em>MIND_TAKING_PHOTO</em> state, it changes to <em>MIND_SHARING</em>, and so on. The trigger value is given by the author in specific value. <em>Mindwave</em> also provides the state of device, so the authors if <em>MindRDR</em> also used this feature in their code.</p>
 
@@ -177,11 +177,11 @@ There are previous researches related to P300, which is a kind of <em>Event Rela
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Simple, simple, simple. I don&rsquo;t know if it works for everyone because EEG signal strength is different among people, and even different by environment.</p>
+<p>Simple, simple, simple. I don&rsquo;t know whether it works for everyone because EEG signal strength is different among people, and even different by environment.</p>
 
 <h2><a id="lesson"></a>Lessons Learned</h2>
 
-<blockquote><p>If you have an idea, think it, try faster.</p></blockquote>
+<blockquote><p>If you have an idea, think it twice, try faster.</p></blockquote>
 ]]></content>
   </entry>
   

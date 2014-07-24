@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Brain | DKay's Blog]]></title>
   <link href="http://insino.github.io/blog/categories/brain/atom.xml" rel="self"/>
   <link href="http://insino.github.io/"/>
-  <updated>2014-07-23T16:58:16-07:00</updated>
+  <updated>2014-07-23T17:06:16-07:00</updated>
   <id>http://insino.github.io/</id>
   <author>
     <name><![CDATA[DKay]]></name>
@@ -20,7 +20,7 @@
     <id>http://insino.github.io/blog/2014/07/23/mindrdr-google-glass-app</id>
     <content type="html"><![CDATA[<p>A few weeks ago, there was a news from <a href="http://techcrunch.com/2014/07/09/forget-ok-glass-mindrdr-is-a-new-google-glass-app-that-you-control-with-your-thoughts/">TechCrunch</a> announcing <a href="http://www.thisplace.com/works/mindrdr"><code>MindRDR</code></a>, which is a Google Glass app that makes you control activites with your thoughts.</p>
 
-<p>{% img center /images/2014/07/23/tc.png %}</p>
+<p><img class="center" src="/images/2014/07/23/tc.png"></p>
 
 <h2><a id="mindrdr"></a>What is MindRDR?</h2>
 
@@ -33,7 +33,7 @@
 
 <p>At first time, I thought that there was a new version of Google Glass has come out, but in fact, it is <strong>just a combination</strong> of <em>Google Glass</em> and <a href="http://store.neurosky.com/products/mindwave-1"><em>Mindwave</em></a> from <a href="http://neurosky.com/">NeuroSky</a>. This means that you need to buy additional device even you already have Google Glass! I would guess not many people would do that.</p>
 
-<p>{% img center /images/2014/07/23/glass_and_wave.png 500 500 %}</p>
+<p><img class="center" src="/images/2014/07/23/glass_and_wave.png" width="500" height="500"></p>
 
 <h2><a id="neurosky"></a>NeuroSky?</h2>
 
@@ -43,18 +43,18 @@
 
 <p>USC, Yale, Stanford, UCLA, MIT, and The University of Wollongong have adopted NeuroSky&rsquo;s EEG biosensor solutions for their work. There exist many apps using these devices in the NeuroSky Store, and you can use it.</p>
 
-<p>{% img right <a href="http://tahaogulcanyavuz.com/images/emotiv1.jpg">http://tahaogulcanyavuz.com/images/emotiv1.jpg</a> 300 300 %}
+<p><img class="right <a" src="href="http://tahaogulcanyavuz.com/images/emotiv1.jpg">http://tahaogulcanyavuz.com/images/emotiv1.jpg</a>" width="300" height="300">
 <a href="http://emotiv.com/"><em>Emotiv</em></a> is another company. One of their famous product is <a href=""><strong>EPOC</strong></a> which has 14 electrodes to receive EEG signals. You can use this devices to measure EEG signals from positions: <em>AF3, F7, F3, FC5, T7, P7, O1, O2, P8, T8, FC6, F4, F8, AF4</em></p>
 
 <p>I used Emotiv EPOC last semester for my term project in <em>Introduction to Brain IT</em>  held by <a href="http://brain.kaist.ac.kr/people_professor.html">Dae-Shik Kim</a>. I would post it later.</p>
 
 <h2><a id="eeg_ecg"></a>EEG &amp; ECG?</h2>
 
-<p>{% img left <a href="http://upload.wikimedia.org/wikipedia/commons/b/bf/EEG_cap.jpg">http://upload.wikimedia.org/wikipedia/commons/b/bf/EEG_cap.jpg</a> 200 200 %}
+<p><img class="left <a" src="href="http://upload.wikimedia.org/wikipedia/commons/b/bf/EEG_cap.jpg">http://upload.wikimedia.org/wikipedia/commons/b/bf/EEG_cap.jpg</a>" width="200" height="200">
 <a href="http://en.wikipedia.org/wiki/Electroencephalography"><em>EEG</em></a>, <em>Electroencephalography</em>, is the recording of electrical activity along the scalp. EEG measures voltage fluctuations resulting from ionic current flows within the neurons of the brain. In clinical contexts, EEG refers to the recording of the brain&rsquo;s spontaneous electrical activity over a short period of time, usually 20–40 minutes, as recorded from multiple electrodes placed on the scalp. Diagnostic applications generally focus on the spectral content of EEG, that is, the type of neural oscillations that can be observed in EEG signals.
 There are previous researches related to P300, which is a kind of <em>Event Related Potential (ERP)</em>, a EEG signal which can be shown 300ms after a stimuli is given.</p>
 
-<p>{% img right <a href="http://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/ECGcolor.svg/345px-ECGcolor.svg.png">http://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/ECGcolor.svg/345px-ECGcolor.svg.png</a> 200 200 %}
+<p><img class="right <a" src="href="http://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/ECGcolor.svg/345px-ECGcolor.svg.png">http://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/ECGcolor.svg/345px-ECGcolor.svg.png</a>" width="200" height="200">
 <a href="http://en.wikipedia.org/wiki/Electrocardiography"><em>ECG</em></a>, <em>Electrocardiography</em>, also known as <em>EKG</em>, is the recording of the electrical activity of the heart. Traditionally this is in the form of a transthoracic (across the thorax or chest) interpretation of the electrical activity of the heart over a period of time, as detected by electrodes attached to the surface of the skin and recorded or displayed by a device external to the body. The recording produced by this noninvasive procedure is termed an electrocardiogram (also ECG or EKG). It is possible to record ECGs invasively using an implantable loop recorder.</p>
 
 <p>There are also other kinds: <em>EOG</em>, <em>EMG</em>, and so on. Both EEG and ECG can be used as a reference when police forces a confession from a suspect. Don&rsquo;t lie :)</p>
@@ -97,7 +97,7 @@ package com.thisplace.mindrdr;</p>
 ```
 Using state information, <em>MindRDR</em> decides what to do as below.</p>
 
-<p>``` lang:java MindRdrActivity.java start:123
+<p>``` java MindRdrActivity.java start:123
   if (mMindControlState != MIND_DISABLED) {</p>
 
 <pre><code>mMindSession.updateMindData();
@@ -134,7 +134,7 @@ if (mMindSession.getAttention() &gt;= INTENSITY_TRIGGER) {
 
 <h2><a id="lesson"></a>Lessons Learned</h2>
 
-<blockquote><p>If you have an idea, think it, try faster.</p></blockquote>
+<blockquote><p>If you have an idea, think it twice, try faster.</p></blockquote>
 ]]></content>
   </entry>
   
