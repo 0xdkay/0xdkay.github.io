@@ -91,14 +91,14 @@ Using [*Jlink*](http://www.segger.com/jlink-debug-probes.html) in the right pict
 {% img left /images/2014/07/25/logic.JPG 400 400 %}
 {% img center /images/2014/07/25/jtagulator.JPG 400 400 %}
 
-**Logic Analyzer** is a good device when you have to see the signals from the pins if you don't have any datasheet. Put all the electrodes on each pin and measure the signal. Starting from RST, you may find right debugging interface. (I failed :/) The device on the right picture is logic analyzer from Quantasylum, you can access to it via this link:
+**Logic Analyzer** is a good device when you have to see the signals from the pins if you don't have any datasheet. Put all the electrodes on each pin and measure the signal. Starting from RST, you may find right debugging interface. (I failed :/) The device on the left picture is logic analyzer from Quantasylum, you can access to it via this link:
 
 * [`Device Info`](http://www.quantasylum.com/content/Products/QA100.aspx)
 * [`Drivers`](https://www.quantasylum.com/content/Support/Downloads.aspx#QA100)
 * [`Documentation`](http://www.quantasylum.com/content/Portals/0/UploadedFiles/QA100%20Documentation.pdf)
 
 
-The device on the left is [**JTAGulator**](http://www.grandideastudio.com/portfolio/jtagulator/). JTAGulator is a cool device that automatically detects UART & JTAG interface.  It's circuit is protected, so you don't have to worry about the over-voltage. There exists 24 channels which means that you can test 24 electrodes all at once. It connects to PC with Serial, so you can just press start button and wait having a cup of coffee.
+The device on the right is [**JTAGulator**](http://www.grandideastudio.com/portfolio/jtagulator/). JTAGulator is a cool device that automatically detects UART & JTAG interface.  It's circuit is protected, so you don't have to worry about the over-voltage. There exists 24 channels which means that you can test 24 electrodes all at once. It connects to PC with Serial, so you can just press start button and wait having a cup of coffee.
 
 ## <a id="con"></a> Conclusion
 
