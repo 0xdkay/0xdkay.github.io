@@ -9,6 +9,8 @@ categories:
 I just set up my new homepage with octopress themed by whitespace.
 `http://insino.github.io`
 
+<!-- more -->
+
 ## <a id="setup"></a>Setup Octopress
 
 Setting up Octopress is quite easy. The instructions are all in the given [url](http://octopress.org/docs/setup): `http://octopress.org/docs/setup/`.

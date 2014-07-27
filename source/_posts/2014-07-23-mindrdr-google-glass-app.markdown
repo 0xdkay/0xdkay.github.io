@@ -10,6 +10,8 @@ A few weeks ago, there was a news from [TechCrunch](http://techcrunch.com/2014/0
 
 {% img center /images/2014/07/23/tc.png %}
 
+<!-- more -->
+
 ## <a id="mindrdr"></a>What is MindRDR?
 MindRDR is a Google Glass application which makes you take photos and share them on Twitter and Facebook with your `brain wave`. When you concentrate, it triggers to take photo and then you can share it again concentrating.
 
