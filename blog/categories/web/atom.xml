@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Web | DKay's Blog]]></title>
   <link href="http://insino.github.io/blog/categories/web/atom.xml" rel="self"/>
   <link href="http://insino.github.io/"/>
-  <updated>2014-07-23T17:06:16-07:00</updated>
+  <updated>2014-07-26T17:21:07-07:00</updated>
   <id>http://insino.github.io/</id>
   <author>
     <name><![CDATA[DKay]]></name>
@@ -20,6 +20,9 @@
     <id>http://insino.github.io/blog/2014/07/21/first-setup-octopress</id>
     <content type="html"><![CDATA[<p>I just set up my new homepage with octopress themed by whitespace.
 <code>http://insino.github.io</code></p>
+
+<!-- more -->
+
 
 <h2><a id="setup"></a>Setup Octopress</h2>
 

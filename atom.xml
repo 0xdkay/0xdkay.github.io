@@ -4,7 +4,7 @@
   <title><![CDATA[DKay's Blog]]></title>
   <link href="http://insino.github.io/atom.xml" rel="self"/>
   <link href="http://insino.github.io/"/>
-  <updated>2014-07-23T17:06:16-07:00</updated>
+  <updated>2014-07-26T17:21:07-07:00</updated>
   <id>http://insino.github.io/</id>
   <author>
     <name><![CDATA[DKay]]></name>
@@ -14,6 +14,132 @@
 
   
   <entry>
+    <title type="html"><![CDATA[How to Analyze Embedded Devices?]]></title>
+    <link href="http://insino.github.io/blog/2014/07/25/how-to-analyze-embedded-devices/"/>
+    <updated>2014-07-25T13:35:59-07:00</updated>
+    <id>http://insino.github.io/blog/2014/07/25/how-to-analyze-embedded-devices</id>
+    <content type="html"><![CDATA[<p>Yesterday there was a post in the <a href="http://www.xda-developers.com/android/samsung-gear-live-stock-firmware-image-pulled-temp-root/"><em>XDA Developers</em></a> saying that <a href="http://plus.adamoutler.com/">AdamOutler</a> again pulled out <a href="http://www.samsung.com/global/microsite/gear/gearlive_design.html"><em>Samsung Gear</em></a> live firmware image. He distributed custom kernel image and pulled images.</p>
+
+<p><img class="center" src="http://insino.github.io/images/2014/07/25/gear.png"></p>
+
+<p>Reading this article, I would like to sum-up the method to extract firmwares from embedded devices. So lets start.</p>
+
+<!-- more -->
+
+
+<h2><a id="serial"></a> Serial Communication</h2>
+
+<p>Before start, we need to know about the <em>Serial Communication</em>. There are many kinds of serial communication, and we will look through some famous and popular methods. Nowadays, many people are confused about the definition of serial communication. However, it&rsquo;s really easy as it is written.</p>
+
+<blockquote><p><strong>Serial communication</strong> is the process of sending data one bit at a time</p></blockquote>
+
+<p>As you can find that on the <a href="http://en.wikipedia.org/wiki/Serial_communication">wikipedia</a>, we covers all the protocols that you might think. People usually think UART is the same as serial communication but it isn&rsquo;t. UART is just a kind of serial communication. Now have a look on different kinds.
+Finding which interface is used by the device is quite tedious, that means you need to try all the methods using <a href="http://en.wikipedia.org/wiki/Logic_analyzer"><strong>Logic Analyzer</strong></a> or other connectors for each protocol.</p>
+
+<h2><a id="uart"></a> UART</h2>
+
+<p><img class="right" src="http://insino.github.io/images/2014/07/25/uart.JPG" width="250" height="250"></p>
+
+<p><strong>UART</strong>, a short form of <em>Universal Asynchronous Receiver/Transmitter</em>, is a piece of computer hardware that translates data between parallel and serial forms. UARTs are commonly used in conjunction with communication standards such as EIA, RS-232, RS-422 or RS-485. The universal designation indicates that the data format and transmission speeds are configurable. The electric signaling levels and methods (such as differential signaling etc.) are handled by a driver circuit external to the UART.</p>
+
+<p>For the convenience of debugging the devices, embedded devices often have debug ports with UART. When you put RX/TX part of UART connector, then you can easily see the debugging messages through it. The device on the right is one kind of UART-to-USB connector from FTDI, and you can connect to it via Serial.
+Just put this device and download the drivers from <a href="http://www.ftdichip.com/Products/ICs/FT232R.htm"><em>FTDI</em></a>, then it&rsquo;s done! Below video is AdamOutler&rsquo;s finding UART interface in Samsung Gear. You can find UART interface as this video putting RX/TX pins to the device.</p>
+
+<div style="text-align: center">
+<iframe width="560" height="315" src="//www.youtube.com/embed/xvY2Y21EYWo" frameborder="0" allowfullscreen></iframe>
+</div>
+
+
+<h2><a id="jtag"></a> JTAG</h2>
+
+<p><img class="right" src="http://insino.github.io/images/2014/07/25/olimex.JPG" width="250" height="250"></p>
+
+<p><strong>JTAG</strong>, a short form of <em>Joint Test Action Group</em>, is the common name for the IEEE 1149.1 Standard Test Access Port and Boundary-Scan Architecture. It was initially devised by electronic engineers for testing printed circuit boards using boundary scan and is still widely used for this application.</p>
+
+<p>With JTAG interface, you can attach debuggers to it. For example, GDB can be attached to your JTAG. There are several researches related to firmware analysis to find malwares on embedded devices.</p>
+
+<ul>
+<li><a href="http://www.syssec-project.eu/m/page-media/3/ndss14_zaddach.pdf">Avatar: A Framework to Support Dynamic Security Analysis of Embedded Systems’ Firmwares, Jonas Zaddach et al.</a>, utilized JTAG to perform symbolic execution with real-time environments.</li>
+</ul>
+
+
+<p>The device on the right image is <a href="https://www.olimex.com/Products/ARM/JTAG/ARM-USB-OCD/"><em>Olimex</em></a>. With this device, you can utilize OpenOCD which is a open source based JTAG implementation. You can follow instructions in this link for ARM Cortex M3.</p>
+
+<ul>
+<li><a href="http://www.downloads.seng.de/HowTo_ToolChain_STM32_Ubuntu.pdf"><code>http://www.downloads.seng.de/HowTo_ToolChain_STM32_Ubuntu.pdf</code></a></li>
+</ul>
+
+
+<p>As default, it uses 3333 port for GDB attachment, and 4444 port for telnet based debugging interface. To start, just type:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>/bin/openocd -f <span class="o">[</span>module.cfg<span class="o">]</span> -f <span class="o">[</span>target.cfg<span class="o">]</span>
+</span><span class='line'>    <span class="c">#module configuration files are in &#39;openOCD/share/openocd/scripts/interface&#39;</span>
+</span><span class='line'>    <span class="c">#target configuration files are in &#39;openOCD/share/openocd/scripts/target</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>To attach GDB,</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="nv">$ </span>target remote localhost:3333
+</span><span class='line'><span class="nv">$ </span>monitor halt                    <span class="c"># halts at current instruction, and shows registers</span>
+</span><span class='line'><span class="nv">$ </span>monitor resume                  <span class="c"># resumes the program</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>There exists two modes in JTAG, so you need to select proper one for your purpose.</p>
+
+<ol>
+<li>ARM Debug Mode &ndash; usually to connect jtag as above.</li>
+<li>Boundary Scan Cell Mode &ndash; to check the connectivity between chips</li>
+</ol>
+
+
+<p>JTAG also can be chained as below, you should be careful when you follow TDI/TDO wires from the processor.</p>
+
+<p><img class="center" src="http://program-paralel-pk2.konsultan-pendidikan-tinggi.biz/_buku_manual/_baca_blob.php?book=lain&td=1&kodegb=654px-Jtag_chain.png"></p>
+
+<h2><a id="swd"></a> SWD</h2>
+
+<p><img class="right" src="http://insino.github.io/images/2014/07/25/jlink.JPG" width="350" height="350"></p>
+
+<p><strong>SWD</strong>, a short form of <em>Serial Wire Debug</em>, is a 2-pin electrical alternative JTAG interface that has the same JTAG protocol on top. It uses the existing GND connection. SWD uses an ARM CPU standard bi-directional wire protocol, defined in the ARM Debug Interface v5. This enables the debugger to become another AMBA bus master for access to system memory and peripheral or debug registers. Data rate is up to 4 Mbytes/sec at 50 MHz. SWD also has built-in error detection. On JTAG devices with SWD capability, the TMS and TCK are used as SWDIO and SWCLK signals, providing for dual-mode programmers.</p>
+
+<p>Using <a href="http://www.segger.com/jlink-debug-probes.html"><em>Jlink</em></a> in the right picture, you can use both JTAG and SWD interface. Also, you can get pin alignment in the below link:</p>
+
+<ul>
+<li><a href="http://www.segger.com/interface-description.html"><code>http://www.segger.com/interface-description.html</code></a></li>
+</ul>
+
+
+<h2><a id="useful"></a> Some Useful Tools</h2>
+
+<p><img class="left" src="http://insino.github.io/images/2014/07/25/logic.JPG" width="400" height="400">
+<img class="center" src="http://insino.github.io/images/2014/07/25/jtagulator.JPG" width="400" height="400"></p>
+
+<p><strong>Logic Analyzer</strong> is a good device when you have to see the signals from the pins if you don&rsquo;t have any datasheet. Put all the electrodes on each pin and measure the signal. Starting from RST, you may find right debugging interface. (I failed :/) The device on the right picture is logic analyzer from Quantasylum, you can access to it via this link:</p>
+
+<ul>
+<li><a href="http://www.quantasylum.com/content/Products/QA100.aspx"><code>Device Info</code></a></li>
+<li><a href="https://www.quantasylum.com/content/Support/Downloads.aspx#QA100"><code>Drivers</code></a></li>
+<li><a href="http://www.quantasylum.com/content/Portals/0/UploadedFiles/QA100%20Documentation.pdf"><code>Documentation</code></a></li>
+</ul>
+
+
+<p>The device on the left is <a href="http://www.grandideastudio.com/portfolio/jtagulator/"><strong>JTAGulator</strong></a>. JTAGulator is a cool device that automatically detects UART &amp; JTAG interface.  It&rsquo;s circuit is protected, so you don&rsquo;t have to worry about the over-voltage. There exists 24 channels which means that you can test 24 electrodes all at once. It connects to PC with Serial, so you can just press start button and wait having a cup of coffee.</p>
+
+<h2><a id="con"></a> Conclusion</h2>
+
+<p>There are many debugging interfaces supported by embedded devices. However, nowadays, embedded designers protect their these debugging features using password or other special input signals so-called &lsquo;Secure&rsquo;. Therefore, from now, we need to consider how we can access to right debugging interface when they are protected.</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[MindRDR - Google Glass App Control With Your Thoughts]]></title>
     <link href="http://insino.github.io/blog/2014/07/23/mindrdr-google-glass-app/"/>
     <updated>2014-07-23T14:33:32-07:00</updated>
@@ -21,6 +147,9 @@
     <content type="html"><![CDATA[<p>A few weeks ago, there was a news from <a href="http://techcrunch.com/2014/07/09/forget-ok-glass-mindrdr-is-a-new-google-glass-app-that-you-control-with-your-thoughts/">TechCrunch</a> announcing <a href="http://www.thisplace.com/works/mindrdr"><code>MindRDR</code></a>, which is a Google Glass app that makes you control activites with your thoughts.</p>
 
 <p><img class="center" src="http://insino.github.io/images/2014/07/23/tc.png"></p>
+
+<!-- more -->
+
 
 <h2><a id="mindrdr"></a>What is MindRDR?</h2>
 
@@ -192,6 +321,9 @@ There are previous researches related to P300, which is a kind of <em>Event Rela
     <id>http://insino.github.io/blog/2014/07/21/first-setup-octopress</id>
     <content type="html"><![CDATA[<p>I just set up my new homepage with octopress themed by whitespace.
 <code>http://insino.github.io</code></p>
+
+<!-- more -->
+
 
 <h2><a id="setup"></a>Setup Octopress</h2>
 
