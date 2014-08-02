@@ -7,7 +7,7 @@ categories:
   - Embedded
 ---
 
-There exist many tools used for soldering/desoldering. I would like to introduce those tools today.
+There are many tools used for soldering/desoldering. I would like to introduce those tools today.
 
 <!-- more -->
 
@@ -56,16 +56,26 @@ You can choose what to use between flux pen and solder paste as you prefer.
 
 ## <a id="cleaner"></a> Desoldering braid & Desolder Pump
 
-**Desoldering braid**, also known as **desoldering wick** or **solder wick**, is finely braided 18 to 42 AWG copper wire coated with rosin flux, usually supplied on a roll. You can absorb melted lead using this.
+**Desoldering Braid**, also known as **desoldering wick** or **solder wick**, is finely braided 18 to 42 AWG copper wire coated with rosin flux, usually supplied on a roll. You can absorb melted lead using this.
 
-{% img left http://upload.wikimedia.org/wikipedia/commons/b/b0/Solder_wick_rolled.jpg 350 350 %}
-{% img right http://upload.wikimedia.org/wikipedia/commons/0/07/Solder_wick-close_up-part_PNr%C2%B00104.jpg 400 200 this_is_title_ test %}
-{% img right http://upload.wikimedia.org/wikipedia/commons/3/36/Solder_wick-close_up-solder_impurities_PNr%C2%B00112.jpg 400 200 %}
+{% img left http://upload.wikimedia.org/wikipedia/commons/b/b0/Solder_wick_rolled.jpg 321 321 %}
+{% imgcap right http://upload.wikimedia.org/wikipedia/commons/0/07/Solder_wick-close_up-part_PNr%C2%B00104.jpg 400 200 Solder wick, before use%}
+{% imgcap right http://upload.wikimedia.org/wikipedia/commons/3/36/Solder_wick-close_up-solder_impurities_PNr%C2%B00112.jpg 400 200 Solder wick, after soaked%}
 
-{% img center http://upload.wikimedia.org/wikipedia/commons/b/b9/Solder_sucker.jpg test %}
+**Desoldering Pump** , colloquially known as a **solder sucker**, is a manually-operated device which is used to remove solder from a printed circuit board. After melting target lead, you can suck up it.
 
+{% img center http://upload.wikimedia.org/wikipedia/commons/b/b9/Solder_sucker.jpg 400 400 %}
 
+## <a id="fume_extractor"></a> Fume Extractor
 
+**Fume Extractor** is a tool that inhales the smoke of lead, which could be harmful. However, the suction power may not be enough, so you need to work closer.
 
+{% img center http://i0.wp.com/make-images.s3.amazonaws.com/2JOYlu1G1KsoWRZI.jpg?resize=620%2C465 400 400 %}
+
+## <a id="fume_extractor"></a> In Summary
+
+I've been talking about several tools that we can use in soldering and desoldering. There is only one thing that we should remember:
+
+> Use right tool in right place.
 
 
