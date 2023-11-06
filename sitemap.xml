@@ -1,45 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-  
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://insino.github.io/blog/2014/07/31/de-soldering-tools/</loc>
-    <lastmod>2014-07-31T20:21:48-07:00</lastmod>
-    <priority>0.8</priority>
+    <loc>https://0xdkay.me/index.html</loc>
   </url>
-  
   <url>
-    <loc>http://insino.github.io/blog/2014/07/25/how-to-analyze-embedded-devices/</loc>
-    <lastmod>2014-07-25T13:35:59-07:00</lastmod>
-    <priority>0.8</priority>
+    <loc>https://0xdkay.me/dkay.jpg</loc>
   </url>
-  
   <url>
-    <loc>http://insino.github.io/blog/2014/07/23/mindrdr-google-glass-app/</loc>
-    <lastmod>2014-07-23T14:33:32-07:00</lastmod>
-    <priority>0.8</priority>
+    <loc>https://0xdkay.me/pub/2013/han-bios2013.pdf</loc>
   </url>
-  
   <url>
-    <loc>http://insino.github.io/blog/2014/07/21/first-setup-octopress/</loc>
-    <lastmod>2014-07-21T16:01:17-07:00</lastmod>
-    <priority>0.8</priority>
+    <loc>https://0xdkay.me/pub/2014/park-wisa2014.pdf</loc>
   </url>
-  
-  
   <url>
-    <loc>http://insino.github.io/blog/archives/</loc>
-    <lastmod>2014-08-01T21:01:22-07:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://0xdkay.me/pub/2022/bae-sec22-watching.pdf</loc>
   </url>
-  
   <url>
-    <loc>http://insino.github.io/</loc>
-    <lastmod>2014-08-01T21:01:22-07:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <loc>https://0xdkay.me/pub/2022/kim-phdthesis2022-slides.pdf</loc>
   </url>
-  
-  
+  <url>
+    <loc>https://0xdkay.me/pub/2022/kim-tse22-binkit.pdf</loc>
+  </url>
+  <url>
+    <loc>https://0xdkay.me/pub/2022/kim-phdthesis2022.pdf</loc>
+  </url>
+  <url>
+    <loc>https://0xdkay.me/pub/2022/bae-sec22-watching-slides.pdf</loc>
+  </url>
+  <url>
+    <loc>https://0xdkay.me/pub/2023/kim-sec23-basecomp-slides.pdf</loc>
+  </url>
+  <url>
+    <loc>https://0xdkay.me/pub/2023/jung-ndss23-unrocker.pdf</loc>
+  </url>
+  <url>
+    <loc>https://0xdkay.me/pub/2023/jang-ndss23-paralyzing-slides.pdf</loc>
+  </url>
+  <url>
+    <loc>https://0xdkay.me/pub/2023/jung-ndss23-unrocker-slides.pdf</loc>
+  </url>
+  <url>
+    <loc>https://0xdkay.me/pub/2023/jang-ndss23-paralyzing.pdf</loc>
+  </url>
+  <url>
+    <loc>https://0xdkay.me/pub/2023/kim-sec23-basecomp.pdf</loc>
+  </url>
+  <url>
+    <loc>https://0xdkay.me/pub/2015/rocking_drones/son-sec2015-slides.pdf</loc>
+  </url>
+  <url>
+    <loc>https://0xdkay.me/pub/2015/rocking_drones/son-sec2015.pdf</loc>
+  </url>
+  <url>
+    <loc>https://0xdkay.me/pub/2015/volte/kim-ccs2015-slides.pdf</loc>
+  </url>
+  <url>
+    <loc>https://0xdkay.me/pub/2015/volte/kim-ccs2015.pdf</loc>
+  </url>
+  <url>
+    <loc>https://0xdkay.me/pub/2015/burnfit/kim-wisa2015.pdf</loc>
+  </url>
+  <url>
+    <loc>https://0xdkay.me/pub/2015/burnfit/kim-wisa2015-slides.pdf</loc>
+  </url>
+  <url>
+    <loc>https://0xdkay.me/pub/2019/lee-woot2019-slides.pdf</loc>
+  </url>
+  <url>
+    <loc>https://0xdkay.me/pub/2019/lee-woot2019.pdf</loc>
+  </url>
+  <url>
+    <loc>https://0xdkay.me/pub/2021/kim-ndss2021-slides.pdf</loc>
+  </url>
+  <url>
+    <loc>https://0xdkay.me/pub/2021/kim-ndss2021.pdf</loc>
+  </url>
+  <url>
+    <loc>https://0xdkay.me/pub/2020/kim-acsac2020.pdf</loc>
+  </url>
+  <url>
+    <loc>https://0xdkay.me/pub/2020/kim-acsac2020-slides.pdf</loc>
+  </url>
+  <url>
+    <loc>https://0xdkay.me/pub/2018/hong-tmc2018.pdf</loc>
+  </url>
+  <url>
+    <loc>https://0xdkay.me/pub/2016/pay/hong-wisa2016.pdf</loc>
+  </url>
+  <url>
+    <loc>https://0xdkay.me/pub/2016/kim-msthesis2016.pdf</loc>
+  </url>
+  <url>
+    <loc>https://0xdkay.me/pub/cv.pdf</loc>
+  </url>
+  <url>
+    <loc>https://0xdkay.me/robots.txt</loc>
+  </url>
 </urlset>
