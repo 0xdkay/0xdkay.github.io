@@ -2,8 +2,13 @@ kim-2025-atlantis: |
   @Article{kim:atlantis,
     title         = {{ATLANTIS}: {AI}-driven Threat Localization, Analysis, and Triage Intelligence System},
     author        = {Taesoo Kim and HyungSeok Han and Soyeon Park and Dae R. Jeong and Dohyeok Kim and Dongkwan Kim and Eunsoo Kim and Jiho Kim and Joshua Wang and Kangsu Kim and Sangwoo Ji and Woosun Song and Hanqing Zhao and Andrew Chin and Gyejin Lee and Kevin Stevens and Mansour Alharthi and Yizhuo Zhai and Cen Zhang and Joonun Jang and Yeongjin Jang and Ammar Askar and Dongju Kim and Fabian Fleischer and Jeongin Cho and Junsik Kim and Kyungjoon Ko and Insu Yun and Sangdon Park and Dowoo Baik and Haein Lee and Hyeon Heo and Minjae Gwon and Minjae Lee and Minwoo Baek and Seunggi Min and Wonyoung Kim and Yonghwi Jin and Younggi Park and Yunjae Choi and Jinho Jung and Gwanhyun Lee and Junyoung Jang and Kyuheon Kim and Yeonghyeon Cha and Youngjoon Kim},
-    journal       = {arXiv preprint arXiv:2509.14589},
     year          = 2025,
+    eprint        = {2509.14589},
+    archivePrefix = {arXiv},
+    primaryClass  = {cs.CR},
+    note          = {Cross-listed in cs.AI},
+    url           = {https://arxiv.org/abs/2509.14589},
+    doi           = {10.48550/arXiv.2509.14589},
   }
 
 kim-2023-basecomp: |
@@ -52,7 +57,6 @@ kim-2022-tiknib: |
     author        = {Kim, Dongkwan and Kim, Eunsoo and Cha, Sang Kil and Son, Sooel and Kim, Yongdae},
     journal       = {IEEE Transactions on Software Engineering (TSE)},
     year          = 2022,
-    pages         = {1-23},
     doi           = {10.1109/TSE.2022.3187689},
   }
 
@@ -80,7 +84,7 @@ kim-2021-basespec: |
     booktitle     = {Proceedings of the 28th Annual Network and Distributed System Security Symposium (NDSS)},
     year          = 2021,
     month         = feb,
-    address       = {Online},
+    address       = {Virtual},
   }
 
 kim-2020-firmae: |
@@ -90,7 +94,7 @@ kim-2020-firmae: |
     booktitle     = {Proceedings of the 36th Annual Computer Security Applications Conference (ACSAC)},
     year          = 2020,
     month         = dec,
-    address       = {Online},
+    address       = {Austin, TX},
   }
 
 lee-2019-eos: |
