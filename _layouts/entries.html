@@ -75,7 +75,9 @@ document.addEventListener('keydown', function(e) {
 <div class="entry-venue">{{ item.venue }}</div>
 <div class="entry-meta">
 <div class="entry-links">
-{% for link in item.links %}{% include pub-button.html type=link.type url=link.url label=link.label %}{% endfor %}
+{% assign link_order = "pdf,bibtex,slides,website,code,tool,benchmark" | split: "," %}
+{% for type in link_order %}{% for link in item.links %}{% if link.type == type %}{% include pub-button.html type=link.type url=link.url label=link.label %}{% endif %}{% endfor %}{% endfor %}
+{% for link in item.links %}{% unless link_order contains link.type %}{% include pub-button.html type=link.type url=link.url label=link.label %}{% endunless %}{% endfor %}
 </div>
 {% if item.date %}<div class="entry-date"><i class="far fa-calendar-alt"></i> {{ item.date }}</div>{% endif %}
 </div>
