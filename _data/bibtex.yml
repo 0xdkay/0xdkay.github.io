@@ -1,0 +1,182 @@
+kim-2025-atlantis: |
+  @Article{kim:atlantis,
+    title         = {{ATLANTIS}: {AI}-driven Threat Localization, Analysis, and Triage Intelligence System},
+    author        = {Taesoo Kim and HyungSeok Han and Soyeon Park and Dae R. Jeong and Dohyeok Kim and Dongkwan Kim and Eunsoo Kim and Jiho Kim and Joshua Wang and Kangsu Kim and Sangwoo Ji and Woosun Song and Hanqing Zhao and Andrew Chin and Gyejin Lee and Kevin Stevens and Mansour Alharthi and Yizhuo Zhai and Cen Zhang and Joonun Jang and Yeongjin Jang and Ammar Askar and Dongju Kim and Fabian Fleischer and Jeongin Cho and Junsik Kim and Kyungjoon Ko and Insu Yun and Sangdon Park and Dowoo Baik and Haein Lee and Hyeon Heo and Minjae Gwon and Minjae Lee and Minwoo Baek and Seunggi Min and Wonyoung Kim and Yonghwi Jin and Younggi Park and Yunjae Choi and Jinho Jung and Gwanhyun Lee and Junyoung Jang and Kyuheon Kim and Yeonghyeon Cha and Youngjoon Kim},
+    journal       = {arXiv preprint arXiv:2509.14589},
+    year          = 2025,
+  }
+
+kim-2023-basecomp: |
+  @InProceedings{kim:basecomp,
+    title         = {{BaseComp}: A Comparative Analysis for Integrity Protection in Cellular Baseband Software},
+    author        = {Eunsoo Kim and Min Woo Baek and CheolJun Park and Dongkwan Kim and Yongdae Kim and Insu Yun},
+    booktitle     = {Proceedings of the 32nd USENIX Security Symposium (Security)},
+    year          = 2023,
+    month         = aug,
+    address       = {Anaheim, CA},
+  }
+
+jung-2023-unrocker: |
+  @InProceedings{jung:unrocker,
+    title         = {{Un-Rocking Drones}: Foundations of Acoustic Injection Attacks and Recovery Thereof},
+    author        = {Jinseob Jeong and Dongkwan Kim and Joonha Jang and Juhwan Noh and Changhun Song and Yongdae Kim},
+    booktitle     = {Proceedings of the 30th Annual Network and Distributed System Security Symposium (NDSS)},
+    year          = 2023,
+    month         = mar,
+    address       = {San Diego, CA},
+  }
+
+jang-2023-paralyzing: |
+  @InProceedings{jang:paralyzing,
+    title         = {Paralyzing Drones via {EMI} Signal Injection on Sensory Communication Channels},
+    author        = {Joonha Jang and ManGi Cho and Jaehoon Kim and Dongkwan Kim and Yongdae Kim},
+    booktitle     = {Proceedings of the 30th Annual Network and Distributed System Security Symposium (NDSS)},
+    year          = 2023,
+    month         = mar,
+    address       = {San Diego, CA},
+  }
+
+bae-2022-watching: |
+  @InProceedings{bae:watching,
+    title         = {Watching the Watchers: Practical Video Identification Attack in {LTE} Networks},
+    author        = {Sangwook Bae and Mincheol Son and Dongkwan Kim and CheolJun Park and Jiho Lee and Sooel Son and Yongdae Kim},
+    booktitle     = {Proceedings of the 31st USENIX Security Symposium (Security)},
+    year          = 2022,
+    month         = aug,
+    address       = {Boston, MA},
+  }
+
+kim-2022-tiknib: |
+  @Article{kim:tiknib,
+    title         = {Revisiting Binary Code Similarity Analysis using Interpretable Feature Engineering and Lessons Learned},
+    author        = {Kim, Dongkwan and Kim, Eunsoo and Cha, Sang Kil and Son, Sooel and Kim, Yongdae},
+    journal       = {IEEE Transactions on Software Engineering (TSE)},
+    year          = 2022,
+    pages         = {1-23},
+    doi           = {10.1109/TSE.2022.3187689},
+  }
+
+kim-2022-thesis: |
+  @PhDThesis{kim:thesis22,
+    title         = {Improving Large-Scale Vulnerability Analysis of {IoT} Devices with Heuristics and Binary Code Similarity},
+    author        = {Dongkwan Kim},
+    school        = {KAIST},
+    year          = 2022,
+  }
+
+kim-2021-enabling: |
+  @Article{kim:enabling,
+    title         = {Enabling the Large-Scale Emulation of {Internet of Things} Firmware With Heuristic Workarounds},
+    author        = {Dongkwan Kim and Eunsoo Kim and Mingeun Kim and Yeongjin Jang and Yongdae Kim},
+    journal       = {IEEE Security \& Privacy},
+    year          = 2021,
+    doi           = {10.1109/MSEC.2021.3076226},
+  }
+
+kim-2021-basespec: |
+  @InProceedings{kim:basespec,
+    title         = {{BaseSpec}: Comparative Analysis of Baseband Software and Cellular Specifications for {L3} Protocols},
+    author        = {Dongkwan Kim and Eunsoo Kim and CheolJun Park and Insu Yun and Yongdae Kim},
+    booktitle     = {Proceedings of the 28th Annual Network and Distributed System Security Symposium (NDSS)},
+    year          = 2021,
+    month         = feb,
+    address       = {Online},
+  }
+
+kim-2020-firmae: |
+  @InProceedings{kim:firmae,
+    title         = {{FirmAE}: Towards Large-Scale Emulation of {IoT} Firmware for Dynamic Analysis},
+    author        = {Mingeun Kim and Dongkwan Kim and Eunsoo Kim and Suryeon Kim and Yeongjin Jang and Yongdae Kim},
+    booktitle     = {Proceedings of the 36th Annual Computer Security Applications Conference (ACSAC)},
+    year          = 2020,
+    month         = dec,
+    address       = {Online},
+  }
+
+lee-2019-eos: |
+  @InProceedings{lee:eos,
+    title         = {Who Spent My {EOS}? On the (In)Security of Resource Management of {EOS.IO}},
+    author        = {Sangsup Lee and Daejun Kim and Dongkwan Kim and Sooel Son and Yongdae Kim},
+    booktitle     = {Proceedings of the 13th USENIX Workshop on Offensive Technologies (WOOT)},
+    year          = 2019,
+    month         = aug,
+    address       = {Santa Clara, CA},
+  }
+
+hong-2018-peeking: |
+  @Article{hong:peeking,
+    title         = {Peeking over the Cellular Walled Gardens - A Method for Closed Network Diagnosis},
+    author        = {Byeongdo Hong and Shinjo Park and Hongil Kim and Dongkwan Kim and Hyunwook Hong and Hyunwoo Choi and Jean-Pierre Seifert and Sung-Ju Lee and Yongdae Kim},
+    journal       = {IEEE Transactions on Mobile Computing (TMC)},
+    year          = 2018,
+    doi           = {10.1109/TMC.2018.2804913},
+  }
+
+hong-2017-ipv6: |
+  @InProceedings{hong:ipv6,
+    title         = {When Cellular Networks Met {IPv6}: Security Problems of Middleboxes in {IPv6} Cellular Networks},
+    author        = {Hyunwook Hong and Hyunwoo Choi and Dongkwan Kim and Hongil Kim and Byeongdo Hong and Jiseong Noh and Yongdae Kim},
+    booktitle     = {Proceedings of the 2nd IEEE European Symposium on Security and Privacy (EuroS\&P)},
+    year          = 2017,
+    month         = apr,
+    address       = {Paris, France},
+    doi           = {10.1109/EuroSP.2017.34},
+  }
+
+hong-2016-pay: |
+  @InProceedings{hong:pay,
+    title         = {Pay As You Want: Bypassing Charging System in Operational Cellular Networks},
+    author        = {Hyunwook Hong and Hongil Kim and Byeongdo Hong and Dongkwan Kim and Hyunwoo Choi and Eunkyu Lee and Yongdae Kim},
+    booktitle     = {Proceedings of the 17th International Workshop on Information Security Applications (WISA)},
+    year          = 2016,
+    month         = aug,
+    address       = {Jeju Island, Korea},
+  }
+
+kim-2016-thesis: |
+  @MastersThesis{kim:thesis16,
+    title         = {Dissecting {VoLTE}: Exploiting Free Data Channels and Security Problems},
+    author        = {Dongkwan Kim},
+    school        = {KAIST},
+    year          = 2016,
+  }
+
+kim-2015-volte: |
+  @InProceedings{kim:volte,
+    title         = {Breaking and Fixing {VoLTE}: Exploiting Hidden Data Channels and Mis-implementations},
+    author        = {Hongil Kim and Dongkwan Kim and Minhee Kwon and Hyungseok Han and Yeongjin Jang and Dongsu Han and Taesoo Kim and Yongdae Kim},
+    booktitle     = {Proceedings of the 22nd ACM Conference on Computer and Communications Security (CCS)},
+    year          = 2015,
+    month         = oct,
+    address       = {Denver, CO},
+  }
+
+kim-2015-burnfit: |
+  @InProceedings{kim:burnfit,
+    title         = {{BurnFit}: Analyzing and Exploiting Wearable Devices},
+    author        = {Dongkwan Kim and Suwan Park and Kibum Choi and Yongdae Kim},
+    booktitle     = {Proceedings of the 16th International Workshop on Information Security Applications (WISA)},
+    year          = 2015,
+    month         = aug,
+    address       = {Jeju Island, Korea},
+  }
+
+son-2015-rocking: |
+  @InProceedings{son:rocking,
+    title         = {Rocking Drones with Intentional Sound Noise on Gyroscopic Sensors},
+    author        = {Yunmok Son and Hocheol Shin and Dongkwan Kim and Youngseok Park and Juhwan Noh and Kibum Choi and Jungwoo Choi and Yongdae Kim},
+    booktitle     = {Proceedings of the 24th USENIX Security Symposium (Security)},
+    year          = 2015,
+    month         = aug,
+    address       = {Washington, D.C.},
+  }
+
+park-2014-usim: |
+  @InProceedings{park:usim,
+    title         = {Analyzing Security of Korean {USIM}-based {PKI} Certificate Service},
+    author        = {Shinjo Park and Suwan Park and Insu Yun and Dongkwan Kim and Yongdae Kim},
+    booktitle     = {Proceedings of the 15th International Workshop on Information Security Applications (WISA)},
+    year          = 2014,
+    month         = aug,
+    address       = {Jeju Island, Korea},
+  }

@@ -1,0 +1,36 @@
+---
+layout: page
+---
+
+{% assign talks_data = site.data.talks %}
+
+<div id="talks-archive">
+{% for year_group in talks_data %}
+<div class="year-section">
+  <h2 class="year-header">{{ year_group.year }}</h2>
+
+  <ul class="talk-list">
+  {% for talk in year_group.talks %}
+    <li class="talk-item">
+      <div class="talk-date">{{ talk.date | split: " " | first }}</div>
+      <div class="talk-content">
+        <div class="talk-title">
+          {{ talk.title }}
+          {% if talk.award %}<span class="talk-award"><i class="fas fa-award"></i> {{ talk.award }}</span>{% endif %}
+        </div>
+        <div class="talk-venue">{{ talk.venue }}</div>
+        <div class="talk-location">{{ talk.location }}</div>
+        {% if talk.links %}
+        <div class="talk-links">
+          {% for link in talk.links %}
+            {% include pub-button.html type=link.type url=link.url label=link.label %}
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </li>
+  {% endfor %}
+  </ul>
+</div>
+{% endfor %}
+</div>

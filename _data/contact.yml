@@ -1,0 +1,21 @@
+- type: email
+  icon: "fas fa-envelope"
+  noblank: true
+
+- type: google-scholar
+  icon: "fas fa-graduation-cap"
+  url: "https://scholar.google.com/citations?user=p16UJy8AAAAJ"
+
+- type: github
+  icon: "fab fa-github"
+
+- type: linkedin
+  icon: "fab fa-linkedin"
+  url: "https://linkedin.com/in/0xdkay"
+
+#- type: facebook
+#  icon: "fab fa-facebook"
+#  url: "https://www.facebook.com/0xdkay"
+#
+# - type: twitter
+#   icon: "fab fa-twitter"

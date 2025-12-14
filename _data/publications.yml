@@ -1,0 +1,378 @@
+- year: 2025
+  papers:
+    - title: "ATLANTIS: AI-driven Threat Localization, Analysis, and Triage Intelligence System"
+      authors: "Taesoo Kim, HyungSeok Han, Soyeon Park, Dae R Jeong, Dohyeok Kim, <strong>Dongkwan Kim</strong>, et al."
+      venue: "arXiv, Sep 2025"
+      links:
+        - type: pdf
+          url: "/pub/2025/kim-arxiv25-atlantis.pdf"
+        - type: arxiv
+          url: "https://arxiv.org/abs/2509.14589"
+        - type: website
+          url: "https://team-atlanta.github.io/"
+        - type: code
+          url: "https://team-atlanta.github.io/artifacts/"
+        - type: bibtex
+          url: "kim-2025-atlantis"
+      media:
+        - label: "DARPA"
+          url: "https://www.darpa.mil/news/2025/aixcc-results"
+        - label: "ARPA-H"
+          url: "https://arpa-h.gov/news-and-events/arpa-h-darpa-challenge-showcases-ais-power-secure-americas-health-care"
+        - label: "Samsung Newsroom"
+          url: "https://news.samsung.com/global/samsung-electronics-claims-first-place-in-u-s-government-sponsored-ai-cyber-challenge"
+        - label: "Georgia Tech"
+          url: "https://www.cc.gatech.edu/news/georgia-tech-makes-history-wins-darpa-challenge"
+        - label: "OpenSSF"
+          url: "https://openssf.org/blog/2025/08/14/openssf-at-black-hat-usa-2025-def-con-33-aixcc-highlights-big-wins-and-the-future-of-securing-open-source/"
+        - label: "Fortune"
+          url: "https://fortune.com/2025/08/12/hacker-bodyguard-target-ais-triple-act-at-the-years-biggest-security-showdowns/"
+        - label: "Air & Space Forces"
+          url: "https://www.airandspaceforces.com/pentagon-contest-ai-tools-find-patch-it-flaws/"
+        - label: "The Record"
+          url: "https://therecord.media/darpa-ai-code-competition-winner-def-con"
+        - label: "Infosecurity Magazine"
+          url: "https://www.infosecurity-magazine.com/news/defcon-ai-cyber-challenge-winners/"
+        - label: "Cybersecurity Dive"
+          url: "https://www.cybersecuritydive.com/news/darpa-ai-cyber-challenge-winners-def-con/757252/"
+        - label: "Healthcare IT News"
+          url: "https://www.healthcareitnews.com/news/now-available-ai-finds-and-provides-autonomous-patching-scale"
+        - label: "Nextgov"
+          url: "https://www.nextgov.com/cybersecurity/2025/08/darpa-unveils-winners-ai-challenge-boost-critical-infrastructure-cybersecurity/407337/"
+        - label: "MeriTalk"
+          url: "https://www.meritalk.com/articles/darpa-announces-winners-of-ai-cyber-challenge/"
+        - label: "ExecutiveGov"
+          url: "https://www.executivegov.com/articles/darpa-ai-cyber-challenge-open-source-software-team-atlanta-cyber-reasoning"
+        - label: "Security Boulevard"
+          url: "https://securityboulevard.com/2025/08/darpa-ai-cyber-challenge-winners-impress-with-quick-scalable-patching/"
+        - label: "SamMobile"
+          url: "https://www.sammobile.com/news/samsung-wins-darpas-ai-cyber-challenge-takes-home-4-million/"
+        - label: "SammyGuru"
+          url: "https://sammyguru.com/samsung-wins-first-place-in-world-largest-ai-security-technology-competition/"
+        - label: "SSBCrack"
+          url: "https://news.ssbcrack.com/team-atlanta-wins-ai-cybersecurity-challenge-at-defcon-33/"
+        - label: "RSWebSols"
+          url: "https://www.rswebsols.com/news/defcon-winners-of-darpas-4m-ai-cyber-challenge-unveiled/"
+        - label: "Open Tools"
+          url: "https://opentools.ai/news/samsung-leads-global-charge-in-ai-cybersecurity-team-atlanta-secures-top-spot-in-aixcc"
+
+- year: 2023
+  papers:
+    - title: "BaseComp: A Comparative Analysis for Integrity Protection in Cellular Baseband Software"
+      authors: "Eunsoo Kim*, Min Woo Baek*, CheolJun Park, <strong>Dongkwan Kim</strong>, Yongdae Kim, Insu Yun"
+      venue: "USENIX Security 2023"
+      links:
+        - type: pdf
+          url: "/pub/2023/kim-sec23-basecomp.pdf"
+        - type: slides
+          url: "/pub/2023/kim-sec23-basecomp-slides.pdf"
+        - type: code
+          url: "https://github.com/kaist-hacking/BaseComp"
+        - type: bibtex
+          url: "kim-2023-basecomp"
+
+    - title: "Un-Rocking Drones: Foundations of Acoustic Injection Attacks and Recovery Thereof"
+      authors: "Jinseob Jeong, <strong>Dongkwan Kim</strong>, Joonha Jang, Juhwan Noh, Changhun Song, and Yongdae Kim"
+      venue: "NDSS 2023"
+      links:
+        - type: pdf
+          url: "/pub/2023/jung-ndss23-unrocker.pdf"
+        - type: slides
+          url: "/pub/2023/jung-ndss23-unrocker-slides.pdf"
+        - type: website
+          url: "https://sites.google.com/view/unrocker"
+        - type: code
+          url: "https://github.com/jinseobjeong/UnRocker"
+        - type: bibtex
+          url: "jung-2023-unrocker"
+      media:
+        - label: "Air Force Research Lab"
+          url: "https://apps.dtic.mil/sti/pdfs/AD1183688.pdf"
+
+    - title: "Paralyzing Drones via EMI Signal Injection on Sensory Communication Channels"
+      authors: "Joonha Jang*, ManGi Cho*, Jaehoon Kim, <strong>Dongkwan Kim</strong>, and Yongdae Kim"
+      venue: "NDSS 2023"
+      links:
+        - type: pdf
+          url: "/pub/2023/jang-ndss23-paralyzing.pdf"
+        - type: slides
+          url: "/pub/2023/jang-ndss23-paralyzing-slides.pdf"
+        - type: website
+          url: "https://sites.google.com/view/paralyzing-drones-via-emi"
+        - type: bibtex
+          url: "jang-2023-paralyzing"
+      media:
+        - label: "Kyunghyang"
+          url: "https://www.khan.co.kr/article/202301311253001"
+        - label: "Kyunghyang"
+          url: "https://www.khan.co.kr/article/202301312153005"
+        - label: "The Hankyoreh"
+          url: "https://www.hani.co.kr/arti/society/environment/1077671.html"
+        - label: "MoneyToday"
+          url: "https://news.mt.co.kr/mtview.php?no=2023013108394282555"
+        - label: "Munhwa"
+          url: "https://www.munhwa.com/article/11341536"
+        - label: "Herald Corp"
+          url: "https://biz.heraldcorp.com/article/3051579"
+        - label: "Herald Corp"
+          url: "https://biz.heraldcorp.com/article/3051455"
+        - label: "Korea Economic Daily"
+          url: "https://www.kedglobal.com/aerospace-defense/newsView/ked202302010015"
+        - label: "Popular Science Korea"
+          url: "https://www.popsci.co.kr/news/articleView.html?idxno=20378"
+        - label: "Asia Economic"
+          url: "https://view.asiae.co.kr/article/2023013111515284032"
+        - label: "EKN"
+          url: "https://www.ekn.kr/web/view.php?key=20230131010006695"
+        - label: "Digital Times"
+          url: "https://www.dt.co.kr/article/11492388"
+        - label: "ATN News"
+          url: "https://www.atnnews.co.kr/news/articleView.html?idxno=72099"
+        - label: "IT Biz News"
+          url: "https://www.itbiznews.com/news/articleView.html?idxno=88980"
+        - label: "Lecture News"
+          url: "https://www.lecturernews.com/news/articleView.html?idxno=117980"
+        - label: "New Free Zone"
+          url: "https://www.newsfreezone.co.kr/news/articleView.html?idxno=451891"
+        - label: "NoCut News"
+          url: "https://www.nocutnews.co.kr/news/5886993"
+
+- year: 2022
+  papers:
+    - title: "Watching the Watchers: Practical Video Identification Attack in LTE Networks"
+      authors: "Sangwook Bae, Mincheol Son, <strong>Dongkwan Kim</strong>, CheolJun Park, Jiho Lee, Sooel Son, and Yongdae Kim"
+      venue: "USENIX Security 2022"
+      links:
+        - type: pdf
+          url: "/pub/2022/bae-sec22-watching.pdf"
+        - type: slides
+          url: "/pub/2022/bae-sec22-watching-slides.pdf"
+        - type: website
+          url: "https://sites.google.com/view/sec21-wtw/watching-the-watchers"
+        - type: bibtex
+          url: "bae-2022-watching"
+
+    - title: "Revisiting Binary Code Similarity Analysis using Interpretable Feature Engineering and Lessons Learned"
+      authors: "<strong>Dongkwan Kim</strong>, Eunsoo Kim, Sang Kil Cha, Sooel Son, and Yongdae Kim"
+      venue: "IEEE Transactions on Software Engineering (TSE)"
+      links:
+        - type: pdf
+          url: "/pub/2022/kim-tse22-binkit.pdf"
+        - type: benchmark
+          url: "https://github.com/SoftSec-KAIST/BinKit"
+        - type: tool
+          url: "https://github.com/SoftSec-KAIST/TikNib"
+        - type: bibtex
+          url: "kim-2022-tiknib"
+
+    - title: "Improving Large-Scale Vulnerability Analysis of IoT Devices with Heuristics and Binary Code Similarity"
+      authors: "<strong>Dongkwan Kim</strong>"
+      venue: "Ph.D. Thesis"
+      links:
+        - type: pdf
+          url: "/pub/2022/kim-phdthesis2022.pdf"
+        - type: slides
+          url: "/pub/2022/kim-phdthesis2022-slides.pdf"
+        - type: code
+          url: "https://github.com/SysSec-KAIST/FirmKit"
+        - type: bibtex
+          url: "kim-2022-thesis"
+
+- year: 2021
+  papers:
+    - title: "Enabling the Large-Scale Emulation of Internet of Things Firmware With Heuristic Workarounds"
+      authors: "<strong>Dongkwan Kim</strong>, Eunsoo Kim, Mingeun Kim, Yeongjin Jang, and Yongdae Kim"
+      venue: "IEEE Security & Privacy"
+      links:
+        - type: pdf
+          url: "https://ieeexplore.ieee.org/abstract/document/9431371"
+        - type: bibtex
+          url: "kim-2021-enabling"
+
+    - title: "BaseSpec: Comparative Analysis of Baseband Software and Cellular Specifications for L3 Protocols"
+      authors: "<strong>Dongkwan Kim</strong>*, Eunsoo Kim*, CheolJun Park, Insu Yun, and Yongdae Kim"
+      venue: "NDSS 2021"
+      links:
+        - type: pdf
+          url: "/pub/2021/kim-ndss2021.pdf"
+        - type: slides
+          url: "/pub/2021/kim-ndss2021-slides.pdf"
+        - type: code
+          url: "https://github.com/SysSec-KAIST/BaseSpec"
+        - type: bibtex
+          url: "kim-2021-basespec"
+
+- year: 2020
+  papers:
+    - title: "FirmAE: Towards Large-Scale Emulation of IoT Firmware for Dynamic Analysis"
+      authors: "Mingeun Kim, <strong>Dongkwan Kim</strong>, Eunsoo Kim, Suryeon Kim, Yeongjin Jang, and Yongdae Kim"
+      venue: "ACSAC 2020"
+      links:
+        - type: pdf
+          url: "/pub/2020/kim-acsac2020.pdf"
+        - type: slides
+          url: "/pub/2020/kim-acsac2020-slides.pdf"
+        - type: code
+          url: "https://github.com/pr0v3rbs/FirmAE"
+        - type: bibtex
+          url: "kim-2020-firmae"
+      media:
+        - label: "CVEs & PoC Exploits"
+          url: "https://github.com/pr0v3rbs/CVE"
+
+- year: 2019
+  papers:
+    - title: "Who Spent My EOS? On the (In)Security of Resource Management of EOS.IO"
+      authors: "Sangsup Lee, Daejun Kim, <strong>Dongkwan Kim</strong>, Sooel Son, and Yongdae Kim"
+      venue: "USENIX WOOT 2019"
+      links:
+        - type: pdf
+          url: "/pub/2019/lee-woot2019.pdf"
+        - type: slides
+          url: "/pub/2019/lee-woot2019-slides.pdf"
+        - type: bibtex
+          url: "lee-2019-eos"
+
+- year: 2018
+  papers:
+    - title: "Peeking over the Cellular Walled Gardens - A Method for Closed Network Diagnosis"
+      authors: "Byeongdo Hong, Shinjo Park, Hongil Kim, <strong>Dongkwan Kim</strong>, Hyunwook Hong, Hyunwoo Choi, Jean-Pierre Seifert, Sung-Ju Lee, and Yongdae Kim"
+      venue: "IEEE Transactions on Mobile Computing (TMC)"
+      links:
+        - type: pdf
+          url: "/pub/2018/hong-tmc2018.pdf"
+        - type: bibtex
+          url: "hong-2018-peeking"
+
+- year: 2017
+  papers:
+    - title: "When Cellular Networks Met IPv6: Security Problems of Middleboxes in IPv6 Cellular Networks"
+      authors: "Hyunwook Hong, Hyunwoo Choi, <strong>Dongkwan Kim</strong>, Hongil Kim, Byeongdo Hong, Jiseong Noh, and Yongdae Kim"
+      venue: "IEEE EuroS&P 2017"
+      links:
+        - type: pdf
+          url: "http://ieeexplore.ieee.org/abstract/document/7962005/"
+        - type: bibtex
+          url: "hong-2017-ipv6"
+
+- year: 2016
+  papers:
+    - title: "Pay As You Want: Bypassing Charging System in Operational Cellular Networks"
+      authors: "Hyunwook Hong, Hongil Kim, Byeongdo Hong, <strong>Dongkwan Kim</strong>, Hyunwoo Choi, Eunkyu Lee and Yongdae Kim"
+      venue: "WISA 2016"
+      links:
+        - type: pdf
+          url: "/pub/2016/pay/hong-wisa2016.pdf"
+        - type: bibtex
+          url: "hong-2016-pay"
+
+    - title: "Dissecting VoLTE: Exploiting Free Data Channels and Security Problems"
+      authors: "<strong>Dongkwan Kim</strong>"
+      venue: "M.S. Thesis"
+      links:
+        - type: pdf
+          url: "/pub/2016/kim-msthesis2016.pdf"
+        - type: bibtex
+          url: "kim-2016-thesis"
+
+- year: 2015
+  papers:
+    - title: "Breaking and Fixing VoLTE: Exploiting Hidden Data Channels and Mis-implementations"
+      authors: "<strong>Dongkwan Kim</strong>*, Hongil Kim*, Minhee Kwon, Hyungseok Han, Yeongjin Jang, Dongsu Han, Taesoo Kim, and Yongdae Kim"
+      venue: "ACM CCS 2015"
+      links:
+        - type: pdf
+          url: "/pub/2015/volte/kim-ccs2015.pdf"
+        - type: slides
+          url: "/pub/2015/volte/kim-ccs2015-slides.pdf"
+        - type: bibtex
+          url: "kim-2015-volte"
+      media:
+        - label: "CVE-2015-6614"
+          url: "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-6614"
+        - label: "CERT VU#943167"
+          url: "https://www.kb.cert.org/vuls/id/943167"
+        - label: "Android Security Bulletin"
+          url: "https://source.android.com/docs/security/bulletin/2015-11-01#acknowledgements"
+        - label: "The Register"
+          url: "https://www.theregister.com/2017/06/14/volte_security_problems/"
+        - label: "Tom's Guide"
+          url: "https://www.tomsguide.com/us/lte-flaw-android-phone,news-21734.html"
+        - label: "ZDNet"
+          url: "https://www.zdnet.com/article/at-t-t-mobile-verizon-vulnerable-to-several-lte-flaws/"
+        - label: "Softpedia"
+          url: "https://news.softpedia.com/news/lte-4g-networks-put-android-users-at-risk-of-overbilling-and-phone-number-spoofing-494840.shtml"
+        - label: "Techworm"
+          url: "https://www.techworm.net/2015/10/new-flaw-makes-android-devices-att-verizons-wireless-services-vulnerable.html"
+        - label: "Neowin"
+          url: "https://www.neowin.net/news/vulnerability-makes-every-android-device-on-att-and-verizons-wireless-vulnerable/"
+        - label: "DailySecu (interview)"
+          url: "https://www.dailysecu.com/news/articleView.html?idxno=11610"
+        - label: "ZDNet Korea"
+          url: "https://zdnet.co.kr/view/?no=20151019105527"
+
+    - title: "BurnFit: Analyzing and Exploiting Wearable Devices"
+      authors: "<strong>Dongkwan Kim</strong>, Suwan Park, Kibum Choi, Yongdae Kim"
+      venue: "WISA 2015"
+      badge: "Best Paper"
+      links:
+        - type: pdf
+          url: "/pub/2015/burnfit/kim-wisa2015.pdf"
+        - type: slides
+          url: "/pub/2015/burnfit/kim-wisa2015-slides.pdf"
+        - type: bibtex
+          url: "kim-2015-burnfit"
+
+    - title: "Rocking Drones with Intentional Sound Noise on Gyroscopic Sensors"
+      authors: "Yunmok Son, Hocheol Shin, <strong>Dongkwan Kim</strong>, Youngseok Park, Juhwan Noh, Kibum Choi, Jungwoo Choi, and Yongdae Kim"
+      venue: "USENIX Security 2015"
+      links:
+        - type: pdf
+          url: "/pub/2015/rocking_drones/son-sec2015.pdf"
+        - type: slides
+          url: "/pub/2015/rocking_drones/son-sec2015-slides.pdf"
+        - type: bibtex
+          url: "son-2015-rocking"
+      media:
+        - label: "Air Force Research Lab"
+          url: "https://apps.dtic.mil/sti/pdfs/AD1183688.pdf"
+        - label: "DARPA FIRE Program ($70M)"
+          url: "https://sam.gov/opp/f198c2a5f9ca4dcab48dea65dc5f2c0b/view"
+        - label: "Los Alamos National Lab"
+          url: "https://www.osti.gov/biblio/1592909"
+        - label: "NY Daily News"
+          url: "https://www.nydailynews.com/2015/08/07/south-korea-study-proves-sound-waves-can-disable-drones/"
+        - label: "Defense One"
+          url: "https://www.defenseone.com/defense-systems/2015/08/researchers-show-how-to-take-out-drones-with-loud-noises/191144/"
+        - label: "Gizmodo"
+          url: "https://gizmodo.com/simple-soundwaves-can-knock-a-drone-out-of-the-sky-1722240688"
+        - label: "Slashdot"
+          url: "https://tech.slashdot.org/story/15/08/05/1224237/sounds-can-knock-drones-out-of-the-sky"
+        - label: "Network World"
+          url: "https://www.networkworld.com/article/941924/sounds-can-knock-drones-out-of-the-sky.html"
+        - label: "Computerworld"
+          url: "https://www.computerworld.com/article/1634978/sounds-can-knock-drones-out-of-the-sky-2.html"
+        - label: "IBTimes"
+          url: "https://www.ibtimes.co.uk/drones-knocked-out-air-by-sound-waves-1514781"
+        - label: "Sophos"
+          url: "https://news.sophos.com/en-us/2015/08/06/sound-yet-another-way-to-smack-down-drones/"
+        - label: "Sputnik"
+          url: "https://sputnikglobe.com/20150807/1025497684.html"
+        - label: "iRobot News"
+          url: "https://www.irobotnews.com/news/articleView.html?idxno=5490"
+        - label: "sUAS News"
+          url: "https://www.suasnews.com/2015/08/sounds-can-knock-drones-out-of-the-sky/"
+        - label: "Techworm"
+          url: "https://www.techworm.net/2015/08/drone-hack-blasting-a-sound-at-a-drone-can-knock-it-out-of-the-air.html"
+
+- year: 2014
+  papers:
+    - title: "Analyzing Security of Korean USIM-based PKI Certificate Service"
+      authors: "Shinjo Park, Suwan Park, Insu Yun, <strong>Dongkwan Kim</strong>, Yongdae Kim"
+      venue: "WISA 2014"
+      links:
+        - type: pdf
+          url: "/pub/2014/park-wisa2014.pdf"
+        - type: bibtex
+          url: "park-2014-usim"
+

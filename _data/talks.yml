@@ -1,0 +1,195 @@
+- year: 2025
+  talks:
+    - title: "Inside the AI Cyber Challenge"
+      venue: "ACM Student Chapter of Maastricht University (MaaSec)"
+      location: "Netherlands (Virtual)"
+      date: "October 2025"
+      type: Invited
+      links:
+        - type: slides
+          url: "/pub/2025/kim-aixcc-atlantis.pdf"
+        - type: website
+          url: "https://www.linkedin.com/posts/maasec_upcoming-talk-inside-the-ai-cyber-challenge-activity-7385283384824086528-Fj2h"
+          label: "Schedule"
+
+    - title: "AI Security 101: Red Team's Perspective on Navigating New Threats in AI Frontier"
+      venue: "Hyundai Motors Group Security Center"
+      location: "Seoul, South Korea"
+      date: "January 2025"
+      type: Invited
+
+- year: 2024
+  talks:
+    - title: "Red Team's Perspective on Navigating New Threats in AI Frontier"
+      venue: "IT Platform Security Research Group, Korea Institute of Information Security & Cryptology (KIISC)"
+      location: "Seoul, South Korea"
+      date: "November 2024"
+      type: Invited
+      links:
+        - type: slides
+          url: "/pub/2024/kim-aisec101-red-team.pdf"
+
+    - title: "AI Security 101: Red Team's Perspective on Navigating New Threats in AI Frontier"
+      venue: "Sungshin Women's University"
+      location: "Seoul, South Korea"
+      date: "October 2024"
+      type: Invited
+
+    - title: "Security for Generative AI, Generative AI for Security"
+      venue: "S2W Security Innovation Summit (SIS) 2024"
+      location: "Seoul, South Korea"
+      date: "July 2024"
+      type: Panel
+      links:
+        - type: website
+          url: "https://s2w.inc/en/event/sis/51#none"
+          label: "Schedule"
+
+    - title: "Scaling up Vulnerability Analysis of IoT Devices with Heuristics and Binary Code Similarity"
+      venue: "Samsung Mobile Security & Hyundai Motors Group Security Tech Workshop"
+      location: "Seoul, South Korea"
+      date: "July 2024"
+      type: Invited
+
+    - title: "AI Security Primer: Red Team Perspectives on Navigating New Threats and Safeguarding AI Frontier"
+      venue: "SK Telecom"
+      location: "Seoul, South Korea"
+      date: "July 2024"
+      type: Invited
+
+    - title: "AI Security Primer: Red Team Perspectives on Navigating New Threats and Safeguarding AI Frontier"
+      venue: ".HACK Conference, Theori"
+      location: "Seoul, South Korea"
+      date: "May 2024"
+      type: Invited
+      links:
+        - type: slides
+          url: "/pub/2024/kim-dothack24-ai-slides.pdf"
+          label: "Slides (Korean)"
+        - type: website
+          url: "https://dothack.io/2024/session"
+          label: "Schedule"
+
+- year: 2023
+  talks:
+    - title: "Scaling up Vulnerability Analysis of IoT Devices with Heuristics and Binary Code Similarity"
+      venue: "Colloquium Fall 2023, School of Cybersecurity, Korea University"
+      location: "Seoul, South Korea"
+      date: "October 2023"
+      type: Invited
+      links:
+        - type: slides
+          url: "/pub/2023/kim-korea23-scaling-slides.pdf"
+        - type: video
+          url: "https://www.youtube.com/watch?v=VwEteN5HdJ4&t=115s"
+        - type: website
+          url: "https://security.korea.ac.kr/m06_04/22"
+          label: "Schedule"
+
+    - title: "Peeking Over Industry's Patch Gap"
+      venue: "Samsung SDS - KAIST Tech Seminar"
+      location: "Daejeon, South Korea"
+      date: "March 2023"
+      type: Invited
+
+- year: 2021
+  talks:
+    - title: "BaseSpec: Comparative Analysis of Baseband Software and Cellular Specifications for L3 Protocols"
+      venue: "Network and Distributed System Security Symposium (NDSS)"
+      location: "USA (Virtual)"
+      date: "February 2021"
+      type: Conference
+      links:
+        - type: slides
+          url: "/pub/2021/kim-ndss2021-slides.pdf"
+        - type: video
+          url: "https://www.youtube.com/watch?v=8WygovFat9M"
+        - type: website
+          url: "https://www.ndss-symposium.org/ndss-program/ndss-2021/"
+          label: "Schedule"
+
+- year: 2016
+  talks:
+    - title: "Breaking & Fixing VoLTE: Exploiting Hidden Data Channels and Mis-implementations"
+      venue: "GSMA VoLTE/RCS Security Workshop"
+      location: "Toronto, Canada"
+      date: "September 2016"
+      type: Invited
+
+    - title: "Breaking and Fixing VoLTE: Exploiting Hidden Data Channels and Mis-implementations"
+      venue: "A3 Foresight Program Workshop"
+      location: "Okinawa, Japan"
+      date: "February 2016"
+      type: Invited
+      award: "Best Presentation Award"
+
+- year: 2015
+  talks:
+    - title: "Dissecting VoLTE: Exploiting Free Data Channels and Security Problems"
+      venue: "32nd Chaos Communication Congress (32C3)"
+      location: "Hamburg, Germany"
+      date: "December 2015"
+      type: Invited
+      links:
+        - type: video
+          url: "https://media.ccc.de/v/32c3-7502-dissecting_volte#t=1304"
+
+    - title: "Breaking VoLTE, not VoIP"
+      venue: "Power of Community (PoC)"
+      location: "Seoul, South Korea"
+      date: "November 2015"
+      type: Invited
+      links:
+        - type: slides
+          url: "/pub/2015/kim-poc15-volte-slides.pdf"
+        - type: website
+          url: "http://powerofcommunity.net/2015/"
+          label: "Schedule"
+
+    - title: "Breaking and Fixing VoLTE"
+      venue: "National Security Research Institute (NSR)"
+      location: "Daejeon, South Korea"
+      date: "November 2015"
+      type: Invited
+
+    - title: "Breaking and Fixing VoLTE: Exploiting Hidden Data Channels and Mis-implementations"
+      venue: "ACM Conference on Computer and Communications Security (CCS)"
+      location: "Denver, USA"
+      date: "October 2015"
+      type: Conference
+      links:
+        - type: slides
+          url: "/pub/2015/volte/kim-ccs2015-slides.pdf"
+        - type: website
+          url: "https://www.sigsac.org/ccs/CCS2015/pro_agenda.html"
+          label: "Schedule"
+
+    - title: "Breaking and Fixing VoLTE: Exploiting Hidden Data Channels and Mis-implementations"
+      venue: "Georgia Institute of Technology"
+      location: "Atlanta, USA"
+      date: "October 2015"
+      type: Invited
+
+    - title: "BurnFit: Analyzing and Exploiting Wearable Devices"
+      venue: "Workshop on Information Security Applications (WISA)"
+      location: "Jeju, South Korea"
+      date: "August 2015"
+      type: Conference
+      award: "Best Paper Award"
+      links:
+        - type: slides
+          url: "/pub/2015/burnfit/kim-wisa2015-slides.pdf"
+
+    - title: "Mitigations for VoLTE Security Vulnerabilities"
+      venue: "KT Corporation"
+      location: "Daejeon, South Korea"
+      date: "July 2015"
+      type: Invited
+
+- year: 2013
+  talks:
+    - title: "Overview of International Attack-and-Defense Competition Challenges"
+      venue: "NetSec-KR"
+      location: "Seoul, South Korea"
+      date: "April 2013"
+      type: Invited

@@ -1,0 +1,23 @@
+<!-- Legacy URL redirect handler for old single-page site hash fragments -->
+{% if page.url == '/' %}
+<script>
+(function() {
+  var hash = window.location.hash;
+  if (hash) {
+    var redirects = {
+      '#about': '/',
+      '#publications': '/publications/',
+      '#work-experience': '/cv/',
+      '#education': '/cv/',
+      '#awards': '/cv/',
+      '#interests': '/',
+      '#hots': '/talks/'
+    };
+    var newPath = redirects[hash];
+    if (newPath && newPath !== '/') {
+      window.location.replace(newPath);
+    }
+  }
+})();
+</script>
+{% endif %}

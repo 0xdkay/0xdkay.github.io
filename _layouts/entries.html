@@ -1,0 +1,92 @@
+---
+layout: page
+---
+
+<!-- BibTeX Modal -->
+<div id="bibtexModal" class="bibtex-modal" style="display:none;">
+  <div class="bibtex-modal-overlay" onclick="closeBibtexModal()"></div>
+  <div class="bibtex-modal-content">
+    <div class="bibtex-modal-header">
+      <h3>BibTeX Entry</h3>
+      <button onclick="closeBibtexModal()" class="bibtex-close-btn">&times;</button>
+    </div>
+    <pre id="bibtexContent"></pre>
+    <div class="bibtex-modal-footer">
+      <button onclick="copyBibtex()" class="pub-btn pub-btn-bibtex" id="copyBibtexBtn"><i class="fas fa-copy"></i> Copy</button>
+    </div>
+  </div>
+</div>
+
+<script>
+var bibtexData = {
+{% for entry in site.data.bibtex %}
+  "{{ entry[0] }}": {{ entry[1] | jsonify }},
+{% endfor %}
+};
+
+function showBibtex(key) {
+  var bibtex = bibtexData[key];
+  if (bibtex) {
+    document.getElementById('bibtexContent').textContent = bibtex.trim();
+    document.getElementById('bibtexModal').style.display = 'flex';
+  }
+}
+
+function closeBibtexModal() {
+  document.getElementById('bibtexModal').style.display = 'none';
+}
+
+function copyBibtex() {
+  var text = document.getElementById('bibtexContent').textContent;
+  navigator.clipboard.writeText(text).then(function() {
+    var btn = document.getElementById('copyBibtexBtn');
+    btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+    setTimeout(function() {
+      btn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+    }, 2000);
+  });
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeBibtexModal();
+});
+</script>
+
+{% if page.data_key == 'publications' %}
+  {% assign entries_data = site.data.publications %}
+{% elsif page.data_key == 'talks' %}
+  {% assign entries_data = site.data.talks %}
+{% endif %}
+
+{% for year_group in entries_data %}
+<div class="year-section">
+<div class="year-header"><h2>{{ year_group.year }}</h2></div>
+
+{% if page.data_key == 'publications' %}
+  {% assign items = year_group.papers %}
+{% else %}
+  {% assign items = year_group.talks %}
+{% endif %}
+
+{% for item in items %}
+<div class="entry-card">
+<div class="entry-title">{{ item.title }}{% if item.badge %}<span class="entry-badge"><i class="fas fa-award"></i> {{ item.badge }}</span>{% endif %}</div>
+<div class="entry-authors">{{ item.authors | default: item.speaker }}</div>
+<div class="entry-venue">{{ item.venue }}</div>
+<div class="entry-meta">
+<div class="entry-links">
+{% for link in item.links %}{% include pub-button.html type=link.type url=link.url label=link.label %}{% endfor %}
+</div>
+{% if item.date %}<div class="entry-date"><i class="far fa-calendar-alt"></i> {{ item.date }}</div>{% endif %}
+</div>
+{% if item.media %}
+<div class="entry-media">
+<span class="media-label">Media:</span>
+{% for m in item.media %}<a href="{{ m.url }}">{{ m.label }}</a>{% unless forloop.last %} {% endunless %}{% endfor %}
+</div>
+{% endif %}
+</div>
+{% endfor %}
+
+</div>
+{% endfor %}

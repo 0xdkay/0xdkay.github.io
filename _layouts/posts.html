@@ -1,0 +1,48 @@
+---
+layout: default
+---
+
+<!-- Posts page with proper navigation -->
+<div id="post-list" class="px-0">
+  {% for post in site.posts %}
+  <article class="card-wrapper card mb-4">
+    <a href="{{ post.url | relative_url }}" class="card-link">
+      <div class="card h-100 shadow-sm">
+        {% if post.image %}
+        <img src="{{ post.image.path | default: post.image }}" class="card-img-top" alt="{{ post.title }}">
+        {% endif %}
+        <div class="card-body">
+          <h2 class="card-title">{{ post.title }}</h2>
+          <p class="card-text text-muted">
+            {% if post.description %}
+              {{ post.description }}
+            {% else %}
+              {{ post.content | strip_html | truncate: 200 }}
+            {% endif %}
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              <i class="far fa-calendar-alt me-1"></i>
+              <time>{{ post.date | date: "%b %d, %Y" }}</time>
+              {% if post.categories.size > 0 %}
+              <span class="ms-3">
+                <i class="far fa-folder-open me-1"></i>
+                {{ post.categories | join: ", " }}
+              </span>
+              {% endif %}
+            </small>
+          </p>
+        </div>
+      </div>
+    </a>
+  </article>
+  {% endfor %}
+
+  {% if site.posts.size == 0 %}
+  <p class="text-center text-muted mt-5">No posts yet.</p>
+  {% endif %}
+</div>
+
+{% if paginator.total_pages > 1 %}
+  {% include post-paginator.html %}
+{% endif %}

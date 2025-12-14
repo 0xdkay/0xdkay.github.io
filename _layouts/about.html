@@ -1,0 +1,52 @@
+---
+layout: page
+---
+
+{% assign data = site.data[page.data_key] %}
+
+<p>{{ data.bio }}</p>
+
+<h2>Highlights</h2>
+
+<div class="highlights-grid">
+{% for item in data.highlights %}
+<div class="highlight-card{% if item.award %} award{% endif %}">
+<div class="highlight-icon"><i class="{{ item.icon }}"></i></div>
+<div class="highlight-stat">{{ item.stat }}</div>
+<div class="highlight-label">{{ item.label }}</div>
+</div>
+{% endfor %}
+</div>
+
+<hr>
+
+<h2>Current Focus</h2>
+
+<ul>
+{% for item in data.current_focus %}
+<li><strong>{{ item.title }}</strong> — {{ item.description }}</li>
+{% endfor %}
+</ul>
+
+<hr>
+
+<h2>Research Interests</h2>
+
+<div class="research-grid">
+{% for item in data.research_interests %}
+<div class="research-card">
+<div class="research-icon"><i class="{{ item.icon }}"></i></div>
+<h4>{{ item.title }}</h4>
+<p>{{ item.keywords }}</p>
+</div>
+{% endfor %}
+</div>
+
+<hr>
+
+<h2>Contact</h2>
+
+<p>
+<i class="fas fa-map-marker-alt"></i> {{ data.contact.address }}<br>
+<i class="fas fa-envelope"></i> 0xdkay [at] gmail.com
+</p>

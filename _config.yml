@@ -1,0 +1,154 @@
+# The Site Configuration
+
+# Import the theme
+theme: jekyll-theme-chirpy
+
+# The language of the webpage
+lang: en
+
+# Change to your timezone
+timezone: America/New_York
+
+# jekyll-seo-tag settings
+title: Dongkwan Kim
+tagline: Security Researcher
+affiliation: Georgia Tech, GA
+description: >-
+  Personal website of Dongkwan Kim, security researcher specializing in
+  AI systems, software security, cellular networks, and cyber-physical systems.
+  Core member of Team Atlanta, 1st place winner of DARPA AIxCC.
+
+url: "https://0xdkay.me"
+
+github:
+  username: 0xdkay
+
+social:
+  name: Dongkwan Kim
+  email: 0xdkay@gmail.com
+  links:
+    - https://scholar.google.com/citations?user=p16UJy8AAAAJ
+    - https://github.com/0xdkay
+    - https://linkedin.com/in/0xdkay
+    - https://www.facebook.com/0xdkay
+
+# Social sharing image (appears in og:image meta tag)
+# Using thumbnail.jpg (960x720) - better for social cards than portrait avatar
+social_preview_image: /assets/img/thumbnail.jpg
+
+twitter:
+  username: 0xdkay
+  card: summary_large_image
+
+# Site Verification Settings
+webmaster_verifications:
+  google: 4oe_QBxbHfKhfkxcKAQU6DMlUM2vpERhQiJqwpBCF6Q
+
+# Web Analytics Settings
+analytics:
+  google:
+    id: G-LL6F14ZBJK # Add your Google Analytics ID here
+
+# Prefer color scheme setting (leave empty for auto)
+theme_mode:
+
+# The avatar on sidebar
+avatar: /assets/img/dkay.webp
+
+# boolean type, the global switch for TOC in posts
+toc: true
+
+# Comments configuration - Giscus (disabled for now)
+# To enable: uncomment below and configure repo_id/category_id from https://giscus.app
+# comments:
+#   provider: giscus
+#   giscus:
+#     repo: 0xdkay/0xdkay.github.io
+#     repo_id: # Get from https://giscus.app
+#     category: Comments
+#     category_id: # Get from https://giscus.app
+#     mapping: pathname
+#     strict: 0
+#     input_position: bottom
+#     lang: en
+#     reactions_enabled: 1
+
+pwa:
+  enabled: true
+  cache:
+    enabled: true
+    deny_paths:
+
+paginate: 10
+
+baseurl: ""
+
+# ------------ The following options are not recommended to be modified ------------------
+
+kramdown:
+  footnote_backlink: "&#8617;&#xfe0e;"
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: highlight
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
+
+collections:
+  tabs:
+    output: true
+    sort_by: order
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      comments: true
+      toc: true
+      permalink: /posts/:title/
+  - scope:
+      path: _drafts
+    values:
+      comments: false
+  - scope:
+      path: ""
+      type: tabs
+    values:
+      layout: page
+      permalink: /:title/
+
+sass:
+  style: compressed
+
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  profile: false
+  blanklines: false
+  ignore:
+    envs: [development]
+
+exclude:
+  - "*.gem"
+  - "*.gemspec"
+  - docs
+  - tools
+  - README.md
+  - LICENSE
+  - purgecss.js
+  - "*.config.js"
+  - "package*.json"
+
+jekyll-archives:
+  enabled: [categories, tags]
+  layouts:
+    category: category
+    tag: tag
+  permalinks:
+    tag: /tags/:name/
+    category: /categories/:name/

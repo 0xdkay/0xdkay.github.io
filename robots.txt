@@ -1,2 +1,6 @@
+# Allow all web crawlers and AI bots
 User-agent: *
 Allow: /
+
+# Sitemap location
+Sitemap: https://0xdkay.me/sitemap.xml
