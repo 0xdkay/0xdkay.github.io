@@ -1,3 +1,17 @@
+- year: 2026
+  papers:
+    - title: "SoK: DARPA's AI Cyber Challenge (AIxCC): Competition Design, Architectures, and Lessons Learned"
+      authors: "Cen Zhang, Younggi Park, Fabian Fleischer, Yu-Fu Fu, Jiho Kim, <strong>Dongkwan Kim</strong>, Youngjoon Kim, Qingxiao Xu, Andrew Chin, Ze Sheng, Hanqing Zhao, Brian J. Lee, Joshua Wang, Michael Pelican, David J. Musliner, Jeff Huang, Jon Silliman, Mikel Mcdaniel, Jefferson Casavant, Isaac Goldthwaite, Nicholas Vidovich, Matthew Lehman, Taesoo Kim"
+      venue: "arXiv, Feb 2026"
+      links:
+        - type: pdf
+          url: "https://arxiv.org/pdf/2602.07666"
+        - type: arxiv
+          url: "https://arxiv.org/abs/2602.07666"
+        - type: website
+          url: "https://team-atlanta.github.io/"
+        - type: bibtex
+          url: "zhang-2026-sok"
 - year: 2025
   papers:
     - title: "ATLANTIS: AI-driven Threat Localization, Analysis, and Triage Intelligence System"
