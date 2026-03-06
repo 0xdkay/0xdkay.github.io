@@ -5,6 +5,8 @@ categories: [Blog]
 tags: [ai, genai]
 ---
 
+*Read this post in [[Korean]](/posts/genai-thoughts-4-speculation-ko/).*
+
 This is the fourth of four posts on GenAI:
 - [Part 1: AI Development and Proof of Digital Identity](/posts/genai-thoughts-1-digital-identity/)
 - [Part 2: Fake Information, Scams, and Phishing](/posts/genai-thoughts-2-misinformation/)
@@ -30,3 +32,13 @@ While we cannot exclude the possibility of bias due to too little training data,
 Current AI can provide appropriate responses if you inject knowledge step by step and guide it, much like slowly teaching a new master's student or undergraduate intern who just joined the lab. I thought this process is not much different from guiding people. This is probably because AI is an entity created by imitating humans. If so, knowledge from fields like organizational management could help in this process.
 
 I do not have much experience with AI yet, but ultimately, to understand AI more deeply and utilize it well, we need a multifaceted approach that crosses the boundaries between technology and humanities.
+
+---
+
+Since GenAI services were introduced, they have been very helpful for organizing thoughts and writing.
+
+The image below was generated with the following prompt:
+
+> draw me an artistic wallpaper. a hacker is in the center. left half of the wallpaper is for whitehat hacker. right half of the wallpaper is for blackhat hacker. also, it should be modern, digital, AI.
+
+![AI-generated hacker wallpaper](/assets/img/hacker.jpg){: w="700" }

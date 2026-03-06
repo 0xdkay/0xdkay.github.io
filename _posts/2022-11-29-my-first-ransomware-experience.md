@@ -5,6 +5,8 @@ categories: [Blog]
 tags: [ransomware, incident-response]
 ---
 
+*Read this post in [[Korean]](/posts/my-first-ransomware-experience-ko/).*
+
 A friend's company got hit by eCh0raix ransomware, and I had the opportunity to analyze it indirectly. Here is my experience covering ransomware information, recovery company business models, the victim company's perspective, and community debates.
 
 ## TL;DR

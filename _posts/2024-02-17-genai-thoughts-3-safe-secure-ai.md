@@ -5,6 +5,8 @@ categories: [Blog]
 tags: [ai, genai]
 ---
 
+*Read this post in [[Korean]](/posts/genai-thoughts-3-safe-secure-ai-ko/).*
+
 This is the third of four posts on GenAI:
 - [Part 1: AI Development and Proof of Digital Identity](/posts/genai-thoughts-1-digital-identity/)
 - [Part 2: Fake Information, Scams, and Phishing](/posts/genai-thoughts-2-misinformation/)

@@ -1,5 +1,5 @@
 ---
-title: "AI로 가속화되는 공격과 방어의 갭"
+title: "[Korean] AI로 가속화되는 공격과 방어의 갭"
 date: 2026-03-06 00:00:00 -0500
 categories: [Blog]
 tags: [ai, security, vulnerability, patch-gap]

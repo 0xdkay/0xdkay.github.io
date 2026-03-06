@@ -5,6 +5,8 @@ categories: [Blog]
 tags: [ai, genai]
 ---
 
+*Read this post in [[Korean]](/posts/genai-thoughts-2-misinformation-ko/).*
+
 This is the second of four posts on GenAI:
 - [Part 1: AI Development and Proof of Digital Identity](/posts/genai-thoughts-1-digital-identity/)
 - **Part 2: Fake Information, Scams, and Phishing** (this post)
