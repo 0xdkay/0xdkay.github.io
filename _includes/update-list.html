@@ -1,0 +1,80 @@
+<!-- Get 5 last posted/updated posts, grouping EN/KO into one entry -->
+
+{% assign MAX_SIZE = 5 %}
+
+{% assign all_list = '' | split: '' %}
+
+{% for post in site.posts %}
+  {% assign slug = post.slug %}
+  {% assign slug_len = slug | size %}
+  {% assign ko_suffix_start = slug_len | minus: 3 %}
+  {% assign last_three = slug | slice: ko_suffix_start, 3 %}
+
+  {% comment %} Skip Korean posts that have an English counterpart {% endcomment %}
+  {% if last_three == "-ko" %}
+    {% assign base_slug = slug | slice: 0, ko_suffix_start %}
+    {% assign has_en = false %}
+    {% for p in site.posts %}
+      {% if p.slug == base_slug %}
+        {% assign has_en = true %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+    {% if has_en %}
+      {% continue %}
+    {% endif %}
+  {% endif %}
+
+  {% assign datetime = post.last_modified_at | default: post.date %}
+
+  {% capture elem %}
+    {{- datetime | date: "%Y%m%d%H%M%S" -}}::{{- forloop.index0 -}}
+  {% endcapture %}
+
+  {% assign all_list = all_list | push: elem %}
+{% endfor %}
+
+{% assign all_list = all_list | sort | reverse %}
+
+{% assign update_list = '' | split: '' %}
+
+{% for entry in all_list limit: MAX_SIZE %}
+  {% assign update_list = update_list | push: entry %}
+{% endfor %}
+
+{% if update_list.size > 0 %}
+  <section id="access-lastmod">
+    <h2 class="panel-heading">{{- site.data.locales[include.lang].panel.lastmod -}}</h2>
+    <ul class="content list-unstyled ps-0 pb-1 ms-1 mt-2">
+      {% for item in update_list %}
+        {% assign index = item | split: '::' | last | plus: 0 %}
+        {% assign post = site.posts[index] %}
+        {% assign url = post.url | relative_url %}
+
+        {% comment %} Check if a Korean counterpart exists {% endcomment %}
+        {% assign slug = post.slug %}
+        {% assign slug_len = slug | size %}
+        {% assign ko_suffix_start = slug_len | minus: 3 %}
+        {% assign last_three = slug | slice: ko_suffix_start, 3 %}
+        {% assign ko_post = nil %}
+        {% if last_three != "-ko" %}
+          {% assign ko_slug = slug | append: "-ko" %}
+          {% for p in site.posts %}
+            {% if p.slug == ko_slug %}
+              {% assign ko_post = p %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+
+        <li class="text-truncate lh-lg">
+          <a href="{{ url }}"{% if ko_post %} class="lang-en"{% endif %}>{{ post.title }}</a>
+          {% if ko_post %}
+            <a href="{{ ko_post.url | relative_url }}" class="lang-ko" style="display:none;">{{ ko_post.title }}</a>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+  <!-- #access-lastmod -->
+{% endif %}

@@ -1,0 +1,70 @@
+---
+layout: page
+# The Archives of posts.
+---
+
+{% include lang.html %}
+
+{% assign df_strftime_m = site.data.locales[lang].df.archives.strftime | default: '/ %m' %}
+{% assign df_dayjs_m = site.data.locales[lang].df.archives.dayjs | default: '/ MM' %}
+
+<div id="archives" class="pl-xl-3">
+  {% for post in site.posts %}
+    {% assign slug = post.slug %}
+    {% assign slug_len = slug | size %}
+    {% assign ko_suffix_start = slug_len | minus: 3 %}
+    {% assign last_three = slug | slice: ko_suffix_start, 3 %}
+
+    {% comment %} Skip Korean posts that have an English counterpart {% endcomment %}
+    {% if last_three == "-ko" %}
+      {% assign base_slug = slug | slice: 0, ko_suffix_start %}
+      {% assign has_en = false %}
+      {% for p in site.posts %}
+        {% if p.slug == base_slug %}
+          {% assign has_en = true %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+      {% if has_en %}
+        {% continue %}
+      {% endif %}
+    {% endif %}
+
+    {% comment %} Find Korean counterpart {% endcomment %}
+    {% assign ko_post = nil %}
+    {% if last_three != "-ko" %}
+      {% assign ko_slug = slug | append: "-ko" %}
+      {% for p in site.posts %}
+        {% if p.slug == ko_slug %}
+          {% assign ko_post = p %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+
+    {% assign cur_year = post.date | date: '%Y' %}
+
+    {% if cur_year != last_year %}
+      {% unless forloop.first %}</ul>{% endunless %}
+
+      <time class="year lead d-block">{{ cur_year }}</time>
+      {{ '<ul class="list-unstyled">' }}
+
+      {% assign last_year = cur_year %}
+    {% endif %}
+
+    <li>
+      {% assign ts = post.date | date: '%s' %}
+      <span class="date day" data-ts="{{ ts }}" data-df="DD">{{ post.date | date: '%d' }}</span>
+      <span class="date month small text-muted ms-1" data-ts="{{ ts }}" data-df="{{ df_dayjs_m }}">
+        {{ post.date | date: df_strftime_m }}
+      </span>
+      <a href="{{ post.url | relative_url }}"{% if ko_post %} class="lang-en"{% endif %}>{{ post.title }}</a>
+      {% if ko_post %}
+        <a href="{{ ko_post.url | relative_url }}" class="lang-ko" style="display:none;">{{ ko_post.title }}</a>
+      {% endif %}
+    </li>
+
+    {% if forloop.last %}</ul>{% endif %}
+  {% endfor %}
+</div>

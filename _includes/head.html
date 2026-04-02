@@ -50,6 +50,34 @@
 
   {{ seo_tags }}
 
+  {% comment %} Auto hreflang for bilingual posts {% endcomment %}
+  {% if page.collection == 'posts' %}
+    {% assign slug = page.slug %}
+    {% assign slug_len = slug | size %}
+    {% assign ko_suffix_start = slug_len | minus: 3 %}
+    {% assign last_three = slug | slice: ko_suffix_start, 3 %}
+
+    {% if last_three == "-ko" %}
+      {% assign base_slug = slug | slice: 0, ko_suffix_start %}
+      {% for p in site.posts %}
+        {% if p.slug == base_slug %}
+          <link rel="alternate" hreflang="en" href="{{ p.url | absolute_url }}">
+          <link rel="alternate" hreflang="ko" href="{{ page.url | absolute_url }}">
+          {% break %}
+        {% endif %}
+      {% endfor %}
+    {% else %}
+      {% assign ko_slug = slug | append: "-ko" %}
+      {% for p in site.posts %}
+        {% if p.slug == ko_slug %}
+          <link rel="alternate" hreflang="en" href="{{ page.url | absolute_url }}">
+          <link rel="alternate" hreflang="ko" href="{{ p.url | absolute_url }}">
+          {% break %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endif %}
+
   {%- if site.social.fediverse_handle %}
     <!-- Fediverse handle/creator -->
     <meta name="fediverse:creator" content="{{ site.social.fediverse_handle }}">
@@ -104,6 +132,19 @@
 
   <script src="{{ '/assets/js/dist/theme.min.js' | relative_url }}"></script>
 
+  <!-- Language toggle -->
+  <script>
+  (function() {
+    var lang = localStorage.getItem('site-lang') || 'en';
+    document.documentElement.setAttribute('data-lang', lang);
+  })();
+  </script>
+  <style>
+    [data-lang="en"] .lang-ko { display: none !important; }
+    [data-lang="ko"] .lang-en { display: none !important; }
+    [data-lang="ko"] .lang-ko { display: inline !important; }
+  </style>
+
   {% include js-selector.html lang=lang %}
 
   {% if jekyll.environment == 'production' %}
@@ -126,4 +167,5 @@
   {% endif %}
 
   {% include metadata-hook.html %}
+  {% include lang-toggle.html %}
 </head>
