@@ -133,12 +133,7 @@
   <script src="{{ '/assets/js/dist/theme.min.js' | relative_url }}"></script>
 
   <!-- Language toggle -->
-  <script>
-  (function() {
-    var lang = localStorage.getItem('site-lang') || 'en';
-    document.documentElement.setAttribute('data-lang', lang);
-  })();
-  </script>
+  <script src="{{ '/assets/js/lang-init.js' | relative_url }}"></script>
   <style>
     [data-lang="en"] .lang-ko { display: none !important; }
     [data-lang="ko"] .lang-en { display: none !important; }
