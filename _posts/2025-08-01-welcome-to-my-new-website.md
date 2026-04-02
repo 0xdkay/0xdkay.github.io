@@ -4,6 +4,7 @@ date: 2025-08-01 10:00:00 -0500
 categories: [Blog]
 tags: [welcome, website]
 pin: true
+description: "Welcome to my redesigned personal website — built with Jekyll and the Chirpy theme."
 ---
 
 Welcome to my redesigned personal website!

@@ -3,9 +3,8 @@ title: "Thoughts on GenAI (2/4): Fake Information, Scams, and Phishing"
 date: 2024-02-17 10:01:00 +0900
 categories: [Blog]
 tags: [ai, genai]
+description: "How generative AI is making fake information, scams, and phishing more convincing and harder to detect."
 ---
-
-*Read this post in [[Korean]](/posts/genai-thoughts-2-misinformation-ko/).*
 
 This is the second of four posts on GenAI:
 - [Part 1: AI Development and Proof of Digital Identity](/posts/genai-thoughts-1-digital-identity/)

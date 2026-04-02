@@ -3,9 +3,8 @@ title: "Thoughts on GenAI (4/4): AI Speculation"
 date: 2024-02-17 10:03:00 +0900
 categories: [Blog]
 tags: [ai, genai]
+description: "Why Jensen Huang emphasizes biology, how training data quantity affects AI behavior, jailbreaking LLMs with low-resource languages, and why understanding AI needs more than just coding."
 ---
-
-*Read this post in [[Korean]](/posts/genai-thoughts-4-speculation-ko/).*
 
 This is the fourth of four posts on GenAI:
 - [Part 1: AI Development and Proof of Digital Identity](/posts/genai-thoughts-1-digital-identity/)
@@ -41,4 +40,4 @@ The image below was generated with the following prompt:
 
 > draw me an artistic wallpaper. a hacker is in the center. left half of the wallpaper is for whitehat hacker. right half of the wallpaper is for blackhat hacker. also, it should be modern, digital, AI.
 
-![AI-generated hacker wallpaper](/assets/img/hacker.jpg){: w="700" }
+![AI-generated hacker wallpaper](/assets/img/hacker.webp){: w="700" }

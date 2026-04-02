@@ -3,9 +3,8 @@ title: "Thoughts on GenAI (3/4): Safe, Secure AI"
 date: 2024-02-17 10:02:00 +0900
 categories: [Blog]
 tags: [ai, genai]
+description: "AI Red Teams at Microsoft, Google, and NVIDIA. Why AI security must consider safety too, lessons from DARPA AIxCC, and experiences reviewing AI services at Samsung."
 ---
-
-*Read this post in [[Korean]](/posts/genai-thoughts-3-safe-secure-ai-ko/).*
 
 This is the third of four posts on GenAI:
 - [Part 1: AI Development and Proof of Digital Identity](/posts/genai-thoughts-1-digital-identity/)

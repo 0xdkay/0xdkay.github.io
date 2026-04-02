@@ -3,13 +3,12 @@ title: "The Accelerating Gap Between Attack and Defense in the Age of AI"
 date: 2026-03-06 00:00:00 -0500
 categories: [Blog]
 tags: [ai, security, vulnerability, patch-gap]
+description: "The time from vulnerability disclosure to exploit has shrunk from 2.3 years to 1.6 days. AI is widening the gap between attack and defense."
 ---
-
-*Read this post in [[Korean]](/posts/ai-accelerating-attack-defense-gap-ko/).*
 
 The time from vulnerability disclosure to working exploit code has reportedly shrunk from 2.3 years to [1.6 days](https://zerodayclock.com/).
 
-![From Vulnerability to Exploitation](/assets/img/from_vuln_to_exploit.png){: w="700" }
+![From Vulnerability to Exploitation](/assets/img/from_vuln_to_exploit.webp){: w="700" }
 _Source: [zerodayclock.com](https://zerodayclock.com/)_
 
 Tasks like AI-powered vulnerability analysis, exploit writing, and large-scale scanning are getting faster every day. Setting aside whether AI is smarter than humans, in terms of speed, it already seems beyond what humans can keep up with.

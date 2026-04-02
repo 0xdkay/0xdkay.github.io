@@ -1,12 +1,11 @@
 ---
-title: "[Korean] GenAI에 대한 잡생각 (1/4): AI의 발전, 디지털화된 '나'의 증명?"
+title: "GenAI에 대한 잡생각 (1/4): AI의 발전, 디지털화된 '나'의 증명?"
 date: 2024-02-17 10:00:00 +0900
 categories: [Blog]
 tags: [ai, genai]
 lang: ko
+description: "AI가 인간의 오감을 모방하고 나와 같은 데이터를 학습한다면, 진짜 '나'를 어떻게 증명할 수 있을까? AI 창의성, 감각 발전, 디지털 정체성에 대한 생각."
 ---
-
-*Read this post in [[English]](/posts/genai-thoughts-1-digital-identity/).*
 
 얼마 전 한 친구로부터 GenAI가 도대체 뭐냐는 질문을 받았다. IT 업계에 종사하지 않는 친구였는데, 설명하려다 보니 정작 나조차 IT의 최전선인 보안(Cybersecurity) 일을 하면서도 이에 대해서 알고 있는 것이 얼마 없음을 느꼈다. 주말동안 이것저것 자료를 찾아보면서 요새 이슈, 보안 관점에서 고려할 점, 그리고 AI 관련된 잡생각을 정리해봤다.
 

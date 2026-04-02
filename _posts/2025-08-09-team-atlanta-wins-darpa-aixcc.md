@@ -5,6 +5,7 @@ last_modified_at: 2025-12-14
 categories: [Blog]
 tags: [aixcc, darpa, team-atlanta, ai-security]
 pin: true
+description: "Team Atlanta wins 1st place in DARPA's AI Cyber Challenge (AIxCC), demonstrating AI-driven vulnerability detection and patching."
 ---
 
 I am excited to share that **Team Atlanta** has won **1st Place** in DARPA's AI Cyber Challenge (AIxCC)!
