@@ -12,11 +12,11 @@ timezone: America/New_York
 # jekyll-seo-tag settings
 title: Dongkwan Kim
 tagline: Security Researcher
-affiliation: Georgia Tech, GA
+affiliation: Microsoft
 description: >-
-  Personal website of Dongkwan Kim, security researcher specializing in
-  AI systems, software security, cellular networks, and cyber-physical systems.
-  Core member of Team Atlanta, 1st place winner of DARPA AIxCC.
+  Personal website of Dongkwan Kim, an interdisciplinary security researcher
+  exploring emerging threats across AI, IoT, cellular networks, and
+  cyber-physical systems.
 
 url: "https://0xdkay.me"
 

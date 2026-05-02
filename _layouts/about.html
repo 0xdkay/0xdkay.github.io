@@ -4,7 +4,13 @@ layout: page
 
 {% assign data = site.data[page.data_key] %}
 
+{% if data.intro %}
+{% for paragraph in data.intro %}
+<p>{{ paragraph }}</p>
+{% endfor %}
+{% else %}
 <p>{{ data.bio }}</p>
+{% endif %}
 
 <h2>Highlights</h2>
 

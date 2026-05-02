@@ -19,10 +19,24 @@ title: CV
 <div class="timeline-marker"></div>
 <div class="timeline-content" markdown="1">
 
+### Microsoft
+
+<p class="timeline-title"><strong>Principal Security Researcher</strong></p>
+<p class="timeline-date">Apr 2026 - Present</p>
+
+Securing AI systems and building AI-powered security automation across Microsoft products and services, with focus on LLM-based vulnerability discovery, red teaming, and scalable defenses.
+
+</div>
+</div>
+
+<div class="timeline-item" markdown="1">
+<div class="timeline-marker"></div>
+<div class="timeline-content" markdown="1">
+
 ### Georgia Institute of Technology
 
 <p class="timeline-title"><strong>Postdoctoral Fellow</strong> &mdash; School of Cybersecurity and Privacy</p>
-<p class="timeline-date">Jan 2025 - Present</p>
+<p class="timeline-date">Feb 2025 - Apr 2026</p>
 
 Core member of Team Atlanta, **1st place winner** of DARPA's AI Cyber Challenge (AIxCC). Developing multi-agent AI systems for automated vulnerability discovery and exploitation.
 

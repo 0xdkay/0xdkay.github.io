@@ -1,28 +1,31 @@
-bio: "I am a <strong>security engineer and researcher</strong> with a deep interest in uncovering <strong>inter-domain security threats</strong> in AI, IoT, mobile networks, and cyber-physical systems. My work spans beyond device-level vulnerabilities, focusing on how security issues impact <strong>business logic, service architectures, and user privacy</strong>."
+bio: "I am an interdisciplinary security researcher with an engineering mindset, exploring emerging security threats across AI, IoT, cellular networks, and cyber-physical systems."
+
+intro:
+  - "I am an <strong>interdisciplinary security researcher</strong> with an engineering mindset, exploring emerging security threats across <strong>AI</strong>, <strong>IoT</strong>, <strong>cellular networks</strong>, and <strong>cyber-physical systems</strong>."
 
 current_focus:
-  - title: "AI for Security"
-    description: "Core member of Team Atlanta, <strong>1st Place Winner of DARPA's AI Cyber Challenge (AIxCC)</strong>. Developing multi-agent systems for automated vulnerability discovery and exploitation at Georgia Tech."
-  - title: "Securing AI Systems"
-    description: "Formerly at Samsung Security Center, where I worked on enterprise and on-device AI security."
+  - title: "AI-Driven Security Research"
+    description: "Building an agentic system for automated vulnerability discovery, exploitation, and defense."
+  - title: "Cross-Domain Security"
+    description: "Exploring new attack vectors and security risks that emerge at the boundaries between AI, IoT, cellular networks, and cyber-physical systems."
 
 highlights:
   - icon: "fas fa-trophy"
     stat: "1st Place"
-    label: "DARPA AIxCC"
+    label: "DARPA AIxCC Winner"
     award: true
   - icon: "fas fa-flag-checkered"
     stat: "5x"
     label: "DEFCON Finalist"
   - icon: "fas fa-file-alt"
     stat: "9"
-    label: "Top-tier Pubs"
+    label: "Top-tier Publications"
   - icon: "fas fa-lightbulb"
     stat: "10"
     label: "Patents"
   - icon: "fas fa-building"
-    stat: "17"
-    label: "Funding Projects"
+    stat: "17+"
+    label: "Industry/Gov Projects"
 
 research_interests:
   - icon: "fas fa-robot"
@@ -39,6 +42,5 @@ research_interests:
     keywords: "Drone Hijacking, Car Hacking, Wearable Devices, Sensor Spoofing, EMI Injection, Robots"
 
 contact:
-  address: "756 W Peachtree St NW S0980, Atlanta, GA 30308, USA"
+  address: "200 17th St NW, Atlanta, GA 30363, USA"
   email: "0xdkay@gmail.com"
-
