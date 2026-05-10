@@ -12,6 +12,7 @@ swcache: true
     {{ topic.short_label }}
     {{ topic.slug }}
     {{ topic.description }}
+    {{ topic.keywords }}
     {{ topic_url }}
   {%- endcapture -%}
 
@@ -21,6 +22,7 @@ swcache: true
     "url": {{ topic_url | relative_url | jsonify }},
     "categories": "Topic",
     "tags": "Research Area",
+    "keywords": {{ topic.keywords | default: '' | jsonify }},
     "date": "",
     "lang": "en",
     "translation_key": {{ topic_url | jsonify }},
@@ -60,6 +62,7 @@ swcache: true
     "url": {{ post.url | relative_url | jsonify }},
     "categories": {{ post.categories | join: ', ' | jsonify }},
     "tags": {{ post.tags | join: ', ' | jsonify }},
+    "keywords": {{ post.tags | join: ' ' | jsonify }},
     "date": {{ post.date | jsonify }},
     "lang": {{ post_lang | jsonify }},
     "translation_key": {{ post_key | jsonify }},
@@ -77,7 +80,9 @@ swcache: true
     {% assign item_anchor = item.id | default: generated_item_anchor %}
     {% assign item_url = '/publications/#' | append: item_anchor %}
     {% assign item_topics = item.topics | default: empty %}
+    {% include entry-date-vars.html date=item.date year=year_group.year %}
     {% assign item_topic_labels = '' | split: '' %}
+    {% assign item_keywords = item.keywords | default: '' %}
     {% for topic_slug in item_topics %}
       {% assign topic_match = site.data.topics | where: 'slug', topic_slug | first %}
       {% assign topic_label = topic_slug %}
@@ -91,8 +96,12 @@ swcache: true
       {{ item.title }}
       {{ item.authors | strip_html }}
       {{ item.venue }}
+      {{ item.date }}
+      {{ entry_date_display }}
+      {{ entry_date_iso }}
       {{ item_topics | join: ' ' }}
       {{ item_topic_labels | join: ' ' }}
+      {{ item_keywords }}
       {{ item_url }}
       {% for link in item.links %}{{ link.label }} {{ link.type }} {{ link.url }} {% endfor %}
       {% for media in item.media %}{{ media.label }} {{ media.url }} {% endfor %}
@@ -104,7 +113,8 @@ swcache: true
       "url": {{ item_url | relative_url | jsonify }},
       "categories": "Paper",
       "tags": {{ item_topic_labels | join: ', ' | jsonify }},
-      "date": {{ item.sort_date | default: year_group.year | jsonify }},
+      "keywords": {{ item_keywords | jsonify }},
+      "date": {{ entry_date_iso | jsonify }},
       "lang": "en",
       "translation_key": {{ item_url | jsonify }},
       "summary": {{ summary | strip | truncate: 240 | jsonify }},
@@ -122,7 +132,9 @@ swcache: true
     {% assign item_anchor = item.id | default: generated_item_anchor %}
     {% assign item_url = '/talks/#' | append: item_anchor %}
     {% assign item_topics = item.topics | default: empty %}
+    {% include entry-date-vars.html date=item.date year=year_group.year %}
     {% assign item_topic_labels = '' | split: '' %}
+    {% assign item_keywords = item.keywords | default: '' %}
     {% for topic_slug in item_topics %}
       {% assign topic_match = site.data.topics | where: 'slug', topic_slug | first %}
       {% assign topic_label = topic_slug %}
@@ -131,18 +143,19 @@ swcache: true
       {% endif %}
       {% assign item_topic_labels = item_topic_labels | push: topic_label %}
     {% endfor %}
-    {% assign item_display_date = item.sort_date | date: "%b %Y" %}
-    {% capture summary -%}{{ item.venue }} · {{ item_display_date }}{%- endcapture -%}
+    {% capture summary -%}{{ item.venue }} · {{ entry_date_display }}{%- endcapture -%}
     {% capture content -%}
       {{ item.title }}
       {{ item.speaker | strip_html }}
       {{ item.venue }}
-      {{ item_display_date }}
-      {{ item.sort_date }}
+      {{ item.date }}
+      {{ entry_date_display }}
+      {{ entry_date_iso }}
       {{ item.type }}
       {{ item.location }}
       {{ item_topics | join: ' ' }}
       {{ item_topic_labels | join: ' ' }}
+      {{ item_keywords }}
       {{ item_url }}
       {% for link in item.links %}{{ link.label }} {{ link.type }} {{ link.url }} {% endfor %}
       {% for media in item.media %}{{ media.label }} {{ media.url }} {% endfor %}
@@ -154,7 +167,8 @@ swcache: true
       "url": {{ item_url | relative_url | jsonify }},
       "categories": "Talk",
       "tags": {{ item_topic_labels | join: ', ' | jsonify }},
-      "date": {{ item.sort_date | default: year_group.year | jsonify }},
+      "keywords": {{ item_keywords | jsonify }},
+      "date": {{ entry_date_iso | jsonify }},
       "lang": "en",
       "translation_key": {{ item_url | jsonify }},
       "summary": {{ summary | strip | truncate: 240 | jsonify }},

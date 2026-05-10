@@ -183,6 +183,52 @@
   }
 }
 
+/* Search results should behave like explicit cards, not Chirpy's staggered two-column list. */
+#search-results {
+  display: grid !important;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+  padding-bottom: 3rem;
+
+  > article {
+    position: static !important;
+    right: auto !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 1rem 1.1rem !important;
+    background: var(--card-bg);
+    border: 1px solid var(--main-border-color);
+    border-radius: 0.85rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    transition: border-color 0.16s ease, box-shadow 0.16s ease;
+
+    &:hover,
+    &:focus-within {
+      border-color: var(--link-color);
+      box-shadow: 0 0 0 1px var(--link-color), 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    h2 {
+      font-size: 1.08rem;
+      line-height: 1.35;
+      margin: 0 0 0.35rem;
+    }
+
+    .post-meta {
+      font-size: 0.78rem;
+      gap: 0.65rem;
+    }
+
+    p {
+      color: var(--text-muted-color);
+      font-size: 0.88rem;
+      line-height: 1.55;
+      margin: 0.45rem 0 0;
+      white-space: normal;
+    }
+  }
+}
+
 /* Highlight Stats Grid */
 .highlights-grid {
   display: grid;

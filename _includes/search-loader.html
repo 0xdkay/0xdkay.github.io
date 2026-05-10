@@ -70,6 +70,7 @@
         url: entry.url,
         categories: entry.categories,
         tags: entry.tags,
+        keywords: entry.keywords,
         date: entry.date,
         summary: entry.summary,
         content: entry.content
@@ -99,9 +100,9 @@
     }
 
     function categoryWeight(entry) {
-      if (entry.categories === 'Topic') return 30;
-      if (entry.categories === 'Paper') return 20;
-      if (entry.categories === 'Talk') return 10;
+      if (entry.categories === 'Paper') return 30;
+      if (entry.categories === 'Talk') return 20;
+      if (entry.categories === 'Topic') return 10;
       return 0;
     }
 
@@ -110,6 +111,7 @@
         fieldScore(entry.title, query, 600, 250),
         fieldScore(entry.tags, query, 500, 180),
         fieldScore(entry.categories, query, 420, 120),
+        fieldScore(entry.keywords, query, 360, 140),
         fieldScore(entry.summary, query, 250, 80),
         fieldScore(entry.content, query, 120, 20)
       );
