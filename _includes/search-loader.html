@@ -76,6 +76,45 @@
       }));
     }
 
+    function normalizeText(value) {
+      return String(value || '').toLowerCase();
+    }
+
+    function tokens(value) {
+      return normalizeText(value).split(/[^a-z0-9]+/).filter(Boolean);
+    }
+
+    function fieldScore(value, query, exactTokenWeight, substringWeight) {
+      const text = normalizeText(value);
+      if (!text) {
+        return 0;
+      }
+
+      const queryText = normalizeText(query);
+      if (tokens(text).includes(queryText)) {
+        return exactTokenWeight;
+      }
+
+      return text.includes(queryText) ? substringWeight : 0;
+    }
+
+    function categoryWeight(entry) {
+      if (entry.categories === 'Topic') return 30;
+      if (entry.categories === 'Paper') return 20;
+      if (entry.categories === 'Talk') return 10;
+      return 0;
+    }
+
+    function relevance(entry, query) {
+      return categoryWeight(entry) + Math.max(
+        fieldScore(entry.title, query, 600, 250),
+        fieldScore(entry.tags, query, 500, 180),
+        fieldScore(entry.categories, query, 420, 120),
+        fieldScore(entry.summary, query, 250, 80),
+        fieldScore(entry.content, query, 120, 20)
+      );
+    }
+
     function initSearch() {
       if (allEntries.length === 0) {
         return;
@@ -85,7 +124,16 @@
         searchInput: searchInput,
         resultsContainer: resultsContainer,
         json: searchableEntries(allEntries),
-        limit: 50,
+        limit: 100,
+        sortMiddleware: function(a, b) {
+          const query = searchInput.value || '';
+          const scoreDiff = relevance(b, query) - relevance(a, query);
+          if (scoreDiff !== 0) {
+            return scoreDiff;
+          }
+
+          return Date.parse(b.date || '1970-01-01') - Date.parse(a.date || '1970-01-01');
+        },
         searchResultTemplate: '{{ result_elem | strip_newlines }}',
         noResultsText: '{{ not_found }}',
         templateMiddleware: function(prop, value, template) {
