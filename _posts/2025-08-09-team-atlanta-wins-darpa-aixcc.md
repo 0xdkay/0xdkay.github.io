@@ -16,6 +16,9 @@ thumbnail:
 
 **Team Atlanta** won **1st place** in DARPA's AI Cyber Challenge (AIxCC). I worked on the CRS-Multilang effort behind ATLANTIS, our cyber reasoning system for automated vulnerability discovery and patching.
 
+![Team Atlanta announced as the 1st-place winner of DARPA AIxCC](/assets/img/aixcc/aixcc-first-place-announcement-preview.webp){: w="700" }
+_Team Atlanta announced as the 1st-place winner of DARPA AIxCC._
+
 ## About AIxCC
 
 The [AI Cyber Challenge (AIxCC)](https://aicyberchallenge.com/) is DARPA's competition to develop AI systems that autonomously discover and patch vulnerabilities. We built **ATLANTIS**, a multi-agent system combining LLMs with program analysis techniques (symbolic execution, directed fuzzing, static analysis) to find and fix bugs at scale under competition constraints.
