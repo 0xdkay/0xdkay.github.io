@@ -888,9 +888,7 @@
   &:hover,
   &:focus-within {
     border-color: var(--link-color);
-    box-shadow:
-      0 0 0 3px rgba(var(--link-color-rgb, 79, 156, 243), 0.16),
-      0 8px 22px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
     transform: translateY(-1px);
   }
 
