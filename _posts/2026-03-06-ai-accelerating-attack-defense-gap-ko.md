@@ -7,6 +7,9 @@ topics: [ai-security]
 lang: ko
 translation_key: ai-accelerating-attack-defense-gap
 description: "취약점 공개부터 익스플로잇까지 걸리는 시간이 2.3년에서 1.6일로. AI가 공격과 방어의 격차를 벌리고 있다."
+thumbnail:
+  path: /assets/img/from_vuln_to_exploit.webp
+  alt: "Timeline showing the shrinking gap from vulnerability disclosure to exploitation."
 ---
 
 "취약점 공개 → 실제 공격 코드 등장"까지 걸리는 시간이 2.3년에서 [1.6일](https://zerodayclock.com/)로 줄어들었다고 한다.

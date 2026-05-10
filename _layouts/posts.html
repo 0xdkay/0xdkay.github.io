@@ -35,8 +35,9 @@ layout: default
     {% else %}
       {% assign display_post = ko_post %}
     {% endif %}
+    {% assign thumbnail = display_post.thumbnail | default: display_post.image %}
 
-    <article class="writing-entry card mb-3{% if display_post.image %} has-thumb{% endif %}">
+    <article class="writing-entry card mb-3{% if thumbnail %} has-thumb{% endif %}">
       <div class="card-body">
         <div class="writing-meta">
           <i class="far fa-calendar-alt me-1"></i>
@@ -76,10 +77,10 @@ layout: default
           {% endif %}
         </p>
       </div>
-      {% if display_post.image %}
+      {% if thumbnail %}
         <div
           class="writing-thumb"
-          style="background-image: url('{{ display_post.image.path | default: display_post.image | relative_url }}');"
+          style="background-image: url('{{ thumbnail.path | default: thumbnail | relative_url }}');"
           aria-hidden="true"
         ></div>
       {% endif %}
