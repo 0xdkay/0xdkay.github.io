@@ -106,8 +106,16 @@
       return 0;
     }
 
+    function topicTitleBoost(entry, query) {
+      if (entry.categories !== 'Topic') {
+        return 0;
+      }
+
+      return fieldScore(entry.title, query, 100, 40);
+    }
+
     function relevance(entry, query) {
-      return categoryWeight(entry) + Math.max(
+      return categoryWeight(entry) + topicTitleBoost(entry, query) + Math.max(
         fieldScore(entry.title, query, 600, 250),
         fieldScore(entry.tags, query, 500, 180),
         fieldScore(entry.categories, query, 420, 120),
