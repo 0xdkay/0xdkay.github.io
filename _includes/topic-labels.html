@@ -1,0 +1,22 @@
+{% if include.topics %}
+  {% assign visible_topic_count = 0 %}
+  {% for topic_slug in include.topics %}
+    {% unless include.current_topic and topic_slug == include.current_topic %}
+      {% assign visible_topic_count = visible_topic_count | plus: 1 %}
+    {% endunless %}
+  {% endfor %}
+
+  {% if visible_topic_count > 0 %}
+    <div class="entry-topics">
+    {% for topic_slug in include.topics %}
+      {% unless include.current_topic and topic_slug == include.current_topic %}
+        {% assign topic_matches = site.data.topics | where: 'slug', topic_slug %}
+        {% assign topic = topic_matches | first %}
+        {% if topic %}
+          <a href="{{ '/topics/' | append: topic.slug | append: '/' | relative_url }}">{{ topic.label }}</a>
+        {% endif %}
+      {% endunless %}
+    {% endfor %}
+    </div>
+  {% endif %}
+{% endif %}

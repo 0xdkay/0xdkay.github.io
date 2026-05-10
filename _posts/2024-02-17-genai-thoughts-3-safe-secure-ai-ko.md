@@ -3,6 +3,7 @@ title: "GenAI에 대한 잡생각 (3/4): Safe, Secure AI"
 date: 2024-02-17 10:02:00 +0900
 categories: [Blog]
 tags: [ai, genai]
+topics: [ai-security]
 lang: ko
 translation_key: genai-thoughts-3-safe-secure-ai
 description: "MS, Google, NVIDIA의 AI 레드팀. AI 보안이 안전성도 함께 고려해야 하는 이유, DARPA AIxCC, 그리고 삼성에서 AI 서비스를 리뷰한 경험."

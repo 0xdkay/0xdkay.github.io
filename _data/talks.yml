@@ -5,6 +5,7 @@
       location: "Netherlands (Virtual)"
       date: "October 2025"
       type: Invited
+      topics: [ai-security]
       links:
         - type: slides
           url: "/pub/2025/kim-aixcc-atlantis.pdf"
@@ -17,6 +18,7 @@
       location: "Seoul, South Korea"
       date: "January 2025"
       type: Invited
+      topics: [ai-security]
 
 - year: 2024
   talks:
@@ -25,6 +27,7 @@
       location: "Seoul, South Korea"
       date: "November 2024"
       type: Invited
+      topics: [ai-security]
       links:
         - type: slides
           url: "/pub/2024/kim-aisec101-red-team.pdf"
@@ -34,12 +37,14 @@
       location: "Seoul, South Korea"
       date: "October 2024"
       type: Invited
+      topics: [ai-security]
 
     - title: "Security for Generative AI, Generative AI for Security"
       venue: "S2W Security Innovation Summit (SIS) 2024"
       location: "Seoul, South Korea"
       date: "July 2024"
       type: Panel
+      topics: [ai-security]
       links:
         - type: website
           url: "https://s2w.inc/en/event/sis/51#none"
@@ -50,18 +55,21 @@
       location: "Seoul, South Korea"
       date: "July 2024"
       type: Invited
+      topics: [firmware-binary-analysis]
 
     - title: "AI Security Primer: Red Team Perspectives on Navigating New Threats and Safeguarding AI Frontier"
       venue: "SK Telecom"
       location: "Seoul, South Korea"
       date: "July 2024"
       type: Invited
+      topics: [ai-security]
 
     - title: "AI Security Primer: Red Team Perspectives on Navigating New Threats and Safeguarding AI Frontier"
       venue: ".HACK Conference, Theori"
       location: "Seoul, South Korea"
       date: "May 2024"
       type: Invited
+      topics: [ai-security]
       links:
         - type: slides
           url: "/pub/2024/kim-dothack24-ai-slides.pdf"
@@ -77,6 +85,7 @@
       location: "Seoul, South Korea"
       date: "October 2023"
       type: Invited
+      topics: [firmware-binary-analysis]
       links:
         - type: slides
           url: "/pub/2023/kim-korea23-scaling-slides.pdf"
@@ -91,6 +100,7 @@
       location: "Daejeon, South Korea"
       date: "March 2023"
       type: Invited
+      topics: [other]
 
 - year: 2021
   talks:
@@ -99,6 +109,7 @@
       location: "USA (Virtual)"
       date: "February 2021"
       type: Conference
+      topics: [mobile-cellular, firmware-binary-analysis]
       links:
         - type: slides
           url: "/pub/2021/kim-ndss2021-slides.pdf"
@@ -115,12 +126,14 @@
       location: "Toronto, Canada"
       date: "September 2016"
       type: Invited
+      topics: [mobile-cellular]
 
     - title: "Breaking and Fixing VoLTE: Exploiting Hidden Data Channels and Mis-implementations"
       venue: "A3 Foresight Program Workshop"
       location: "Okinawa, Japan"
       date: "February 2016"
       type: Invited
+      topics: [mobile-cellular]
       award: "Best Presentation Award"
 
 - year: 2015
@@ -130,6 +143,7 @@
       location: "Hamburg, Germany"
       date: "December 2015"
       type: Invited
+      topics: [mobile-cellular]
       links:
         - type: video
           url: "https://media.ccc.de/v/32c3-7502-dissecting_volte#t=1304"
@@ -139,6 +153,7 @@
       location: "Seoul, South Korea"
       date: "November 2015"
       type: Invited
+      topics: [mobile-cellular]
       links:
         - type: slides
           url: "/pub/2015/kim-poc15-volte-slides.pdf"
@@ -151,12 +166,14 @@
       location: "Daejeon, South Korea"
       date: "November 2015"
       type: Invited
+      topics: [mobile-cellular]
 
     - title: "Breaking and Fixing VoLTE: Exploiting Hidden Data Channels and Mis-implementations"
       venue: "ACM Conference on Computer and Communications Security (CCS)"
       location: "Denver, USA"
       date: "October 2015"
       type: Conference
+      topics: [mobile-cellular]
       links:
         - type: slides
           url: "/pub/2015/volte/kim-ccs2015-slides.pdf"
@@ -169,12 +186,14 @@
       location: "Atlanta, USA"
       date: "October 2015"
       type: Invited
+      topics: [mobile-cellular]
 
     - title: "BurnFit: Analyzing and Exploiting Wearable Devices"
       venue: "Workshop on Information Security Applications (WISA)"
       location: "Jeju, South Korea"
       date: "August 2015"
       type: Conference
+      topics: [cyber-physical-sensor-security, firmware-binary-analysis]
       award: "Best Paper Award"
       links:
         - type: slides
@@ -185,6 +204,7 @@
       location: "Daejeon, South Korea"
       date: "July 2015"
       type: Invited
+      topics: [mobile-cellular]
 
 - year: 2013
   talks:
@@ -193,3 +213,4 @@
       location: "Seoul, South Korea"
       date: "April 2013"
       type: Invited
+      topics: [other]

@@ -4,6 +4,7 @@ date: 2025-08-09 12:00:00 -0400
 last_modified_at: 2025-12-14
 categories: [Blog]
 tags: [aixcc, darpa, team-atlanta, ai-security]
+topics: [ai-security]
 lang: en
 translation_key: team-atlanta-wins-darpa-aixcc
 pin: true

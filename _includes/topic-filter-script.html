@@ -1,0 +1,56 @@
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('[data-topic-filter-root]').forEach(function(root) {
+    var buttons = root.querySelectorAll('[data-topic-filter]');
+    var items = root.querySelectorAll('[data-topics]');
+    var sections = root.querySelectorAll('.year-section');
+    var validTopics = Array.prototype.map.call(buttons, function(button) {
+      return button.dataset.topicFilter;
+    });
+
+    function applyFilter(topic) {
+      if (validTopics.indexOf(topic) === -1) {
+        topic = 'all';
+      }
+
+      buttons.forEach(function(button) {
+        button.classList.toggle('active', button.dataset.topicFilter === topic);
+      });
+
+      items.forEach(function(item) {
+        var topics = (item.dataset.topics || '').split(/\s+/);
+        item.hidden = topic !== 'all' && topics.indexOf(topic) === -1;
+      });
+
+      sections.forEach(function(section) {
+        var visible = Array.prototype.some.call(
+          section.querySelectorAll('[data-topics]'),
+          function(item) { return !item.hidden; }
+        );
+        section.hidden = !visible;
+      });
+    }
+
+    buttons.forEach(function(button) {
+      button.addEventListener('click', function() {
+        var topic = button.dataset.topicFilter;
+        applyFilter(topic);
+
+        if (topic === 'all') {
+          history.replaceState(null, '', window.location.pathname + window.location.search);
+        } else {
+          history.replaceState(null, '', '#' + topic);
+        }
+      });
+    });
+
+    function applyHashFilter() {
+      var topic = decodeURIComponent(window.location.hash.replace(/^#/, ''));
+      applyFilter(topic || 'all');
+    }
+
+    applyHashFilter();
+    window.addEventListener('hashchange', applyHashFilter);
+  });
+});
+</script>

@@ -1,6 +1,13 @@
 <!-- The Top Bar -->
 
 <header id="topbar-wrapper" class="flex-shrink-0" aria-label="Top Bar">
+  {% assign topic_icon = nil %}
+  {% if page.layout == 'topic' and page.topic %}
+    {% assign topic_matches = site.data.topics | where: 'slug', page.topic %}
+    {% assign current_topic = topic_matches | first %}
+    {% assign topic_icon = current_topic.icon %}
+  {% endif %}
+
   <div
     id="topbar"
     class="d-flex align-items-center justify-content-between px-lg-3 h-100"
@@ -25,7 +32,10 @@
             {% if page.collection == 'tabs' %}
               <span>{{ site.data.locales[include.lang].tabs[item] | default: page.title }}</span>
             {% else %}
-              <span>{{ page.title }}</span>
+              <span>
+                {% if topic_icon %}<i class="{{ topic_icon }} topic-breadcrumb-icon"></i>{% endif %}
+                {{ page.title }}
+              </span>
             {% endif %}
 
           {% elsif page.layout == 'category' or page.layout == 'tag' %}
@@ -50,6 +60,9 @@
       {% elsif page.collection == 'tabs' or page.layout == 'page' %}
         {%- capture tab_key -%}{{ page.url | split: '/' }}{%- endcapture -%}
         {{- site.data.locales[include.lang].tabs[tab_key] | default: page.title -}}
+      {% elsif page.layout == 'topic' %}
+        {% if topic_icon %}<i class="{{ topic_icon }} topic-breadcrumb-icon"></i>{% endif %}
+        {{- page.title -}}
       {% else %}
         {{- site.data.locales[include.lang].layout[page.layout] | default: page.layout | capitalize -}}
       {% endif %}

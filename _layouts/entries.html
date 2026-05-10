@@ -58,6 +58,9 @@ document.addEventListener('keydown', function(e) {
   {% assign entries_data = site.data.talks %}
 {% endif %}
 
+<div data-topic-filter-root>
+{% include topic-filter-bar.html %}
+
 {% for year_group in entries_data %}
 <div class="year-section">
 <div class="year-header"><h2>{{ year_group.year }}</h2></div>
@@ -69,10 +72,12 @@ document.addEventListener('keydown', function(e) {
 {% endif %}
 
 {% for item in items %}
-<div class="entry-card">
+{% assign item_anchor = year_group.year | append: '-' | append: forloop.index | append: '-' | append: item.title | slugify %}
+<div id="{{ item_anchor }}" class="entry-card" data-topics="{{ item.topics | join: ' ' }}">
 <div class="entry-title">{{ item.title }}{% if item.badge %}<span class="entry-badge"><i class="fas fa-award"></i> {{ item.badge }}</span>{% endif %}</div>
 <div class="entry-authors">{{ item.authors | default: item.speaker }}</div>
 <div class="entry-venue">{{ item.venue }}</div>
+{% include topic-labels.html topics=item.topics %}
 <div class="entry-meta">
 <div class="entry-links">
 {% assign link_order = "pdf,arxiv,bibtex,slides,website,code,tool,benchmark" | split: "," %}
@@ -92,3 +97,6 @@ document.addEventListener('keydown', function(e) {
 
 </div>
 {% endfor %}
+
+</div>
+{% include topic-filter-script.html %}

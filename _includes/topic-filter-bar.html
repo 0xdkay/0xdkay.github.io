@@ -1,0 +1,9 @@
+<div class="topic-filter-bar">
+  <button type="button" class="topic-filter active" data-topic-filter="all">All</button>
+  {% for topic in site.data.topics %}
+    <button type="button" class="topic-filter" data-topic-filter="{{ topic.slug }}">
+      {% if topic.icon %}<i class="{{ topic.icon }}"></i>{% endif %}
+      {{ topic.label }}
+    </button>
+  {% endfor %}
+</div>

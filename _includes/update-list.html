@@ -1,4 +1,4 @@
-<!-- Get 5 last posted/updated article groups, with language-aware titles. -->
+<!-- Get recent writing, publications, and talks, with language-aware writing titles. -->
 
 {% assign MAX_SIZE = 5 %}
 {% assign all_list = '' | split: '' %}
@@ -43,10 +43,60 @@
   {% endfor %}
 
   {% capture elem %}
-    {{- datetime_rank -}}::{{- post_key -}}
+    {{- datetime_rank -}}::Writing::{{- display_post.url -}}::{{- display_post.title -}}::{{- ko_post.url -}}::{{- ko_post.title -}}
   {% endcapture %}
 
   {% assign all_list = all_list | push: elem %}
+{% endfor %}
+
+{% for year_group in site.data.publications %}
+  {% for paper in year_group.papers %}
+    {% assign paper_month = '01' %}
+    {% if paper.venue contains 'Jan' %}{% assign paper_month = '01' %}{% endif %}
+    {% if paper.venue contains 'Feb' %}{% assign paper_month = '02' %}{% endif %}
+    {% if paper.venue contains 'Mar' %}{% assign paper_month = '03' %}{% endif %}
+    {% if paper.venue contains 'Apr' %}{% assign paper_month = '04' %}{% endif %}
+    {% if paper.venue contains 'May' %}{% assign paper_month = '05' %}{% endif %}
+    {% if paper.venue contains 'Jun' %}{% assign paper_month = '06' %}{% endif %}
+    {% if paper.venue contains 'Jul' %}{% assign paper_month = '07' %}{% endif %}
+    {% if paper.venue contains 'Aug' %}{% assign paper_month = '08' %}{% endif %}
+    {% if paper.venue contains 'Sep' %}{% assign paper_month = '09' %}{% endif %}
+    {% if paper.venue contains 'Oct' %}{% assign paper_month = '10' %}{% endif %}
+    {% if paper.venue contains 'Nov' %}{% assign paper_month = '11' %}{% endif %}
+    {% if paper.venue contains 'Dec' %}{% assign paper_month = '12' %}{% endif %}
+    {% assign datetime_rank = year_group.year | append: paper_month | append: '01000000' %}
+    {% assign paper_anchor = year_group.year | append: '-' | append: forloop.index | append: '-' | append: paper.title | slugify %}
+    {% capture elem %}
+      {{- datetime_rank -}}::Paper::/publications/#{{- paper_anchor -}}::{{- paper.title -}}::
+    {% endcapture %}
+    {% assign all_list = all_list | push: elem %}
+  {% endfor %}
+{% endfor %}
+
+{% for year_group in site.data.talks %}
+  {% for talk in year_group.talks %}
+    {% assign month_name = talk.date | split: ' ' | first %}
+    {% assign talk_month = '01' %}
+    {% case month_name %}
+      {% when 'February' %}{% assign talk_month = '02' %}
+      {% when 'March' %}{% assign talk_month = '03' %}
+      {% when 'April' %}{% assign talk_month = '04' %}
+      {% when 'May' %}{% assign talk_month = '05' %}
+      {% when 'June' %}{% assign talk_month = '06' %}
+      {% when 'July' %}{% assign talk_month = '07' %}
+      {% when 'August' %}{% assign talk_month = '08' %}
+      {% when 'September' %}{% assign talk_month = '09' %}
+      {% when 'October' %}{% assign talk_month = '10' %}
+      {% when 'November' %}{% assign talk_month = '11' %}
+      {% when 'December' %}{% assign talk_month = '12' %}
+    {% endcase %}
+    {% assign datetime_rank = year_group.year | append: talk_month | append: '01000000' %}
+    {% assign talk_anchor = year_group.year | append: '-' | append: forloop.index | append: '-' | append: talk.title | slugify %}
+    {% capture elem %}
+      {{- datetime_rank -}}::Talk::/talks/#{{- talk_anchor -}}::{{- talk.title -}}::
+    {% endcapture %}
+    {% assign all_list = all_list | push: elem %}
+  {% endfor %}
 {% endfor %}
 
 {% assign update_list = all_list | sort | reverse | slice: 0, MAX_SIZE %}
@@ -56,29 +106,18 @@
     <h2 class="panel-heading">{{- site.data.locales[include.lang].panel.lastmod -}}</h2>
     <ul class="content list-unstyled ps-0 pb-1 ms-1 mt-2">
       {% for item in update_list %}
-        {% assign post_key = item | split: '::' | last %}
-        {% assign translation_group = site.posts | where: 'translation_key', post_key %}
-        {% if translation_group.size == 0 %}
-          {% assign translation_group = site.posts | where: 'url', post_key %}
-        {% endif %}
-        {% assign en_matches = translation_group | where: 'lang', 'en' %}
-        {% assign ko_matches = translation_group | where: 'lang', 'ko' %}
-        {% assign en_post = en_matches | first %}
-        {% assign ko_post = ko_matches | first %}
-        {% assign first_group_post = translation_group | first %}
+        {% assign fields = item | split: '::' %}
+        {% assign kind = fields[1] %}
+        {% assign url = fields[2] %}
+        {% assign title = fields[3] %}
+        {% assign ko_url = fields[4] %}
+        {% assign ko_title = fields[5] %}
 
-        {% if en_post %}
-          {% assign display_post = en_post %}
-        {% elsif first_group_post %}
-          {% assign display_post = first_group_post %}
-        {% else %}
-          {% assign display_post = ko_post %}
-        {% endif %}
-
-        <li class="text-truncate lh-lg">
-          <a href="{{ display_post.url | relative_url }}"{% if ko_post %} class="lang-en"{% endif %}>{{ display_post.title }}</a>
-          {% if ko_post %}
-            <a href="{{ ko_post.url | relative_url }}" class="lang-ko" style="display:none;">{{ ko_post.title }}</a>
+        <li class="text-truncate lh-lg update-entry">
+          <span class="update-kind">{{ kind }}</span>
+          <a href="{{ url | relative_url }}"{% if ko_url and ko_title %} class="lang-en"{% endif %}>{{ title }}</a>
+          {% if ko_url and ko_title %}
+            <a href="{{ ko_url | relative_url }}" class="lang-ko" style="display:none;">{{ ko_title }}</a>
           {% endif %}
         </li>
       {% endfor %}

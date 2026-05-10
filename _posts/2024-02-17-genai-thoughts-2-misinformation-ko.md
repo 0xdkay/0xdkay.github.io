@@ -3,6 +3,7 @@ title: "GenAI에 대한 잡생각 (2/4): 가짜 정보, 사기, 피싱"
 date: 2024-02-17 10:01:00 +0900
 categories: [Blog]
 tags: [ai, genai]
+topics: [ai-security]
 lang: ko
 translation_key: genai-thoughts-2-misinformation
 description: "생성형 AI가 가짜 정보, 사기, 피싱을 더 정교하고 탐지하기 어렵게 만드는 방법."

@@ -1,0 +1,16 @@
+<!-- Curated cross-content topics. Blog tags stay available through hidden tag pages. -->
+
+{% if site.data.topics.size > 0 %}
+  <section id="access-topics">
+    <h2 class="panel-heading">Topics</h2>
+    <div class="d-flex flex-wrap mt-3 mb-1 me-3">
+      {% for topic in site.data.topics %}
+        {% assign topic_url = '/topics/' | append: topic.slug | append: '/' %}
+        <a class="post-tag btn btn-outline-primary" href="{{ topic_url | relative_url }}">
+          {% if topic.icon %}<i class="{{ topic.icon }}"></i>{% endif %}
+          {{ topic.label }}
+        </a>
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}

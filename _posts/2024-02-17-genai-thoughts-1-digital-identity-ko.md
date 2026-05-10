@@ -3,6 +3,7 @@ title: "GenAI에 대한 잡생각 (1/4): AI의 발전, 디지털화된 '나'의 
 date: 2024-02-17 10:00:00 +0900
 categories: [Blog]
 tags: [ai, genai]
+topics: [ai-security]
 lang: ko
 translation_key: genai-thoughts-1-digital-identity
 description: "AI가 인간의 오감을 모방하고 나와 같은 데이터를 학습한다면, 진짜 '나'를 어떻게 증명할 수 있을까? AI 창의성, 감각 발전, 디지털 정체성에 대한 생각."

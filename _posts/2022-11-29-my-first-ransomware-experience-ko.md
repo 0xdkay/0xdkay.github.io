@@ -3,6 +3,7 @@ title: "랜섬웨어 첫 경험담: eCh0raix"
 date: 2022-11-29 10:00:00 +0900
 categories: [Blog]
 tags: [ransomware, incident-response]
+topics: [other]
 lang: ko
 translation_key: my-first-ransomware-experience
 description: "친구 회사가 eCh0raix 랜섬웨어에 걸려서 간접적으로 분석해본 경험. 랜섬웨어 정보, 복구업체 모델, 피해회사 입장, 커뮤니티 논쟁거리를 다룹니다."

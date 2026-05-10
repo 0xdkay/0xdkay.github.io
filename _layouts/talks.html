@@ -4,14 +4,17 @@ layout: page
 
 {% assign talks_data = site.data.talks %}
 
-<div id="talks-archive">
+<div id="talks-archive" data-topic-filter-root>
+{% include topic-filter-bar.html %}
+
 {% for year_group in talks_data %}
 <div class="year-section">
   <h2 class="year-header">{{ year_group.year }}</h2>
 
   <ul class="talk-list">
   {% for talk in year_group.talks %}
-    <li class="talk-item">
+    {% assign talk_anchor = year_group.year | append: '-' | append: forloop.index | append: '-' | append: talk.title | slugify %}
+    <li id="{{ talk_anchor }}" class="talk-item" data-topics="{{ talk.topics | join: ' ' }}">
       <div class="talk-date">{{ talk.date | split: " " | first }}</div>
       <div class="talk-content">
         <div class="talk-title">
@@ -20,6 +23,7 @@ layout: page
         </div>
         <div class="talk-venue">{{ talk.venue }}</div>
         <div class="talk-location">{{ talk.location }}</div>
+        {% include topic-labels.html topics=talk.topics %}
         {% if talk.links %}
         <div class="talk-links">
           {% for link in talk.links %}
@@ -34,3 +38,4 @@ layout: page
 </div>
 {% endfor %}
 </div>
+{% include topic-filter-script.html %}
