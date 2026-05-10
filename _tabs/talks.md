@@ -1,6 +1,6 @@
 ---
 layout: talks
 icon: fas fa-microphone
-order: 4
+order: 3
 title: Talks
 ---

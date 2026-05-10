@@ -14,9 +14,8 @@ title: Dongkwan Kim
 tagline: Security Researcher
 affiliation: Microsoft
 description: >-
-  Personal website of Dongkwan Kim, an interdisciplinary security researcher
-  exploring emerging threats across AI, IoT, cellular networks, and
-  cyber-physical systems.
+  Personal website of Dongkwan Kim, a security researcher working on
+  AI-powered security automation, grounded in real-world systems security.
 
 url: "https://0xdkay.me"
 
@@ -78,8 +77,6 @@ pwa:
   cache:
     enabled: false
     deny_paths:
-
-paginate: 10
 
 baseurl: ""
 

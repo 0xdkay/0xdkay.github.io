@@ -1,6 +1,7 @@
 ---
 layout: posts
 icon: fas fa-pen
-order: 5
-title: Posts
+order: 4
+title: Writing
+permalink: /posts/
 ---

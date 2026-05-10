@@ -46,6 +46,36 @@
 }
 
 /* Research Interest Cards - uses Bootstrap grid */
+.profile-highlights {
+  margin: 1.25rem 0 1.75rem;
+  padding: 1rem 1.15rem;
+  background: var(--card-bg);
+  border: 1px solid var(--main-border-color);
+  border-radius: 0.75rem;
+
+  strong {
+    color: var(--heading-color);
+  }
+
+  ul {
+    margin: 0.5rem 0 0;
+    padding-left: 1.25rem;
+  }
+
+  li {
+    margin-bottom: 0.25rem;
+    color: var(--text-muted-color);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.metric-separator {
+  color: var(--main-border-color);
+}
+
 .research-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -59,6 +89,8 @@
 }
 
 .research-card {
+  display: flex;
+  flex-direction: column;
   background: var(--card-bg);
   border: 1px solid var(--main-border-color);
   border-radius: 0.75rem;
@@ -75,7 +107,7 @@
     right: 0;
     height: 3px;
     background: linear-gradient(90deg, var(--link-color), #6f42c1);
-    opacity: 0;
+    opacity: 0.35;
     transition: opacity 0.25s ease;
   }
 
@@ -111,8 +143,34 @@
   p {
     font-size: 0.875rem;
     color: var(--text-muted-color);
-    margin-bottom: 0;
+    margin-bottom: 1rem;
     line-height: 1.5;
+  }
+}
+
+.research-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: auto;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    padding: 0.55rem 0.8rem;
+    border: 1px solid var(--main-border-color);
+    border-radius: 999px;
+    font-size: 0.84rem;
+    line-height: 1.15;
+    color: var(--link-color);
+    text-decoration: none;
+    white-space: nowrap;
+
+    &:hover {
+      border-color: var(--link-color);
+      background: rgba(var(--link-color-rgb, 79, 156, 243), 0.08);
+    }
   }
 }
 
@@ -281,6 +339,9 @@
 
 /* Publication Buttons - HugoBlox Style */
 .pub-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
   margin-top: 0.5rem;
 }
 
@@ -289,8 +350,6 @@
   align-items: center;
   gap: 0.35rem;
   padding: 0.25rem 0.6rem;
-  margin-right: 0.4rem;
-  margin-bottom: 0.4rem;
   font-size: 0.8rem;
   font-weight: 500;
   text-decoration: none !important;
@@ -315,6 +374,17 @@
 
   &:hover {
     background: #b02a6f;
+    color: #fff !important;
+  }
+}
+
+/* arXiv Button - Dark Red */
+.pub-btn-arxiv {
+  background: #b31b1b;
+  color: #fff !important;
+
+  &:hover {
+    background: #8f1515;
     color: #fff !important;
   }
 }
@@ -529,6 +599,11 @@
     flex-wrap: wrap;
     gap: 0.75rem;
     margin-top: 0.75rem;
+
+    @media (max-width: 576px) {
+      align-items: flex-start;
+      flex-direction: column;
+    }
   }
 
   .entry-links {
@@ -748,9 +823,98 @@
   }
 }
 
+.explore-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1rem 0;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.85rem;
+    border: 1px solid var(--main-border-color);
+    border-radius: 0.75rem;
+    color: var(--heading-color);
+    text-decoration: none;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: var(--link-color);
+      border-color: var(--link-color);
+      transform: translateY(-1px);
+    }
+  }
+}
+
 /* Posts Page - Home Style Listing */
+.writing-note {
+  margin: 0 0 1.25rem;
+  color: var(--text-muted-color);
+  font-size: 0.9rem;
+}
+
 #post-list {
   margin-top: 1rem;
+}
+
+.writing-entry {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  position: relative;
+
+  .card-body {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+    line-height: 1.35;
+  }
+
+  .card-text {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+.writing-thumb {
+  flex: 0 0 150px;
+  align-self: stretch;
+  border-left: 1px solid var(--main-border-color);
+  min-height: 130px;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.92;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  @media (max-width: 576px) {
+    flex: 0 0 64px;
+    min-height: auto;
+  }
+}
+
+.writing-thumb-placeholder {
+  background:
+    radial-gradient(circle at 30% 20%, rgba(79, 156, 243, 0.35), transparent 32%),
+    linear-gradient(135deg, rgba(79, 156, 243, 0.16), rgba(108, 117, 125, 0.12));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted-color);
+  font-size: 1.4rem;
 }
 
 /* Talks Archive Layout */

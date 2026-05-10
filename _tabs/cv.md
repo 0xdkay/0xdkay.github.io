@@ -1,6 +1,6 @@
 ---
 icon: fas fa-briefcase
-order: 2
+order: 6
 title: CV
 ---
 
@@ -24,7 +24,7 @@ title: CV
 <p class="timeline-title"><strong>Principal Security Researcher</strong></p>
 <p class="timeline-date">Apr 2026 - Present</p>
 
-Securing AI systems and building AI-powered security automation across Microsoft products and services, with focus on LLM-based vulnerability discovery, red teaming, and scalable defenses.
+Building AI-powered security automation for vulnerability discovery, exploit generation, and scalable defenses.
 
 </div>
 </div>
@@ -38,7 +38,7 @@ Securing AI systems and building AI-powered security automation across Microsoft
 <p class="timeline-title"><strong>Postdoctoral Fellow</strong> &mdash; School of Cybersecurity and Privacy</p>
 <p class="timeline-date">Feb 2025 - Apr 2026</p>
 
-Core member of Team Atlanta, **1st place winner** of DARPA's AI Cyber Challenge (AIxCC). Developing multi-agent AI systems for automated vulnerability discovery and exploitation.
+Worked on AI agents and LLM infrastructure for Team Atlanta, which won DARPA's AI Cyber Challenge (AIxCC).
 
 - Advisor: Prof. Taesoo Kim
 
@@ -54,7 +54,7 @@ Core member of Team Atlanta, **1st place winner** of DARPA's AI Cyber Challenge 
 <p class="timeline-title"><strong>Senior Engineer</strong> &mdash; Advanced Penetration Testing Group</p>
 <p class="timeline-date">Aug 2022 - Dec 2024 (2 years 5 months)</p>
 
-Drove Red Team operations across AI systems, IoT devices, Android apps, and kernel-level mitigations. Secured 1B+ users through security reviews across 30+ consumer/enterprise products.
+Conducted red team assessments at Samsung Security Center across Samsung affiliates' products, services, and platforms, spanning enterprise AI systems, consumer devices, physical security systems, and kernel-level security mechanisms.
 
 </div>
 </div>
@@ -68,7 +68,7 @@ Drove Red Team operations across AI systems, IoT devices, Android apps, and kern
 <p class="timeline-title"><strong>Postdoctoral Researcher</strong></p>
 <p class="timeline-date">Mar 2022 - Jul 2022 (5 months)</p>
 
-Continued research on acoustic and targeted EMI injection attacks against drones with recovery, and specification-based logic vulnerability analysis in smartphone baseband software.
+Led systems security research on cellular baseband and cyber-physical systems, resulting in USENIX Security and NDSS publications.
 
 - Advisor: Prof. Yongdae Kim
 
