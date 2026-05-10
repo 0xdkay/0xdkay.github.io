@@ -43,6 +43,22 @@
       type: Invited
       topics: [ai-security]
 
+    - title: "AI Security Primer: Red Team Perspectives on Navigating New Threats and Safeguarding AI Frontier"
+      id: "2024-5-ai-security-primer-red-team-perspectives-on-navigating-new-threats-and-safeguarding-ai-frontier"
+      date: "2024-07-30"
+      venue: "SK Telecom"
+      location: "Seoul, South Korea"
+      type: Invited
+      topics: [ai-security]
+
+    - title: "Scaling up Vulnerability Analysis of IoT Devices with Heuristics and Binary Code Similarity"
+      id: "2024-4-scaling-up-vulnerability-analysis-of-iot-devices-with-heuristics-and-binary-code-similarity"
+      date: "2024-07-24"
+      venue: "Samsung Mobile Security & Hyundai Motors Group Security Tech Workshop"
+      location: "Seoul, South Korea"
+      type: Invited
+      topics: [firmware-binary-analysis]
+
     - title: "Security for Generative AI, Generative AI for Security"
       id: "2024-3-security-for-generative-ai-generative-ai-for-security"
       date: "2024-07-04"
@@ -54,22 +70,6 @@
         - type: website
           url: "https://s2w.inc/en/event/sis/51#none"
           label: "Schedule"
-
-    - title: "Scaling up Vulnerability Analysis of IoT Devices with Heuristics and Binary Code Similarity"
-      id: "2024-4-scaling-up-vulnerability-analysis-of-iot-devices-with-heuristics-and-binary-code-similarity"
-      date: "2024-07-24"
-      venue: "Samsung Mobile Security & Hyundai Motors Group Security Tech Workshop"
-      location: "Seoul, South Korea"
-      type: Invited
-      topics: [firmware-binary-analysis]
-
-    - title: "AI Security Primer: Red Team Perspectives on Navigating New Threats and Safeguarding AI Frontier"
-      id: "2024-5-ai-security-primer-red-team-perspectives-on-navigating-new-threats-and-safeguarding-ai-frontier"
-      date: "2024-07-30"
-      venue: "SK Telecom"
-      location: "Seoul, South Korea"
-      type: Invited
-      topics: [ai-security]
 
     - title: "AI Security Primer: Red Team Perspectives on Navigating New Threats and Safeguarding AI Frontier"
       id: "2024-6-ai-security-primer-red-team-perspectives-on-navigating-new-threats-and-safeguarding-ai-frontier"
@@ -159,6 +159,14 @@
         - type: video
           url: "https://media.ccc.de/v/32c3-7502-dissecting_volte#t=1304"
 
+    - title: "Breaking and Fixing VoLTE"
+      id: "2015-3-breaking-and-fixing-volte"
+      date: "2015-11-19"
+      venue: "National Security Research Institute (NSR)"
+      location: "Daejeon, South Korea"
+      type: Invited
+      topics: [mobile-cellular]
+
     - title: "Breaking VoLTE, not VoIP"
       id: "2015-2-breaking-volte-not-voip"
       date: "2015-11-06"
@@ -172,14 +180,6 @@
         - type: website
           url: "https://powerofcommunity.net/2015/"
           label: "Schedule"
-
-    - title: "Breaking and Fixing VoLTE"
-      id: "2015-3-breaking-and-fixing-volte"
-      date: "2015-11-19"
-      venue: "National Security Research Institute (NSR)"
-      location: "Daejeon, South Korea"
-      type: Invited
-      topics: [mobile-cellular]
 
     - title: "Breaking and Fixing VoLTE: Exploiting Hidden Data Channels and Mis-implementations"
       id: "2015-4-breaking-and-fixing-volte-exploiting-hidden-data-channels-and-mis-implementations"
