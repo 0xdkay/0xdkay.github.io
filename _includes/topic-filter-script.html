@@ -4,9 +4,19 @@ document.addEventListener('DOMContentLoaded', function() {
     var buttons = root.querySelectorAll('[data-topic-filter]');
     var items = root.querySelectorAll('[data-topics]');
     var sections = root.querySelectorAll('.year-section');
+    var emptyState = root.querySelector('[data-topic-empty]');
     var validTopics = Array.prototype.map.call(buttons, function(button) {
       return button.dataset.topicFilter;
     });
+
+    if (!emptyState) {
+      emptyState = document.createElement('p');
+      emptyState.className = 'text-muted mt-4';
+      emptyState.hidden = true;
+      emptyState.setAttribute('data-topic-empty', '');
+      emptyState.textContent = 'No entries for this topic.';
+      root.appendChild(emptyState);
+    }
 
     function applyFilter(topic) {
       if (validTopics.indexOf(topic) === -1) {
@@ -31,6 +41,10 @@ document.addEventListener('DOMContentLoaded', function() {
         );
         section.hidden = !visible;
       });
+
+      emptyState.hidden = Array.prototype.some.call(items, function(item) {
+        return !item.hidden;
+      });
     }
 
     buttons.forEach(function(button) {
@@ -38,15 +52,30 @@ document.addEventListener('DOMContentLoaded', function() {
         var topic = button.dataset.topicFilter;
         applyFilter(topic);
 
-        if (topic === 'all') {
-          history.replaceState(null, '', window.location.pathname + window.location.search);
-        } else {
-          history.replaceState(null, '', '#' + topic);
+        var url = new URL(window.location.href);
+        var hashTopic = decodeURIComponent(url.hash.replace(/^#/, ''));
+        if (validTopics.indexOf(hashTopic) !== -1) {
+          url.hash = '';
         }
+
+        if (topic === 'all') {
+          url.searchParams.delete('topic');
+        } else {
+          url.searchParams.set('topic', topic);
+        }
+
+        history.replaceState(null, '', url.pathname + url.search + url.hash);
       });
     });
 
     function applyHashFilter() {
+      var params = new URLSearchParams(window.location.search);
+      var queryTopic = params.get('topic');
+      if (validTopics.indexOf(queryTopic) !== -1) {
+        applyFilter(queryTopic);
+        return;
+      }
+
       var topic = decodeURIComponent(window.location.hash.replace(/^#/, ''));
       applyFilter(topic || 'all');
     }

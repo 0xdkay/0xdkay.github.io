@@ -16,6 +16,7 @@
           label: "OpenSSF"
         - type: code
           url: "https://github.com/ossf/oss-crs"
+          label: "Code: OSS-CRS"
         - type: bibtex
           url: "chin-2026-osscrs"
       media:
@@ -52,6 +53,7 @@
           url: "https://team-atlanta.github.io/"
         - type: code
           url: "https://github.com/Team-Atlanta/aixcc-afc-atlantis"
+          label: "Code: ATLANTIS"
         - type: bibtex
           url: "kim-2025-atlantis"
       media:
@@ -111,6 +113,7 @@
           url: "/pub/2023/kim-sec23-basecomp-slides.pdf"
         - type: code
           url: "https://github.com/kaist-hacking/BaseComp"
+          label: "Code: BaseComp"
         - type: bibtex
           url: "kim-2023-basecomp"
 
@@ -129,6 +132,7 @@
           url: "https://sites.google.com/view/unrocker"
         - type: code
           url: "https://github.com/jinseobjeong/UnRocker"
+          label: "Code: UnRocker"
         - type: bibtex
           url: "jung-2023-unrocker"
       media:
@@ -203,6 +207,7 @@
           url: "https://sites.google.com/view/sec21-wtw/watching-the-watchers"
         - type: code
           url: "https://github.com/SysSec-KAIST/WatchingTheWatchers"
+          label: "Code: Watchers"
         - type: bibtex
           url: "bae-2022-watching"
 
@@ -237,6 +242,7 @@
           url: "/pub/2022/kim-phdthesis2022-slides.pdf"
         - type: code
           url: "https://github.com/SysSec-KAIST/FirmKit"
+          label: "Code: FirmKit"
         - type: bibtex
           url: "kim-2022-thesis"
 
@@ -268,6 +274,7 @@
           url: "/pub/2021/kim-ndss2021-slides.pdf"
         - type: code
           url: "https://github.com/SysSec-KAIST/BaseSpec"
+          label: "Code: BaseSpec"
         - type: bibtex
           url: "kim-2021-basespec"
 
@@ -286,6 +293,7 @@
           url: "/pub/2020/kim-acsac2020-slides.pdf"
         - type: code
           url: "https://github.com/pr0v3rbs/FirmAE"
+          label: "Code: FirmAE"
         - type: bibtex
           url: "kim-2020-firmae"
       media:
@@ -321,6 +329,7 @@
           url: "/pub/2018/hong-tmc2018.pdf"
         - type: code
           url: "https://github.com/fgsect/scat"
+          label: "Code: SCAT"
         - type: bibtex
           url: "hong-2018-peeking"
 
