@@ -4,7 +4,7 @@
 -->
 
 {% capture result_elem %}
-  <article class="px-1 px-sm-2 px-lg-4 px-xl-0">
+  <article class="{lang_class} px-1 px-sm-2 px-lg-4 px-xl-0">
     <header>
       <h2><a href="{url}">{title}</a></h2>
       <div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1">
@@ -30,16 +30,7 @@
       return lang && lang.indexOf('ko') === 0 ? 'ko' : 'en';
     }
 
-    function readLang() {
-      try {
-        return localStorage.getItem('site-lang');
-      } catch (e) {
-        return null;
-      }
-    }
-
-    function preferredEntries(entries) {
-      const lang = normalizeLang(readLang() || document.documentElement.getAttribute('data-lang') || document.documentElement.lang || 'en');
+    function buildGroups(entries) {
       const groups = new Map();
 
       entries.forEach((entry) => {
@@ -50,25 +41,26 @@
         groups.get(key).push(entry);
       });
 
-      return entries.filter((entry) => {
-        const group = groups.get(entry.translation_key || entry.url) || [];
-        const hasPreferred = group.some((item) => normalizeLang(item.lang) === lang);
+      return groups;
+    }
 
-        if (hasPreferred) {
-          return normalizeLang(entry.lang) === lang;
-        }
+    function langClass(entry, groups) {
+      const group = groups.get(entry.translation_key || entry.url) || [];
+      const hasEnglish = group.some((item) => normalizeLang(item.lang) === 'en');
+      const hasKorean = group.some((item) => normalizeLang(item.lang) === 'ko');
 
-        const hasEnglish = group.some((item) => normalizeLang(item.lang) === 'en');
-        if (hasEnglish) {
-          return normalizeLang(entry.lang) === 'en';
-        }
+      if (hasEnglish && hasKorean) {
+        return normalizeLang(entry.lang) === 'ko' ? 'lang-ko-block' : 'lang-en-block';
+      }
 
-        return group[0] === entry;
-      });
+      return '';
     }
 
     function searchableEntries(entries) {
-      return preferredEntries(entries).map((entry) => ({
+      const groups = buildGroups(entries);
+
+      return entries.map((entry) => ({
+        lang_class: langClass(entry, groups),
         title: entry.title,
         url: entry.url,
         categories: entry.categories,
@@ -121,6 +113,5 @@
         initSearch();
       });
 
-    document.addEventListener('site-lang-change', initSearch);
   });
 </script>

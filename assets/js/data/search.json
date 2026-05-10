@@ -28,6 +28,79 @@ swcache: true
   {% assign search_entries = search_entries | push: entry %}
 {% endfor %}
 
+{% for year_group in site.data.publications %}
+  {% for item in year_group.papers %}
+    {% assign generated_item_anchor = year_group.year | append: '-' | append: forloop.index | append: '-' | append: item.title | slugify %}
+    {% assign item_anchor = item.id | default: generated_item_anchor %}
+    {% assign item_url = '/publications/#' | append: item_anchor %}
+    {% assign item_topics = item.topics | default: empty %}
+    {% capture summary -%}{{ item.authors | strip_html }} · {{ item.venue }}{%- endcapture -%}
+    {% capture content -%}
+      {{ item.title }}
+      {{ item.authors | strip_html }}
+      {{ item.venue }}
+      {{ item_topics | join: ' ' }}
+      {{ item_url }}
+      {% for link in item.links %}{{ link.label }} {{ link.type }} {{ link.url }} {% endfor %}
+      {% for media in item.media %}{{ media.label }} {{ media.url }} {% endfor %}
+    {%- endcapture -%}
+
+    {% capture entry %}
+    {
+      "title": {{ item.title | jsonify }},
+      "url": {{ item_url | relative_url | jsonify }},
+      "categories": "Paper",
+      "tags": {{ item_topics | join: ', ' | jsonify }},
+      "date": {{ item.sort_date | default: year_group.year | jsonify }},
+      "lang": "en",
+      "translation_key": {{ item_url | jsonify }},
+      "summary": {{ summary | strip | truncate: 240 | jsonify }},
+      "content": {{ content | strip | jsonify }}
+    }
+    {% endcapture %}
+
+    {% assign search_entries = search_entries | push: entry %}
+  {% endfor %}
+{% endfor %}
+
+{% for year_group in site.data.talks %}
+  {% for item in year_group.talks %}
+    {% assign generated_item_anchor = year_group.year | append: '-' | append: forloop.index | append: '-' | append: item.title | slugify %}
+    {% assign item_anchor = item.id | default: generated_item_anchor %}
+    {% assign item_url = '/talks/#' | append: item_anchor %}
+    {% assign item_topics = item.topics | default: empty %}
+    {% capture summary -%}{{ item.venue }}{% if item.date %} · {{ item.date }}{% endif %}{%- endcapture -%}
+    {% capture content -%}
+      {{ item.title }}
+      {{ item.speaker | strip_html }}
+      {{ item.venue }}
+      {{ item.date }}
+      {{ item.type }}
+      {{ item.location }}
+      {{ item_topics | join: ' ' }}
+      {{ item_url }}
+      {% for link in item.links %}{{ link.label }} {{ link.type }} {{ link.url }} {% endfor %}
+      {% for media in item.media %}{{ media.label }} {{ media.url }} {% endfor %}
+    {%- endcapture -%}
+
+    {% capture entry %}
+    {
+      "title": {{ item.title | jsonify }},
+      "url": {{ item_url | relative_url | jsonify }},
+      "categories": "Talk",
+      "tags": {{ item_topics | join: ', ' | jsonify }},
+      "date": {{ item.sort_date | default: year_group.year | jsonify }},
+      "lang": "en",
+      "translation_key": {{ item_url | jsonify }},
+      "summary": {{ summary | strip | truncate: 240 | jsonify }},
+      "content": {{ content | strip | jsonify }}
+    }
+    {% endcapture %}
+
+    {% assign search_entries = search_entries | push: entry %}
+  {% endfor %}
+{% endfor %}
+
 [
   {{ search_entries | join: ',' }}
 ]
