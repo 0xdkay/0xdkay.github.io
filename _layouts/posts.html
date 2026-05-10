@@ -36,57 +36,53 @@ layout: default
       {% assign display_post = ko_post %}
     {% endif %}
 
-    <article class="card-wrapper card mb-3">
-      <div class="card h-100 shadow-sm writing-entry">
-        <div class="card-body">
-          <h2 class="card-title">
-            <a href="{{ display_post.url | relative_url }}" class="text-decoration-none stretched-link{% if ko_post %} lang-en{% endif %}">{{ display_post.title }}</a>
-            {% if ko_post %}
-              <a href="{{ ko_post.url | relative_url }}" class="text-decoration-none stretched-link lang-ko" style="display:none;">{{ ko_post.title }}</a>
-            {% endif %}
-          </h2>
-          <p class="card-text text-muted">
-            {% if ko_post %}
-              <span class="lang-en">
-            {% endif %}
-              {% if display_post.description %}
-                {{ display_post.description }}
-              {% else %}
-                {{ display_post.content | strip_html | truncate: 200 }}
-              {% endif %}
-            {% if ko_post %}
-              </span>
-              <span class="lang-ko" style="display:none;">
-                {% if ko_post.description %}
-                  {{ ko_post.description }}
-                {% else %}
-                  {{ ko_post.content | strip_html | truncate: 200 }}
-                {% endif %}
-              </span>
-            {% endif %}
-          </p>
-          <div class="d-flex justify-content-between align-items-center">
-            <small class="text-muted">
-              <i class="far fa-calendar-alt me-1"></i>
-              <time>{{ display_post.date | date: "%b %d, %Y" }}</time>
-              {% assign categories_label = display_post.categories | join: ", " %}
-              {% if display_post.categories.size > 0 and categories_label != "Blog" %}
-              <span class="ms-3">
-                <i class="far fa-folder-open me-1"></i>
-                {{ categories_label }}
-              </span>
-              {% endif %}
-            </small>
-          </div>
-        </div>
-        <div
-          class="writing-thumb{% unless display_post.image %} writing-thumb-placeholder{% endunless %}"
-          {% if display_post.image %}
-          style="background-image: url('{{ display_post.image.path | default: display_post.image | relative_url }}');"
+    <article class="writing-entry card mb-3{% if display_post.image %} has-thumb{% endif %}">
+      <div class="card-body">
+        <div class="writing-meta">
+          <i class="far fa-calendar-alt me-1"></i>
+          <time>{{ display_post.date | date: "%b %d, %Y" }}</time>
+          {% assign categories_label = display_post.categories | join: ", " %}
+          {% if display_post.categories.size > 0 and categories_label != "Blog" %}
+          <span>
+            <i class="far fa-folder-open me-1"></i>
+            {{ categories_label }}
+          </span>
           {% endif %}
-          aria-hidden="true"
-        >{% unless display_post.image %}<i class="fas fa-pen-nib"></i>{% endunless %}</div>
+        </div>
+        <h2 class="card-title">
+          <a href="{{ display_post.url | relative_url }}" class="stretched-link{% if ko_post %} lang-en{% endif %}">{{ display_post.title }}</a>
+          {% if ko_post %}
+            <a href="{{ ko_post.url | relative_url }}" class="stretched-link lang-ko" style="display:none;">{{ ko_post.title }}</a>
+          {% endif %}
+        </h2>
+        <p class="card-text text-muted">
+          {% if ko_post %}
+            <span class="lang-en">
+          {% endif %}
+            {% if display_post.description %}
+              {{ display_post.description }}
+            {% else %}
+              {{ display_post.content | strip_html | truncate: 200 }}
+            {% endif %}
+          {% if ko_post %}
+            </span>
+            <span class="lang-ko" style="display:none;">
+              {% if ko_post.description %}
+                {{ ko_post.description }}
+              {% else %}
+                {{ ko_post.content | strip_html | truncate: 200 }}
+              {% endif %}
+            </span>
+          {% endif %}
+        </p>
       </div>
+      {% if display_post.image %}
+        <div
+          class="writing-thumb"
+          style="background-image: url('{{ display_post.image.path | default: display_post.image | relative_url }}');"
+          aria-hidden="true"
+        ></div>
+      {% endif %}
     </article>
   {% endfor %}
 
