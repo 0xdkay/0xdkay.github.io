@@ -18,5 +18,5 @@
   {%- when 'doi' -%}
     <a href="{{ include.url }}" class="pub-btn pub-btn-doi"><i class="fas fa-link"></i> DOI</a>
   {%- when 'bibtex' -%}
-    <button onclick="showBibtex('{{ include.url }}')" class="pub-btn pub-btn-bibtex"><i class="fas fa-quote-right"></i> BibTeX</button>
+    <button type="button" onclick="showBibtex('{{ include.url }}', this)" class="pub-btn pub-btn-bibtex" aria-haspopup="dialog"><i class="fas fa-quote-right"></i> BibTeX</button>
 {%- endcase -%}

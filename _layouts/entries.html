@@ -3,16 +3,16 @@ layout: page
 ---
 
 <!-- BibTeX Modal -->
-<div id="bibtexModal" class="bibtex-modal" style="display:none;">
-  <div class="bibtex-modal-overlay" onclick="closeBibtexModal()"></div>
-  <div class="bibtex-modal-content">
+<div id="bibtexModal" class="bibtex-modal" role="dialog" aria-modal="true" aria-labelledby="bibtexModalTitle" aria-describedby="bibtexContent" hidden>
+  <button type="button" class="bibtex-modal-overlay" aria-label="Close BibTeX dialog" onclick="closeBibtexModal()"></button>
+  <div class="bibtex-modal-content" tabindex="-1">
     <div class="bibtex-modal-header">
-      <h3>BibTeX Entry</h3>
-      <button onclick="closeBibtexModal()" class="bibtex-close-btn">&times;</button>
+      <h3 id="bibtexModalTitle">BibTeX Entry</h3>
+      <button type="button" onclick="closeBibtexModal()" class="bibtex-close-btn" aria-label="Close BibTeX dialog">&times;</button>
     </div>
-    <pre id="bibtexContent"></pre>
+    <pre id="bibtexContent" tabindex="0"></pre>
     <div class="bibtex-modal-footer">
-      <button onclick="copyBibtex()" class="pub-btn pub-btn-bibtex" id="copyBibtexBtn"><i class="fas fa-copy"></i> Copy</button>
+      <button type="button" onclick="copyBibtex()" class="pub-btn pub-btn-bibtex" id="copyBibtexBtn"><i class="fas fa-copy"></i> Copy</button>
     </div>
   </div>
 </div>
@@ -24,16 +24,28 @@ var bibtexData = {
 {% endfor %}
 };
 
-function showBibtex(key) {
+var lastBibtexTrigger = null;
+
+function showBibtex(key, trigger) {
   var bibtex = bibtexData[key];
   if (bibtex) {
-    document.getElementById('bibtexContent').textContent = bibtex.trim();
-    document.getElementById('bibtexModal').style.display = 'flex';
+    var modal = document.getElementById('bibtexModal');
+    var content = document.getElementById('bibtexContent');
+    var closeBtn = modal.querySelector('.bibtex-close-btn');
+    lastBibtexTrigger = trigger || document.activeElement;
+    content.textContent = bibtex.trim();
+    modal.hidden = false;
+    closeBtn.focus();
   }
 }
 
 function closeBibtexModal() {
-  document.getElementById('bibtexModal').style.display = 'none';
+  var modal = document.getElementById('bibtexModal');
+  if (modal.hidden) return;
+  modal.hidden = true;
+  if (lastBibtexTrigger && typeof lastBibtexTrigger.focus === 'function') {
+    lastBibtexTrigger.focus();
+  }
 }
 
 function copyBibtex() {
@@ -48,7 +60,29 @@ function copyBibtex() {
 }
 
 document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closeBibtexModal();
+  var modal = document.getElementById('bibtexModal');
+  if (modal.hidden) return;
+
+  if (e.key === 'Escape') {
+    closeBibtexModal();
+    return;
+  }
+
+  if (e.key !== 'Tab') return;
+
+  var focusable = modal.querySelectorAll('button, [href], pre[tabindex="0"], [tabindex]:not([tabindex="-1"])');
+  if (!focusable.length) return;
+
+  var first = focusable[0];
+  var last = focusable[focusable.length - 1];
+
+  if (e.shiftKey && document.activeElement === first) {
+    e.preventDefault();
+    last.focus();
+  } else if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault();
+    first.focus();
+  }
 });
 </script>
 
