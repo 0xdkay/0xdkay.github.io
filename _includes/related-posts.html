@@ -1,0 +1,123 @@
+<!-- Recommend article groups, then render EN and KO/fallback variants. -->
+
+{% assign TOTAL_SIZE = 3 %}
+{% assign TAG_SCORE = 2 %}
+{% assign CATEGORY_SCORE = 1 %}
+{% assign SEPARATOR = '::' %}
+
+{% assign page_key = page.translation_key | default: page.url %}
+{% assign related_entries = '' | split: '' %}
+{% assign seen_keys = '' | split: '' %}
+
+{% for candidate in site.posts %}
+  {% assign candidate_key = candidate.translation_key | default: candidate.url %}
+
+  {% if candidate_key == page_key or seen_keys contains candidate_key %}
+    {% continue %}
+  {% endif %}
+
+  {% assign seen_keys = seen_keys | push: candidate_key %}
+  {% assign translation_group = site.posts | where: 'translation_key', candidate_key %}
+  {% if translation_group.size == 0 %}
+    {% assign translation_group = site.posts | where: 'url', candidate_key %}
+  {% endif %}
+  {% assign en_matches = translation_group | where: 'lang', 'en' %}
+  {% assign ko_matches = translation_group | where: 'lang', 'ko' %}
+  {% assign en_post = en_matches | first %}
+  {% assign ko_post = ko_matches | first %}
+  {% assign first_group_post = translation_group | first %}
+  {% assign representative = candidate %}
+
+  {% if en_post %}
+    {% assign representative = en_post %}
+  {% elsif ko_post %}
+    {% assign representative = ko_post %}
+  {% elsif first_group_post %}
+    {% assign representative = first_group_post %}
+  {% endif %}
+
+  {% assign score = 0 %}
+
+  {% for tag in representative.tags %}
+    {% if page.tags contains tag %}
+      {% assign score = score | plus: TAG_SCORE %}
+    {% endif %}
+  {% endfor %}
+
+  {% for category in representative.categories %}
+    {% if page.categories contains category %}
+      {% assign score = score | plus: CATEGORY_SCORE %}
+    {% endif %}
+  {% endfor %}
+
+  {% if score > 0 %}
+    {% assign score_rank = score | plus: 1000 %}
+    {% assign date_rank = representative.date | date: '%Y%m%d%H%M%S' %}
+    {% capture entry %}{{ score_rank }}{{ SEPARATOR }}{{ date_rank }}{{ SEPARATOR }}{{ candidate_key }}{% endcapture %}
+    {% assign related_entries = related_entries | push: entry %}
+  {% endif %}
+{% endfor %}
+
+{% assign related_entries = related_entries | sort | reverse %}
+
+{% if related_entries.size > 0 %}
+  <aside id="related-posts" aria-labelledby="related-label">
+    <h3 class="mb-4" id="related-label">
+      <span class="lang-en">{{ site.data.locales['en'].post.relate_posts }}</span>
+      <span class="lang-ko" style="display:none;">{{ site.data.locales['ko-KR'].post.relate_posts }}</span>
+    </h3>
+    <nav class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-4">
+      {% for entry in related_entries limit: TOTAL_SIZE %}
+        {% assign related_key = entry | split: SEPARATOR | last %}
+        {% assign translation_group = site.posts | where: 'translation_key', related_key %}
+        {% if translation_group.size == 0 %}
+          {% assign translation_group = site.posts | where: 'url', related_key %}
+        {% endif %}
+        {% assign en_matches = translation_group | where: 'lang', 'en' %}
+        {% assign ko_matches = translation_group | where: 'lang', 'ko' %}
+        {% assign en_post = en_matches | first %}
+        {% assign ko_post = ko_matches | first %}
+        {% assign first_group_post = translation_group | first %}
+
+        {% if en_post %}
+          {% assign display_en_post = en_post %}
+        {% elsif first_group_post %}
+          {% assign display_en_post = first_group_post %}
+        {% else %}
+          {% assign display_en_post = ko_post %}
+        {% endif %}
+
+        {% if ko_post %}
+          {% assign display_ko_post = ko_post %}
+        {% else %}
+          {% assign display_ko_post = display_en_post %}
+        {% endif %}
+
+        <article class="col">
+          {% assign post = display_en_post %}
+          <a href="{{ post.url | relative_url }}" class="post-preview card h-100 lang-en-block">
+            <div class="card-body">
+              {% include datetime.html date=post.date lang=include.lang %}
+              <h4 class="pt-0 my-2">{{ post.title }}</h4>
+              <div class="text-muted">
+                <p>{% include post-summary.html %}</p>
+              </div>
+            </div>
+          </a>
+
+          {% assign post = display_ko_post %}
+          <a href="{{ post.url | relative_url }}" class="post-preview card h-100 lang-ko-block" style="display:none;">
+            <div class="card-body">
+              {% include datetime.html date=post.date lang=include.lang %}
+              <h4 class="pt-0 my-2">{{ post.title }}</h4>
+              <div class="text-muted">
+                <p>{% include post-summary.html %}</p>
+              </div>
+            </div>
+          </a>
+        </article>
+      {% endfor %}
+    </nav>
+  </aside>
+  <!-- #related-posts -->
+{% endif %}

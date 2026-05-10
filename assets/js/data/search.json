@@ -1,0 +1,60 @@
+---
+layout: compress
+swcache: true
+---
+
+{% assign rendered_keys = '' | split: '' %}
+{% assign search_entries = '' | split: '' %}
+
+{% for source_post in site.posts %}
+  {% assign post_key = source_post.translation_key | default: source_post.url %}
+
+  {% if rendered_keys contains post_key %}
+    {% continue %}
+  {% endif %}
+
+  {% assign rendered_keys = rendered_keys | push: post_key %}
+  {% assign translation_group = site.posts | where: 'translation_key', post_key %}
+  {% if translation_group.size == 0 %}
+    {% assign translation_group = site.posts | where: 'url', post_key %}
+  {% endif %}
+  {% assign en_matches = translation_group | where: 'lang', 'en' %}
+  {% assign ko_matches = translation_group | where: 'lang', 'ko' %}
+  {% assign en_post = en_matches | first %}
+  {% assign ko_post = ko_matches | first %}
+  {% assign first_group_post = translation_group | first %}
+
+  {% if en_post %}
+    {% assign display_post = en_post %}
+  {% elsif first_group_post %}
+    {% assign display_post = first_group_post %}
+  {% else %}
+    {% assign display_post = ko_post %}
+  {% endif %}
+
+  {% assign post = display_post %}
+  {% capture content -%}{% include post-summary.html full_text=true %}{%- endcapture -%}
+
+  {% if ko_post and ko_post.url != display_post.url %}
+    {% assign post = ko_post %}
+    {% capture ko_content -%}{% include post-summary.html full_text=true %}{%- endcapture -%}
+    {% assign content = content | append: ' ' | append: ko_post.title | append: ' ' | append: ko_content %}
+  {% endif %}
+
+  {% capture entry %}
+  {
+    "title": {{ display_post.title | jsonify }},
+    "url": {{ display_post.url | relative_url | jsonify }},
+    "categories": {{ display_post.categories | join: ', ' | jsonify }},
+    "tags": {{ display_post.tags | join: ', ' | jsonify }},
+    "date": {{ display_post.date | jsonify }},
+    "content": {{ content | jsonify }}
+  }
+  {% endcapture %}
+
+  {% assign search_entries = search_entries | push: entry %}
+{% endfor %}
+
+[
+  {{ search_entries | join: ',' }}
+]

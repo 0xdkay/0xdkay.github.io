@@ -3,6 +3,8 @@ title: "Thoughts on GenAI (4/4): AI Speculation"
 date: 2024-02-17 10:03:00 +0900
 categories: [Blog]
 tags: [ai, genai]
+lang: en
+translation_key: genai-thoughts-4-speculation
 description: "Why Jensen Huang emphasizes biology, how training data quantity affects AI behavior, jailbreaking LLMs with low-resource languages, and why understanding AI needs more than just coding."
 ---
 

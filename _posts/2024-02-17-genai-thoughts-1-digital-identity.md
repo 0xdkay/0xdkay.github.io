@@ -3,6 +3,8 @@ title: "Thoughts on GenAI (1/4): AI Development and Proof of Digital Identity"
 date: 2024-02-17 10:00:00 +0900
 categories: [Blog]
 tags: [ai, genai]
+lang: en
+translation_key: genai-thoughts-1-digital-identity
 description: "If AI gains human-like senses and learns from the same data as you, how do we prove who's real? Thoughts on AI creativity, sensory development, and digital identity."
 ---
 

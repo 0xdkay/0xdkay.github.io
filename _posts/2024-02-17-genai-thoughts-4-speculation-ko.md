@@ -4,6 +4,7 @@ date: 2024-02-17 10:03:00 +0900
 categories: [Blog]
 tags: [ai, genai]
 lang: ko
+translation_key: genai-thoughts-4-speculation
 description: "젠슨 황이 생물학을 강조하는 이유, 학습 데이터 양이 AI 행동에 미치는 영향, 저자원 언어로 LLM 탈옥하기, 그리고 AI를 이해하려면 코딩 이상이 필요한 이유."
 ---
 

@@ -1,74 +1,82 @@
-<!-- Get 5 last posted/updated posts, grouping EN/KO into one entry -->
+<!-- Get 5 last posted/updated article groups, with language-aware titles. -->
 
 {% assign MAX_SIZE = 5 %}
-
 {% assign all_list = '' | split: '' %}
+{% assign seen_keys = '' | split: '' %}
 
 {% for post in site.posts %}
-  {% assign slug = post.slug %}
-  {% assign slug_len = slug | size %}
-  {% assign ko_suffix_start = slug_len | minus: 3 %}
-  {% assign last_three = slug | slice: ko_suffix_start, 3 %}
+  {% assign post_key = post.translation_key | default: post.url %}
 
-  {% comment %} Skip Korean posts that have an English counterpart {% endcomment %}
-  {% if last_three == "-ko" %}
-    {% assign base_slug = slug | slice: 0, ko_suffix_start %}
-    {% assign has_en = false %}
-    {% for p in site.posts %}
-      {% if p.slug == base_slug %}
-        {% assign has_en = true %}
-        {% break %}
-      {% endif %}
-    {% endfor %}
-    {% if has_en %}
-      {% continue %}
-    {% endif %}
+  {% if seen_keys contains post_key %}
+    {% continue %}
   {% endif %}
 
-  {% assign datetime = post.last_modified_at | default: post.date %}
+  {% assign seen_keys = seen_keys | push: post_key %}
+  {% assign translation_group = site.posts | where: 'translation_key', post_key %}
+  {% if translation_group.size == 0 %}
+    {% assign translation_group = site.posts | where: 'url', post_key %}
+  {% endif %}
+  {% assign en_matches = translation_group | where: 'lang', 'en' %}
+  {% assign ko_matches = translation_group | where: 'lang', 'ko' %}
+  {% assign en_post = en_matches | first %}
+  {% assign ko_post = ko_matches | first %}
+  {% assign first_group_post = translation_group | first %}
+
+  {% if en_post %}
+    {% assign display_post = en_post %}
+  {% elsif first_group_post %}
+    {% assign display_post = first_group_post %}
+  {% else %}
+    {% assign display_post = ko_post %}
+  {% endif %}
+
+  {% assign datetime = display_post.last_modified_at | default: display_post.date %}
+  {% assign datetime_rank = datetime | date: "%Y%m%d%H%M%S" %}
+
+  {% for grouped_post in translation_group %}
+    {% assign grouped_datetime = grouped_post.last_modified_at | default: grouped_post.date %}
+    {% assign grouped_rank = grouped_datetime | date: "%Y%m%d%H%M%S" %}
+    {% if grouped_rank > datetime_rank %}
+      {% assign datetime = grouped_datetime %}
+      {% assign datetime_rank = grouped_rank %}
+    {% endif %}
+  {% endfor %}
 
   {% capture elem %}
-    {{- datetime | date: "%Y%m%d%H%M%S" -}}::{{- forloop.index0 -}}
+    {{- datetime_rank -}}::{{- post_key -}}
   {% endcapture %}
 
   {% assign all_list = all_list | push: elem %}
 {% endfor %}
 
-{% assign all_list = all_list | sort | reverse %}
-
-{% assign update_list = '' | split: '' %}
-
-{% for entry in all_list limit: MAX_SIZE %}
-  {% assign update_list = update_list | push: entry %}
-{% endfor %}
+{% assign update_list = all_list | sort | reverse | slice: 0, MAX_SIZE %}
 
 {% if update_list.size > 0 %}
   <section id="access-lastmod">
     <h2 class="panel-heading">{{- site.data.locales[include.lang].panel.lastmod -}}</h2>
     <ul class="content list-unstyled ps-0 pb-1 ms-1 mt-2">
       {% for item in update_list %}
-        {% assign index = item | split: '::' | last | plus: 0 %}
-        {% assign post = site.posts[index] %}
-        {% assign url = post.url | relative_url %}
+        {% assign post_key = item | split: '::' | last %}
+        {% assign translation_group = site.posts | where: 'translation_key', post_key %}
+        {% if translation_group.size == 0 %}
+          {% assign translation_group = site.posts | where: 'url', post_key %}
+        {% endif %}
+        {% assign en_matches = translation_group | where: 'lang', 'en' %}
+        {% assign ko_matches = translation_group | where: 'lang', 'ko' %}
+        {% assign en_post = en_matches | first %}
+        {% assign ko_post = ko_matches | first %}
+        {% assign first_group_post = translation_group | first %}
 
-        {% comment %} Check if a Korean counterpart exists {% endcomment %}
-        {% assign slug = post.slug %}
-        {% assign slug_len = slug | size %}
-        {% assign ko_suffix_start = slug_len | minus: 3 %}
-        {% assign last_three = slug | slice: ko_suffix_start, 3 %}
-        {% assign ko_post = nil %}
-        {% if last_three != "-ko" %}
-          {% assign ko_slug = slug | append: "-ko" %}
-          {% for p in site.posts %}
-            {% if p.slug == ko_slug %}
-              {% assign ko_post = p %}
-              {% break %}
-            {% endif %}
-          {% endfor %}
+        {% if en_post %}
+          {% assign display_post = en_post %}
+        {% elsif first_group_post %}
+          {% assign display_post = first_group_post %}
+        {% else %}
+          {% assign display_post = ko_post %}
         {% endif %}
 
         <li class="text-truncate lh-lg">
-          <a href="{{ url }}"{% if ko_post %} class="lang-en"{% endif %}>{{ post.title }}</a>
+          <a href="{{ display_post.url | relative_url }}"{% if ko_post %} class="lang-en"{% endif %}>{{ display_post.title }}</a>
           {% if ko_post %}
             <a href="{{ ko_post.url | relative_url }}" class="lang-ko" style="display:none;">{{ ko_post.title }}</a>
           {% endif %}

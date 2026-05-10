@@ -3,6 +3,8 @@ title: "My First Ransomware Experience: eCh0raix"
 date: 2022-11-29 10:00:00 +0900
 categories: [Blog]
 tags: [ransomware, incident-response]
+lang: en
+translation_key: my-first-ransomware-experience
 description: "A friend's company got hit by eCh0raix ransomware. Here's what I learned about ransomware recovery, negotiation models, and community debates."
 ---
 

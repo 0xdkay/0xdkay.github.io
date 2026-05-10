@@ -55,31 +55,21 @@
 
   {{ seo_tags }}
 
-  {% comment %} Auto hreflang for bilingual posts {% endcomment %}
+  {% comment %} Auto hreflang for bilingual posts. Posts are paired by translation_key. {% endcomment %}
   {% if page.collection == 'posts' %}
-    {% assign slug = page.slug %}
-    {% assign slug_len = slug | size %}
-    {% assign ko_suffix_start = slug_len | minus: 3 %}
-    {% assign last_three = slug | slice: ko_suffix_start, 3 %}
+    {% assign translation_key = page.translation_key | default: page.url %}
+    {% assign translation_group = site.posts | where: 'translation_key', translation_key %}
+    {% if translation_group.size == 0 %}
+      {% assign translation_group = site.posts | where: 'url', translation_key %}
+    {% endif %}
+    {% assign en_matches = translation_group | where: 'lang', 'en' %}
+    {% assign ko_matches = translation_group | where: 'lang', 'ko' %}
+    {% assign en_post = en_matches | first %}
+    {% assign ko_post = ko_matches | first %}
 
-    {% if last_three == "-ko" %}
-      {% assign base_slug = slug | slice: 0, ko_suffix_start %}
-      {% for p in site.posts %}
-        {% if p.slug == base_slug %}
-          <link rel="alternate" hreflang="en" href="{{ p.url | absolute_url }}">
-          <link rel="alternate" hreflang="ko" href="{{ page.url | absolute_url }}">
-          {% break %}
-        {% endif %}
-      {% endfor %}
-    {% else %}
-      {% assign ko_slug = slug | append: "-ko" %}
-      {% for p in site.posts %}
-        {% if p.slug == ko_slug %}
-          <link rel="alternate" hreflang="en" href="{{ page.url | absolute_url }}">
-          <link rel="alternate" hreflang="ko" href="{{ p.url | absolute_url }}">
-          {% break %}
-        {% endif %}
-      {% endfor %}
+    {% if en_post and ko_post %}
+      <link rel="alternate" hreflang="en" href="{{ en_post.url | absolute_url }}">
+      <link rel="alternate" hreflang="ko" href="{{ ko_post.url | absolute_url }}">
     {% endif %}
   {% endif %}
 
@@ -140,9 +130,14 @@
   <!-- Language toggle -->
   <script src="{{ '/assets/js/lang-init.js' | relative_url }}"></script>
   <style>
-    [data-lang="en"] .lang-ko { display: none !important; }
+    .lang-ko,
+    .lang-ko-block { display: none !important; }
     [data-lang="ko"] .lang-en { display: none !important; }
     [data-lang="ko"] .lang-ko { display: inline !important; }
+    [data-lang="ko"] .lang-en-block { display: none !important; }
+    [data-lang="ko"] .lang-ko-block { display: block !important; }
+    [data-lang="ko"] .post-preview.lang-ko-block { display: flex !important; }
+    [data-lang="ko"] .post-navigation .lang-ko-block { display: inline-block !important; }
   </style>
 
   {% include js-selector.html lang=lang %}

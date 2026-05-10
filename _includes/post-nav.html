@@ -1,0 +1,144 @@
+<!-- Chronological post navigation over article groups, not translation files. -->
+
+{% assign page_key = page.translation_key | default: page.url %}
+{% assign nav_keys = '' | split: '' %}
+
+{% for candidate in site.posts %}
+  {% assign candidate_key = candidate.translation_key | default: candidate.url %}
+
+  {% if nav_keys contains candidate_key %}
+    {% continue %}
+  {% endif %}
+
+  {% assign nav_keys = nav_keys | push: candidate_key %}
+{% endfor %}
+
+{% assign current_index = nil %}
+{% assign nav_last_index = nav_keys.size | minus: 1 %}
+
+{% for i in (0..nav_last_index) %}
+  {% if nav_keys[i] == page_key %}
+    {% assign current_index = i %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% if current_index != nil %}
+  {% assign older_index = current_index | plus: 1 %}
+  {% assign newer_index = current_index | minus: 1 %}
+  {% assign older_key = nil %}
+  {% assign newer_key = nil %}
+
+  {% if older_index <= nav_last_index %}
+    {% assign older_key = nav_keys[older_index] %}
+  {% endif %}
+
+  {% if newer_index >= 0 %}
+    {% assign newer_key = nav_keys[newer_index] %}
+  {% endif %}
+{% endif %}
+
+<nav class="post-navigation d-flex justify-content-between" aria-label="Post Navigation">
+  {% assign previous_en = site.data.locales['en'].post.button.previous %}
+  {% assign next_en = site.data.locales['en'].post.button.next %}
+  {% assign previous_ko = site.data.locales['ko-KR'].post.button.previous %}
+  {% assign next_ko = site.data.locales['ko-KR'].post.button.next %}
+
+  {% if older_key %}
+    {% assign older_group = site.posts | where: 'translation_key', older_key %}
+    {% if older_group.size == 0 %}
+      {% assign older_group = site.posts | where: 'url', older_key %}
+    {% endif %}
+    {% assign older_en_matches = older_group | where: 'lang', 'en' %}
+    {% assign older_ko_matches = older_group | where: 'lang', 'ko' %}
+    {% assign older_en_post = older_en_matches | first %}
+    {% assign older_ko_post = older_ko_matches | first %}
+    {% assign older_first_post = older_group | first %}
+
+    {% if older_en_post %}
+      {% assign older_display_en = older_en_post %}
+    {% elsif older_first_post %}
+      {% assign older_display_en = older_first_post %}
+    {% else %}
+      {% assign older_display_en = older_ko_post %}
+    {% endif %}
+
+    {% if older_ko_post %}
+      {% assign older_display_ko = older_ko_post %}
+    {% else %}
+      {% assign older_display_ko = older_display_en %}
+    {% endif %}
+
+    <a
+      href="{{ older_display_en.url | relative_url }}"
+      class="btn btn-outline-primary lang-en-block"
+      aria-label="{{ previous_en }}"
+    >
+      <p>{{ older_display_en.title }}</p>
+    </a>
+    <a
+      href="{{ older_display_ko.url | relative_url }}"
+      class="btn btn-outline-primary lang-ko-block"
+      aria-label="{{ previous_ko }}"
+      style="display:none;"
+    >
+      <p>{{ older_display_ko.title }}</p>
+    </a>
+  {% else %}
+    <div class="btn btn-outline-primary disabled lang-en-block" aria-label="{{ previous_en }}">
+      <p>-</p>
+    </div>
+    <div class="btn btn-outline-primary disabled lang-ko-block" aria-label="{{ previous_ko }}" style="display:none;">
+      <p>-</p>
+    </div>
+  {% endif %}
+
+  {% if newer_key %}
+    {% assign newer_group = site.posts | where: 'translation_key', newer_key %}
+    {% if newer_group.size == 0 %}
+      {% assign newer_group = site.posts | where: 'url', newer_key %}
+    {% endif %}
+    {% assign newer_en_matches = newer_group | where: 'lang', 'en' %}
+    {% assign newer_ko_matches = newer_group | where: 'lang', 'ko' %}
+    {% assign newer_en_post = newer_en_matches | first %}
+    {% assign newer_ko_post = newer_ko_matches | first %}
+    {% assign newer_first_post = newer_group | first %}
+
+    {% if newer_en_post %}
+      {% assign newer_display_en = newer_en_post %}
+    {% elsif newer_first_post %}
+      {% assign newer_display_en = newer_first_post %}
+    {% else %}
+      {% assign newer_display_en = newer_ko_post %}
+    {% endif %}
+
+    {% if newer_ko_post %}
+      {% assign newer_display_ko = newer_ko_post %}
+    {% else %}
+      {% assign newer_display_ko = newer_display_en %}
+    {% endif %}
+
+    <a
+      href="{{ newer_display_en.url | relative_url }}"
+      class="btn btn-outline-primary lang-en-block"
+      aria-label="{{ next_en }}"
+    >
+      <p>{{ newer_display_en.title }}</p>
+    </a>
+    <a
+      href="{{ newer_display_ko.url | relative_url }}"
+      class="btn btn-outline-primary lang-ko-block"
+      aria-label="{{ next_ko }}"
+      style="display:none;"
+    >
+      <p>{{ newer_display_ko.title }}</p>
+    </a>
+  {% else %}
+    <div class="btn btn-outline-primary disabled lang-en-block" aria-label="{{ next_en }}">
+      <p>-</p>
+    </div>
+    <div class="btn btn-outline-primary disabled lang-ko-block" aria-label="{{ next_ko }}" style="display:none;">
+      <p>-</p>
+    </div>
+  {% endif %}
+</nav>

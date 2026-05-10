@@ -1,0 +1,84 @@
+---
+layout: compress
+permalink: /feed.xml
+# Atom Feed, reference: https://validator.w3.org/feed/docs/atom.html
+---
+
+{% capture source %}
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>{{ "/" | absolute_url }}</id>
+  <title>{{ site.title }}</title>
+  <subtitle>{{ site.description }}</subtitle>
+  <updated>{{ site.time | date_to_xmlschema }}</updated>
+  <author>
+    <name>{{ site.social.name }}</name>
+    <uri>{{ "/" | absolute_url }}</uri>
+  </author>
+  <link rel="self" type="application/atom+xml" href="{{ page.url | absolute_url }}"/>
+  <link rel="alternate" type="text/html" hreflang="{{ site.alt_lang | default: site.lang }}"
+    href="{{ '/' | absolute_url }}"/>
+  <generator uri="https://jekyllrb.com/" version="{{ jekyll.version }}">Jekyll</generator>
+  <rights> © {{ 'now' | date: '%Y' }} {{ site.social.name }} </rights>
+  <icon>{{ site.baseurl }}/assets/img/favicons/favicon.ico</icon>
+  <logo>{{ site.baseurl }}/assets/img/favicons/favicon-96x96.png</logo>
+
+{% assign rendered_keys = '' | split: '' %}
+{% assign shown = 0 %}
+{% for source_post in site.posts %}
+  {% if shown >= 5 %}
+    {% break %}
+  {% endif %}
+
+  {% assign post_key = source_post.translation_key | default: source_post.url %}
+  {% if rendered_keys contains post_key %}
+    {% continue %}
+  {% endif %}
+
+  {% assign rendered_keys = rendered_keys | push: post_key %}
+  {% assign translation_group = site.posts | where: 'translation_key', post_key %}
+  {% if translation_group.size == 0 %}
+    {% assign translation_group = site.posts | where: 'url', post_key %}
+  {% endif %}
+  {% assign en_matches = translation_group | where: 'lang', 'en' %}
+  {% assign ko_matches = translation_group | where: 'lang', 'ko' %}
+  {% assign en_post = en_matches | first %}
+  {% assign first_group_post = translation_group | first %}
+
+  {% if en_post %}
+    {% assign post = en_post %}
+  {% elsif first_group_post %}
+    {% assign post = first_group_post %}
+  {% else %}
+    {% assign post = source_post %}
+  {% endif %}
+
+  {% assign post_absolute_url = post.url | absolute_url %}
+  {% assign shown = shown | plus: 1 %}
+  <entry>
+    <title>{{ post.title }}</title>
+    <link href="{{ post_absolute_url }}" rel="alternate" type="text/html" title="{{ post.title | xml_escape }}" />
+    <published>{{ post.date | date_to_xmlschema }}</published>
+  {% if post.last_modified_at %}
+    <updated>{{ post.last_modified_at | date_to_xmlschema }}</updated>
+  {% else %}
+    <updated>{{ post.date | date_to_xmlschema }}</updated>
+  {% endif %}
+    <id>{{ post_absolute_url }}</id>
+    <content type="text/html" src="{{ post_absolute_url }}" />
+    <author>
+      <name>{{ post.author | default: site.social.name }}</name>
+    </author>
+
+  {% if post.categories %}
+    {% for category in post.categories %}
+    <category term="{{ category }}" />
+    {% endfor %}
+  {% endif %}
+
+  <summary>{% include post-summary.html max_length=400 %}</summary>
+
+  </entry>
+{% endfor %}
+</feed>
+{% endcapture %}
+{{ source | replace: '&', '&amp;' }}

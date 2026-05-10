@@ -1,0 +1,14 @@
+{% comment %}
+  Detect appearance language and return it through variable "lang".
+  Content uses simple language tags (en/ko), while Chirpy locale data uses ko-KR.
+{% endcomment %}
+
+{% if page.lang == 'ko' %}
+  {% assign lang = 'ko-KR' %}
+{% elsif site.data.locales[page.lang] %}
+  {% assign lang = page.lang %}
+{% elsif site.data.locales[site.lang] %}
+  {% assign lang = site.lang %}
+{% else %}
+  {% assign lang = 'en' %}
+{% endif %}

@@ -3,6 +3,8 @@ title: "The Accelerating Gap Between Attack and Defense in the Age of AI"
 date: 2026-03-06 00:00:00 -0500
 categories: [Blog]
 tags: [ai, security, vulnerability, patch-gap]
+lang: en
+translation_key: ai-accelerating-attack-defense-gap
 description: "The time from vulnerability disclosure to exploit has shrunk from 2.3 years to 1.6 days. AI is widening the gap between attack and defense."
 ---
 

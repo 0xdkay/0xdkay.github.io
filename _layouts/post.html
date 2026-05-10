@@ -36,7 +36,11 @@ script_includes:
       {% endif %}
 
       {% if page.image %}
-        {% capture src %}src="{{ page.image.path | default: page.image }}"{% endcapture %}
+        {% assign image_src = page.image.path | default: page.image %}
+        {% unless image_src contains '://' %}
+          {% assign image_src = image_src | relative_url %}
+        {% endunless %}
+        {% capture src %}src="{{ image_src }}"{% endcapture %}
         {% capture class %}class="preview-img{% if page.image.no_bg %}{{ ' no-bg' }}{% endif %}"{% endcapture %}
         {% capture alt %}alt="{{ page.image.alt | xml_escape | default: "Preview Image" }}"{% endcapture %}
 
@@ -122,30 +126,37 @@ script_includes:
   {% endif %}
 
   <div class="content">
-    {% comment %} Auto-detect and show language switch link {% endcomment %}
-    {% assign slug = page.slug %}
-    {% assign slug_len = slug | size %}
-    {% assign ko_suffix_start = slug_len | minus: 3 %}
-    {% assign last_three = slug | slice: ko_suffix_start, 3 %}
+    {% comment %} Show a real translation link only when a paired post exists. {% endcomment %}
+    {% assign page_lang = page.lang | default: 'en' %}
+    {% assign translation_key = page.translation_key | default: page.url %}
+    {% assign translation_group = site.posts | where: 'translation_key', translation_key %}
+    {% if translation_group.size == 0 %}
+      {% assign translation_group = site.posts | where: 'url', translation_key %}
+    {% endif %}
 
-    {% if last_three == "-ko" %}
-      {% assign base_slug = slug | slice: 0, ko_suffix_start %}
-      {% for p in site.posts %}
-        {% if p.slug == base_slug %}
-          <p class="post-lang-switch"><em>Read this post in <a href="{{ p.url | relative_url }}">English</a>.</em></p>
-          <span id="post-lang-data" data-current="ko" data-alt-url="{{ p.url | relative_url }}" style="display:none;"></span>
-          {% break %}
-        {% endif %}
-      {% endfor %}
+    {% if page_lang == 'ko' %}
+      {% assign alt_lang = 'en' %}
+      {% assign alt_label = 'English' %}
     {% else %}
-      {% assign ko_slug = slug | append: "-ko" %}
-      {% for p in site.posts %}
-        {% if p.slug == ko_slug %}
-          <p class="post-lang-switch"><em>Read this post in <a href="{{ p.url | relative_url }}">Korean</a>.</em></p>
-          <span id="post-lang-data" data-current="en" data-alt-url="{{ p.url | relative_url }}" style="display:none;"></span>
-          {% break %}
-        {% endif %}
-      {% endfor %}
+      {% assign alt_lang = 'ko' %}
+      {% assign alt_label = 'Korean' %}
+    {% endif %}
+
+    {% assign alt_matches = translation_group | where: 'lang', alt_lang %}
+    {% assign alt_post = alt_matches | first %}
+
+    {% if alt_post %}
+      {% if page_lang == 'ko' %}
+        <p class="post-lang-switch"><em>Read this post in <a href="{{ alt_post.url | relative_url }}">{{ alt_label }}</a>.</em></p>
+      {% else %}
+        <p class="post-lang-switch"><em>Read this post in <a href="{{ alt_post.url | relative_url }}">{{ alt_label }}</a>.</em></p>
+      {% endif %}
+      <span
+        id="post-lang-data"
+        data-current="{{ page_lang }}"
+        data-alt-url="{{ alt_post.url | relative_url }}"
+        style="display:none;"
+      ></span>
     {% endif %}
 
     {{ content }}

@@ -4,6 +4,7 @@ date: 2026-03-06 00:00:00 -0500
 categories: [Blog]
 tags: [ai, security, vulnerability, patch-gap]
 lang: ko
+translation_key: ai-accelerating-attack-defense-gap
 description: "취약점 공개부터 익스플로잇까지 걸리는 시간이 2.3년에서 1.6일로. AI가 공격과 방어의 격차를 벌리고 있다."
 ---
 
