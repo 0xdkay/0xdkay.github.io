@@ -72,7 +72,8 @@ document.addEventListener('keydown', function(e) {
 {% endif %}
 
 {% for item in items %}
-{% assign item_anchor = year_group.year | append: '-' | append: forloop.index | append: '-' | append: item.title | slugify %}
+{% assign generated_item_anchor = year_group.year | append: '-' | append: forloop.index | append: '-' | append: item.title | slugify %}
+{% assign item_anchor = item.id | default: generated_item_anchor %}
 <div id="{{ item_anchor }}" class="entry-card" data-topics="{{ item.topics | join: ' ' }}">
 <div class="entry-title">{{ item.title }}{% if item.badge %}<span class="entry-badge"><i class="fas fa-award"></i> {{ item.badge }}</span>{% endif %}</div>
 <div class="entry-authors">{{ item.authors | default: item.speaker }}</div>

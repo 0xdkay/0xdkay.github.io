@@ -65,7 +65,8 @@
     {% if paper.venue contains 'Nov' %}{% assign paper_month = '11' %}{% endif %}
     {% if paper.venue contains 'Dec' %}{% assign paper_month = '12' %}{% endif %}
     {% assign datetime_rank = year_group.year | append: paper_month | append: '01000000' %}
-    {% assign paper_anchor = year_group.year | append: '-' | append: forloop.index | append: '-' | append: paper.title | slugify %}
+    {% assign generated_paper_anchor = year_group.year | append: '-' | append: forloop.index | append: '-' | append: paper.title | slugify %}
+    {% assign paper_anchor = paper.id | default: generated_paper_anchor %}
     {% capture elem %}
       {{- datetime_rank -}}::Paper::/publications/#{{- paper_anchor -}}::{{- paper.title -}}::
     {% endcapture %}
@@ -91,7 +92,8 @@
       {% when 'December' %}{% assign talk_month = '12' %}
     {% endcase %}
     {% assign datetime_rank = year_group.year | append: talk_month | append: '01000000' %}
-    {% assign talk_anchor = year_group.year | append: '-' | append: forloop.index | append: '-' | append: talk.title | slugify %}
+    {% assign generated_talk_anchor = year_group.year | append: '-' | append: forloop.index | append: '-' | append: talk.title | slugify %}
+    {% assign talk_anchor = talk.id | default: generated_talk_anchor %}
     {% capture elem %}
       {{- datetime_rank -}}::Talk::/talks/#{{- talk_anchor -}}::{{- talk.title -}}::
     {% endcapture %}

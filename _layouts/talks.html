@@ -12,7 +12,8 @@ layout: page
   <div class="year-header"><h2>{{ year_group.year }}</h2></div>
 
   {% for talk in year_group.talks %}
-    {% assign talk_anchor = year_group.year | append: '-' | append: forloop.index | append: '-' | append: talk.title | slugify %}
+    {% assign generated_talk_anchor = year_group.year | append: '-' | append: forloop.index | append: '-' | append: talk.title | slugify %}
+    {% assign talk_anchor = talk.id | default: generated_talk_anchor %}
     <div id="{{ talk_anchor }}" class="entry-card talk-card" data-topics="{{ talk.topics | join: ' ' }}">
       <div class="entry-title">
         {{ talk.title }}

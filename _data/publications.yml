@@ -1,6 +1,7 @@
 - year: 2026
   papers:
     - title: "OSS-CRS: Liberating AIxCC Cyber Reasoning Systems for Real-World Open-Source Security"
+      id: "2026-1-oss-crs-liberating-aixcc-cyber-reasoning-systems-for-real-world-open-source-security"
       authors: "Andrew Chin, <strong>Dongkwan Kim</strong>, Yu-Fu Fu, Fabian Fleischer, Youngjoon Kim, HyungSeok Han, Cen Zhang, Brian Junekyu Lee, Hanqing Zhao, Taesoo Kim"
       venue: "arXiv, Mar 2026"
       topics: [ai-security]
@@ -21,6 +22,7 @@
           url: "https://openssf.org/blog/2026/04/02/from-aixcc-to-openssf-welcoming-oss-crs-to-advance-ai-driven-open-source-security/"
 
     - title: "SoK: DARPA's AI Cyber Challenge (AIxCC): Competition Design, Architectures, and Lessons Learned"
+      id: "2026-2-sok-darpa-s-ai-cyber-challenge-aixcc-competition-design-architectures-and-lessons-learned"
       authors: "Cen Zhang, Younggi Park, Fabian Fleischer, Yu-Fu Fu, Jiho Kim, <strong>Dongkwan Kim</strong>, Youngjoon Kim, Qingxiao Xu, Andrew Chin, Ze Sheng, Hanqing Zhao, Brian J. Lee, Joshua Wang, Michael Pelican, David J. Musliner, Jeff Huang, Jon Silliman, Mikel Mcdaniel, Jefferson Casavant, Isaac Goldthwaite, Nicholas Vidovich, Matthew Lehman, Taesoo Kim"
       venue: "arXiv, Feb 2026"
       topics: [ai-security]
@@ -34,6 +36,7 @@
 - year: 2025
   papers:
     - title: "ATLANTIS: AI-driven Threat Localization, Analysis, and Triage Intelligence System"
+      id: "2025-1-atlantis-ai-driven-threat-localization-analysis-and-triage-intelligence-system"
       authors: "Taesoo Kim, HyungSeok Han, Soyeon Park, Dae R. Jeong, Dohyeok Kim, <strong>Dongkwan Kim</strong>, Eunsoo Kim, Jiho Kim, Joshua Wang, Kangsu Kim, Sangwoo Ji, Woosun Song, Hanqing Zhao, Andrew Chin, Gyejin Lee, Kevin Stevens, Mansour Alharthi, Yizhuo Zhai, Cen Zhang, Joonun Jang, Yeongjin Jang, Ammar Askar, Dongju Kim, Fabian Fleischer, Jeongin Cho, Junsik Kim, Kyungjoon Ko, Insu Yun, Sangdon Park, Dowoo Baik, Haein Lee, Hyeon Heo, Minjae Gwon, Minjae Lee, Minwoo Baek, Seunggi Min, Wonyoung Kim, Yonghwi Jin, Younggi Park, Yunjae Choi, Jinho Jung, Gwanhyun Lee, Junyoung Jang, Kyuheon Kim, Yeonghyeon Cha, Youngjoon Kim"
       venue: "arXiv, Sep 2025"
       topics: [ai-security]
@@ -93,6 +96,7 @@
 - year: 2023
   papers:
     - title: "BaseComp: A Comparative Analysis for Integrity Protection in Cellular Baseband Software"
+      id: "2023-1-basecomp-a-comparative-analysis-for-integrity-protection-in-cellular-baseband-software"
       authors: "Eunsoo Kim*, Min Woo Baek*, CheolJun Park, <strong>Dongkwan Kim</strong>, Yongdae Kim, Insu Yun"
       venue: "USENIX Security 2023"
       topics: [mobile-cellular, firmware-binary-analysis]
@@ -107,6 +111,7 @@
           url: "kim-2023-basecomp"
 
     - title: "Un-Rocking Drones: Foundations of Acoustic Injection Attacks and Recovery Thereof"
+      id: "2023-2-un-rocking-drones-foundations-of-acoustic-injection-attacks-and-recovery-thereof"
       authors: "Jinseob Jeong, <strong>Dongkwan Kim</strong>, Joonha Jang, Juhwan Noh, Changhun Song, and Yongdae Kim"
       venue: "NDSS 2023"
       topics: [cyber-physical-sensor-security]
@@ -126,6 +131,7 @@
           url: "https://apps.dtic.mil/sti/pdfs/AD1183688.pdf"
 
     - title: "Paralyzing Drones via EMI Signal Injection on Sensory Communication Channels"
+      id: "2023-3-paralyzing-drones-via-emi-signal-injection-on-sensory-communication-channels"
       authors: "Joonha Jang*, ManGi Cho*, Jaehoon Kim, <strong>Dongkwan Kim</strong>, and Yongdae Kim"
       venue: "NDSS 2023"
       topics: [cyber-physical-sensor-security]
@@ -177,6 +183,7 @@
 - year: 2022
   papers:
     - title: "Watching the Watchers: Practical Video Identification Attack in LTE Networks"
+      id: "2022-1-watching-the-watchers-practical-video-identification-attack-in-lte-networks"
       authors: "Sangwook Bae, Mincheol Son, <strong>Dongkwan Kim</strong>, CheolJun Park, Jiho Lee, Sooel Son, and Yongdae Kim"
       venue: "USENIX Security 2022"
       topics: [mobile-cellular]
@@ -193,6 +200,7 @@
           url: "bae-2022-watching"
 
     - title: "Revisiting Binary Code Similarity Analysis using Interpretable Feature Engineering and Lessons Learned"
+      id: "2022-2-revisiting-binary-code-similarity-analysis-using-interpretable-feature-engineering-and-lessons-learned"
       authors: "<strong>Dongkwan Kim</strong>, Eunsoo Kim, Sang Kil Cha, Sooel Son, and Yongdae Kim"
       venue: "IEEE Transactions on Software Engineering (TSE)"
       topics: [firmware-binary-analysis, ai-security]
@@ -209,6 +217,7 @@
           url: "kim-2022-tiknib"
 
     - title: "Improving Large-Scale Vulnerability Analysis of IoT Devices with Heuristics and Binary Code Similarity"
+      id: "2022-3-improving-large-scale-vulnerability-analysis-of-iot-devices-with-heuristics-and-binary-code-similarity"
       authors: "<strong>Dongkwan Kim</strong>"
       venue: "Ph.D. Thesis"
       topics: [firmware-binary-analysis, ai-security]
@@ -225,6 +234,7 @@
 - year: 2021
   papers:
     - title: "Enabling the Large-Scale Emulation of Internet of Things Firmware With Heuristic Workarounds"
+      id: "2021-1-enabling-the-large-scale-emulation-of-internet-of-things-firmware-with-heuristic-workarounds"
       authors: "<strong>Dongkwan Kim</strong>, Eunsoo Kim, Mingeun Kim, Yeongjin Jang, and Yongdae Kim"
       venue: "IEEE Security & Privacy"
       topics: [firmware-binary-analysis]
@@ -236,6 +246,7 @@
           url: "kim-2021-enabling"
 
     - title: "BaseSpec: Comparative Analysis of Baseband Software and Cellular Specifications for L3 Protocols"
+      id: "2021-2-basespec-comparative-analysis-of-baseband-software-and-cellular-specifications-for-l3-protocols"
       authors: "<strong>Dongkwan Kim</strong>*, Eunsoo Kim*, CheolJun Park, Insu Yun, and Yongdae Kim"
       venue: "NDSS 2021"
       topics: [mobile-cellular, firmware-binary-analysis]
@@ -252,6 +263,7 @@
 - year: 2020
   papers:
     - title: "FirmAE: Towards Large-Scale Emulation of IoT Firmware for Dynamic Analysis"
+      id: "2020-1-firmae-towards-large-scale-emulation-of-iot-firmware-for-dynamic-analysis"
       authors: "Mingeun Kim, <strong>Dongkwan Kim</strong>, Eunsoo Kim, Suryeon Kim, Yeongjin Jang, and Yongdae Kim"
       venue: "ACSAC 2020"
       topics: [firmware-binary-analysis]
@@ -271,6 +283,7 @@
 - year: 2019
   papers:
     - title: "Who Spent My EOS? On the (In)Security of Resource Management of EOS.IO"
+      id: "2019-1-who-spent-my-eos-on-the-in-security-of-resource-management-of-eos-io"
       authors: "Sangsup Lee, Daejun Kim, <strong>Dongkwan Kim</strong>, Sooel Son, and Yongdae Kim"
       venue: "USENIX WOOT 2019"
       topics: [other]
@@ -285,6 +298,7 @@
 - year: 2018
   papers:
     - title: "Peeking over the Cellular Walled Gardens - A Method for Closed Network Diagnosis"
+      id: "2018-1-peeking-over-the-cellular-walled-gardens-a-method-for-closed-network-diagnosis"
       authors: "Byeongdo Hong, Shinjo Park, Hongil Kim, <strong>Dongkwan Kim</strong>, Hyunwook Hong, Hyunwoo Choi, Jean-Pierre Seifert, Sung-Ju Lee, and Yongdae Kim"
       venue: "IEEE Transactions on Mobile Computing (TMC)"
       topics: [mobile-cellular]
@@ -299,6 +313,7 @@
 - year: 2017
   papers:
     - title: "When Cellular Networks Met IPv6: Security Problems of Middleboxes in IPv6 Cellular Networks"
+      id: "2017-1-when-cellular-networks-met-ipv6-security-problems-of-middleboxes-in-ipv6-cellular-networks"
       authors: "Hyunwook Hong, Hyunwoo Choi, <strong>Dongkwan Kim</strong>, Hongil Kim, Byeongdo Hong, Jiseong Noh, and Yongdae Kim"
       venue: "IEEE EuroS&P 2017"
       topics: [mobile-cellular]
@@ -312,6 +327,7 @@
 - year: 2016
   papers:
     - title: "Pay As You Want: Bypassing Charging System in Operational Cellular Networks"
+      id: "2016-1-pay-as-you-want-bypassing-charging-system-in-operational-cellular-networks"
       authors: "Hyunwook Hong, Hongil Kim, Byeongdo Hong, <strong>Dongkwan Kim</strong>, Hyunwoo Choi, Eunkyu Lee and Yongdae Kim"
       venue: "WISA 2016"
       topics: [mobile-cellular]
@@ -322,6 +338,7 @@
           url: "hong-2016-pay"
 
     - title: "Dissecting VoLTE: Exploiting Free Data Channels and Security Problems"
+      id: "2016-2-dissecting-volte-exploiting-free-data-channels-and-security-problems"
       authors: "<strong>Dongkwan Kim</strong>"
       venue: "M.S. Thesis"
       topics: [mobile-cellular]
@@ -334,6 +351,7 @@
 - year: 2015
   papers:
     - title: "Breaking and Fixing VoLTE: Exploiting Hidden Data Channels and Mis-implementations"
+      id: "2015-1-breaking-and-fixing-volte-exploiting-hidden-data-channels-and-mis-implementations"
       authors: "<strong>Dongkwan Kim</strong>*, Hongil Kim*, Minhee Kwon, Hyungseok Han, Yeongjin Jang, Dongsu Han, Taesoo Kim, and Yongdae Kim"
       venue: "ACM CCS 2015"
       topics: [mobile-cellular]
@@ -369,6 +387,7 @@
           url: "https://zdnet.co.kr/view/?no=20151019105527"
 
     - title: "BurnFit: Analyzing and Exploiting Wearable Devices"
+      id: "2015-2-burnfit-analyzing-and-exploiting-wearable-devices"
       authors: "<strong>Dongkwan Kim</strong>, Suwan Park, Kibum Choi, Yongdae Kim"
       venue: "WISA 2015"
       topics: [cyber-physical-sensor-security, firmware-binary-analysis]
@@ -382,6 +401,7 @@
           url: "kim-2015-burnfit"
 
     - title: "Rocking Drones with Intentional Sound Noise on Gyroscopic Sensors"
+      id: "2015-3-rocking-drones-with-intentional-sound-noise-on-gyroscopic-sensors"
       authors: "Yunmok Son, Hocheol Shin, <strong>Dongkwan Kim</strong>, Youngseok Park, Juhwan Noh, Kibum Choi, Jungwoo Choi, and Yongdae Kim"
       venue: "USENIX Security 2015"
       topics: [cyber-physical-sensor-security]
@@ -427,6 +447,7 @@
 - year: 2014
   papers:
     - title: "Analyzing Security of Korean USIM-based PKI Certificate Service"
+      id: "2014-1-analyzing-security-of-korean-usim-based-pki-certificate-service"
       authors: "Shinjo Park, Suwan Park, Insu Yun, <strong>Dongkwan Kim</strong>, Yongdae Kim"
       venue: "WISA 2014"
       topics: [mobile-cellular]
@@ -439,6 +460,7 @@
 - year: 2013
   papers:
     - title: "High-speed automatic segmentation of intravascular stent struts in optical coherence tomography images"
+      id: "2013-1-high-speed-automatic-segmentation-of-intravascular-stent-struts-in-optical-coherence-tomography-images"
       authors: "Myounghee Han, <strong>Dongkwan Kim</strong>, Wang-Yuhl Oh, and Sukyoung Ryu"
       venue: "Proceedings of SPIE Biomedical Optics, Photonics West 2013 (BiOS 2013)"
       topics: [other]
