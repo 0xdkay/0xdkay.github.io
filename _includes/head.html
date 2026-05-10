@@ -1,12 +1,12 @@
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f7">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b1b1e">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta
     name="viewport"
-    content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
   >
 
   {%- capture seo_tags -%}
@@ -40,13 +40,18 @@
 
     {%- capture twitter_image -%}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta property="twitter:image" content="{{ img_url }}" />
+      <meta name="twitter:image" content="{{ img_url }}" />
     {%- endcapture -%}
 
     {% assign old_meta_clip = '<meta name="twitter:card" content="summary" />' %}
     {% assign new_meta_clip = og_image | append: twitter_image %}
     {% assign seo_tags = seo_tags | replace: old_meta_clip, new_meta_clip %}
   {% endif %}
+
+  {% assign seo_tags = seo_tags
+    | replace: 'property="twitter:image"', 'name="twitter:image"'
+    | replace: 'property="twitter:title"', 'name="twitter:title"'
+  %}
 
   {{ seo_tags }}
 
