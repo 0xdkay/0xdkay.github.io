@@ -1,4 +1,4 @@
-<!-- Get recent writing, publications, and talks, with language-aware writing titles. -->
+<!-- Get recent blog posts, publications, and talks, with language-aware post titles. -->
 
 {% assign MAX_SIZE = 5 %}
 {% assign all_list = '' | split: '' %}
@@ -26,7 +26,7 @@
   {% endfor %}
 
   {% capture elem %}
-    {{- datetime_rank -}}::Writing::{{- display_post.url -}}::{{- display_post.title -}}::{{- ko_post.url -}}::{{- ko_post.title -}}
+    {{- datetime_rank -}}::Blog::{{- display_post.url -}}::{{- display_post.title -}}::{{- ko_post.url -}}::{{- ko_post.title -}}
   {% endcapture %}
 
   {% assign all_list = all_list | push: elem %}

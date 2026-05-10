@@ -5,6 +5,33 @@ swcache: true
 
 {% assign search_entries = '' | split: '' %}
 
+{% for topic in site.data.topics %}
+  {% assign topic_url = '/topics/' | append: topic.slug | append: '/' %}
+  {% capture content -%}
+    {{ topic.label }}
+    {{ topic.short_label }}
+    {{ topic.slug }}
+    {{ topic.description }}
+    {{ topic_url }}
+  {%- endcapture -%}
+
+  {% capture entry %}
+  {
+    "title": {{ topic.label | jsonify }},
+    "url": {{ topic_url | relative_url | jsonify }},
+    "categories": "Topic",
+    "tags": "Research Area",
+    "date": "",
+    "lang": "en",
+    "translation_key": {{ topic_url | jsonify }},
+    "summary": {{ topic.description | jsonify }},
+    "content": {{ content | strip | jsonify }}
+  }
+  {% endcapture %}
+
+  {% assign search_entries = search_entries | push: entry %}
+{% endfor %}
+
 {% for post in site.posts %}
   {% capture content -%}{% include post-summary.html post=post full_text=true %}{%- endcapture -%}
   {% capture summary -%}{% include post-summary.html post=post max_length=240 %}{%- endcapture -%}
@@ -50,12 +77,22 @@ swcache: true
     {% assign item_anchor = item.id | default: generated_item_anchor %}
     {% assign item_url = '/publications/#' | append: item_anchor %}
     {% assign item_topics = item.topics | default: empty %}
+    {% assign item_topic_labels = '' | split: '' %}
+    {% for topic_slug in item_topics %}
+      {% assign topic_match = site.data.topics | where: 'slug', topic_slug | first %}
+      {% assign topic_label = topic_slug %}
+      {% if topic_match %}
+        {% assign topic_label = topic_match.short_label | default: topic_match.label %}
+      {% endif %}
+      {% assign item_topic_labels = item_topic_labels | push: topic_label %}
+    {% endfor %}
     {% capture summary -%}{{ item.authors | strip_html }} · {{ item.venue }}{%- endcapture -%}
     {% capture content -%}
       {{ item.title }}
       {{ item.authors | strip_html }}
       {{ item.venue }}
       {{ item_topics | join: ' ' }}
+      {{ item_topic_labels | join: ' ' }}
       {{ item_url }}
       {% for link in item.links %}{{ link.label }} {{ link.type }} {{ link.url }} {% endfor %}
       {% for media in item.media %}{{ media.label }} {{ media.url }} {% endfor %}
@@ -66,7 +103,7 @@ swcache: true
       "title": {{ item.title | jsonify }},
       "url": {{ item_url | relative_url | jsonify }},
       "categories": "Paper",
-      "tags": {{ item_topics | join: ', ' | jsonify }},
+      "tags": {{ item_topic_labels | join: ', ' | jsonify }},
       "date": {{ item.sort_date | default: year_group.year | jsonify }},
       "lang": "en",
       "translation_key": {{ item_url | jsonify }},
@@ -85,6 +122,15 @@ swcache: true
     {% assign item_anchor = item.id | default: generated_item_anchor %}
     {% assign item_url = '/talks/#' | append: item_anchor %}
     {% assign item_topics = item.topics | default: empty %}
+    {% assign item_topic_labels = '' | split: '' %}
+    {% for topic_slug in item_topics %}
+      {% assign topic_match = site.data.topics | where: 'slug', topic_slug | first %}
+      {% assign topic_label = topic_slug %}
+      {% if topic_match %}
+        {% assign topic_label = topic_match.short_label | default: topic_match.label %}
+      {% endif %}
+      {% assign item_topic_labels = item_topic_labels | push: topic_label %}
+    {% endfor %}
     {% assign item_display_date = item.sort_date | date: "%b %Y" %}
     {% capture summary -%}{{ item.venue }} · {{ item_display_date }}{%- endcapture -%}
     {% capture content -%}
@@ -96,6 +142,7 @@ swcache: true
       {{ item.type }}
       {{ item.location }}
       {{ item_topics | join: ' ' }}
+      {{ item_topic_labels | join: ' ' }}
       {{ item_url }}
       {% for link in item.links %}{{ link.label }} {{ link.type }} {{ link.url }} {% endfor %}
       {% for media in item.media %}{{ media.label }} {{ media.url }} {% endfor %}
@@ -106,7 +153,7 @@ swcache: true
       "title": {{ item.title | jsonify }},
       "url": {{ item_url | relative_url | jsonify }},
       "categories": "Talk",
-      "tags": {{ item_topics | join: ', ' | jsonify }},
+      "tags": {{ item_topic_labels | join: ', ' | jsonify }},
       "date": {{ item.sort_date | default: year_group.year | jsonify }},
       "lang": "en",
       "translation_key": {{ item_url | jsonify }},

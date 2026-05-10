@@ -85,6 +85,7 @@
         searchInput: searchInput,
         resultsContainer: resultsContainer,
         json: searchableEntries(allEntries),
+        limit: 50,
         searchResultTemplate: '{{ result_elem | strip_newlines }}',
         noResultsText: '{{ not_found }}',
         templateMiddleware: function(prop, value, template) {

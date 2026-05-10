@@ -58,9 +58,9 @@ layout: page
         <span>{{ talk_count }} Talks</span>
       {% endif %}
       {% if writing_count > 0 %}
-        <a href="#writing">{{ writing_count }} {% if writing_count == 1 %}Post{% else %}Posts{% endif %}</a>
+        <a href="#blog">{{ writing_count }} {% if writing_count == 1 %}Blog Post{% else %}Blog Posts{% endif %}</a>
       {% else %}
-        <span>{{ writing_count }} Posts</span>
+        <span>{{ writing_count }} Blog Posts</span>
       {% endif %}
     </div>
   </div>
@@ -165,10 +165,10 @@ layout: page
 
   {% assign writing_content_clean = writing_content | strip %}
   {% if writing_content_clean != '' %}
-    <section id="writing" class="topic-section">
+    <section id="blog" class="topic-section">
       <div class="topic-section-header">
-        <h2>Writing</h2>
-        <a href="{{ '/posts/' | relative_url }}">All writing</a>
+        <h2>Blog</h2>
+        <a href="{{ '/posts/' | relative_url }}">All blog posts</a>
       </div>
       <div class="topic-card-list">
         {{ writing_content }}
