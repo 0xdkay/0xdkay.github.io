@@ -29,7 +29,12 @@ layout: page
 {% for item in data.research_areas %}
 <div class="research-card">
 <div class="research-icon"><i class="{{ item.icon }}"></i></div>
+{% if item.topic %}
+{% assign topic_url = '/topics/' | append: item.topic | append: '/' %}
+<h4><a href="{{ topic_url | relative_url }}">{{ item.title }}</a></h4>
+{% else %}
 <h4>{{ item.title }}</h4>
+{% endif %}
 <p>{{ item.description }}</p>
 {% if item.links %}
 <div class="research-links">

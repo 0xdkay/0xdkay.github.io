@@ -11,6 +11,7 @@ highlights:
 
 research_areas:
   - icon: "fas fa-robot"
+    topic: "ai-security"
     title: "AI-Powered Security Automation"
     description: "LLM agents, cyber reasoning systems, fuzzing, exploit generation, program analysis, red teaming, and scalable defenses."
     links:
@@ -21,6 +22,7 @@ research_areas:
       - label: "OSS-CRS"
         url: "https://github.com/ossf/oss-crs"
   - icon: "fas fa-broadcast-tower"
+    topic: "mobile-cellular"
     title: "Mobile & Cellular Security"
     description: "Cellular baseband, VoLTE/IMS, LTE networks, protocol reversing, control-plane vulnerabilities, and mobile platform security."
     links:
@@ -33,6 +35,7 @@ research_areas:
       - label: "SCAT"
         url: "https://github.com/fgsect/scat"
   - icon: "fas fa-bug"
+    topic: "firmware-binary-analysis"
     title: "Firmware & Binary Analysis"
     description: "IoT firmware emulation, binary-code similarity, reversing, vulnerability analysis, and automated testing."
     links:
@@ -45,6 +48,7 @@ research_areas:
       - label: "FirmKit"
         url: "https://github.com/SysSec-KAIST/FirmKit"
   - icon: "fas fa-microchip"
+    topic: "cyber-physical-sensor-security"
     title: "Cyber-Physical & Sensor Security"
     description: "Drones, sensors, embedded devices, EMI/acoustic injection, recovery, mitigation, and physical security systems."
     links:
