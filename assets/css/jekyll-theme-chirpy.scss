@@ -887,8 +887,10 @@
 
   &:hover,
   &:focus-within {
-    border-color: rgba(47, 128, 237, 0.38);
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+    border-color: rgba(47, 128, 237, 0.78);
+    box-shadow:
+      0 0 0 3px rgba(47, 128, 237, 0.16),
+      0 8px 22px rgba(0, 0, 0, 0.12);
     transform: translateY(-1px);
   }
 
