@@ -872,13 +872,13 @@
 
 .writing-entry {
   background: var(--card-bg);
-  border: 1px solid var(--main-border-color);
+  border: 1px solid rgba(108, 117, 125, 0.38);
   border-radius: 0.85rem;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   overflow: hidden;
   position: relative;
-  box-shadow: 0 0 0 1px rgba(108, 117, 125, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   transition: border-color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
 
   &.has-thumb {
@@ -888,7 +888,9 @@
   &:hover,
   &:focus-within {
     border-color: var(--link-color);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    box-shadow:
+      0 0 0 1px var(--link-color),
+      0 4px 12px rgba(0,0,0,0.06);
   }
 
   .card-body {
@@ -946,7 +948,7 @@
 
 .writing-thumb {
   align-self: stretch;
-  border-left: 1px solid var(--main-border-color);
+  border-left: 1px solid rgba(108, 117, 125, 0.38);
   min-height: 112px;
   background-position: center;
   background-size: cover;
