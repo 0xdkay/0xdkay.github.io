@@ -71,9 +71,10 @@ layout: page
         {% if paper.topics contains topic_slug %}
           {% assign generated_paper_anchor = year_group.year | append: '-' | append: forloop.index | append: '-' | append: paper.title | slugify %}
           {% assign paper_anchor = paper.id | default: generated_paper_anchor %}
+          {% assign paper_display_date = paper.sort_date | date: "%b %Y" %}
           <article class="topic-card topic-card-publication">
             <div class="topic-card-meta">
-              <span>{{ year_group.year }}</span>
+              <span>{{ paper_display_date }}</span>
               <span>{{ paper.venue }}</span>
             </div>
             <h3 class="topic-card-title">
@@ -104,9 +105,10 @@ layout: page
         {% if talk.topics contains topic_slug %}
           {% assign generated_talk_anchor = year_group.year | append: '-' | append: forloop.index | append: '-' | append: talk.title | slugify %}
           {% assign talk_anchor = talk.id | default: generated_talk_anchor %}
+          {% assign talk_display_date = talk.sort_date | date: "%b %Y" %}
           <article class="topic-card topic-card-talk">
             <div class="topic-card-meta">
-              <span>{{ talk.date }}</span>
+              <span>{{ talk_display_date }}</span>
               <span>{{ talk.type }}</span>
             </div>
             <h3 class="topic-card-title">

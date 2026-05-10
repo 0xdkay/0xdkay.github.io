@@ -5,7 +5,6 @@
       sort_date: "2025-10-21"
       venue: "ACM Student Chapter of Maastricht University (MaaSec)"
       location: "Netherlands (Virtual)"
-      date: "October 2025"
       type: Invited
       topics: [ai-security]
       links:
@@ -20,7 +19,6 @@
       sort_date: "2025-01-10"
       venue: "Hyundai Motors Group Security Center"
       location: "Seoul, South Korea"
-      date: "January 10, 2025"
       type: Invited
       topics: [ai-security]
 
@@ -31,7 +29,6 @@
       sort_date: "2024-11-18"
       venue: "IT Platform Security Research Group, Korea Institute of Information Security & Cryptology (KIISC)"
       location: "Seoul, South Korea"
-      date: "November 2024"
       type: Invited
       topics: [ai-security]
       links:
@@ -43,7 +40,6 @@
       sort_date: "2024-10-19"
       venue: "Sungshin Women's University"
       location: "Seoul, South Korea"
-      date: "October 19, 2024"
       type: Invited
       topics: [ai-security]
 
@@ -52,7 +48,6 @@
       sort_date: "2024-07-04"
       venue: "S2W Security Innovation Summit (SIS) 2024"
       location: "Seoul, South Korea"
-      date: "July 4, 2024"
       type: Panel
       topics: [ai-security]
       links:
@@ -65,7 +60,6 @@
       sort_date: "2024-07-24"
       venue: "Samsung Mobile Security & Hyundai Motors Group Security Tech Workshop"
       location: "Seoul, South Korea"
-      date: "July 24, 2024"
       type: Invited
       topics: [firmware-binary-analysis]
 
@@ -74,7 +68,6 @@
       sort_date: "2024-07-30"
       venue: "SK Telecom"
       location: "Seoul, South Korea"
-      date: "July 30, 2024"
       type: Invited
       topics: [ai-security]
 
@@ -83,7 +76,6 @@
       sort_date: "2024-05-28"
       venue: ".HACK Conference, Theori"
       location: "Seoul, South Korea"
-      date: "May 2024"
       type: Invited
       topics: [ai-security]
       links:
@@ -101,7 +93,6 @@
       sort_date: "2023-10-25"
       venue: "Colloquium Fall 2023, School of Cybersecurity, Korea University"
       location: "Seoul, South Korea"
-      date: "October 2023"
       type: Invited
       topics: [firmware-binary-analysis]
       links:
@@ -118,7 +109,6 @@
       sort_date: "2023-03-16"
       venue: "Samsung SDS - KAIST Tech Seminar"
       location: "Daejeon, South Korea"
-      date: "March 16, 2023"
       type: Invited
       topics: [other]
 
@@ -129,7 +119,6 @@
       sort_date: "2021-02-24"
       venue: "Network and Distributed System Security Symposium (NDSS)"
       location: "USA (Virtual)"
-      date: "February 24, 2021"
       type: Conference
       topics: [mobile-cellular, firmware-binary-analysis]
       links:
@@ -148,7 +137,6 @@
       sort_date: "2016-09-26"
       venue: "GSMA VoLTE/RCS Security Workshop"
       location: "Toronto, Canada"
-      date: "September 26, 2016"
       type: Invited
       topics: [mobile-cellular]
 
@@ -157,7 +145,6 @@
       sort_date: "2016-02-18"
       venue: "A3 Foresight Program Workshop"
       location: "Okinawa, Japan"
-      date: "February 18, 2016"
       type: Invited
       topics: [mobile-cellular]
       award: "Best Presentation Award"
@@ -169,7 +156,6 @@
       sort_date: "2015-12-28"
       venue: "32nd Chaos Communication Congress (32C3)"
       location: "Hamburg, Germany"
-      date: "December 28, 2015"
       type: Invited
       topics: [mobile-cellular]
       links:
@@ -181,7 +167,6 @@
       sort_date: "2015-11-06"
       venue: "Power of Community (PoC)"
       location: "Seoul, South Korea"
-      date: "November 6, 2015"
       type: Invited
       topics: [mobile-cellular]
       links:
@@ -196,7 +181,6 @@
       sort_date: "2015-11-19"
       venue: "National Security Research Institute (NSR)"
       location: "Daejeon, South Korea"
-      date: "November 19, 2015"
       type: Invited
       topics: [mobile-cellular]
 
@@ -205,7 +189,6 @@
       sort_date: "2015-10-13"
       venue: "ACM Conference on Computer and Communications Security (CCS)"
       location: "Denver, USA"
-      date: "October 13, 2015"
       type: Conference
       topics: [mobile-cellular]
       links:
@@ -220,7 +203,6 @@
       sort_date: "2015-10-09"
       venue: "Georgia Institute of Technology"
       location: "Atlanta, USA"
-      date: "October 9, 2015"
       type: Invited
       topics: [mobile-cellular]
 
@@ -229,7 +211,6 @@
       sort_date: "2015-08-20"
       venue: "Workshop on Information Security Applications (WISA)"
       location: "Jeju, South Korea"
-      date: "August 20, 2015"
       type: Conference
       topics: [cyber-physical-sensor-security, firmware-binary-analysis]
       award: "Best Paper Award"
@@ -242,7 +223,6 @@
       sort_date: "2015-07-21"
       venue: "KT Corporation"
       location: "Daejeon, South Korea"
-      date: "July 21, 2015"
       type: Invited
       topics: [mobile-cellular]
 
@@ -253,6 +233,5 @@
       sort_date: "2013-04-17"
       venue: "NetSec-KR"
       location: "Seoul, South Korea"
-      date: "April 17, 2013"
       type: Invited
       topics: [other]

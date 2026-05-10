@@ -16,7 +16,12 @@
   </article>
 {% endcapture %}
 
-{% capture not_found %}<p class="mt-5">{{ site.data.locales[include.lang].search.no_results }}</p>{% endcapture %}
+{% capture not_found %}
+  <p class="mt-5">
+    <span class="lang-en">{{ site.data.locales[include.lang].search.no_results }}</span>
+    <span class="lang-ko" style="display:none;">검색 결과가 없습니다.</span>
+  </p>
+{% endcapture %}
 
 <script>
   {% comment %} Note: dependent library will be loaded in `js-selector.html` {% endcomment %}

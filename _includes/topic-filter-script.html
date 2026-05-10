@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
       emptyState.className = 'text-muted mt-4';
       emptyState.hidden = true;
       emptyState.setAttribute('data-topic-empty', '');
-      emptyState.textContent = 'No entries for this topic.';
+      emptyState.innerHTML = '<span class="lang-en">No entries for this topic.</span><span class="lang-ko" style="display:none;">이 주제에 해당하는 항목이 없습니다.</span>';
       root.appendChild(emptyState);
     }
 
