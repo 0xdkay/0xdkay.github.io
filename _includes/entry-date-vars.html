@@ -1,0 +1,35 @@
+{%- comment -%}
+  Normalize publication/talk dates.
+
+  Accepts:
+    YYYY-MM-DD -> exact day
+    YYYY-MM    -> first day of month for sorting
+    YYYY       -> Jan 1 for sorting
+
+  Exposes:
+    entry_date_iso
+    entry_date_rank
+    entry_date_display
+    entry_date_precision
+{%- endcomment -%}
+
+{%- assign entry_date_value = include.date | default: include.year | append: '' | strip -%}
+{%- assign entry_date_parts = entry_date_value | split: '-' -%}
+{%- assign entry_date_precision = 'day' -%}
+{%- assign entry_date_iso = entry_date_value -%}
+
+{%- if entry_date_parts.size == 1 -%}
+  {%- assign entry_date_precision = 'year' -%}
+  {%- assign entry_date_iso = entry_date_parts[0] | append: '-01-01' -%}
+{%- elsif entry_date_parts.size == 2 -%}
+  {%- assign entry_date_precision = 'month' -%}
+  {%- assign entry_date_iso = entry_date_value | append: '-01' -%}
+{%- endif -%}
+
+{%- assign entry_date_rank = entry_date_iso | date: '%Y%m%d%H%M%S' -%}
+
+{%- if entry_date_precision == 'year' -%}
+  {%- assign entry_date_display = entry_date_parts[0] -%}
+{%- else -%}
+  {%- assign entry_date_display = entry_date_iso | date: '%b %Y' -%}
+{%- endif -%}

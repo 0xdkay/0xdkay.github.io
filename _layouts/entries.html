@@ -113,18 +113,14 @@ document.addEventListener('keydown', function(e) {
 <div class="entry-authors">{{ item.authors | default: item.speaker }}</div>
 <div class="entry-venue">{{ item.venue }}</div>
 {% include topic-labels.html topics=item.topics %}
-{% if item.sort_date %}
-  {% assign entry_display_date = item.sort_date | date: "%b %Y" %}
-{% else %}
-  {% assign entry_display_date = item.date %}
-{% endif %}
+{% include entry-date-vars.html date=item.date year=year_group.year %}
 <div class="entry-meta">
 <div class="entry-links">
 {% assign link_order = "pdf,arxiv,bibtex,slides,website,code,tool,benchmark" | split: "," %}
 {% for type in link_order %}{% for link in item.links %}{% if link.type == type %}{% include pub-button.html type=link.type url=link.url label=link.label %}{% endif %}{% endfor %}{% endfor %}
 {% for link in item.links %}{% unless link_order contains link.type %}{% include pub-button.html type=link.type url=link.url label=link.label %}{% endunless %}{% endfor %}
 </div>
-{% if entry_display_date %}<div class="entry-date"><i class="far fa-calendar-alt"></i> {{ entry_display_date }}</div>{% endif %}
+{% if entry_date_display %}<div class="entry-date"><i class="far fa-calendar-alt"></i> {{ entry_date_display }}</div>{% endif %}
 </div>
 {% if item.media %}
 <div class="entry-media">
