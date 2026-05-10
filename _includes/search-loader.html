@@ -16,11 +16,13 @@
     }
 
     const resultGroups = [
-      { key: 'Topic', id: 'search-topics', title: 'Topics', singular: 'Topic', plural: 'Topics' },
-      { key: 'Paper', id: 'search-publications', title: 'Publications', singular: 'Publication', plural: 'Publications' },
-      { key: 'Talk', id: 'search-talks', title: 'Talks', singular: 'Talk', plural: 'Talks' },
-      { key: 'Blog', id: 'search-blog', title: 'Blog', singular: 'Blog Post', plural: 'Blog Posts' }
+      { key: 'Topic', id: 'search-topics', title: 'Topics', titleKo: '주제', singular: 'Topic', plural: 'Topics', labelKo: '주제' },
+      { key: 'Paper', id: 'search-publications', title: 'Publications', titleKo: '논문', singular: 'Publication', plural: 'Publications', labelKo: '논문' },
+      { key: 'Talk', id: 'search-talks', title: 'Talks', titleKo: '발표', singular: 'Talk', plural: 'Talks', labelKo: '발표' },
+      { key: 'Blog', id: 'search-blog', title: 'Blog', titleKo: '블로그', singular: 'Blog Post', plural: 'Blog Posts', labelKo: '블로그 글' }
     ];
+
+    const noResultsHtml = {{ not_found | strip_newlines | jsonify }};
 
     function normalizeLang(lang) {
       return lang && lang.indexOf('ko') === 0 ? 'ko' : 'en';
@@ -48,15 +50,21 @@
       return groups;
     }
 
-    function preferredEntries(entries) {
+    function preferredEntry(group) {
       const lang = currentLang();
-      const groups = buildGroups(entries);
 
-      return Array.from(groups.values()).map((group) => {
-        return group.find((entry) => normalizeLang(entry.lang) === lang) ||
-          group.find((entry) => normalizeLang(entry.lang) === 'en') ||
-          group[0];
-      });
+      return group.find((entry) => normalizeLang(entry.lang) === lang) ||
+        group.find((entry) => normalizeLang(entry.lang) === 'en') ||
+        group[0];
+    }
+
+    function matchingEntry(group, query) {
+      const matched = group.filter((entry) => matches(entry, query));
+      if (matched.length === 0) {
+        return null;
+      }
+
+      return preferredEntry(matched);
     }
 
     function normalizeText(value) {
@@ -86,14 +94,14 @@
     }
 
     function categoryWeight(entry) {
-      if (entry.categories === 'Paper') return 30;
-      if (entry.categories === 'Talk') return 20;
-      if (entry.categories === 'Topic') return 10;
+      if (entry.type === 'Paper') return 30;
+      if (entry.type === 'Talk') return 20;
+      if (entry.type === 'Topic') return 10;
       return 0;
     }
 
     function topicTitleBoost(entry, query) {
-      if (entry.categories !== 'Topic') {
+      if (entry.type !== 'Topic') {
         return 0;
       }
 
@@ -120,6 +128,7 @@
     function searchableText(entry) {
       return normalizeText([
         entry.title,
+        entry.type,
         entry.categories,
         entry.tags,
         entry.keywords,
@@ -148,7 +157,15 @@
     }
 
     function countLabel(group, count) {
+      if (currentLang() === 'ko') {
+        return `${count} ${group.labelKo}`;
+      }
+
       return `${count} ${count === 1 ? group.singular : group.plural}`;
+    }
+
+    function groupTitle(group) {
+      return currentLang() === 'ko' ? group.titleKo : group.title;
     }
 
     function renderStats(grouped) {
@@ -168,12 +185,12 @@
 
     function renderCard(entry) {
       return `
-        <article class="search-card" data-category="${escapeHtml(entry.categories)}">
+        <article class="search-card" data-category="${escapeHtml(entry.type || entry.categories)}">
           <div class="search-card-meta">
-            <span>${escapeHtml(entry.categories)}</span>
+            <span>${escapeHtml(entry.type || entry.categories)}</span>
             <span>${escapeHtml(entry.tags)}</span>
           </div>
-          <h2 class="search-card-title"><a href="${escapeHtml(entry.url)}">${escapeHtml(entry.title)}</a></h2>
+          <h3 class="search-card-title"><a href="${escapeHtml(entry.url)}">${escapeHtml(entry.title)}</a></h3>
           <p class="search-card-detail">${escapeHtml(entry.summary)}</p>
         </article>
       `;
@@ -187,7 +204,7 @@
       return `
         <section id="${group.id}" class="search-section">
           <div class="search-section-header">
-            <h2>${escapeHtml(group.title)}</h2>
+            <h2>${escapeHtml(groupTitle(group))}</h2>
             <span>${escapeHtml(countLabel(group, entries.length))}</span>
           </div>
           <div class="search-card-list">
@@ -205,8 +222,9 @@
         return;
       }
 
-      const matchesByScore = preferredEntries(allEntries)
-        .filter((entry) => matches(entry, query))
+      const matchesByScore = Array.from(buildGroups(allEntries).values())
+        .map((group) => matchingEntry(group, query))
+        .filter(Boolean)
         .map((entry) => ({ entry, score: relevance(entry, query) }))
         .sort((a, b) => {
           if (b.score !== a.score) {
@@ -216,7 +234,7 @@
         });
 
       if (matchesByScore.length === 0) {
-        resultsContainer.innerHTML = '{{ not_found | strip_newlines }}';
+        resultsContainer.innerHTML = noResultsHtml;
         return;
       }
 
@@ -226,8 +244,8 @@
       }, {});
 
       matchesByScore.forEach(({ entry }) => {
-        if (grouped[entry.categories]) {
-          grouped[entry.categories].push(entry);
+        if (grouped[entry.type]) {
+          grouped[entry.type].push(entry);
         }
       });
 

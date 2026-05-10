@@ -20,6 +20,7 @@ swcache: true
   {
     "title": {{ topic.label | jsonify }},
     "url": {{ topic_url | relative_url | jsonify }},
+    "type": "Topic",
     "categories": "Topic",
     "tags": "Research Area",
     "keywords": {{ topic.keywords | default: '' | jsonify }},
@@ -39,27 +40,12 @@ swcache: true
   {% capture summary -%}{% include post-summary.html post=post max_length=240 %}{%- endcapture -%}
   {% assign post_lang = post.lang | default: 'en' %}
   {% assign post_key = post.translation_key | default: post.url %}
-  {% include post-group-vars.html post=post %}
-
-  {% assign alt_post = nil %}
-  {% if post_lang == 'ko' %}
-    {% assign alt_post = en_post %}
-  {% else %}
-    {% assign alt_post = ko_post %}
-  {% endif %}
-
-  {% if alt_post %}
-    {% capture alt_content -%}{% include post-summary.html post=alt_post full_text=true %}{%- endcapture -%}
-    {% capture alt_summary -%}{% include post-summary.html post=alt_post max_length=240 %}{%- endcapture -%}
-    {% capture searchable_content -%}{{ content }} {{ alt_post.title }} {{ alt_summary }} {{ alt_content }}{%- endcapture -%}
-  {% else %}
-    {% assign searchable_content = content %}
-  {% endif %}
 
   {% capture entry %}
   {
     "title": {{ post.title | jsonify }},
     "url": {{ post.url | relative_url | jsonify }},
+    "type": "Blog",
     "categories": {{ post.categories | join: ', ' | jsonify }},
     "tags": {{ post.tags | join: ', ' | jsonify }},
     "keywords": {{ post.tags | join: ' ' | jsonify }},
@@ -67,7 +53,7 @@ swcache: true
     "lang": {{ post_lang | jsonify }},
     "translation_key": {{ post_key | jsonify }},
     "summary": {{ summary | jsonify }},
-    "content": {{ searchable_content | strip | jsonify }}
+    "content": {{ content | strip | jsonify }}
   }
   {% endcapture %}
 
@@ -111,6 +97,7 @@ swcache: true
     {
       "title": {{ item.title | jsonify }},
       "url": {{ item_url | relative_url | jsonify }},
+      "type": "Paper",
       "categories": "Paper",
       "tags": {{ item_topic_labels | join: ', ' | jsonify }},
       "keywords": {{ item_keywords | jsonify }},
@@ -165,6 +152,7 @@ swcache: true
     {
       "title": {{ item.title | jsonify }},
       "url": {{ item_url | relative_url | jsonify }},
+      "type": "Talk",
       "categories": "Talk",
       "tags": {{ item_topic_labels | join: ', ' | jsonify }},
       "keywords": {{ item_keywords | jsonify }},

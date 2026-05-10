@@ -206,7 +206,8 @@
       text-decoration: none;
     }
 
-    a:hover {
+    a:hover,
+    a:focus-visible {
       border-color: var(--link-color);
       color: var(--link-color);
     }
@@ -301,9 +302,13 @@
     padding: 0;
 
     a {
+      color: var(--link-color);
+      font-size: inherit;
+      line-height: inherit;
       text-decoration: none;
 
-      &:hover {
+      &:hover,
+      &:focus-visible {
         text-decoration: underline;
       }
     }
