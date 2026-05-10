@@ -29,19 +29,12 @@ layout: page
 
 {% assign rendered_count_keys = '' | split: '' %}
 {% for post in site.posts %}
-  {% assign post_key = post.translation_key | default: post.url %}
+  {% include post-group-vars.html post=post %}
   {% if rendered_count_keys contains post_key %}
     {% continue %}
   {% endif %}
 
   {% assign rendered_count_keys = rendered_count_keys | push: post_key %}
-  {% assign translation_group = site.posts | where: 'translation_key', post_key %}
-  {% if translation_group.size == 0 %}
-    {% assign translation_group = site.posts | where: 'url', post_key %}
-  {% endif %}
-  {% assign en_matches = translation_group | where: 'lang', 'en' %}
-  {% assign first_group_post = translation_group | first %}
-  {% assign display_post = en_matches | first | default: first_group_post %}
 
   {% if display_post.topics contains topic_slug %}
     {% assign writing_count = writing_count | plus: 1 %}
@@ -142,29 +135,12 @@ layout: page
   {% capture writing_content %}
     {% assign rendered_keys = '' | split: '' %}
     {% for post in site.posts %}
-      {% assign post_key = post.translation_key | default: post.url %}
+      {% include post-group-vars.html post=post %}
       {% if rendered_keys contains post_key %}
         {% continue %}
       {% endif %}
 
       {% assign rendered_keys = rendered_keys | push: post_key %}
-      {% assign translation_group = site.posts | where: 'translation_key', post_key %}
-      {% if translation_group.size == 0 %}
-        {% assign translation_group = site.posts | where: 'url', post_key %}
-      {% endif %}
-      {% assign en_matches = translation_group | where: 'lang', 'en' %}
-      {% assign ko_matches = translation_group | where: 'lang', 'ko' %}
-      {% assign en_post = en_matches | first %}
-      {% assign ko_post = ko_matches | first %}
-      {% assign first_group_post = translation_group | first %}
-
-      {% if en_post %}
-        {% assign display_post = en_post %}
-      {% elsif first_group_post %}
-        {% assign display_post = first_group_post %}
-      {% else %}
-        {% assign display_post = ko_post %}
-      {% endif %}
 
       {% if display_post.topics contains topic_slug %}
         <article class="topic-card topic-card-writing">

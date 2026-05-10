@@ -10,31 +10,15 @@
 {% assign seen_keys = '' | split: '' %}
 
 {% for candidate in site.posts %}
-  {% assign candidate_key = candidate.translation_key | default: candidate.url %}
+  {% include post-group-vars.html post=candidate %}
+  {% assign candidate_key = post_key %}
 
   {% if candidate_key == page_key or seen_keys contains candidate_key %}
     {% continue %}
   {% endif %}
 
   {% assign seen_keys = seen_keys | push: candidate_key %}
-  {% assign translation_group = site.posts | where: 'translation_key', candidate_key %}
-  {% if translation_group.size == 0 %}
-    {% assign translation_group = site.posts | where: 'url', candidate_key %}
-  {% endif %}
-  {% assign en_matches = translation_group | where: 'lang', 'en' %}
-  {% assign ko_matches = translation_group | where: 'lang', 'ko' %}
-  {% assign en_post = en_matches | first %}
-  {% assign ko_post = ko_matches | first %}
-  {% assign first_group_post = translation_group | first %}
-  {% assign representative = candidate %}
-
-  {% if en_post %}
-    {% assign representative = en_post %}
-  {% elsif ko_post %}
-    {% assign representative = ko_post %}
-  {% elsif first_group_post %}
-    {% assign representative = first_group_post %}
-  {% endif %}
+  {% assign representative = display_post %}
 
   {% assign score = 0 %}
 
@@ -69,23 +53,8 @@
     <nav class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-4">
       {% for entry in related_entries limit: TOTAL_SIZE %}
         {% assign related_key = entry | split: SEPARATOR | last %}
-        {% assign translation_group = site.posts | where: 'translation_key', related_key %}
-        {% if translation_group.size == 0 %}
-          {% assign translation_group = site.posts | where: 'url', related_key %}
-        {% endif %}
-        {% assign en_matches = translation_group | where: 'lang', 'en' %}
-        {% assign ko_matches = translation_group | where: 'lang', 'ko' %}
-        {% assign en_post = en_matches | first %}
-        {% assign ko_post = ko_matches | first %}
-        {% assign first_group_post = translation_group | first %}
-
-        {% if en_post %}
-          {% assign display_en_post = en_post %}
-        {% elsif first_group_post %}
-          {% assign display_en_post = first_group_post %}
-        {% else %}
-          {% assign display_en_post = ko_post %}
-        {% endif %}
+        {% include post-group-vars.html key=related_key %}
+        {% assign display_en_post = display_post %}
 
         {% if ko_post %}
           {% assign display_ko_post = ko_post %}
