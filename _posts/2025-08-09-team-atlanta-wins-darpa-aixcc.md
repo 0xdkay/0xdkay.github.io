@@ -9,7 +9,7 @@ lang: en
 translation_key: team-atlanta-wins-darpa-aixcc
 pin: true
 description: "Team Atlanta wins 1st place in DARPA's AI Cyber Challenge (AIxCC), demonstrating AI-driven vulnerability detection and patching."
-image:
+thumbnail:
   path: /assets/img/aixcc/aixcc-first-place-announcement-preview.webp
   alt: "Team Atlanta announced as the 1st-place winner of DARPA AIxCC."
 ---
