@@ -3,34 +3,24 @@ layout: compress
 swcache: true
 ---
 
-{% assign rendered_keys = '' | split: '' %}
 {% assign search_entries = '' | split: '' %}
 
-{% for source_post in site.posts %}
-  {% include post-group-vars.html post=source_post %}
-
-  {% if rendered_keys contains post_key %}
-    {% continue %}
-  {% endif %}
-
-  {% assign rendered_keys = rendered_keys | push: post_key %}
-
-  {% assign post = display_post %}
+{% for post in site.posts %}
   {% capture content -%}{% include post-summary.html full_text=true %}{%- endcapture -%}
-
-  {% if ko_post and ko_post.url != display_post.url %}
-    {% assign post = ko_post %}
-    {% capture ko_content -%}{% include post-summary.html full_text=true %}{%- endcapture -%}
-    {% assign content = content | append: ' ' | append: ko_post.title | append: ' ' | append: ko_content %}
-  {% endif %}
+  {% capture summary -%}{% include post-summary.html max_length=240 %}{%- endcapture -%}
+  {% assign post_lang = post.lang | default: 'en' %}
+  {% assign post_key = post.translation_key | default: post.url %}
 
   {% capture entry %}
   {
-    "title": {{ display_post.title | jsonify }},
-    "url": {{ display_post.url | relative_url | jsonify }},
-    "categories": {{ display_post.categories | join: ', ' | jsonify }},
-    "tags": {{ display_post.tags | join: ', ' | jsonify }},
-    "date": {{ display_post.date | jsonify }},
+    "title": {{ post.title | jsonify }},
+    "url": {{ post.url | relative_url | jsonify }},
+    "categories": {{ post.categories | join: ', ' | jsonify }},
+    "tags": {{ post.tags | join: ', ' | jsonify }},
+    "date": {{ post.date | jsonify }},
+    "lang": {{ post_lang | jsonify }},
+    "translation_key": {{ post_key | jsonify }},
+    "summary": {{ summary | jsonify }},
     "content": {{ content | jsonify }}
   }
   {% endcapture %}

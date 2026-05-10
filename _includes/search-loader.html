@@ -1,0 +1,126 @@
+<!--
+  Jekyll Simple Search loader
+  See: <https://github.com/christian-fei/Simple-Jekyll-Search>
+-->
+
+{% capture result_elem %}
+  <article class="px-1 px-sm-2 px-lg-4 px-xl-0">
+    <header>
+      <h2><a href="{url}">{title}</a></h2>
+      <div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1">
+        {categories}
+        {tags}
+      </div>
+    </header>
+    <p>{summary}</p>
+  </article>
+{% endcapture %}
+
+{% capture not_found %}<p class="mt-5">{{ site.data.locales[include.lang].search.no_results }}</p>{% endcapture %}
+
+<script>
+  {% comment %} Note: dependent library will be loaded in `js-selector.html` {% endcomment %}
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('search-input');
+    const resultsContainer = document.getElementById('search-results');
+    let allEntries = [];
+    let searchController = null;
+
+    function normalizeLang(lang) {
+      return lang && lang.indexOf('ko') === 0 ? 'ko' : 'en';
+    }
+
+    function readLang() {
+      try {
+        return localStorage.getItem('site-lang');
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function preferredEntries(entries) {
+      const lang = normalizeLang(readLang() || document.documentElement.getAttribute('data-lang') || document.documentElement.lang || 'en');
+      const groups = new Map();
+
+      entries.forEach((entry) => {
+        const key = entry.translation_key || entry.url;
+        if (!groups.has(key)) {
+          groups.set(key, []);
+        }
+        groups.get(key).push(entry);
+      });
+
+      return entries.filter((entry) => {
+        const group = groups.get(entry.translation_key || entry.url) || [];
+        const hasPreferred = group.some((item) => normalizeLang(item.lang) === lang);
+
+        if (hasPreferred) {
+          return normalizeLang(entry.lang) === lang;
+        }
+
+        const hasEnglish = group.some((item) => normalizeLang(item.lang) === 'en');
+        if (hasEnglish) {
+          return normalizeLang(entry.lang) === 'en';
+        }
+
+        return group[0] === entry;
+      });
+    }
+
+    function searchableEntries(entries) {
+      return preferredEntries(entries).map((entry) => ({
+        title: entry.title,
+        url: entry.url,
+        categories: entry.categories,
+        tags: entry.tags,
+        date: entry.date,
+        summary: entry.summary,
+        content: entry.content
+      }));
+    }
+
+    function initSearch() {
+      if (allEntries.length === 0) {
+        return;
+      }
+
+      searchController = SimpleJekyllSearch({
+        searchInput: searchInput,
+        resultsContainer: resultsContainer,
+        json: searchableEntries(allEntries),
+        searchResultTemplate: '{{ result_elem | strip_newlines }}',
+        noResultsText: '{{ not_found }}',
+        templateMiddleware: function(prop, value, template) {
+          if (prop === 'categories') {
+            if (value === '') {
+              return `${value}`;
+            } else {
+              return `<div class="me-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`;
+            }
+          }
+
+          if (prop === 'tags') {
+            if (value === '') {
+              return `${value}`;
+            } else {
+              return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`;
+            }
+          }
+        }
+      });
+
+      if (searchInput.value) {
+        searchController.search(searchInput.value);
+      }
+    }
+
+    fetch('{{ '/assets/js/data/search.json' | relative_url }}')
+      .then((response) => response.json())
+      .then((entries) => {
+        allEntries = entries;
+        initSearch();
+      });
+
+    document.addEventListener('site-lang-change', initSearch);
+  });
+</script>

@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var target = lang === 'ko' ? 'English' : 'Korean';
     btn.setAttribute('aria-label', 'Switch to ' + target);
     btn.setAttribute('title', 'Switch to ' + target);
+    document.dispatchEvent(new CustomEvent('site-lang-change', { detail: { lang: lang } }));
   }
 
   var langData = document.getElementById('post-lang-data');
