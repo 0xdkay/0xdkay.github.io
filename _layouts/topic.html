@@ -55,12 +55,12 @@ layout: page
     {% endif %}
     <div class="topic-stats">
       {% if publication_count > 0 %}
-        <a href="#publications">{{ publication_count }} Publications</a>
+        <a href="#publications">{{ publication_count }} {% if publication_count == 1 %}Publication{% else %}Publications{% endif %}</a>
       {% else %}
         <span>{{ publication_count }} Publications</span>
       {% endif %}
       {% if talk_count > 0 %}
-        <a href="#talks">{{ talk_count }} Talks</a>
+        <a href="#talks">{{ talk_count }} {% if talk_count == 1 %}Talk{% else %}Talks{% endif %}</a>
       {% else %}
         <span>{{ talk_count }} Talks</span>
       {% endif %}
