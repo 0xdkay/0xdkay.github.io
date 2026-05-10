@@ -8,7 +8,7 @@
         {% assign topic_url = '/topics/' | append: topic.slug | append: '/' %}
         <a class="post-tag btn btn-outline-primary" href="{{ topic_url | relative_url }}">
           {% if topic.icon %}<i class="{{ topic.icon }}"></i>{% endif %}
-          {{ topic.label }}
+          {{ topic.short_label | default: topic.label }}
         </a>
       {% endfor %}
     </div>

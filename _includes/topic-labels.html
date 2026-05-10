@@ -13,7 +13,7 @@
         {% assign topic_matches = site.data.topics | where: 'slug', topic_slug %}
         {% assign topic = topic_matches | first %}
         {% if topic %}
-          <a href="{{ '/topics/' | append: topic.slug | append: '/' | relative_url }}">{{ topic.label }}</a>
+          <a href="{{ '/topics/' | append: topic.slug | append: '/' | relative_url }}">{{ topic.short_label | default: topic.label }}</a>
         {% endif %}
       {% endunless %}
     {% endfor %}

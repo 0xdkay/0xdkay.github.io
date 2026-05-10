@@ -10,9 +10,15 @@
         - type: arxiv
           url: "https://arxiv.org/abs/2603.08566"
         - type: website
-          url: "https://team-atlanta.github.io/"
+          url: "https://openssf.org/projects/oss-crs/"
+          label: "OpenSSF"
+        - type: code
+          url: "https://github.com/ossf/oss-crs"
         - type: bibtex
           url: "chin-2026-osscrs"
+      media:
+        - label: "OpenSSF Announcement"
+          url: "https://openssf.org/blog/2026/04/02/from-aixcc-to-openssf-welcoming-oss-crs-to-advance-ai-driven-open-source-security/"
 
     - title: "SoK: DARPA's AI Cyber Challenge (AIxCC): Competition Design, Architectures, and Lessons Learned"
       authors: "Cen Zhang, Younggi Park, Fabian Fleischer, Yu-Fu Fu, Jiho Kim, <strong>Dongkwan Kim</strong>, Youngjoon Kim, Qingxiao Xu, Andrew Chin, Ze Sheng, Hanqing Zhao, Brian J. Lee, Joshua Wang, Michael Pelican, David J. Musliner, Jeff Huang, Jon Silliman, Mikel Mcdaniel, Jefferson Casavant, Isaac Goldthwaite, Nicholas Vidovich, Matthew Lehman, Taesoo Kim"
@@ -23,8 +29,6 @@
           url: "https://arxiv.org/pdf/2602.07666"
         - type: arxiv
           url: "https://arxiv.org/abs/2602.07666"
-        - type: website
-          url: "https://team-atlanta.github.io/"
         - type: bibtex
           url: "zhang-2026-sok"
 - year: 2025
@@ -41,7 +45,7 @@
         - type: website
           url: "https://team-atlanta.github.io/"
         - type: code
-          url: "https://team-atlanta.github.io/artifacts/"
+          url: "https://github.com/Team-Atlanta/aixcc-afc-atlantis"
         - type: bibtex
           url: "kim-2025-atlantis"
       media:
@@ -175,7 +179,7 @@
     - title: "Watching the Watchers: Practical Video Identification Attack in LTE Networks"
       authors: "Sangwook Bae, Mincheol Son, <strong>Dongkwan Kim</strong>, CheolJun Park, Jiho Lee, Sooel Son, and Yongdae Kim"
       venue: "USENIX Security 2022"
-      topics: [mobile-cellular, firmware-binary-analysis]
+      topics: [mobile-cellular]
       links:
         - type: pdf
           url: "/pub/2022/bae-sec22-watching.pdf"
@@ -183,6 +187,8 @@
           url: "/pub/2022/bae-sec22-watching-slides.pdf"
         - type: website
           url: "https://sites.google.com/view/sec21-wtw/watching-the-watchers"
+        - type: code
+          url: "https://github.com/SysSec-KAIST/WatchingTheWatchers"
         - type: bibtex
           url: "bae-2022-watching"
 
@@ -193,10 +199,12 @@
       links:
         - type: pdf
           url: "/pub/2022/kim-tse22-binkit.pdf"
-        - type: benchmark
+        - type: code
           url: "https://github.com/SoftSec-KAIST/BinKit"
-        - type: tool
+          label: "Code: BinKit"
+        - type: code
           url: "https://github.com/SoftSec-KAIST/TikNib"
+          label: "Code: TikNib"
         - type: bibtex
           url: "kim-2022-tiknib"
 
@@ -282,6 +290,8 @@
       links:
         - type: pdf
           url: "/pub/2018/hong-tmc2018.pdf"
+        - type: code
+          url: "https://github.com/fgsect/scat"
         - type: bibtex
           url: "hong-2018-peeking"
 

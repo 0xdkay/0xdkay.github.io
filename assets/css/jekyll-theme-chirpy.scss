@@ -151,18 +151,18 @@
 .research-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.55rem;
+  gap: 0.4rem;
   margin-top: auto;
 
   a {
     display: inline-flex;
     align-items: center;
-    min-height: 2.75rem;
-    padding: 0.55rem 0.8rem;
+    min-height: 1.8rem;
+    padding: 0.28rem 0.62rem;
     border: 1px solid var(--main-border-color);
     border-radius: 999px;
-    font-size: 0.84rem;
-    line-height: 1.15;
+    font-size: 0.78rem;
+    line-height: 1;
     color: var(--link-color);
     text-decoration: none;
     white-space: nowrap;
@@ -348,9 +348,9 @@
 .pub-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  padding: 0.25rem 0.6rem;
-  font-size: 0.8rem;
+  gap: 0.28rem;
+  padding: 0.18rem 0.48rem;
+  font-size: 0.7rem;
   font-weight: 500;
   text-decoration: none !important;
   border-radius: 0.25rem;
@@ -358,7 +358,7 @@
   border: 1px solid transparent;
 
   i {
-    font-size: 0.75rem;
+    font-size: 0.68rem;
   }
 
   &:hover {
@@ -562,8 +562,8 @@
   background: var(--card-bg);
   border: 1px solid var(--main-border-color);
   border-radius: 0.75rem;
-  padding: 1.25rem 1.5rem;
-  margin-bottom: 1.25rem;
+  padding: 1rem 1.15rem;
+  margin-bottom: 0.85rem;
   transition: all 0.2s ease;
 
   &:hover {
@@ -573,23 +573,23 @@
 
   .entry-title {
     font-weight: 600;
-    font-size: 1.05rem;
+    font-size: 1rem;
     color: var(--heading-color);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.35rem;
     line-height: 1.4;
   }
 
   .entry-authors {
-    font-size: 0.9rem;
+    font-size: 0.86rem;
     color: var(--text-color);
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.25rem;
   }
 
   .entry-venue {
-    font-size: 0.875rem;
+    font-size: 0.84rem;
     color: var(--text-muted-color);
     font-style: italic;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.45rem;
   }
 
   .entry-meta {
@@ -597,8 +597,8 @@
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-top: 0.75rem;
+    gap: 0.55rem;
+    margin-top: 0.55rem;
 
     @media (max-width: 576px) {
       align-items: flex-start;
@@ -915,106 +915,6 @@
   justify-content: center;
   color: var(--text-muted-color);
   font-size: 1.4rem;
-}
-
-/* Talks Archive Layout */
-#talks-archive {
-  .year-section {
-    margin-bottom: 2.5rem;
-
-    .year-header {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--heading-color);
-      margin-bottom: 1rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid var(--main-border-color);
-    }
-  }
-
-  .talk-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .talk-item {
-    display: flex;
-    gap: 1.5rem;
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--main-border-color);
-
-    &:last-child {
-      border-bottom: none;
-    }
-
-    @media (max-width: 576px) {
-      flex-direction: column;
-      gap: 0.25rem;
-    }
-  }
-
-  .talk-date {
-    flex-shrink: 0;
-    width: 90px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--text-muted-color);
-
-    @media (max-width: 576px) {
-      width: auto;
-      font-size: 0.85rem;
-    }
-  }
-
-  .talk-content {
-    flex: 1;
-  }
-
-  .talk-title {
-    font-weight: 600;
-    font-size: 1rem;
-    color: var(--heading-color);
-    margin-bottom: 0.35rem;
-    line-height: 1.4;
-  }
-
-  .talk-award {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.25rem;
-    padding: 0.15rem 0.5rem;
-    background: linear-gradient(135deg, #ffc107, #ffca2c);
-    color: #000;
-    font-size: 0.7rem;
-    font-weight: 600;
-    border-radius: 0.25rem;
-    margin-left: 0.5rem;
-    vertical-align: middle;
-
-    i {
-      font-size: 0.65rem;
-    }
-  }
-
-  .talk-venue {
-    font-size: 0.9rem;
-    color: var(--text-color);
-    margin-bottom: 0.2rem;
-  }
-
-  .talk-location {
-    font-size: 0.85rem;
-    color: var(--text-muted-color);
-    margin-bottom: 0.5rem;
-  }
-
-  .talk-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-top: 0.5rem;
-  }
 }
 
 .post-preview {

@@ -1,24 +1,29 @@
 - slug: ai-security
   label: "AI Security"
+  short_label: "AI"
   icon: "fas fa-robot"
   description: "LLM agents, cyber reasoning systems, fuzzing, exploit generation, program analysis, red teaming, and scalable defenses."
 
 - slug: mobile-cellular
   label: "Mobile & Cellular"
+  short_label: "Mobile & Cellular"
   icon: "fas fa-broadcast-tower"
   description: "Cellular baseband, VoLTE/IMS, LTE networks, protocol reversing, control-plane vulnerabilities, and mobile platform security."
 
 - slug: firmware-binary-analysis
   label: "Firmware & Binary Analysis"
+  short_label: "Firmware & Binary"
   icon: "fas fa-bug"
   description: "IoT firmware emulation, binary-code similarity, reversing, vulnerability analysis, and automated testing."
 
 - slug: cyber-physical-sensor-security
   label: "Cyber-Physical & Sensor Security"
+  short_label: "Cyber-Physical & Sensor"
   icon: "fas fa-microchip"
   description: "Drones, sensors, embedded devices, EMI/acoustic injection, recovery, mitigation, and physical security systems."
 
 - slug: other
   label: "Other"
+  short_label: "Other"
   icon: "fas fa-folder-open"
   description: "Security work and writing outside the main research-area taxonomy."

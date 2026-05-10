@@ -6,7 +6,7 @@
   {%- when 'slides' -%}
     <a href="{{ include.url }}" class="pub-btn pub-btn-slides"><i class="fas fa-file-powerpoint"></i> {{ include.label | default: 'Slides' }}</a>
   {%- when 'code' -%}
-    <a href="{{ include.url }}" class="pub-btn pub-btn-code"><i class="fas fa-code"></i> Code</a>
+    <a href="{{ include.url }}" class="pub-btn pub-btn-code"><i class="fas fa-code"></i> {{ include.label | default: 'Code' }}</a>
   {%- when 'website' -%}
     <a href="{{ include.url }}" class="pub-btn pub-btn-website"><i class="fas fa-globe"></i> {{ include.label | default: 'Website' }}</a>
   {%- when 'video' -%}

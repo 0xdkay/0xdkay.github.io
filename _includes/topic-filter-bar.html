@@ -3,7 +3,7 @@
   {% for topic in site.data.topics %}
     <button type="button" class="topic-filter" data-topic-filter="{{ topic.slug }}">
       {% if topic.icon %}<i class="{{ topic.icon }}"></i>{% endif %}
-      {{ topic.label }}
+      {{ topic.short_label | default: topic.label }}
     </button>
   {% endfor %}
 </div>
