@@ -3,6 +3,10 @@ layout: default
 ---
 
 <!-- Posts page — shows EN or KO based on language toggle -->
+<p class="writing-note">
+  For a compact date-based index, see <a href="{{ '/archives/' | relative_url }}">Archives</a>.
+</p>
+
 <div id="post-list" class="px-0">
   {% for post in site.posts %}
     {% assign slug = post.slug %}
@@ -37,18 +41,13 @@ layout: default
       {% endfor %}
     {% endif %}
 
-    <article class="card-wrapper card mb-4">
-      <div class="card h-100 shadow-sm">
-        {% if post.image %}
-        <a href="{{ post.url | relative_url }}">
-          <img src="{{ post.image.path | default: post.image }}" class="card-img-top" alt="{{ post.title }}">
-        </a>
-        {% endif %}
+    <article class="card-wrapper card mb-3">
+      <div class="card h-100 shadow-sm writing-entry">
         <div class="card-body">
           <h2 class="card-title">
-            <a href="{{ post.url | relative_url }}" class="text-decoration-none{% if ko_post %} lang-en{% endif %}">{{ post.title }}</a>
+            <a href="{{ post.url | relative_url }}" class="text-decoration-none stretched-link{% if ko_post %} lang-en{% endif %}">{{ post.title }}</a>
             {% if ko_post %}
-              <a href="{{ ko_post.url | relative_url }}" class="text-decoration-none lang-ko" style="display:none;">{{ ko_post.title }}</a>
+              <a href="{{ ko_post.url | relative_url }}" class="text-decoration-none stretched-link lang-ko" style="display:none;">{{ ko_post.title }}</a>
             {% endif %}
           </h2>
           <p class="card-text text-muted">
@@ -75,15 +74,23 @@ layout: default
             <small class="text-muted">
               <i class="far fa-calendar-alt me-1"></i>
               <time>{{ post.date | date: "%b %d, %Y" }}</time>
-              {% if post.categories.size > 0 %}
+              {% assign categories_label = post.categories | join: ", " %}
+              {% if post.categories.size > 0 and categories_label != "Blog" %}
               <span class="ms-3">
                 <i class="far fa-folder-open me-1"></i>
-                {{ post.categories | join: ", " }}
+                {{ categories_label }}
               </span>
               {% endif %}
             </small>
           </div>
         </div>
+        <div
+          class="writing-thumb{% unless post.image %} writing-thumb-placeholder{% endunless %}"
+          {% if post.image %}
+          style="background-image: url('{{ post.image.path | default: post.image | relative_url }}');"
+          {% endif %}
+          aria-hidden="true"
+        >{% unless post.image %}<i class="fas fa-pen-nib"></i>{% endunless %}</div>
       </div>
     </article>
   {% endfor %}
@@ -92,7 +99,3 @@ layout: default
   <p class="text-center text-muted mt-5">No posts yet.</p>
   {% endif %}
 </div>
-
-{% if paginator.total_pages > 1 %}
-  {% include post-paginator.html %}
-{% endif %}
