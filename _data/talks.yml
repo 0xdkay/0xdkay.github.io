@@ -143,7 +143,7 @@
         - type: slides
           url: "/pub/2015/kim-poc15-volte-slides.pdf"
         - type: website
-          url: "http://powerofcommunity.net/2015/"
+          url: "https://powerofcommunity.net/2015/"
           label: "Schedule"
 
     - title: "Breaking and Fixing VoLTE"

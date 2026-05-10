@@ -1,6 +1,8 @@
 {%- case include.type -%}
   {%- when 'pdf' -%}
     <a href="{{ include.url }}" class="pub-btn pub-btn-pdf"><i class="fas fa-file-pdf"></i> PDF</a>
+  {%- when 'arxiv' -%}
+    <a href="{{ include.url }}" class="pub-btn pub-btn-arxiv"><i class="fas fa-scroll"></i> arXiv</a>
   {%- when 'slides' -%}
     <a href="{{ include.url }}" class="pub-btn pub-btn-slides"><i class="fas fa-file-powerpoint"></i> {{ include.label | default: 'Slides' }}</a>
   {%- when 'code' -%}

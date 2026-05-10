@@ -210,3 +210,13 @@ park-2014-usim: |
     month         = aug,
     address       = {Jeju Island, Korea},
   }
+
+han-2013-bios: |
+  @InProceedings{han:bios,
+    title         = {High-speed automatic segmentation of intravascular stent struts in optical coherence tomography images},
+    author        = {Myounghee Han and Dongkwan Kim and Wang-Yuhl Oh and Sukyoung Ryu},
+    booktitle     = {Proceedings of SPIE Biomedical Optics, Photonics West},
+    year          = 2013,
+    month         = feb,
+    address       = {San Francisco, CA},
+  }

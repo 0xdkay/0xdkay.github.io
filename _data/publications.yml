@@ -278,7 +278,7 @@
       venue: "IEEE EuroS&P 2017"
       links:
         - type: pdf
-          url: "http://ieeexplore.ieee.org/abstract/document/7962005/"
+          url: "https://ieeexplore.ieee.org/abstract/document/7962005/"
         - type: bibtex
           url: "hong-2017-ipv6"
 
@@ -403,3 +403,13 @@
         - type: bibtex
           url: "park-2014-usim"
 
+- year: 2013
+  papers:
+    - title: "High-speed automatic segmentation of intravascular stent struts in optical coherence tomography images"
+      authors: "Myounghee Han, <strong>Dongkwan Kim</strong>, Wang-Yuhl Oh, and Sukyoung Ryu"
+      venue: "Proceedings of SPIE Biomedical Optics, Photonics West 2013 (BiOS 2013)"
+      links:
+        - type: pdf
+          url: "/pub/2013/han-bios2013.pdf"
+        - type: bibtex
+          url: "han-2013-bios"
