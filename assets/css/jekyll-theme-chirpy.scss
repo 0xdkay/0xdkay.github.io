@@ -872,7 +872,7 @@
 
 .writing-entry {
   background: var(--card-bg);
-  border: 1px solid rgba(108, 117, 125, 0.34);
+  border: 1px solid var(--main-border-color);
   border-radius: 0.85rem;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -887,9 +887,9 @@
 
   &:hover,
   &:focus-within {
-    border-color: rgba(47, 128, 237, 0.78);
+    border-color: var(--link-color);
     box-shadow:
-      0 0 0 3px rgba(47, 128, 237, 0.16),
+      0 0 0 3px rgba(var(--link-color-rgb, 79, 156, 243), 0.16),
       0 8px 22px rgba(0, 0, 0, 0.12);
     transform: translateY(-1px);
   }
@@ -949,7 +949,7 @@
 
 .writing-thumb {
   align-self: stretch;
-  border-left: 1px solid rgba(108, 117, 125, 0.34);
+  border-left: 1px solid var(--main-border-color);
   min-height: 112px;
   background-position: center;
   background-size: cover;
