@@ -888,8 +888,7 @@
   &:hover,
   &:focus-within {
     border-color: var(--link-color);
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
-    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
   }
 
   .card-body {
