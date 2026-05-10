@@ -14,7 +14,9 @@ document.addEventListener('DOMContentLoaded', function() {
       }
 
       buttons.forEach(function(button) {
-        button.classList.toggle('active', button.dataset.topicFilter === topic);
+        var isActive = button.dataset.topicFilter === topic;
+        button.classList.toggle('active', isActive);
+        button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
       });
 
       items.forEach(function(item) {

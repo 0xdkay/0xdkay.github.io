@@ -229,8 +229,9 @@
       venue: "IEEE Security & Privacy"
       topics: [firmware-binary-analysis]
       links:
-        - type: pdf
+        - type: website
           url: "https://ieeexplore.ieee.org/abstract/document/9431371"
+          label: "IEEE"
         - type: bibtex
           url: "kim-2021-enabling"
 
@@ -302,8 +303,9 @@
       venue: "IEEE EuroS&P 2017"
       topics: [mobile-cellular]
       links:
-        - type: pdf
+        - type: website
           url: "https://ieeexplore.ieee.org/abstract/document/7962005/"
+          label: "IEEE"
         - type: bibtex
           url: "hong-2017-ipv6"
 

@@ -11,7 +11,7 @@
           url: "/pub/2025/kim-aixcc-atlantis.pdf"
         - type: website
           url: "https://www.linkedin.com/posts/maasec_upcoming-talk-inside-the-ai-cyber-challenge-activity-7385283384824086528-Fj2h"
-          label: "Schedule"
+          label: "Event Post"
 
     - title: "AI Security 101: Red Team's Perspective on Navigating New Threats in AI Frontier"
       venue: "Hyundai Motors Group Security Center"

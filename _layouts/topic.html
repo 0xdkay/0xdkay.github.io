@@ -65,9 +65,9 @@ layout: page
         <span>{{ talk_count }} Talks</span>
       {% endif %}
       {% if writing_count > 0 %}
-        <a href="#writing">{{ writing_count }} Writing</a>
+        <a href="#writing">{{ writing_count }} {% if writing_count == 1 %}Post{% else %}Posts{% endif %}</a>
       {% else %}
-        <span>{{ writing_count }} Writing</span>
+        <span>{{ writing_count }} Posts</span>
       {% endif %}
     </div>
   </div>
