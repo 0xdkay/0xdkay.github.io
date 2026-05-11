@@ -68,16 +68,56 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
 
+    function decodeHash(hash) {
+      var rawHash = hash.replace(/^#/, '');
+      try {
+        return decodeURIComponent(rawHash);
+      } catch (e) {
+        return rawHash;
+      }
+    }
+
+    function targetFromHash(hash) {
+      var id = decodeHash(hash);
+      if (!id) {
+        return null;
+      }
+
+      return document.getElementById(id);
+    }
+
+    function scrollToHashTarget(hash) {
+      var target = targetFromHash(hash);
+      if (!target) {
+        return;
+      }
+
+      window.requestAnimationFrame(function() {
+        target.scrollIntoView({ block: 'start' });
+      });
+    }
+
     function applyHashFilter() {
       var params = new URLSearchParams(window.location.search);
       var queryTopic = params.get('topic');
       if (validTopics.indexOf(queryTopic) !== -1) {
         applyFilter(queryTopic);
+        if (window.location.hash) {
+          scrollToHashTarget(window.location.hash);
+        }
         return;
       }
 
-      var topic = decodeURIComponent(window.location.hash.replace(/^#/, ''));
-      applyFilter(topic || 'all');
+      var topic = decodeHash(window.location.hash);
+      if (validTopics.indexOf(topic) !== -1) {
+        applyFilter(topic);
+        return;
+      }
+
+      applyFilter('all');
+      if (window.location.hash) {
+        scrollToHashTarget(window.location.hash);
+      }
     }
 
     applyHashFilter();

@@ -21,17 +21,18 @@ layout: page
         {% if talk.award %}<span class="entry-badge"><i class="fas fa-award"></i> {{ talk.award }}</span>{% endif %}
       </div>
       <div class="entry-venue">{{ talk.venue }}</div>
-      <div class="entry-authors">{{ entry_date_display }} · {{ talk.type }}{% if talk.location %} · {{ talk.location }}{% endif %}</div>
+      <div class="entry-authors">{{ talk.type }}{% if talk.location %} · {{ talk.location }}{% endif %}</div>
       {% include topic-labels.html topics=talk.topics %}
-      {% if talk.links %}
-      <div class="entry-meta">
+      <div class="entry-meta{% unless talk.links %} entry-meta-date-only{% endunless %}">
+        {% if talk.links %}
         <div class="entry-links">
           {% for link in talk.links %}
             {% include pub-button.html type=link.type url=link.url label=link.label %}
           {% endfor %}
         </div>
+        {% endif %}
+        {% if entry_date_display %}<div class="entry-date"><i class="far fa-calendar-alt"></i> {{ entry_date_display }}</div>{% endif %}
       </div>
-      {% endif %}
     </div>
   {% endfor %}
 </div>
