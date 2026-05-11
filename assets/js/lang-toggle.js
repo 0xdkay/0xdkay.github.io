@@ -22,11 +22,19 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
+  var langData = document.getElementById('post-lang-data');
+
+  function pageContentLang() {
+    return langData && langData.dataset.current
+      ? normalizeLang(langData.dataset.current)
+      : normalizeLang(document.documentElement.getAttribute('lang') || 'en');
+  }
+
   function update(lang, options) {
     options = options || {};
     lang = normalizeLang(lang);
     document.documentElement.setAttribute('data-lang', lang);
-    document.documentElement.setAttribute('lang', lang);
+    document.documentElement.setAttribute('lang', pageContentLang());
     if (options.persist !== false) {
       writeLang(lang);
     }
@@ -49,8 +57,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.dispatchEvent(new CustomEvent('site-lang-change', { detail: { lang: lang } }));
   }
 
-  var langData = document.getElementById('post-lang-data');
-
   function postHasAlternate() {
     return langData && langData.dataset.hasAlt === 'true' && Boolean(langData.dataset.altUrl);
   }
@@ -62,9 +68,8 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   var initialLang = documentLang();
-  var forcedPostLang = langData && !postHasAlternate();
 
-  update(initialLang, { persist: !forcedPostLang });
+  update(initialLang, { persist: !langData });
 
   if (langData && !postHasAlternate()) {
     btn.hidden = true;
@@ -87,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   window.addEventListener('pageshow', function(event) {
     if (event.persisted) {
-      update(documentLang());
+      update(documentLang(), { persist: !langData });
     }
   });
 

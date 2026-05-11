@@ -27,7 +27,7 @@ layout: page
         {% if talk.links %}
         <div class="entry-links">
           {% for link in talk.links %}
-            {% include pub-button.html type=link.type url=link.url label=link.label %}
+            {% include pub-button.html type=link.type url=link.url label=link.label title=talk.title %}
           {% endfor %}
         </div>
         {% endif %}

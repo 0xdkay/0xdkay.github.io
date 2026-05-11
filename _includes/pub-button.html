@@ -1,22 +1,67 @@
+{%- assign item_title = include.title | strip_html | strip -%}
+{%- assign default_label = '' -%}
+{%- assign icon_class = '' -%}
+{%- assign button_class = '' -%}
+
 {%- case include.type -%}
   {%- when 'pdf' -%}
-    <a href="{{ include.url }}" class="pub-btn pub-btn-pdf"><i class="fas fa-file-pdf" aria-hidden="true"></i> PDF</a>
+    {%- assign default_label = 'PDF' -%}
+    {%- assign icon_class = 'fas fa-file-pdf' -%}
+    {%- assign button_class = 'pub-btn pub-btn-pdf' -%}
   {%- when 'arxiv' -%}
-    <a href="{{ include.url }}" class="pub-btn pub-btn-arxiv"><i class="fas fa-scroll" aria-hidden="true"></i> arXiv</a>
+    {%- assign default_label = 'arXiv' -%}
+    {%- assign icon_class = 'fas fa-scroll' -%}
+    {%- assign button_class = 'pub-btn pub-btn-arxiv' -%}
   {%- when 'slides' -%}
-    <a href="{{ include.url }}" class="pub-btn pub-btn-slides"><i class="fas fa-file-powerpoint" aria-hidden="true"></i> {{ include.label | default: 'Slides' }}</a>
+    {%- assign default_label = 'Slides' -%}
+    {%- assign icon_class = 'fas fa-file-powerpoint' -%}
+    {%- assign button_class = 'pub-btn pub-btn-slides' -%}
   {%- when 'code' -%}
-    <a href="{{ include.url }}" class="pub-btn pub-btn-code"><i class="fas fa-code" aria-hidden="true"></i> {{ include.label | default: 'Code' }}</a>
+    {%- assign default_label = 'Code' -%}
+    {%- assign icon_class = 'fas fa-code' -%}
+    {%- assign button_class = 'pub-btn pub-btn-code' -%}
   {%- when 'website' -%}
-    <a href="{{ include.url }}" class="pub-btn pub-btn-website"><i class="fas fa-globe" aria-hidden="true"></i> {{ include.label | default: 'Website' }}</a>
+    {%- assign default_label = 'Website' -%}
+    {%- assign icon_class = 'fas fa-globe' -%}
+    {%- assign button_class = 'pub-btn pub-btn-website' -%}
   {%- when 'video' -%}
-    <a href="{{ include.url }}" class="pub-btn pub-btn-video"><i class="fas fa-video" aria-hidden="true"></i> Video</a>
+    {%- assign default_label = 'Video' -%}
+    {%- assign icon_class = 'fas fa-video' -%}
+    {%- assign button_class = 'pub-btn pub-btn-video' -%}
   {%- when 'benchmark' -%}
-    <a href="{{ include.url }}" class="pub-btn pub-btn-code"><i class="fas fa-database" aria-hidden="true"></i> Benchmark</a>
+    {%- assign default_label = 'Benchmark' -%}
+    {%- assign icon_class = 'fas fa-database' -%}
+    {%- assign button_class = 'pub-btn pub-btn-code' -%}
   {%- when 'tool' -%}
-    <a href="{{ include.url }}" class="pub-btn pub-btn-code"><i class="fas fa-tools" aria-hidden="true"></i> Tool</a>
+    {%- assign default_label = 'Tool' -%}
+    {%- assign icon_class = 'fas fa-tools' -%}
+    {%- assign button_class = 'pub-btn pub-btn-code' -%}
   {%- when 'doi' -%}
-    <a href="{{ include.url }}" class="pub-btn pub-btn-doi"><i class="fas fa-link" aria-hidden="true"></i> DOI</a>
+    {%- assign default_label = 'DOI' -%}
+    {%- assign icon_class = 'fas fa-link' -%}
+    {%- assign button_class = 'pub-btn pub-btn-doi' -%}
   {%- when 'bibtex' -%}
-    <button type="button" onclick="showBibtex('{{ include.url }}', this)" class="pub-btn pub-btn-bibtex" aria-haspopup="dialog"><i class="fas fa-quote-right" aria-hidden="true"></i> BibTeX</button>
+    {%- assign default_label = 'BibTeX' -%}
+    {%- assign icon_class = 'fas fa-quote-right' -%}
+    {%- assign button_class = 'pub-btn pub-btn-bibtex' -%}
 {%- endcase -%}
+
+{%- if default_label != '' -%}
+  {%- assign visible_label = include.label | default: default_label -%}
+  {%- capture aria_label -%}
+    {%- if item_title != '' -%}
+      {%- if include.type == 'bibtex' -%}
+        Show {{ visible_label | strip_html | strip }} for {{ item_title }}
+      {%- else -%}
+        {{ visible_label | strip_html | strip }} for {{ item_title }}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endcapture -%}
+  {%- assign aria_label = aria_label | strip -%}
+
+  {%- if include.type == 'bibtex' -%}
+    <button type="button" onclick="showBibtex('{{ include.url }}', this)" class="{{ button_class }}" aria-haspopup="dialog"{% if aria_label != '' %} aria-label="{{ aria_label | escape }}"{% endif %}><i class="{{ icon_class }}" aria-hidden="true"></i> {{ visible_label }}</button>
+  {%- else -%}
+    <a href="{{ include.url }}" class="{{ button_class }}"{% if aria_label != '' %} aria-label="{{ aria_label | escape }}"{% endif %}><i class="{{ icon_class }}" aria-hidden="true"></i> {{ visible_label }}</a>
+  {%- endif -%}
+{%- endif -%}

@@ -134,8 +134,8 @@ document.addEventListener('keydown', function(e) {
 <div class="entry-meta">
 <div class="entry-links">
 {% assign link_order = "pdf,arxiv,bibtex,slides,website,code,tool,benchmark" | split: "," %}
-{% for type in link_order %}{% for link in item.links %}{% if link.type == type %}{% include pub-button.html type=link.type url=link.url label=link.label %}{% endif %}{% endfor %}{% endfor %}
-{% for link in item.links %}{% unless link_order contains link.type %}{% include pub-button.html type=link.type url=link.url label=link.label %}{% endunless %}{% endfor %}
+{% for type in link_order %}{% for link in item.links %}{% if link.type == type %}{% include pub-button.html type=link.type url=link.url label=link.label title=item.title %}{% endif %}{% endfor %}{% endfor %}
+{% for link in item.links %}{% unless link_order contains link.type %}{% include pub-button.html type=link.type url=link.url label=link.label title=item.title %}{% endunless %}{% endfor %}
 </div>
 {% if entry_date_display %}<div class="entry-date"><i class="far fa-calendar-alt" aria-hidden="true"></i> {{ entry_date_display }}</div>{% endif %}
 </div>
