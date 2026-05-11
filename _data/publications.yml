@@ -4,7 +4,7 @@
       id: "2026-1-oss-crs-liberating-aixcc-cyber-reasoning-systems-for-real-world-open-source-security"
       date: "2026-03-09"
       authors: "Andrew Chin, <strong>Dongkwan Kim</strong>, Yu-Fu Fu, Fabian Fleischer, Youngjoon Kim, HyungSeok Han, Cen Zhang, Brian Junekyu Lee, Hanqing Zhao, Taesoo Kim"
-      venue: "arXiv, Mar 2026"
+      venue: "arXiv"
       topics: [ai-security]
       links:
         - type: pdf
@@ -27,7 +27,7 @@
       id: "2026-2-sok-darpa-s-ai-cyber-challenge-aixcc-competition-design-architectures-and-lessons-learned"
       date: "2026-02-07"
       authors: "Cen Zhang, Younggi Park, Fabian Fleischer, Yu-Fu Fu, Jiho Kim, <strong>Dongkwan Kim</strong>, Youngjoon Kim, Qingxiao Xu, Andrew Chin, Ze Sheng, Hanqing Zhao, Brian J. Lee, Joshua Wang, Michael Pelican, David J. Musliner, Jeff Huang, Jon Silliman, Mikel Mcdaniel, Jefferson Casavant, Isaac Goldthwaite, Nicholas Vidovich, Matthew Lehman, Taesoo Kim"
-      venue: "arXiv, Feb 2026"
+      venue: "arXiv"
       topics: [ai-security]
       links:
         - type: pdf
@@ -42,7 +42,7 @@
       id: "2025-1-atlantis-ai-driven-threat-localization-analysis-and-triage-intelligence-system"
       date: "2025-09-18"
       authors: "Taesoo Kim, HyungSeok Han, Soyeon Park, Dae R. Jeong, Dohyeok Kim, <strong>Dongkwan Kim</strong>, Eunsoo Kim, Jiho Kim, Joshua Wang, Kangsu Kim, Sangwoo Ji, Woosun Song, Hanqing Zhao, Andrew Chin, Gyejin Lee, Kevin Stevens, Mansour Alharthi, Yizhuo Zhai, Cen Zhang, Joonun Jang, Yeongjin Jang, Ammar Askar, Dongju Kim, Fabian Fleischer, Jeongin Cho, Junsik Kim, Kyungjoon Ko, Insu Yun, Sangdon Park, Dowoo Baik, Haein Lee, Hyeon Heo, Minjae Gwon, Minjae Lee, Minwoo Baek, Seunggi Min, Wonyoung Kim, Yonghwi Jin, Younggi Park, Yunjae Choi, Jinho Jung, Gwanhyun Lee, Junyoung Jang, Kyuheon Kim, Yeonghyeon Cha, Youngjoon Kim"
-      venue: "arXiv, Sep 2025"
+      venue: "arXiv"
       topics: [ai-security]
       links:
         - type: pdf

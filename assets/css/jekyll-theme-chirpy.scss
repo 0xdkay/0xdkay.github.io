@@ -11,6 +11,19 @@ button:focus-visible,
   box-shadow: 0 0 0 3px rgba(var(--link-color-rgb, 79, 156, 243), 0.18);
 }
 
+#topbar-title {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 380px) {
+  #lang-toggle span {
+    display: none;
+  }
+}
+
 /* Sidebar tagline */
 .site-subtitle {
   @media (max-width: 576px) {
@@ -511,8 +524,9 @@ button:focus-visible,
   display: inline-flex;
   align-items: center;
   gap: 0.28rem;
-  padding: 0.18rem 0.48rem;
-  font-size: 0.7rem;
+  min-height: 1.85rem;
+  padding: 0.26rem 0.58rem;
+  font-size: 0.75rem;
   font-weight: 500;
   text-decoration: none !important;
   border-radius: 0.25rem;
@@ -575,11 +589,11 @@ button:focus-visible,
 
 /* Website Button - Teal */
 .pub-btn-website {
-  background: #0d9e7a;
+  background: #08765d;
   color: #fff !important;
 
   &:hover {
-    background: #0a7d61;
+    background: #065b48;
     color: #fff !important;
   }
 }
@@ -597,11 +611,11 @@ button:focus-visible,
 
 /* Cite Button - Orange */
 .pub-btn-cite {
-  background: #fd7e14;
+  background: #9a4f00;
   color: #fff !important;
 
   &:hover {
-    background: #dc6a0b;
+    background: #783d00;
     color: #fff !important;
   }
 }
@@ -619,12 +633,12 @@ button:focus-visible,
 
 /* BibTeX Button - Gold */
 .pub-btn-bibtex {
-  background: #ca8a04;
+  background: #7c5600;
   color: #fff !important;
   cursor: pointer;
 
   &:hover {
-    background: #a16207;
+    background: #604300;
     color: #fff !important;
   }
 }
@@ -1077,6 +1091,10 @@ button:focus-visible,
     font-size: 1.08rem;
     line-height: 1.35;
     margin: 0.22rem 0 0.45rem;
+    display: block;
+    -webkit-line-clamp: initial;
+    -webkit-box-orient: initial;
+    overflow: visible;
 
     a {
       color: var(--heading-color);
@@ -1101,7 +1119,7 @@ button:focus-visible,
 
   @media (max-width: 576px) {
     &.has-thumb {
-      grid-template-columns: minmax(0, 1fr) 72px;
+      grid-template-columns: minmax(0, 1fr);
     }
 
     .card-body {
@@ -1130,7 +1148,7 @@ button:focus-visible,
   pointer-events: none;
 
   @media (max-width: 576px) {
-    min-height: 100%;
+    display: none;
   }
 }
 
