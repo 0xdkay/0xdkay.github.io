@@ -18,7 +18,7 @@ layout: page
     <article id="{{ talk_anchor }}" class="entry-card talk-card" data-topics="{{ talk.topics | join: ' ' }}">
       <h3 class="entry-title">
         {{ talk.title }}
-        {% if talk.award %}<span class="entry-badge"><i class="fas fa-award"></i> {{ talk.award }}</span>{% endif %}
+        {% if talk.award %}<span class="entry-badge"><i class="fas fa-award" aria-hidden="true"></i> {{ talk.award }}</span>{% endif %}
       </h3>
       <div class="entry-venue">{{ talk.venue }}</div>
       <div class="entry-authors">{{ talk.type }}{% if talk.location %} · {{ talk.location }}{% endif %}</div>
@@ -31,7 +31,7 @@ layout: page
           {% endfor %}
         </div>
         {% endif %}
-        {% if entry_date_display %}<div class="entry-date"><i class="far fa-calendar-alt"></i> {{ entry_date_display }}</div>{% endif %}
+        {% if entry_date_display %}<div class="entry-date"><i class="far fa-calendar-alt" aria-hidden="true"></i> {{ entry_date_display }}</div>{% endif %}
       </div>
     </article>
   {% endfor %}

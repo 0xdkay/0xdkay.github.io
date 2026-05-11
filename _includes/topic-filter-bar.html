@@ -2,7 +2,7 @@
   <button type="button" class="topic-filter active" data-topic-filter="all" aria-pressed="true">All</button>
   {% for topic in site.data.topics %}
     <button type="button" class="topic-filter" data-topic-filter="{{ topic.slug }}" aria-pressed="false">
-      {% if topic.icon %}<i class="{{ topic.icon }}"></i>{% endif %}
+      {% if topic.icon %}<i class="{{ topic.icon }}" aria-hidden="true"></i>{% endif %}
       {{ topic.short_label | default: topic.label }}
     </button>
   {% endfor %}

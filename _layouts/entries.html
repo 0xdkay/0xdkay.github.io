@@ -3,7 +3,7 @@ layout: page
 ---
 
 <!-- BibTeX Modal -->
-<div id="bibtexModal" class="bibtex-modal" role="dialog" aria-modal="true" aria-labelledby="bibtexModalTitle" aria-describedby="bibtexModalDescription" hidden>
+<dialog id="bibtexModal" class="bibtex-modal" aria-labelledby="bibtexModalTitle" aria-describedby="bibtexModalDescription">
   <div class="bibtex-modal-overlay" aria-hidden="true" onclick="closeBibtexModal()"></div>
   <div class="bibtex-modal-content" tabindex="-1">
     <div class="bibtex-modal-header">
@@ -13,11 +13,11 @@ layout: page
     <p id="bibtexModalDescription" class="visually-hidden">BibTeX entry. Use the Copy button to copy the citation.</p>
     <pre id="bibtexContent" tabindex="0"></pre>
     <div class="bibtex-modal-footer">
-      <button type="button" onclick="copyBibtex()" class="pub-btn pub-btn-bibtex" id="copyBibtexBtn"><i class="fas fa-copy"></i> Copy</button>
+      <button type="button" onclick="copyBibtex()" class="pub-btn pub-btn-bibtex" id="copyBibtexBtn"><i class="fas fa-copy" aria-hidden="true"></i> Copy</button>
       <span id="bibtexCopyStatus" class="visually-hidden" aria-live="polite"></span>
     </div>
   </div>
-</div>
+</dialog>
 
 <script>
 var bibtexData = {
@@ -36,15 +36,23 @@ function showBibtex(key, trigger) {
     var closeBtn = modal.querySelector('.bibtex-close-btn');
     lastBibtexTrigger = trigger || document.activeElement;
     content.textContent = bibtex.trim();
-    modal.hidden = false;
+    if (typeof modal.showModal === 'function') {
+      modal.showModal();
+    } else {
+      modal.setAttribute('open', '');
+    }
     closeBtn.focus();
   }
 }
 
 function closeBibtexModal() {
   var modal = document.getElementById('bibtexModal');
-  if (modal.hidden) return;
-  modal.hidden = true;
+  if (!modal.open) return;
+  if (typeof modal.close === 'function') {
+    modal.close();
+  } else {
+    modal.removeAttribute('open');
+  }
   if (lastBibtexTrigger && typeof lastBibtexTrigger.focus === 'function') {
     lastBibtexTrigger.focus();
   }
@@ -55,12 +63,12 @@ function copyBibtex() {
   navigator.clipboard.writeText(text).then(function() {
     var btn = document.getElementById('copyBibtexBtn');
     var status = document.getElementById('bibtexCopyStatus');
-    btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+    btn.innerHTML = '<i class="fas fa-check" aria-hidden="true"></i> Copied!';
     if (status) {
       status.textContent = 'BibTeX copied.';
     }
     setTimeout(function() {
-      btn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+      btn.innerHTML = '<i class="fas fa-copy" aria-hidden="true"></i> Copy';
       if (status) {
         status.textContent = '';
       }
@@ -70,7 +78,7 @@ function copyBibtex() {
 
 document.addEventListener('keydown', function(e) {
   var modal = document.getElementById('bibtexModal');
-  if (modal.hidden) return;
+  if (!modal.open) return;
 
   if (e.key === 'Escape') {
     closeBibtexModal();
@@ -118,7 +126,7 @@ document.addEventListener('keydown', function(e) {
 {% assign generated_item_anchor = year_group.year | append: '-' | append: forloop.index | append: '-' | append: item.title | slugify %}
 {% assign item_anchor = item.id | default: generated_item_anchor %}
 <article id="{{ item_anchor }}" class="entry-card" data-topics="{{ item.topics | join: ' ' }}">
-<h3 class="entry-title">{{ item.title }}{% if item.badge %}<span class="entry-badge"><i class="fas fa-award"></i> {{ item.badge }}</span>{% endif %}</h3>
+<h3 class="entry-title">{{ item.title }}{% if item.badge %}<span class="entry-badge"><i class="fas fa-award" aria-hidden="true"></i> {{ item.badge }}</span>{% endif %}</h3>
 <div class="entry-authors">{{ item.authors | default: item.speaker }}</div>
 <div class="entry-venue">{{ item.venue }}</div>
 {% include topic-labels.html topics=item.topics %}
@@ -129,7 +137,7 @@ document.addEventListener('keydown', function(e) {
 {% for type in link_order %}{% for link in item.links %}{% if link.type == type %}{% include pub-button.html type=link.type url=link.url label=link.label %}{% endif %}{% endfor %}{% endfor %}
 {% for link in item.links %}{% unless link_order contains link.type %}{% include pub-button.html type=link.type url=link.url label=link.label %}{% endunless %}{% endfor %}
 </div>
-{% if entry_date_display %}<div class="entry-date"><i class="far fa-calendar-alt"></i> {{ entry_date_display }}</div>{% endif %}
+{% if entry_date_display %}<div class="entry-date"><i class="far fa-calendar-alt" aria-hidden="true"></i> {{ entry_date_display }}</div>{% endif %}
 </div>
 {% if item.media %}
 <div class="entry-media">

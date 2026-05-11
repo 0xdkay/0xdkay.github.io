@@ -33,7 +33,7 @@
               <span>{{ site.data.locales[include.lang].tabs[item] | default: page.title }}</span>
             {% else %}
               <span>
-                {% if topic_icon %}<i class="{{ topic_icon }} topic-breadcrumb-icon"></i>{% endif %}
+                {% if topic_icon %}<i class="{{ topic_icon }} topic-breadcrumb-icon" aria-hidden="true"></i>{% endif %}
                 {{ page.title }}
               </span>
             {% endif %}
@@ -51,7 +51,7 @@
     <!-- endof #breadcrumb -->
 
     <button type="button" id="sidebar-trigger" class="btn btn-link" aria-label="Sidebar" aria-controls="sidebar" aria-expanded="false">
-      <i class="fas fa-bars fa-fw"></i>
+      <i class="fas fa-bars fa-fw" aria-hidden="true"></i>
     </button>
 
     <div id="topbar-title">
@@ -61,7 +61,7 @@
         {%- capture tab_key -%}{{ page.url | split: '/' }}{%- endcapture -%}
         {{- site.data.locales[include.lang].tabs[tab_key] | default: page.title -}}
       {% elsif page.layout == 'topic' %}
-        {% if topic_icon %}<i class="{{ topic_icon }} topic-breadcrumb-icon"></i>{% endif %}
+        {% if topic_icon %}<i class="{{ topic_icon }} topic-breadcrumb-icon" aria-hidden="true"></i>{% endif %}
         {{- page.title -}}
       {% else %}
         {{- site.data.locales[include.lang].layout[page.layout] | default: page.layout | capitalize -}}
@@ -71,20 +71,20 @@
     <div class="d-flex align-items-center">
       {% unless site.theme_mode %}
         <button type="button" id="mode-toggle" class="btn btn-link p-0 me-2 d-inline-flex align-items-center text-decoration-none" style="color: inherit;" aria-label="Switch Mode" title="Switch Mode">
-          <i class="fas fa-adjust fa-fw"></i>
+          <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
         </button>
       {% endunless %}
 
       <button type="button" id="lang-toggle" class="btn btn-link p-0 me-1 d-inline-flex align-items-center text-decoration-none" style="color: inherit;" aria-label="Switch to Korean" title="Switch to Korean">
-        <i class="fas fa-globe fa-fw"></i><span style="font-size: 0.7rem; font-weight: 600; margin-left: 2px; white-space: nowrap;">English</span>
+        <i class="fas fa-globe fa-fw" aria-hidden="true"></i><span style="font-size: 0.7rem; font-weight: 600; margin-left: 2px; white-space: nowrap;">English</span>
       </button>
 
       <button type="button" id="search-trigger" class="btn btn-link" aria-label="Search" aria-controls="search-result-wrapper" aria-expanded="false">
-        <i class="fas fa-search fa-fw"></i>
+        <i class="fas fa-search fa-fw" aria-hidden="true"></i>
       </button>
 
       <search id="search" class="align-items-center ms-3 ms-lg-0">
-        <i class="fas fa-search fa-fw"></i>
+        <i class="fas fa-search fa-fw" aria-hidden="true"></i>
         <input
           class="form-control"
           id="search-input"

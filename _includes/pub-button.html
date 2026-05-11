@@ -1,22 +1,22 @@
 {%- case include.type -%}
   {%- when 'pdf' -%}
-    <a href="{{ include.url }}" class="pub-btn pub-btn-pdf"><i class="fas fa-file-pdf"></i> PDF</a>
+    <a href="{{ include.url }}" class="pub-btn pub-btn-pdf"><i class="fas fa-file-pdf" aria-hidden="true"></i> PDF</a>
   {%- when 'arxiv' -%}
-    <a href="{{ include.url }}" class="pub-btn pub-btn-arxiv"><i class="fas fa-scroll"></i> arXiv</a>
+    <a href="{{ include.url }}" class="pub-btn pub-btn-arxiv"><i class="fas fa-scroll" aria-hidden="true"></i> arXiv</a>
   {%- when 'slides' -%}
-    <a href="{{ include.url }}" class="pub-btn pub-btn-slides"><i class="fas fa-file-powerpoint"></i> {{ include.label | default: 'Slides' }}</a>
+    <a href="{{ include.url }}" class="pub-btn pub-btn-slides"><i class="fas fa-file-powerpoint" aria-hidden="true"></i> {{ include.label | default: 'Slides' }}</a>
   {%- when 'code' -%}
-    <a href="{{ include.url }}" class="pub-btn pub-btn-code"><i class="fas fa-code"></i> {{ include.label | default: 'Code' }}</a>
+    <a href="{{ include.url }}" class="pub-btn pub-btn-code"><i class="fas fa-code" aria-hidden="true"></i> {{ include.label | default: 'Code' }}</a>
   {%- when 'website' -%}
-    <a href="{{ include.url }}" class="pub-btn pub-btn-website"><i class="fas fa-globe"></i> {{ include.label | default: 'Website' }}</a>
+    <a href="{{ include.url }}" class="pub-btn pub-btn-website"><i class="fas fa-globe" aria-hidden="true"></i> {{ include.label | default: 'Website' }}</a>
   {%- when 'video' -%}
-    <a href="{{ include.url }}" class="pub-btn pub-btn-video"><i class="fas fa-video"></i> Video</a>
+    <a href="{{ include.url }}" class="pub-btn pub-btn-video"><i class="fas fa-video" aria-hidden="true"></i> Video</a>
   {%- when 'benchmark' -%}
-    <a href="{{ include.url }}" class="pub-btn pub-btn-code"><i class="fas fa-database"></i> Benchmark</a>
+    <a href="{{ include.url }}" class="pub-btn pub-btn-code"><i class="fas fa-database" aria-hidden="true"></i> Benchmark</a>
   {%- when 'tool' -%}
-    <a href="{{ include.url }}" class="pub-btn pub-btn-code"><i class="fas fa-tools"></i> Tool</a>
+    <a href="{{ include.url }}" class="pub-btn pub-btn-code"><i class="fas fa-tools" aria-hidden="true"></i> Tool</a>
   {%- when 'doi' -%}
-    <a href="{{ include.url }}" class="pub-btn pub-btn-doi"><i class="fas fa-link"></i> DOI</a>
+    <a href="{{ include.url }}" class="pub-btn pub-btn-doi"><i class="fas fa-link" aria-hidden="true"></i> DOI</a>
   {%- when 'bibtex' -%}
-    <button type="button" onclick="showBibtex('{{ include.url }}', this)" class="pub-btn pub-btn-bibtex" aria-haspopup="dialog"><i class="fas fa-quote-right"></i> BibTeX</button>
+    <button type="button" onclick="showBibtex('{{ include.url }}', this)" class="pub-btn pub-btn-bibtex" aria-haspopup="dialog"><i class="fas fa-quote-right" aria-hidden="true"></i> BibTeX</button>
 {%- endcase -%}

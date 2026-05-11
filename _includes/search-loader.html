@@ -120,8 +120,13 @@
     }
 
     function currentLang() {
+      const postLangData = document.getElementById('post-lang-data');
+      if (postLangData && postLangData.dataset.current) {
+        return normalizeLang(postLangData.dataset.current);
+      }
+
       try {
-        return normalizeLang(localStorage.getItem('site-lang') || document.documentElement.getAttribute('data-lang') || document.documentElement.lang || 'en');
+        return normalizeLang(document.documentElement.getAttribute('data-lang') || localStorage.getItem('site-lang') || document.documentElement.lang || 'en');
       } catch (e) {
         return normalizeLang(document.documentElement.getAttribute('data-lang') || document.documentElement.lang || 'en');
       }
@@ -442,6 +447,12 @@
     if (searchTrigger) {
       searchTrigger.addEventListener('click', rememberSearchStart, true);
     }
+
+    searchInput.addEventListener('focus', () => {
+      if (!searchInput.value.trim()) {
+        rememberSearchStart();
+      }
+    }, true);
 
     if (searchCancel) {
       searchCancel.addEventListener('click', () => {

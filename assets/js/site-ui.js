@@ -157,9 +157,41 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (sidebarTrigger && sidebarExpanded()) {
       sidebarTrigger.click();
-      sidebarTrigger.focus();
+      window.setTimeout(function() {
+        sidebarTrigger.focus();
+      }, 0);
     }
   });
+
+  function syncTocExpanded(expanded) {
+    document.querySelectorAll('.toc-trigger[aria-controls="toc-popup"]').forEach(function(trigger) {
+      trigger.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    });
+  }
+
+  var tocPopup = document.getElementById('toc-popup');
+  if (tocPopup) {
+    document.querySelectorAll('.toc-trigger[aria-controls="toc-popup"]').forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        window.setTimeout(function() {
+          syncTocExpanded(tocPopup.open);
+        }, 0);
+      });
+    });
+
+    tocPopup.addEventListener('close', function() {
+      syncTocExpanded(false);
+    });
+
+    var tocClose = document.getElementById('toc-popup-close');
+    if (tocClose) {
+      tocClose.addEventListener('click', function() {
+        window.setTimeout(function() {
+          syncTocExpanded(tocPopup.open);
+        }, 0);
+      });
+    }
+  }
 
   document.addEventListener('keydown', function(event) {
     if (event.key !== 'Tab' || !mobileSidebarQuery.matches || !sidebarExpanded() || !sidebar) {

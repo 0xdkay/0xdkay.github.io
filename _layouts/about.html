@@ -28,7 +28,7 @@ layout: page
 <div class="research-grid">
 {% for item in data.research_areas %}
 <div class="research-card">
-<div class="research-icon"><i class="{{ item.icon }}"></i></div>
+<div class="research-icon"><i class="{{ item.icon }}" aria-hidden="true"></i></div>
 {% if item.topic %}
 {% assign topic_url = '/topics/' | append: item.topic | append: '/' %}
 <h3><a href="{{ topic_url | relative_url }}">{{ item.title }}</a></h3>
@@ -90,6 +90,6 @@ layout: page
 <h2>Contact</h2>
 
 <p>
-<i class="fas fa-map-marker-alt"></i> {{ data.contact.address }}<br>
-<i class="fas fa-envelope"></i> 0xdkay [at] gmail.com
+<i class="fas fa-map-marker-alt" aria-hidden="true"></i> {{ data.contact.address }}<br>
+<i class="fas fa-envelope" aria-hidden="true"></i> 0xdkay [at] gmail.com
 </p>

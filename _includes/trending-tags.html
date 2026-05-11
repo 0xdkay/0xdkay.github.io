@@ -7,7 +7,7 @@
       {% for topic in site.data.topics %}
         {% assign topic_url = '/topics/' | append: topic.slug | append: '/' %}
         <a class="post-tag btn btn-outline-primary" href="{{ topic_url | relative_url }}">
-          {% if topic.icon %}<i class="{{ topic.icon }}"></i>{% endif %}
+          {% if topic.icon %}<i class="{{ topic.icon }}" aria-hidden="true"></i>{% endif %}
           {{ topic.short_label | default: topic.label }}
         </a>
       {% endfor %}

@@ -35,7 +35,7 @@
 
         <li class="nav-item{% if tab_active %}{{ " active" }}{% endif %}">
           <a href="{{ tab.url | relative_url }}" class="nav-link"{% if tab_active %} aria-current="page"{% endif %}>
-            <i class="fa-fw {{ tab.icon }}"></i>
+            <i class="fa-fw {{ tab.icon }}" aria-hidden="true"></i>
             {% capture tab_name %}{{ tab.url | split: '/' }}{% endcapture %}
 
             <span>{{ tab.nav_title | default: site.data.locales[include.lang].tabs.[tab_name] | default: tab.title }}</span>
@@ -92,7 +92,7 @@
             rel="{{ link_types }}"
           {% endunless %}
         >
-          <i class="{{ entry.icon }}"></i>
+          <i class="{{ entry.icon }}" aria-hidden="true"></i>
         </a>
       {% endif %}
     {% endfor %}
