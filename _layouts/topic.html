@@ -43,6 +43,7 @@ layout: page
 
 <div class="topic-page">
   <div class="topic-hero">
+    <h1 class="topic-title">{{ topic.label }}</h1>
     {% if topic.description %}
       <p class="topic-description">{{ topic.description }}</p>
     {% endif %}
@@ -74,6 +75,7 @@ layout: page
           {% include entry-date-vars.html date=paper.date year=year_group.year %}
           <article class="topic-card topic-card-publication">
             <div class="topic-card-meta">
+              <span class="topic-card-type">Publication</span>
               <span>{{ entry_date_display }}</span>
               <span>{{ paper.venue }}</span>
             </div>
@@ -108,6 +110,7 @@ layout: page
           {% include entry-date-vars.html date=talk.date year=year_group.year %}
           <article class="topic-card topic-card-talk">
             <div class="topic-card-meta">
+              <span class="topic-card-type">Talk</span>
               <span>{{ entry_date_display }}</span>
               <span>{{ talk.type }}</span>
             </div>
@@ -147,6 +150,7 @@ layout: page
       {% if display_post.topics contains topic_slug %}
         <article class="topic-card topic-card-writing">
           <div class="topic-card-meta">
+            <span class="topic-card-type">Blog</span>
             {% include datetime.html date=display_post.date class='text-muted small' lang=lang %}
           </div>
           <h3 class="topic-card-title">

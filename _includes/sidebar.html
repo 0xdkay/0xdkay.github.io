@@ -31,8 +31,6 @@
           {% if page.layout == 'post' or page.layout == 'posts' or page.layout == 'archives' or page.layout == 'category' or page.layout == 'tag' %}
             {% assign tab_active = true %}
           {% endif %}
-        {% elsif tab.url == '/' and page.layout == 'topic' %}
-          {% assign tab_active = true %}
         {% endif %}
 
         <li class="nav-item{% if tab_active %}{{ " active" }}{% endif %}">
