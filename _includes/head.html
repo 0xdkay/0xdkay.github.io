@@ -86,10 +86,15 @@
   {% if page.collection != 'posts' and page.layout != 'post' %}
     {% assign article_published_time = page.date | default: site.time | date_to_xmlschema %}
     {% assign article_published_meta = '<meta property="article:published_time" content="' | append: article_published_time | append: '" />' %}
+    {% assign build_time = site.time | date_to_xmlschema %}
+    {% assign json_date_modified = '"dateModified":"' | append: build_time | append: '",' %}
+    {% assign json_date_published = '"datePublished":"' | append: build_time | append: '",' %}
     {% assign seo_tags = seo_tags
       | replace: '<meta property="og:type" content="article" />', '<meta property="og:type" content="website" />'
       | replace: '"@type":"BlogPosting"', '"@type":"WebPage"'
       | replace: article_published_meta, ''
+      | replace: json_date_modified, ''
+      | replace: json_date_published, ''
     %}
   {% endif %}
 
@@ -111,7 +116,7 @@
 
   {{ seo_tags }}
 
-  {% if page.layout == 'tag' or page.layout == 'category' %}
+  {% if page.layout == 'tag' or page.layout == 'category' or page.layout == 'tags' or page.layout == 'categories' or page.url == '/404.html' %}
     <meta name="robots" content="noindex,follow">
   {% endif %}
 
@@ -144,7 +149,6 @@
       {
         "@context": "https://schema.org",
         "@type": "ProfilePage",
-        "dateModified": {{ site.time | date_to_xmlschema | jsonify }},
         "mainEntity": {
           "@id": {{ site.url | append: '/#person' | jsonify }},
           "@type": "Person",

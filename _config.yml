@@ -164,6 +164,9 @@ exclude:
   - purgecss.js
   - "*.config.js"
   - "package*.json"
+  - "assets/img/dkay.jpg"
+  - "assets/img/from_vuln_to_exploit.png"
+  - "assets/img/hacker.jpg"
 
 jekyll-archives:
   enabled: [categories, tags]

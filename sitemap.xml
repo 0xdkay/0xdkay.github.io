@@ -18,7 +18,10 @@ layout: null
     {%- assign seen_urls = seen_urls | push: page.url %}
   <url>
     <loc>{{ page.url | absolute_url }}</loc>
-    <lastmod>{{ page.last_modified_at | default: site.time | date_to_xmlschema }}</lastmod>
+    {%- assign page_lastmod = page.last_modified_at -%}
+    {%- if page_lastmod %}
+    <lastmod>{{ page_lastmod | date_to_xmlschema }}</lastmod>
+    {%- endif %}
   </url>
   {%- endfor -%}
   {%- for post in site.posts %}
