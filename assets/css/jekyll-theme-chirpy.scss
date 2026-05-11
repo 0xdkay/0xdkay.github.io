@@ -41,11 +41,18 @@ button:focus-visible,
 
   #search-cancel {
     align-items: center;
-    display: inline-flex;
     justify-content: center;
     min-height: 44px;
     padding-left: 0.7rem;
     padding-right: 0.7rem;
+  }
+
+  #search-cancel:not(.d-block) {
+    display: none !important;
+  }
+
+  #search-cancel.d-block {
+    display: inline-flex !important;
   }
 }
 
@@ -619,6 +626,27 @@ button:focus-visible,
   table {
     min-width: 36rem;
   }
+
+  @media (max-width: 576px) {
+    table {
+      min-width: 0;
+      width: 100%;
+      font-size: 0.78rem;
+    }
+
+    table th,
+    table td {
+      padding: 0.4rem 0.45rem;
+      overflow-wrap: anywhere;
+      white-space: normal;
+    }
+
+    .table-wrapper > table thead th,
+    .table-wrapper > table tbody tr td {
+      padding: 0.4rem 0.45rem;
+      white-space: normal;
+    }
+  }
 }
 
 /* Publication Buttons - HugoBlox Style */
@@ -1061,6 +1089,14 @@ button:focus-visible,
 }
 
 @media (pointer: coarse) {
+  .content h2 > .anchor,
+  .content h3 > .anchor,
+  .content h4 > .anchor,
+  .content h5 > .anchor,
+  .content h6 > .anchor {
+    display: none;
+  }
+
   .post-tags .post-tag,
   .share-icons > a,
   .share-icons > button {

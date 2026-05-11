@@ -339,6 +339,7 @@
     function renderCard(entry) {
       const tags = entry.tags ? `<span class="search-card-tags">${escapeHtml(entry.tags)}</span>` : '';
       const meta = entry.meta ? `<div class="search-card-context">${escapeHtml(entry.meta)}</div>` : '';
+      const detail = entry.summary ? `<p class="search-card-detail">${escapeHtml(entry.summary)}</p>` : '';
 
       return `
         <article class="search-card" data-category="${escapeHtml(entry.type || entry.categories)}">
@@ -348,7 +349,7 @@
           </div>
           <h3 class="search-card-title"><a href="${escapeHtml(entry.url)}">${escapeHtml(entry.title)}</a></h3>
           ${meta}
-          <p class="search-card-detail">${escapeHtml(entry.summary)}</p>
+          ${detail}
         </article>
       `;
     }

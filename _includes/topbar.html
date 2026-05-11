@@ -63,6 +63,8 @@
       {% elsif page.layout == 'topic' %}
         {% if topic_icon %}<i class="{{ topic_icon }} topic-breadcrumb-icon" aria-hidden="true"></i>{% endif %}
         {{- page.title -}}
+      {% elsif page.title %}
+        {{- page.title -}}
       {% else %}
         {{- site.data.locales[include.lang].layout[page.layout] | default: page.layout | capitalize -}}
       {% endif %}
