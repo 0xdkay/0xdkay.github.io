@@ -144,7 +144,6 @@ swcache: true
       {{ item.date }}
       {{ entry_date_display }}
       {{ entry_date_iso }}
-      {{ item.type }}
       {{ item.location }}
       {{ item_topics | join: ' ' }}
       {{ item_topic_labels | join: ' ' }}

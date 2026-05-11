@@ -65,7 +65,7 @@
       topics: [firmware-binary-analysis]
       keywords: "IoT firmware vulnerability analysis binary code similarity FirmAE FirmKit BinKit TikNib"
 
-    - title: "Security for Generative AI, Generative AI for Security"
+    - title: "Security for Generative AI, Generative AI for Security (Panel)"
       id: "2024-3-security-for-generative-ai-generative-ai-for-security"
       date: "2024-07-04"
       venue: "S2W Security Innovation Summit (SIS) 2024"
@@ -77,15 +77,6 @@
         - type: website
           url: "https://s2w.inc/en/event/sis/51#none"
           label: "Schedule"
-      media:
-        - label: "BoanNews"
-          url: "https://www.boannews.com/media/view.asp?idx=131131"
-        - label: "DailySecu"
-          url: "https://www.dailysecu.com/news/articleView.html?idxno=157507"
-        - label: "AI Times"
-          url: "https://www.aitimes.kr/news/articleView.html?idxno=31578"
-        - label: "DataNet"
-          url: "https://www.datanet.co.kr/news/articleView.html?idxno=194814"
 
     - title: "AI Security Primer: Red Team Perspectives on Navigating New Threats and Safeguarding AI Frontier"
       id: "2024-6-ai-security-primer-red-team-perspectives-on-navigating-new-threats-and-safeguarding-ai-frontier"

@@ -16,34 +16,24 @@ layout: page
     {% assign talk_anchor = talk.id | default: generated_talk_anchor %}
     {% include entry-date-vars.html date=talk.date year=year_group.year %}
     <article id="{{ talk_anchor }}" class="entry-card talk-card" data-topics="{{ talk.topics | join: ' ' }}">
+      {% if entry_date_display or talk.location %}
+      <div class="entry-date entry-date-top">
+        {% if entry_date_display %}<i class="far fa-calendar-alt" aria-hidden="true"></i> {{ entry_date_display }}{% endif %}{% if talk.location %}{% if entry_date_display %}<span>·</span>{% endif %}{{ talk.location }}{% endif %}
+      </div>
+      {% endif %}
       <h3 class="entry-title">
         {{ talk.title }}
         {% if talk.award %}<span class="entry-badge"><i class="fas fa-award" aria-hidden="true"></i> {{ talk.award }}</span>{% endif %}
       </h3>
       <div class="entry-venue">{{ talk.venue }}</div>
-      <div class="entry-authors">{{ talk.type }}{% if talk.location %} · {{ talk.location }}{% endif %}</div>
       {% include topic-labels.html topics=talk.topics %}
-      <div class="entry-meta{% unless talk.links %} entry-meta-date-only{% endunless %}">
-        {% if talk.links %}
+      {% if talk.links %}
+      <div class="entry-meta">
         <div class="entry-links">
           {% for link in talk.links %}
             {% include pub-button.html type=link.type url=link.url label=link.label title=talk.title %}
           {% endfor %}
         </div>
-        {% endif %}
-        {% if entry_date_display %}<div class="entry-date"><i class="far fa-calendar-alt" aria-hidden="true"></i> {{ entry_date_display }}</div>{% endif %}
-      </div>
-      {% if talk.media %}
-      <div class="entry-media">
-        <span class="media-label">Media:</span>
-        {% assign media_limit = 6 %}
-        {% for m in talk.media limit: media_limit %}<a href="{{ m.url }}">{{ m.label }}</a>{% unless forloop.last %} {% endunless %}{% endfor %}
-        {% if talk.media.size > media_limit %}
-        <details class="entry-media-more">
-          <summary>{{ talk.media.size | minus: media_limit }} more</summary>
-          {% for m in talk.media offset: media_limit %}<a href="{{ m.url }}">{{ m.label }}</a>{% unless forloop.last %} {% endunless %}{% endfor %}
-        </details>
-        {% endif %}
       </div>
       {% endif %}
     </article>
