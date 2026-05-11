@@ -40,6 +40,10 @@ swcache: true
   {% capture summary -%}{% include post-summary.html post=post max_length=240 %}{%- endcapture -%}
   {% assign post_lang = post.lang | default: 'en' %}
   {% assign post_key = post.translation_key | default: post.url %}
+  {% assign post_keywords = post.tags | join: ' ' %}
+  {% if post.keywords %}
+    {% assign post_keywords = post_keywords | append: ' ' | append: post.keywords %}
+  {% endif %}
 
   {% capture entry %}
   {
@@ -48,7 +52,7 @@ swcache: true
     "type": "Blog",
     "categories": {{ post.categories | join: ', ' | jsonify }},
     "tags": {{ post.tags | join: ', ' | jsonify }},
-    "keywords": {{ post.tags | join: ' ' | jsonify }},
+    "keywords": {{ post_keywords | strip | jsonify }},
     "date": {{ post.date | jsonify }},
     "lang": {{ post_lang | jsonify }},
     "translation_key": {{ post_key | jsonify }},

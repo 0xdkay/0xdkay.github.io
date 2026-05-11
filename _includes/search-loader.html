@@ -142,6 +142,22 @@
       return /^[a-z0-9]{1,2}$/.test(term);
     }
 
+    function isCompactAsciiTerm(term) {
+      return /^[a-z0-9]{3,4}$/.test(term);
+    }
+
+    function tokenMatchesShortQuery(fieldTokens, queryText) {
+      if (isShortAsciiTerm(queryText)) {
+        return fieldTokens.includes(queryText);
+      }
+
+      if (isCompactAsciiTerm(queryText)) {
+        return fieldTokens.some((token) => token === queryText || token.startsWith(queryText));
+      }
+
+      return false;
+    }
+
     function queryTerms(query) {
       return normalizeText(query).split(/\s+/).filter(Boolean);
     }
@@ -150,18 +166,26 @@
       return queryTerms(query).some((term) => !/^[a-z0-9]$/.test(term));
     }
 
-    function fieldScore(value, query, exactTokenWeight, substringWeight) {
+    function fieldScore(field, query, exactTokenWeight, substringWeight) {
+      const value = field.value;
       const text = normalizeText(value);
       if (!text) {
         return 0;
       }
 
       const queryText = normalizeText(query);
-      if (tokens(text).includes(queryText)) {
+      const fieldTokens = tokens(text);
+      const compactQuery = isShortAsciiTerm(queryText) || isCompactAsciiTerm(queryText);
+
+      if (fieldTokens.includes(queryText) && (!compactQuery || field.allowCompactExact !== false)) {
         return exactTokenWeight;
       }
 
-      if (isShortAsciiTerm(queryText)) {
+      if (field.allowCompactPrefix && tokenMatchesShortQuery(fieldTokens, queryText)) {
+        return Math.round(exactTokenWeight * 0.75);
+      }
+
+      if (isShortAsciiTerm(queryText) || isCompactAsciiTerm(queryText)) {
         return 0;
       }
 
@@ -180,17 +204,19 @@
         return 0;
       }
 
-      return fieldScore(entry.title, query, 100, 40);
+      return fieldScore({ value: entry.title, allowCompactPrefix: true }, query, 100, 40);
     }
 
     function relevanceForTerm(entry, query) {
+      const fields = searchableFields(entry);
+
       return categoryWeight(entry) + topicTitleBoost(entry, query) + Math.max(
-        fieldScore(entry.title, query, 600, 250),
-        fieldScore(entry.tags, query, 500, 180),
-        fieldScore(entry.categories, query, 420, 120),
-        fieldScore(entry.keywords, query, 360, 140),
-        fieldScore(entry.summary, query, 250, 80),
-        fieldScore(entry.content, query, 120, 20)
+        fieldScore(fields.title, query, 600, 250),
+        fieldScore(fields.tags, query, 500, 180),
+        fieldScore(fields.categories, query, 420, 120),
+        fieldScore(fields.keywords, query, 360, 140),
+        fieldScore(fields.summary, query, 250, 80),
+        fieldScore(fields.content, query, 120, 20)
       );
     }
 
@@ -201,32 +227,38 @@
     }
 
     function searchableFields(entry) {
-      return [
-        entry.title,
-        entry.type,
-        entry.categories,
-        entry.tags,
-        entry.keywords,
-        entry.summary,
-        entry.content
-      ];
+      return {
+        title: { value: entry.title, allowCompactPrefix: true },
+        type: { value: entry.type, allowCompactPrefix: false },
+        categories: { value: entry.categories, allowCompactPrefix: true },
+        tags: { value: entry.tags, allowCompactPrefix: true },
+        keywords: { value: entry.keywords, allowCompactPrefix: true },
+        summary: { value: entry.summary, allowCompactPrefix: true },
+        content: { value: entry.content, allowCompactPrefix: false, allowCompactExact: entry.type !== 'Blog' }
+      };
     }
 
-    function fieldMatches(value, query) {
+    function fieldMatches(field, query) {
+      const value = field.value;
       const text = normalizeText(value);
       if (!text) {
         return false;
       }
 
-      if (isShortAsciiTerm(query)) {
-        return tokens(text).includes(query);
+      const fieldTokens = tokens(text);
+      if (isShortAsciiTerm(query) || isCompactAsciiTerm(query)) {
+        if (fieldTokens.includes(query) && field.allowCompactExact !== false) {
+          return true;
+        }
+
+        return Boolean(field.allowCompactPrefix) && tokenMatchesShortQuery(fieldTokens, query);
       }
 
       return text.includes(query);
     }
 
     function matches(entry, query) {
-      const fields = searchableFields(entry);
+      const fields = Object.values(searchableFields(entry));
       return queryTerms(query).every((term) => fields.some((field) => fieldMatches(field, term)));
     }
 
