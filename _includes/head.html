@@ -85,7 +85,7 @@
 
   {% if page.collection == 'posts' or page.layout == 'post' %}
     {%- capture post_author_json -%}
-      "author":{"@type":"Person","name":{{ site.social.name | default: site.title | jsonify }},"url":{{ site.url | jsonify }}},
+      "author":{"@id":{{ site.url | append: '/#person' | jsonify }},"@type":"Person","name":{{ site.social.name | default: site.title | jsonify }},"url":{{ site.url | jsonify }}},
     {%- endcapture -%}
     {% unless seo_tags contains '"author":' %}
       {%- capture post_author_target -%}"dateModified":{%- endcapture -%}
@@ -166,10 +166,12 @@
   {% endif %}
 
   {% if page.url == '/' %}
+    {% assign profile_modified_at = page.last_modified_at | default: site.time | date_to_xmlschema %}
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "ProfilePage",
+        "dateModified": {{ profile_modified_at | jsonify }},
         "mainEntity": {
           "@id": {{ site.url | append: '/#person' | jsonify }},
           "@type": "Person",
