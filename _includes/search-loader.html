@@ -79,7 +79,7 @@
 
       const filterRoot = target.closest('[data-topic-filter-root]');
       const allFilter = filterRoot && filterRoot.querySelector('[data-topic-filter="all"]');
-      const shouldRevealAll = target.hidden || !link.search;
+      const shouldRevealAll = target.hidden;
 
       if (!shouldRevealAll) {
         return;
@@ -267,7 +267,7 @@
         tags: { value: entry.tags, allowCompactPrefix: true },
         keywords: { value: entry.keywords, allowCompactPrefix: true },
         summary: { value: entry.summary, allowCompactPrefix: true },
-        content: { value: entry.content, allowCompactPrefix: false, allowCompactExact: entry.type !== 'Blog' }
+        content: { value: entry.content, allowCompactPrefix: false, allowCompactExact: true }
       };
     }
 
@@ -340,9 +340,10 @@
       const tags = entry.tags ? `<span class="search-card-tags">${escapeHtml(entry.tags)}</span>` : '';
       const meta = entry.meta ? `<div class="search-card-context">${escapeHtml(entry.meta)}</div>` : '';
       const detail = entry.summary ? `<p class="search-card-detail">${escapeHtml(entry.summary)}</p>` : '';
+      const entryLang = normalizeLang(entry.lang || currentLang());
 
       return `
-        <article class="search-card" data-category="${escapeHtml(entry.type || entry.categories)}">
+        <article class="search-card" data-category="${escapeHtml(entry.type || entry.categories)}" lang="${escapeHtml(entryLang)}">
           <div class="search-card-meta">
             <span class="search-card-type">${escapeHtml(entry.type || entry.categories)}</span>
             ${tags}
@@ -405,16 +406,29 @@
         acc[group.key] = [];
         return acc;
       }, {});
+      const groupScores = resultGroups.reduce((acc, group) => {
+        acc[group.key] = 0;
+        return acc;
+      }, {});
 
-      matchesByScore.forEach(({ entry }) => {
+      matchesByScore.forEach(({ entry, score }) => {
         if (grouped[entry.type]) {
           grouped[entry.type].push(entry);
+          groupScores[entry.type] = Math.max(groupScores[entry.type], score);
         }
+      });
+      const sectionGroups = resultGroups.slice().sort((a, b) => {
+        const scoreDiff = groupScores[b.key] - groupScores[a.key];
+        if (scoreDiff !== 0) {
+          return scoreDiff;
+        }
+
+        return resultGroups.indexOf(a) - resultGroups.indexOf(b);
       });
 
       resultsContainer.innerHTML = [
         renderStats(grouped),
-        ...resultGroups.map((group) => renderSection(group, grouped[group.key]))
+        ...sectionGroups.map((group) => renderSection(group, grouped[group.key]))
       ].join('');
     }
 

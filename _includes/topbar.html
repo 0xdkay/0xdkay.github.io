@@ -91,7 +91,7 @@
           class="form-control"
           id="search-input"
           type="search"
-          aria-label="search"
+          aria-label="{{ site.data.locales[include.lang].search.hint | capitalize }}"
           autocomplete="off"
           placeholder="{{ site.data.locales[include.lang].search.hint | capitalize }}..."
         >

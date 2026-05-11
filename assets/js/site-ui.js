@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', function() {
   if (searchInput) {
     searchInput.addEventListener('focus', function() {
       window.setTimeout(function() {
-        syncSearchExpanded(true);
+        syncSearchExpanded();
       }, 0);
     });
 

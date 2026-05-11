@@ -47,7 +47,15 @@ document.addEventListener('DOMContentLoaded', function() {
     var searchInput = document.getElementById('search-input');
     if (searchInput) {
       searchInput.setAttribute('placeholder', lang === 'ko' ? '검색...' : 'Search...');
+      searchInput.setAttribute('aria-label', lang === 'ko' ? '검색' : 'Search');
     }
+
+    document.querySelectorAll('.lang-en, .lang-en-block').forEach(function(element) {
+      element.setAttribute('lang', 'en');
+    });
+    document.querySelectorAll('.lang-ko, .lang-ko-block').forEach(function(element) {
+      element.setAttribute('lang', 'ko');
+    });
 
     var searchCancel = document.getElementById('search-cancel');
     if (searchCancel) {
@@ -78,7 +86,9 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   btn.addEventListener('click', function() {
-    var current = normalizeLang(readLang() || document.documentElement.getAttribute('data-lang') || 'en');
+    var current = postHasAlternate()
+      ? normalizeLang(langData.dataset.current)
+      : normalizeLang(document.documentElement.getAttribute('data-lang') || readLang() || 'en');
     var newLang = current === 'en' ? 'ko' : 'en';
 
     if (postHasAlternate() && normalizeLang(langData.dataset.current) !== newLang) {
