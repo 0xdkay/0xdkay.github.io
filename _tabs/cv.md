@@ -197,4 +197,16 @@ Thesis: *Dissecting VoLTE: Exploiting Free Data Channels and Security Problems*
 | Codegate CTF | 3rd Place ($5K) | KAIST GoN | Apr 2012 |
 | ISEC CTF | 1st Place ($10K) | GoN | Sep 2011 |
 
+<p class="cv-selected-coverage"><strong>Selected coverage:</strong>
+<a href="https://www.darpa.mil/news/2025/aixcc-results">DARPA AIxCC</a>
+<span>·</span>
+<a href="https://www.cc.gatech.edu/news/georgia-tech-makes-history-wins-darpa-challenge">Georgia Tech</a>
+<span>·</span>
+<a href="https://www.dailysecu.com/news/articleView.html?idxno=26292">WhiteHat/HDCON 2017</a>
+<span>·</span>
+<a href="https://www.dailysecu.com/news/articleView.html?idxno=1982">Codegate 2012</a>
+<span>·</span>
+<a href="https://www.boannews.com/media/view.asp?idx=27702">ISEC 2011</a>
+</p>
+
 </div>

@@ -33,6 +33,19 @@ layout: page
         {% endif %}
         {% if entry_date_display %}<div class="entry-date"><i class="far fa-calendar-alt" aria-hidden="true"></i> {{ entry_date_display }}</div>{% endif %}
       </div>
+      {% if talk.media %}
+      <div class="entry-media">
+        <span class="media-label">Media:</span>
+        {% assign media_limit = 6 %}
+        {% for m in talk.media limit: media_limit %}<a href="{{ m.url }}">{{ m.label }}</a>{% unless forloop.last %} {% endunless %}{% endfor %}
+        {% if talk.media.size > media_limit %}
+        <details class="entry-media-more">
+          <summary>{{ talk.media.size | minus: media_limit }} more</summary>
+          {% for m in talk.media offset: media_limit %}<a href="{{ m.url }}">{{ m.label }}</a>{% unless forloop.last %} {% endunless %}{% endfor %}
+        </details>
+        {% endif %}
+      </div>
+      {% endif %}
     </article>
   {% endfor %}
 </div>
