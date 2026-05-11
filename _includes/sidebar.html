@@ -36,7 +36,7 @@
         {% endif %}
 
         <li class="nav-item{% if tab_active %}{{ " active" }}{% endif %}">
-          <a href="{{ tab.url | relative_url }}" class="nav-link">
+          <a href="{{ tab.url | relative_url }}" class="nav-link"{% if tab_active %} aria-current="page"{% endif %}>
             <i class="fa-fw {{ tab.icon }}"></i>
             {% capture tab_name %}{{ tab.url | split: '/' }}{% endcapture %}
 

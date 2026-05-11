@@ -3,6 +3,14 @@
 
 @use 'main';
 
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--link-color);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 3px rgba(var(--link-color-rgb, 79, 156, 243), 0.18);
+}
+
 /* Sidebar tagline */
 .site-subtitle {
   @media (max-width: 576px) {
