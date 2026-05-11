@@ -70,14 +70,21 @@
       }
     }
 
-    function revealFilteredTarget(hash) {
+    function revealFilteredTarget(link) {
+      const hash = link.hash;
       const target = targetFromHash(hash);
-      if (!target || !target.hidden) {
+      if (!target) {
         return;
       }
 
       const filterRoot = target.closest('[data-topic-filter-root]');
       const allFilter = filterRoot && filterRoot.querySelector('[data-topic-filter="all"]');
+      const shouldRevealAll = target.hidden || !link.search;
+
+      if (!shouldRevealAll) {
+        return;
+      }
+
       if (filterRoot && typeof filterRoot.applyTopicFilter === 'function') {
         filterRoot.applyTopicFilter('all');
       } else if (allFilter) {
@@ -87,7 +94,7 @@
 
     function navigateSamePageLink(link) {
       closeSearchWithoutScrollRestore();
-      revealFilteredTarget(link.hash);
+      revealFilteredTarget(link);
 
       window.setTimeout(() => {
         const nextUrl = link.pathname + link.search + link.hash;
@@ -318,7 +325,7 @@
           return `<button type="button" data-search-target="${group.id}">${escapeHtml(label)}</button>`;
         }
 
-        return `<span>${escapeHtml(label)}</span>`;
+        return `<span class="search-stat-static">${escapeHtml(label)}</span>`;
       });
 
       return `<div class="search-stats">${items.join('')}</div>`;

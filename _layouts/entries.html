@@ -117,8 +117,8 @@ document.addEventListener('keydown', function(e) {
 {% for item in items %}
 {% assign generated_item_anchor = year_group.year | append: '-' | append: forloop.index | append: '-' | append: item.title | slugify %}
 {% assign item_anchor = item.id | default: generated_item_anchor %}
-<div id="{{ item_anchor }}" class="entry-card" data-topics="{{ item.topics | join: ' ' }}">
-<div class="entry-title">{{ item.title }}{% if item.badge %}<span class="entry-badge"><i class="fas fa-award"></i> {{ item.badge }}</span>{% endif %}</div>
+<article id="{{ item_anchor }}" class="entry-card" data-topics="{{ item.topics | join: ' ' }}">
+<h3 class="entry-title">{{ item.title }}{% if item.badge %}<span class="entry-badge"><i class="fas fa-award"></i> {{ item.badge }}</span>{% endif %}</h3>
 <div class="entry-authors">{{ item.authors | default: item.speaker }}</div>
 <div class="entry-venue">{{ item.venue }}</div>
 {% include topic-labels.html topics=item.topics %}
@@ -137,7 +137,7 @@ document.addEventListener('keydown', function(e) {
 {% for m in item.media %}<a href="{{ m.url }}">{{ m.label }}</a>{% unless forloop.last %} {% endunless %}{% endfor %}
 </div>
 {% endif %}
-</div>
+</article>
 {% endfor %}
 
 </div>

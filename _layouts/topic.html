@@ -77,11 +77,11 @@ layout: page
             <div class="topic-card-meta">
               <span class="topic-card-type">Publication</span>
               <span>{{ entry_date_display }}</span>
-              <span>{{ paper.venue }}</span>
             </div>
             <h3 class="topic-card-title">
               <a href="{{ '/publications/#' | append: paper_anchor | relative_url }}">{{ paper.title }}</a>
             </h3>
+            <div class="topic-card-detail">{{ paper.venue }}</div>
           </article>
         {% endif %}
       {% endfor %}

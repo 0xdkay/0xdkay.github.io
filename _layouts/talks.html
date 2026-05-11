@@ -15,11 +15,11 @@ layout: page
     {% assign generated_talk_anchor = year_group.year | append: '-' | append: forloop.index | append: '-' | append: talk.title | slugify %}
     {% assign talk_anchor = talk.id | default: generated_talk_anchor %}
     {% include entry-date-vars.html date=talk.date year=year_group.year %}
-    <div id="{{ talk_anchor }}" class="entry-card talk-card" data-topics="{{ talk.topics | join: ' ' }}">
-      <div class="entry-title">
+    <article id="{{ talk_anchor }}" class="entry-card talk-card" data-topics="{{ talk.topics | join: ' ' }}">
+      <h3 class="entry-title">
         {{ talk.title }}
         {% if talk.award %}<span class="entry-badge"><i class="fas fa-award"></i> {{ talk.award }}</span>{% endif %}
-      </div>
+      </h3>
       <div class="entry-venue">{{ talk.venue }}</div>
       <div class="entry-authors">{{ talk.type }}{% if talk.location %} · {{ talk.location }}{% endif %}</div>
       {% include topic-labels.html topics=talk.topics %}
@@ -33,7 +33,7 @@ layout: page
         {% endif %}
         {% if entry_date_display %}<div class="entry-date"><i class="far fa-calendar-alt"></i> {{ entry_date_display }}</div>{% endif %}
       </div>
-    </div>
+    </article>
   {% endfor %}
 </div>
 {% endfor %}

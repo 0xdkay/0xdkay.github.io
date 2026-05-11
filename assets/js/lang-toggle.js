@@ -22,11 +22,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  function update(lang) {
+  function update(lang, options) {
+    options = options || {};
     lang = normalizeLang(lang);
     document.documentElement.setAttribute('data-lang', lang);
     document.documentElement.setAttribute('lang', lang);
-    writeLang(lang);
+    if (options.persist !== false) {
+      writeLang(lang);
+    }
     var current = lang === 'ko' ? '한국어' : 'English';
     var target = lang === 'ko' ? 'English' : 'Korean';
     btn.querySelector('span').textContent = current;
@@ -48,6 +51,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
   var langData = document.getElementById('post-lang-data');
 
+  function postHasAlternate() {
+    return langData && langData.dataset.hasAlt === 'true' && Boolean(langData.dataset.altUrl);
+  }
+
   function documentLang() {
     return langData && langData.dataset.current
       ? normalizeLang(langData.dataset.current)
@@ -55,14 +62,21 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   var initialLang = documentLang();
+  var forcedPostLang = langData && !postHasAlternate();
 
-  update(initialLang);
+  update(initialLang, { persist: !forcedPostLang });
+
+  if (langData && !postHasAlternate()) {
+    btn.hidden = true;
+    btn.disabled = true;
+    return;
+  }
 
   btn.addEventListener('click', function() {
     var current = normalizeLang(readLang() || document.documentElement.getAttribute('data-lang') || 'en');
     var newLang = current === 'en' ? 'ko' : 'en';
 
-    if (langData && normalizeLang(langData.dataset.current) !== newLang) {
+    if (postHasAlternate() && normalizeLang(langData.dataset.current) !== newLang) {
       writeLang(newLang);
       window.location.href = langData.dataset.altUrl;
       return;

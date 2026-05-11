@@ -7,9 +7,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
   var searchCancel = document.getElementById('search-cancel');
   var searchInput = document.getElementById('search-input');
+  var searchWrapper = document.getElementById('search-result-wrapper');
   var searchTrigger = document.getElementById('search-trigger');
   var sidebarTrigger = document.getElementById('sidebar-trigger');
   var sidebar = document.getElementById('sidebar');
+  var mainWrapper = document.getElementById('main-wrapper');
   var mask = document.getElementById('mask');
   var mobileSidebarQuery = window.matchMedia('(max-width: 1199.98px)');
 
@@ -39,6 +41,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (mobileSidebarQuery.matches && !sidebarExpanded()) {
       sidebar.setAttribute('aria-hidden', 'true');
       sidebar.inert = true;
+      if (mainWrapper) {
+        mainWrapper.inert = false;
+      }
       return;
     }
 
@@ -46,17 +51,39 @@ document.addEventListener('DOMContentLoaded', function() {
     sidebar.inert = false;
 
     if (mobileSidebarQuery.matches && sidebarExpanded()) {
+      if (mainWrapper) {
+        mainWrapper.inert = true;
+      }
+
       var focusables = sidebarFocusables();
       if (focusables.length && !sidebar.contains(document.activeElement)) {
         focusables[0].focus();
       }
+    } else if (mainWrapper) {
+      mainWrapper.inert = false;
     }
   }
 
   function syncSearchExpanded(expanded) {
+    if (typeof expanded === 'undefined') {
+      expanded = Boolean(searchWrapper && !searchWrapper.classList.contains('d-none'));
+    }
+
     if (searchTrigger) {
       searchTrigger.setAttribute('aria-expanded', expanded ? 'true' : 'false');
     }
+
+    if (searchWrapper) {
+      searchWrapper.setAttribute('aria-hidden', expanded ? 'false' : 'true');
+    }
+  }
+
+  function searchExpanded() {
+    return Boolean(
+      searchWrapper && !searchWrapper.classList.contains('d-none') ||
+      searchInput && searchInput.value ||
+      searchTrigger && searchTrigger.getAttribute('aria-expanded') === 'true'
+    );
   }
 
   if (sidebarTrigger) {
@@ -80,15 +107,38 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (searchTrigger) {
     searchTrigger.addEventListener('click', function() {
-      syncSearchExpanded(true);
+      window.setTimeout(function() {
+        syncSearchExpanded(true);
+      }, 0);
+    });
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('focus', function() {
+      window.setTimeout(function() {
+        syncSearchExpanded(true);
+      }, 0);
+    });
+
+    searchInput.addEventListener('input', function() {
+      window.setTimeout(function() {
+        syncSearchExpanded();
+      }, 0);
     });
   }
 
   if (searchCancel && searchInput) {
     searchCancel.addEventListener('click', function() {
+      var shouldRestoreFocus = document.activeElement === searchInput || document.activeElement === searchCancel ||
+        Boolean(searchWrapper && searchWrapper.contains(document.activeElement));
       searchInput.value = '';
       searchInput.dispatchEvent(new Event('input', { bubbles: true }));
-      syncSearchExpanded(false);
+      window.setTimeout(function() {
+        syncSearchExpanded(false);
+        if (shouldRestoreFocus && searchTrigger) {
+          searchTrigger.focus();
+        }
+      }, 0);
     });
   }
 
@@ -97,9 +147,11 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
 
-    if (searchCancel && searchTrigger && searchTrigger.getAttribute('aria-expanded') === 'true') {
+    if (searchCancel && searchExpanded()) {
       searchCancel.click();
-      searchTrigger.focus();
+      if (searchTrigger) {
+        searchTrigger.focus();
+      }
       return;
     }
 

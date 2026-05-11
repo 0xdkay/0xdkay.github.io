@@ -223,12 +223,13 @@
     .lang-ko,
     .lang-ko-block { display: none !important; }
     [data-lang="ko"] .lang-en { display: none !important; }
-    [data-lang="ko"] .lang-ko { display: inline !important; }
-    [data-lang="ko"] .lang-en-block { display: none !important; }
-    [data-lang="ko"] .lang-ko-block { display: block !important; }
-    [data-lang="ko"] .post-preview.lang-ko-block { display: flex !important; }
-    [data-lang="ko"] .post-navigation .lang-ko-block { display: inline-block !important; }
-  </style>
+      [data-lang="ko"] .lang-ko { display: inline !important; }
+      [data-lang="ko"] .lang-en-block { display: none !important; }
+      [data-lang="ko"] .lang-ko-block { display: block !important; }
+      [data-lang="ko"] .post-preview.lang-ko-block { display: flex !important; }
+      [data-lang="ko"] .related-post-card.lang-ko-block { display: flex !important; }
+      [data-lang="ko"] .post-navigation .lang-ko-block { display: inline-block !important; }
+    </style>
 
   {% include js-selector.html lang=lang %}
 

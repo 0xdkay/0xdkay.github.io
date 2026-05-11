@@ -104,20 +104,37 @@ script_includes:
   {% if enable_toc %}
     <div id="toc-bar" class="d-flex align-items-center justify-content-between invisible">
       <span class="label text-truncate">{{ page.title }}</span>
-      <button type="button" class="toc-trigger btn me-1">
+      <button
+        type="button"
+        class="toc-trigger btn me-1"
+        aria-label="{{ site.data.locales[lang].panel.toc }}"
+        aria-controls="toc-popup"
+        aria-haspopup="dialog"
+      >
         <i class="fa-solid fa-list-ul fa-fw"></i>
       </button>
     </div>
 
-    <button id="toc-solo-trigger" type="button" class="toc-trigger btn btn-outline-secondary btn-sm">
+    <button
+      id="toc-solo-trigger"
+      type="button"
+      class="toc-trigger btn btn-outline-secondary btn-sm"
+      aria-controls="toc-popup"
+      aria-haspopup="dialog"
+    >
       <span class="label ps-2 pe-1">{{- site.data.locales[lang].panel.toc -}}</span>
       <i class="fa-solid fa-angle-right fa-fw"></i>
     </button>
 
-    <dialog id="toc-popup" class="p-0">
+    <dialog id="toc-popup" class="p-0" aria-labelledby="toc-popup-title">
       <div class="header d-flex flex-row align-items-center justify-content-between">
-        <div class="label text-truncate py-2 ms-4">{{- page.title -}}</div>
-        <button id="toc-popup-close" type="button" class="btn mx-1 my-1 opacity-75">
+        <div id="toc-popup-title" class="label text-truncate py-2 ms-4">{{- page.title -}}</div>
+        <button
+          id="toc-popup-close"
+          type="button"
+          class="btn mx-1 my-1 opacity-75"
+          aria-label="Close table of contents"
+        >
           <i class="fas fa-close"></i>
         </button>
       </div>
@@ -146,18 +163,15 @@ script_includes:
     {% assign alt_post = alt_matches | first %}
 
     {% if alt_post %}
-      {% if page_lang == 'ko' %}
-        <p class="post-lang-switch"><em>Read this post in <a href="{{ alt_post.url | relative_url }}">{{ alt_label }}</a>.</em></p>
-      {% else %}
-        <p class="post-lang-switch"><em>Read this post in <a href="{{ alt_post.url | relative_url }}">{{ alt_label }}</a>.</em></p>
-      {% endif %}
-      <span
-        id="post-lang-data"
-        data-current="{{ page_lang }}"
-        data-alt-url="{{ alt_post.url | relative_url }}"
-        style="display:none;"
-      ></span>
+      <p class="post-lang-switch"><em>Read this post in <a href="{{ alt_post.url | relative_url }}">{{ alt_label }}</a>.</em></p>
     {% endif %}
+    <span
+      id="post-lang-data"
+      data-current="{{ page_lang }}"
+      data-has-alt="{% if alt_post %}true{% else %}false{% endif %}"
+      {% if alt_post %}data-alt-url="{{ alt_post.url | relative_url }}"{% endif %}
+      style="display:none;"
+    ></span>
 
     {{ content }}
   </div>

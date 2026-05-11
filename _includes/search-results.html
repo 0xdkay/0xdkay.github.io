@@ -1,6 +1,12 @@
 <!-- The Search results -->
 
-<div id="search-result-wrapper" class="d-flex justify-content-center d-none">
+<div
+  id="search-result-wrapper"
+  class="d-flex justify-content-center d-none"
+  role="region"
+  aria-label="Search results"
+  aria-hidden="true"
+>
   <div class="col-11 content">
     <div id="search-hints">
       {% include_cached trending-tags.html lang=include.lang %}
