@@ -47,19 +47,33 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   var langData = document.getElementById('post-lang-data');
-  var initialLang = langData && langData.dataset.current
-    ? normalizeLang(langData.dataset.current)
-    : (readLang() || document.documentElement.getAttribute('lang') || 'en');
+
+  function documentLang() {
+    return langData && langData.dataset.current
+      ? normalizeLang(langData.dataset.current)
+      : normalizeLang(readLang() || document.documentElement.getAttribute('lang') || 'en');
+  }
+
+  var initialLang = documentLang();
 
   update(initialLang);
 
   btn.addEventListener('click', function() {
     var current = normalizeLang(readLang() || document.documentElement.getAttribute('data-lang') || 'en');
     var newLang = current === 'en' ? 'ko' : 'en';
-    update(newLang);
 
     if (langData && normalizeLang(langData.dataset.current) !== newLang) {
+      writeLang(newLang);
       window.location.href = langData.dataset.altUrl;
+      return;
+    }
+
+    update(newLang);
+  });
+
+  window.addEventListener('pageshow', function(event) {
+    if (event.persisted) {
+      update(documentLang());
     }
   });
 

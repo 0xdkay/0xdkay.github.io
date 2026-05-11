@@ -64,7 +64,8 @@ document.addEventListener('DOMContentLoaded', function() {
           url.searchParams.set('topic', topic);
         }
 
-        history.replaceState(null, '', url.pathname + url.search + url.hash);
+        var historyMethod = button.dataset.topicFilterHistory === 'replace' ? 'replaceState' : 'pushState';
+        history[historyMethod](null, '', url.pathname + url.search + url.hash);
       });
     });
 
@@ -122,6 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     applyHashFilter();
     window.addEventListener('hashchange', applyHashFilter);
+    window.addEventListener('popstate', applyHashFilter);
   });
 });
 </script>

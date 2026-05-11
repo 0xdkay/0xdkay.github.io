@@ -47,7 +47,6 @@
     function isSamePageHashLink(link) {
       return link.origin === window.location.origin &&
         link.pathname === window.location.pathname &&
-        link.search === window.location.search &&
         Boolean(link.hash);
     }
 
@@ -80,23 +79,31 @@
       const filterRoot = target.closest('[data-topic-filter-root]');
       const allFilter = filterRoot && filterRoot.querySelector('[data-topic-filter="all"]');
       if (allFilter) {
+        allFilter.dataset.topicFilterHistory = 'replace';
         allFilter.click();
+        delete allFilter.dataset.topicFilterHistory;
       }
     }
 
-    function navigateSamePageHash(hash) {
+    function navigateSamePageLink(link) {
       closeSearchWithoutScrollRestore();
-      revealFilteredTarget(hash);
+      revealFilteredTarget(link.hash);
 
       window.setTimeout(() => {
-        if (window.location.hash !== hash) {
-          window.location.hash = hash;
-          return;
+        const nextUrl = link.pathname + link.search + link.hash;
+        const currentUrl = window.location.pathname + window.location.search + window.location.hash;
+
+        if (currentUrl !== nextUrl) {
+          history.pushState(null, '', nextUrl);
         }
 
-        const target = targetFromHash(hash);
+        const target = targetFromHash(link.hash);
         if (target) {
+          if (!target.hasAttribute('tabindex')) {
+            target.setAttribute('tabindex', '-1');
+          }
           target.scrollIntoView({ block: 'start' });
+          target.focus({ preventScroll: true });
         }
       }, 0);
     }
@@ -399,7 +406,7 @@
 
         if (isSamePageHashLink(link)) {
           event.preventDefault();
-          navigateSamePageHash(link.hash);
+          navigateSamePageLink(link);
           return;
         }
 
@@ -410,7 +417,11 @@
 
       const target = document.getElementById(trigger.dataset.searchTarget);
       if (target) {
+        if (!target.hasAttribute('tabindex')) {
+          target.setAttribute('tabindex', '-1');
+        }
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        target.focus({ preventScroll: true });
       }
     });
 

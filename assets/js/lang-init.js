@@ -12,7 +12,8 @@
   }
 
   var htmlLang = document.documentElement.getAttribute('lang') || 'en';
-  var lang = normalizeLang(readLang() || htmlLang);
+  var isPostPage = /^\/posts\/[^/]+\/?$/.test(window.location.pathname);
+  var lang = normalizeLang(isPostPage ? htmlLang : (readLang() || htmlLang));
   document.documentElement.setAttribute('data-lang', lang);
   document.documentElement.setAttribute('lang', lang);
 })();
