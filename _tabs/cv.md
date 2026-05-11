@@ -6,8 +6,8 @@ description: "CV of Dongkwan Kim, a security researcher at Microsoft with experi
 ---
 
 <div class="cv-links">
-<a href="/pub/Dongkwan_cv.pdf"><i class="fas fa-file-pdf"></i> Full CV</a>
-<a href="/pub/Dongkwan_resume.pdf"><i class="fas fa-file-alt"></i> Resume</a>
+<a href="/pub/Dongkwan_cv.pdf"><i class="fas fa-file-pdf" aria-hidden="true"></i> Full CV</a>
+<a href="/pub/Dongkwan_resume.pdf"><i class="fas fa-file-alt" aria-hidden="true"></i> Resume</a>
 </div>
 
 <div class="cv-section" markdown="1">
