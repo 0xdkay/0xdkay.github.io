@@ -205,6 +205,10 @@ script_includes:
       </div>
     {% endif %}
 
+    {% if page.topics %}
+      {% include topic-labels.html topics=page.topics %}
+    {% endif %}
+
     <div
       class="
         post-tail-bottom

@@ -63,11 +63,16 @@ layout: default
         </p>
       </div>
       {% if thumbnail %}
-        <div
+        <img
           class="writing-thumb"
-          style="background-image: url('{{ thumbnail.path | default: thumbnail | relative_url }}');"
+          src="{{ thumbnail.path | default: thumbnail | relative_url }}"
+          alt=""
           aria-hidden="true"
-        ></div>
+          loading="lazy"
+          decoding="async"
+          width="112"
+          height="112"
+        >
       {% endif %}
     </article>
   {% endfor %}

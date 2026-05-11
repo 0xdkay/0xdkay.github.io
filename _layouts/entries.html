@@ -129,6 +129,7 @@ document.addEventListener('keydown', function(e) {
 <h3 class="entry-title">{{ item.title }}{% if item.badge %}<span class="entry-badge"><i class="fas fa-award" aria-hidden="true"></i> {{ item.badge }}</span>{% endif %}</h3>
 <div class="entry-authors">{{ item.authors | default: item.speaker }}</div>
 <div class="entry-venue">{{ item.venue }}</div>
+{% if item.summary %}<p class="entry-summary">{{ item.summary }}</p>{% endif %}
 {% include topic-labels.html topics=item.topics %}
 {% include entry-date-vars.html date=item.date year=year_group.year %}
 <div class="entry-meta">

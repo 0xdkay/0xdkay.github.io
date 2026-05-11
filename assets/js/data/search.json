@@ -57,7 +57,7 @@ swcache: true
     "lang": {{ post_lang | jsonify }},
     "translation_key": {{ post_key | jsonify }},
     "summary": {{ summary | jsonify }},
-    "content": {{ content | strip | jsonify }}
+    "content": {{ content | strip | truncate: 3500 | jsonify }}
   }
   {% endcapture %}
 
@@ -81,7 +81,8 @@ swcache: true
       {% endif %}
       {% assign item_topic_labels = item_topic_labels | push: topic_label %}
     {% endfor %}
-    {% capture summary -%}{{ item.authors | strip_html }} · {{ item.venue }}{%- endcapture -%}
+    {% capture fallback_summary -%}{{ item.authors | strip_html }} · {{ item.venue }}{%- endcapture -%}
+    {% assign item_summary = item.summary | default: fallback_summary %}
     {% capture content -%}
       {{ item.title }}
       {{ item.authors | strip_html }}
@@ -89,6 +90,7 @@ swcache: true
       {{ item.date }}
       {{ entry_date_display }}
       {{ entry_date_iso }}
+      {{ item.summary }}
       {{ item_topics | join: ' ' }}
       {{ item_topic_labels | join: ' ' }}
       {{ item_keywords }}
@@ -108,7 +110,7 @@ swcache: true
       "date": {{ entry_date_iso | jsonify }},
       "lang": "en",
       "translation_key": {{ item_url | jsonify }},
-      "summary": {{ summary | strip | truncate: 240 | jsonify }},
+      "summary": {{ item_summary | strip | truncate: 240 | jsonify }},
       "content": {{ content | strip | jsonify }}
     }
     {% endcapture %}
@@ -134,7 +136,8 @@ swcache: true
       {% endif %}
       {% assign item_topic_labels = item_topic_labels | push: topic_label %}
     {% endfor %}
-    {% capture summary -%}{{ item.venue }} · {{ entry_date_display }}{%- endcapture -%}
+    {% capture fallback_summary -%}{{ item.venue }} · {{ entry_date_display }}{%- endcapture -%}
+    {% assign item_summary = item.summary | default: fallback_summary %}
     {% capture content -%}
       {{ item.title }}
       {{ item.speaker | strip_html }}
@@ -142,6 +145,7 @@ swcache: true
       {{ item.date }}
       {{ entry_date_display }}
       {{ entry_date_iso }}
+      {{ item.summary }}
       {{ item.type }}
       {{ item.location }}
       {{ item_topics | join: ' ' }}
@@ -163,7 +167,7 @@ swcache: true
       "date": {{ entry_date_iso | jsonify }},
       "lang": "en",
       "translation_key": {{ item_url | jsonify }},
-      "summary": {{ summary | strip | truncate: 240 | jsonify }},
+      "summary": {{ item_summary | strip | truncate: 240 | jsonify }},
       "content": {{ content | strip | jsonify }}
     }
     {% endcapture %}

@@ -81,6 +81,9 @@ layout: page
             <h3 class="topic-card-title">
               <a href="{{ '/publications/#' | append: paper_anchor | relative_url }}">{{ paper.title }}</a>
             </h3>
+            {% if paper.summary %}
+              <p class="topic-card-detail">{{ paper.summary }}</p>
+            {% endif %}
             <div class="topic-card-detail">{{ paper.venue }}</div>
           </article>
         {% endif %}
@@ -117,6 +120,9 @@ layout: page
             <h3 class="topic-card-title">
               <a href="{{ '/talks/#' | append: talk_anchor | relative_url }}">{{ talk.title }}</a>
             </h3>
+            {% if talk.summary %}
+              <p class="topic-card-detail">{{ talk.summary }}</p>
+            {% endif %}
             <div class="topic-card-detail">{{ talk.venue }}{% if talk.location %} · {{ talk.location }}{% endif %}</div>
           </article>
         {% endif %}

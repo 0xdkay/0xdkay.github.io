@@ -3,28 +3,28 @@
   short_label: "AI"
   icon: "fas fa-robot"
   description: "LLM agents, cyber reasoning systems, fuzzing, exploit generation, program analysis, red teaming, and scalable defenses."
-  keywords: "인공지능 AI 보안 취약점 자동화 익스플로잇"
+  keywords: "인공지능 AI 보안 취약점 자동화 익스플로잇 AIxCC ATLANTIS OSS-CRS LLM agents cyber reasoning system CRS red team"
 
 - slug: mobile-cellular
   label: "Mobile & Cellular"
   short_label: "Mobile & Cellular"
   icon: "fas fa-broadcast-tower"
   description: "Cellular baseband, VoLTE/IMS, LTE networks, protocol reversing, control-plane vulnerabilities, and mobile platform security."
-  keywords: "모바일 셀룰러 기지국 베이스밴드 통신 VoLTE LTE"
+  keywords: "모바일 셀룰러 기지국 베이스밴드 통신 VoLTE LTE BaseSpec BaseComp SCAT Watching the Watchers"
 
 - slug: firmware-binary-analysis
   label: "Firmware & Binary Analysis"
   short_label: "Firmware & Binary"
   icon: "fas fa-bug"
   description: "IoT firmware emulation, binary-code similarity, reversing, vulnerability analysis, and automated testing."
-  keywords: "펌웨어 바이너리 IoT 에뮬레이션 리버싱 취약점 분석"
+  keywords: "펌웨어 바이너리 IoT 에뮬레이션 리버싱 취약점 분석 FirmAE FirmKit BinKit TikNib BaseComp BaseSpec"
 
 - slug: cyber-physical-sensor-security
   label: "Cyber-Physical & Sensor Security"
   short_label: "Cyber-Physical & Sensor"
   icon: "fas fa-microchip"
   description: "Drones, sensors, embedded devices, EMI/acoustic injection, recovery, mitigation, and physical security systems."
-  keywords: "드론 센서 임베디드 사이버물리 CPS EMI 음향 주입"
+  keywords: "드론 센서 임베디드 사이버물리 CPS EMI 음향 주입 Rocking Drones UnRocker Paralyzing Drones BurnFit wearable"
 
 - slug: other
   label: "Other"

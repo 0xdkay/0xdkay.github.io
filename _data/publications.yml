@@ -6,6 +6,8 @@
       authors: "Andrew Chin, <strong>Dongkwan Kim</strong>, Yu-Fu Fu, Fabian Fleischer, Youngjoon Kim, HyungSeok Han, Cen Zhang, Brian Junekyu Lee, Hanqing Zhao, Taesoo Kim"
       venue: "arXiv"
       topics: [ai-security]
+      summary: "OpenSSF cyber reasoning system framework for applying AIxCC-style vulnerability discovery and patching to real-world open-source security."
+      keywords: "OSS-CRS OpenSSF AIxCC CRS cyber reasoning system vulnerability discovery patching open source security"
       links:
         - type: pdf
           url: "https://arxiv.org/pdf/2603.08566"
@@ -29,6 +31,8 @@
       authors: "Cen Zhang, Younggi Park, Fabian Fleischer, Yu-Fu Fu, Jiho Kim, <strong>Dongkwan Kim</strong>, Youngjoon Kim, Qingxiao Xu, Andrew Chin, Ze Sheng, Hanqing Zhao, Brian J. Lee, Joshua Wang, Michael Pelican, David J. Musliner, Jeff Huang, Jon Silliman, Mikel Mcdaniel, Jefferson Casavant, Isaac Goldthwaite, Nicholas Vidovich, Matthew Lehman, Taesoo Kim"
       venue: "arXiv"
       topics: [ai-security]
+      summary: "Systematization of DARPA AI Cyber Challenge design, finalist CRS architectures, and lessons for AI-driven vulnerability discovery and patching."
+      keywords: "AIxCC DARPA AI Cyber Challenge CRS ATLANTIS cyber reasoning system LLM agents vulnerability discovery patching competition design"
       links:
         - type: pdf
           url: "https://arxiv.org/pdf/2602.07666"
@@ -44,6 +48,8 @@
       authors: "Taesoo Kim, HyungSeok Han, Soyeon Park, Dae R. Jeong, Dohyeok Kim, <strong>Dongkwan Kim</strong>, Eunsoo Kim, Jiho Kim, Joshua Wang, Kangsu Kim, Sangwoo Ji, Woosun Song, Hanqing Zhao, Andrew Chin, Gyejin Lee, Kevin Stevens, Mansour Alharthi, Yizhuo Zhai, Cen Zhang, Joonun Jang, Yeongjin Jang, Ammar Askar, Dongju Kim, Fabian Fleischer, Jeongin Cho, Junsik Kim, Kyungjoon Ko, Insu Yun, Sangdon Park, Dowoo Baik, Haein Lee, Hyeon Heo, Minjae Gwon, Minjae Lee, Minwoo Baek, Seunggi Min, Wonyoung Kim, Yonghwi Jin, Younggi Park, Yunjae Choi, Jinho Jung, Gwanhyun Lee, Junyoung Jang, Kyuheon Kim, Yeonghyeon Cha, Youngjoon Kim"
       venue: "arXiv"
       topics: [ai-security]
+      summary: "Technical report for Team Atlanta's first-place AIxCC cyber reasoning system, combining LLM agents, fuzzing, program analysis, and patching."
+      keywords: "ATLANTIS Team Atlanta AIxCC DARPA cyber reasoning system CRS CRS-Multilang Atlantis-Multilang MLLA BGA BCDA LLM agents fuzzing program analysis exploit generation vulnerability discovery patching"
       links:
         - type: pdf
           url: "/pub/2025/kim-arxiv25-atlantis.pdf"
@@ -106,6 +112,8 @@
       authors: "Eunsoo Kim*, Min Woo Baek*, CheolJun Park, <strong>Dongkwan Kim</strong>, Yongdae Kim, Insu Yun"
       venue: "USENIX Security 2023"
       topics: [mobile-cellular, firmware-binary-analysis]
+      summary: "Comparative analysis of integrity protection mechanisms across cellular baseband firmware and vendor implementations."
+      keywords: "BaseComp cellular baseband firmware binary analysis integrity protection mobile security"
       links:
         - type: pdf
           url: "/pub/2023/kim-sec23-basecomp.pdf"
@@ -120,10 +128,11 @@
     - title: "Un-Rocking Drones: Foundations of Acoustic Injection Attacks and Recovery Thereof"
       id: "2023-2-un-rocking-drones-foundations-of-acoustic-injection-attacks-and-recovery-thereof"
       date: "2023-03-02"
-      keywords: "드론 음향 주입 센서 복구"
+      keywords: "UnRocker drone drones acoustic injection sensor recovery mitigation 드론 음향 주입 센서 복구"
       authors: "Jinseob Jeong, <strong>Dongkwan Kim</strong>, Joonha Jang, Juhwan Noh, Changhun Song, and Yongdae Kim"
       venue: "NDSS 2023"
       topics: [cyber-physical-sensor-security]
+      summary: "Acoustic injection attacks against drones and foundations for recovery and mitigation."
       links:
         - type: pdf
           url: "/pub/2023/jung-ndss23-unrocker.pdf"
@@ -143,10 +152,11 @@
     - title: "Paralyzing Drones via EMI Signal Injection on Sensory Communication Channels"
       id: "2023-3-paralyzing-drones-via-emi-signal-injection-on-sensory-communication-channels"
       date: "2023-03-02"
-      keywords: "드론 EMI 전자기파 주입 센서"
+      keywords: "Paralyzing Drones EMI signal injection sensory communication channels drone drones embedded sensors 드론 EMI 전자기파 주입 센서"
       authors: "Joonha Jang*, ManGi Cho*, Jaehoon Kim, <strong>Dongkwan Kim</strong>, and Yongdae Kim"
       venue: "NDSS 2023"
       topics: [cyber-physical-sensor-security]
+      summary: "EMI signal injection attacks on sensory communication channels in drone and embedded systems."
       links:
         - type: pdf
           url: "/pub/2023/jang-ndss23-paralyzing.pdf"
@@ -200,6 +210,8 @@
       authors: "Sangwook Bae, Mincheol Son, <strong>Dongkwan Kim</strong>, CheolJun Park, Jiho Lee, Sooel Son, and Yongdae Kim"
       venue: "USENIX Security 2022"
       topics: [mobile-cellular]
+      summary: "Practical video identification attack in LTE networks, with SCAT-based cellular traffic diagnosis support."
+      keywords: "Watching the Watchers SCAT LTE cellular mobile video identification attack closed network diagnosis"
       links:
         - type: pdf
           url: "/pub/2022/bae-sec22-watching.pdf"
@@ -219,6 +231,8 @@
       authors: "<strong>Dongkwan Kim</strong>, Eunsoo Kim, Sang Kil Cha, Sooel Son, and Yongdae Kim"
       venue: "IEEE Transactions on Software Engineering (TSE)"
       topics: [firmware-binary-analysis, ai-security]
+      summary: "Interpretable binary-code similarity analysis with BinKit and TikNib for vulnerability analysis and benchmarking."
+      keywords: "BinKit TikNib binary code similarity BCSA interpretable feature engineering vulnerability analysis benchmark AI security"
       links:
         - type: pdf
           url: "/pub/2022/kim-tse22-binkit.pdf"
@@ -237,6 +251,8 @@
       authors: "<strong>Dongkwan Kim</strong>"
       venue: "Ph.D. Thesis"
       topics: [firmware-binary-analysis, ai-security]
+      summary: "Large-scale IoT firmware vulnerability analysis using emulation heuristics and binary-code similarity, including FirmKit."
+      keywords: "FirmKit IoT firmware vulnerability analysis binary code similarity emulation heuristics FirmAE BinKit TikNib AI security"
       links:
         - type: pdf
           url: "/pub/2022/kim-phdthesis2022.pdf"
@@ -256,6 +272,8 @@
       authors: "<strong>Dongkwan Kim</strong>, Eunsoo Kim, Mingeun Kim, Yeongjin Jang, and Yongdae Kim"
       venue: "IEEE Security & Privacy"
       topics: [firmware-binary-analysis]
+      summary: "Large-scale IoT firmware emulation with heuristic workarounds for dynamic security analysis."
+      keywords: "IoT firmware emulation heuristic workarounds dynamic analysis FirmAE firmware analysis"
       links:
         - type: website
           url: "https://ieeexplore.ieee.org/abstract/document/9431371"
@@ -269,6 +287,8 @@
       authors: "<strong>Dongkwan Kim</strong>*, Eunsoo Kim*, CheolJun Park, Insu Yun, and Yongdae Kim"
       venue: "NDSS 2021"
       topics: [mobile-cellular, firmware-binary-analysis]
+      summary: "Comparative analysis of cellular baseband software and L3 protocol specifications for finding inconsistencies."
+      keywords: "BaseSpec cellular baseband software L3 protocols specification comparison mobile security firmware binary analysis"
       links:
         - type: pdf
           url: "/pub/2021/kim-ndss2021.pdf"
@@ -288,6 +308,8 @@
       authors: "Mingeun Kim, <strong>Dongkwan Kim</strong>, Eunsoo Kim, Suryeon Kim, Yeongjin Jang, and Yongdae Kim"
       venue: "ACSAC 2020"
       topics: [firmware-binary-analysis]
+      summary: "Large-scale IoT firmware emulation framework for dynamic analysis, vulnerability discovery, and PoC validation."
+      keywords: "FirmAE IoT firmware emulation dynamic analysis firmware vulnerability discovery CVE PoC"
       links:
         - type: pdf
           url: "/pub/2020/kim-acsac2020.pdf"
@@ -326,6 +348,8 @@
       authors: "Byeongdo Hong, Shinjo Park, Hongil Kim, <strong>Dongkwan Kim</strong>, Hyunwook Hong, Hyunwoo Choi, Jean-Pierre Seifert, Sung-Ju Lee, and Yongdae Kim"
       venue: "IEEE Transactions on Mobile Computing (TMC)"
       topics: [mobile-cellular]
+      summary: "Closed cellular network diagnosis method and SCAT tooling for peeking over cellular walled gardens."
+      keywords: "SCAT cellular walled gardens closed network diagnosis LTE mobile network analysis"
       links:
         - type: pdf
           url: "/pub/2018/hong-tmc2018.pdf"
@@ -370,6 +394,8 @@
       authors: "<strong>Dongkwan Kim</strong>"
       venue: "M.S. Thesis"
       topics: [mobile-cellular]
+      summary: "Study of VoLTE security problems, free data channels, and LTE/IMS mis-implementations."
+      keywords: "VoLTE LTE IMS mobile cellular security hidden data channels mis-implementations"
       links:
         - type: pdf
           url: "/pub/2016/kim-msthesis2016.pdf"
@@ -384,6 +410,8 @@
       authors: "<strong>Dongkwan Kim</strong>*, Hongil Kim*, Minhee Kwon, Hyungseok Han, Yeongjin Jang, Dongsu Han, Taesoo Kim, and Yongdae Kim"
       venue: "ACM CCS 2015"
       topics: [mobile-cellular]
+      summary: "VoLTE security analysis showing hidden data channels, charging bypass risks, and implementation flaws in operational LTE networks."
+      keywords: "VoLTE LTE IMS hidden data channels charging bypass CVE-2015-6614 CERT VU#943167 mobile cellular security"
       links:
         - type: pdf
           url: "/pub/2015/volte/kim-ccs2015.pdf"
@@ -422,6 +450,8 @@
       venue: "WISA 2015"
       topics: [cyber-physical-sensor-security, firmware-binary-analysis]
       badge: "Best Paper"
+      summary: "Security analysis of wearable devices, combining embedded-device analysis with cyber-physical attack surfaces."
+      keywords: "BurnFit wearable devices embedded security cyber-physical firmware analysis"
       links:
         - type: pdf
           url: "/pub/2015/burnfit/kim-wisa2015.pdf"
@@ -433,10 +463,11 @@
     - title: "Rocking Drones with Intentional Sound Noise on Gyroscopic Sensors"
       id: "2015-3-rocking-drones-with-intentional-sound-noise-on-gyroscopic-sensors"
       date: "2015-08-14"
-      keywords: "드론 음향 소음 자이로스코프 센서"
+      keywords: "Rocking Drones drone drones acoustic sound noise gyroscope sensors cyber-physical 드론 음향 소음 자이로스코프 센서"
       authors: "Yunmok Son, Hocheol Shin, <strong>Dongkwan Kim</strong>, Youngseok Park, Juhwan Noh, Kibum Choi, Jungwoo Choi, and Yongdae Kim"
       venue: "USENIX Security 2015"
       topics: [cyber-physical-sensor-security]
+      summary: "Acoustic sound-noise attacks against drone gyroscopic sensors and cyber-physical control stability."
       links:
         - type: pdf
           url: "/pub/2015/rocking_drones/son-sec2015.pdf"
