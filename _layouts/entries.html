@@ -3,16 +3,18 @@ layout: page
 ---
 
 <!-- BibTeX Modal -->
-<div id="bibtexModal" class="bibtex-modal" role="dialog" aria-modal="true" aria-labelledby="bibtexModalTitle" aria-describedby="bibtexContent" hidden>
-  <button type="button" class="bibtex-modal-overlay" aria-label="Close BibTeX dialog" onclick="closeBibtexModal()"></button>
+<div id="bibtexModal" class="bibtex-modal" role="dialog" aria-modal="true" aria-labelledby="bibtexModalTitle" aria-describedby="bibtexModalDescription" hidden>
+  <div class="bibtex-modal-overlay" aria-hidden="true" onclick="closeBibtexModal()"></div>
   <div class="bibtex-modal-content" tabindex="-1">
     <div class="bibtex-modal-header">
       <h3 id="bibtexModalTitle">BibTeX Entry</h3>
       <button type="button" onclick="closeBibtexModal()" class="bibtex-close-btn" aria-label="Close BibTeX dialog">&times;</button>
     </div>
+    <p id="bibtexModalDescription" class="visually-hidden">BibTeX entry. Use the Copy button to copy the citation.</p>
     <pre id="bibtexContent" tabindex="0"></pre>
     <div class="bibtex-modal-footer">
       <button type="button" onclick="copyBibtex()" class="pub-btn pub-btn-bibtex" id="copyBibtexBtn"><i class="fas fa-copy"></i> Copy</button>
+      <span id="bibtexCopyStatus" class="visually-hidden" aria-live="polite"></span>
     </div>
   </div>
 </div>
@@ -52,9 +54,16 @@ function copyBibtex() {
   var text = document.getElementById('bibtexContent').textContent;
   navigator.clipboard.writeText(text).then(function() {
     var btn = document.getElementById('copyBibtexBtn');
+    var status = document.getElementById('bibtexCopyStatus');
     btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+    if (status) {
+      status.textContent = 'BibTeX copied.';
+    }
     setTimeout(function() {
       btn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+      if (status) {
+        status.textContent = '';
+      }
     }, 2000);
   });
 }
@@ -70,7 +79,7 @@ document.addEventListener('keydown', function(e) {
 
   if (e.key !== 'Tab') return;
 
-  var focusable = modal.querySelectorAll('button, [href], pre[tabindex="0"], [tabindex]:not([tabindex="-1"])');
+  var focusable = modal.querySelectorAll('.bibtex-modal-content button, .bibtex-modal-content [href], .bibtex-modal-content pre[tabindex="0"], .bibtex-modal-content [tabindex]:not([tabindex="-1"])');
   if (!focusable.length) return;
 
   var first = focusable[0];

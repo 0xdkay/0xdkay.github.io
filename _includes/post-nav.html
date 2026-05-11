@@ -72,14 +72,14 @@
     <a
       href="{{ older_display_en.url | relative_url }}"
       class="btn btn-outline-primary lang-en-block"
-      aria-label="{{ previous_en }}"
+      aria-label="{{ previous_en }} post: {{ older_display_en.title | strip_html | escape }}"
     >
       <p>{{ older_display_en.title }}</p>
     </a>
     <a
       href="{{ older_display_ko.url | relative_url }}"
       class="btn btn-outline-primary lang-ko-block"
-      aria-label="{{ previous_ko }}"
+      aria-label="{{ previous_ko }} 글: {{ older_display_ko.title | strip_html | escape }}"
       style="display:none;"
     >
       <p>{{ older_display_ko.title }}</p>
@@ -121,14 +121,14 @@
     <a
       href="{{ newer_display_en.url | relative_url }}"
       class="btn btn-outline-primary lang-en-block"
-      aria-label="{{ next_en }}"
+      aria-label="{{ next_en }} post: {{ newer_display_en.title | strip_html | escape }}"
     >
       <p>{{ newer_display_en.title }}</p>
     </a>
     <a
       href="{{ newer_display_ko.url | relative_url }}"
       class="btn btn-outline-primary lang-ko-block"
-      aria-label="{{ next_ko }}"
+      aria-label="{{ next_ko }} 글: {{ newer_display_ko.title | strip_html | escape }}"
       style="display:none;"
     >
       <p>{{ newer_display_ko.title }}</p>
