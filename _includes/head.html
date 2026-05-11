@@ -83,6 +83,27 @@
     {% assign seo_tags = seo_tags | append: image_alt_meta %}
   {% endif %}
 
+  {% if page.collection == 'posts' or page.layout == 'post' %}
+    {%- capture post_author_json -%}
+      "author":{"@type":"Person","name":{{ site.social.name | default: site.title | jsonify }},"url":{{ site.url | jsonify }}},
+    {%- endcapture -%}
+    {% unless seo_tags contains '"author":' %}
+      {%- capture post_author_target -%}"dateModified":{%- endcapture -%}
+      {%- capture post_author_replacement -%}{{ post_author_json }}"dateModified":{%- endcapture -%}
+      {% assign seo_tags = seo_tags | replace: post_author_target, post_author_replacement %}
+    {% endunless %}
+    {% if img_url and seo_tags contains '"@type":"BlogPosting"' %}
+      {%- capture post_image_json -%}
+        "image":{{ img_url | jsonify }},
+      {%- endcapture -%}
+      {% unless seo_tags contains '"image":' %}
+        {%- capture post_image_target -%}"mainEntityOfPage":{%- endcapture -%}
+        {%- capture post_image_replacement -%}{{ post_image_json }}"mainEntityOfPage":{%- endcapture -%}
+        {% assign seo_tags = seo_tags | replace: post_image_target, post_image_replacement %}
+      {% endunless %}
+    {% endif %}
+  {% endif %}
+
   {% if page.collection != 'posts' and page.layout != 'post' %}
     {% assign article_published_time = page.date | default: site.time | date_to_xmlschema %}
     {% assign article_published_meta = '<meta property="article:published_time" content="' | append: article_published_time | append: '" />' %}

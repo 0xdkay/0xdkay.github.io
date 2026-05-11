@@ -7,7 +7,6 @@
       location: "Netherlands (Virtual)"
       type: Invited
       topics: [ai-security]
-      summary: "Talk on Team Atlanta, ATLANTIS, and the AIxCC architecture for AI-driven vulnerability discovery and patching."
       keywords: "AIxCC ATLANTIS Team Atlanta CRS CRS-Multilang Atlantis-Multilang MLLA BGA BCDA LLM agents vulnerability discovery patching exploit generation"
       links:
         - type: slides
@@ -23,7 +22,6 @@
       location: "Seoul, South Korea"
       type: Invited
       topics: [ai-security]
-      summary: "AI security primer from a red-team perspective, covering new threats around AI-integrated systems."
       keywords: "AI security red team frontier AI prompt injection model abuse secure deployment"
 
 - year: 2024
@@ -35,7 +33,6 @@
       location: "Seoul, South Korea"
       type: Invited
       topics: [ai-security]
-      summary: "Red-team perspective on emerging AI security threats and operational review of AI-integrated systems."
       keywords: "AI security red team frontier AI prompt injection model abuse secure deployment"
       links:
         - type: slides
@@ -48,7 +45,6 @@
       location: "Seoul, South Korea"
       type: Invited
       topics: [ai-security]
-      summary: "AI security primer from a red-team perspective, covering new threats around AI-integrated systems."
       keywords: "AI security red team frontier AI prompt injection model abuse secure deployment"
 
     - title: "AI Security Primer: Red Team Perspectives on Navigating New Threats and Safeguarding AI Frontier"
@@ -58,7 +54,6 @@
       location: "Seoul, South Korea"
       type: Invited
       topics: [ai-security]
-      summary: "Primer on AI security and red-team perspectives for safeguarding AI frontier systems."
       keywords: "AI security red team frontier AI prompt injection model abuse secure deployment"
 
     - title: "Scaling up Vulnerability Analysis of IoT Devices with Heuristics and Binary Code Similarity"
@@ -68,7 +63,6 @@
       location: "Seoul, South Korea"
       type: Invited
       topics: [firmware-binary-analysis]
-      summary: "Talk on scaling IoT firmware vulnerability analysis with emulation heuristics and binary-code similarity."
       keywords: "IoT firmware vulnerability analysis binary code similarity FirmAE FirmKit BinKit TikNib"
 
     - title: "Security for Generative AI, Generative AI for Security"
@@ -78,7 +72,6 @@
       location: "Seoul, South Korea"
       type: Panel
       topics: [ai-security]
-      summary: "Panel on securing generative AI systems and using generative AI for security automation."
       keywords: "generative AI security AI for security red team secure AI"
       links:
         - type: website
@@ -92,7 +85,6 @@
       location: "Seoul, South Korea"
       type: Invited
       topics: [ai-security]
-      summary: "AI security primer covering red-team approaches to new threats and AI frontier safeguards."
       keywords: "AI security red team frontier AI prompt injection model abuse secure deployment"
       links:
         - type: slides
@@ -108,7 +100,6 @@
       location: "Seoul, South Korea"
       type: Invited
       topics: [firmware-binary-analysis]
-      summary: "Talk on large-scale IoT firmware vulnerability analysis with emulation heuristics and binary-code similarity."
       keywords: "IoT firmware vulnerability analysis binary code similarity FirmAE FirmKit BinKit TikNib"
       links:
         - type: slides
@@ -126,6 +117,7 @@
       location: "Daejeon, South Korea"
       type: Invited
       topics: [other]
+      keywords: "patch gap vulnerability disclosure enterprise security Samsung SDS KAIST"
 
 - year: 2021
   talks:
@@ -136,7 +128,6 @@
       location: "USA (Virtual)"
       type: Conference
       topics: [mobile-cellular, firmware-binary-analysis]
-      summary: "Conference talk on BaseSpec, comparing cellular baseband software against L3 protocol specifications."
       keywords: "BaseSpec cellular baseband L3 protocols mobile security firmware binary analysis"
       links:
         - type: slides
@@ -156,7 +147,6 @@
       location: "Toronto, Canada"
       type: Invited
       topics: [mobile-cellular]
-      summary: "Invited talk on VoLTE hidden data channels and LTE/IMS implementation flaws."
       keywords: "VoLTE LTE IMS mobile cellular security hidden data channels"
 
     - title: "Breaking and Fixing VoLTE: Exploiting Hidden Data Channels and Mis-implementations"
@@ -167,7 +157,6 @@
       type: Invited
       topics: [mobile-cellular]
       award: "Best Presentation Award"
-      summary: "Talk on VoLTE hidden data channels, LTE/IMS mis-implementations, and fixes."
       keywords: "VoLTE LTE IMS mobile cellular security hidden data channels"
 
 - year: 2015
@@ -179,7 +168,6 @@
       location: "Hamburg, Germany"
       type: Invited
       topics: [mobile-cellular]
-      summary: "32C3 talk on VoLTE free data channels and security problems in operational cellular networks."
       keywords: "VoLTE 32C3 LTE IMS mobile cellular security hidden data channels"
       links:
         - type: video
@@ -192,7 +180,6 @@
       location: "Daejeon, South Korea"
       type: Invited
       topics: [mobile-cellular]
-      summary: "Invited talk on VoLTE security vulnerabilities and fixes."
       keywords: "VoLTE LTE IMS mobile cellular security"
 
     - title: "Breaking VoLTE, not VoIP"
@@ -202,7 +189,6 @@
       location: "Seoul, South Korea"
       type: Invited
       topics: [mobile-cellular]
-      summary: "Power of Community talk on breaking VoLTE beyond traditional VoIP assumptions."
       keywords: "VoLTE PoC LTE IMS mobile cellular security"
       links:
         - type: slides
@@ -218,7 +204,6 @@
       location: "Denver, USA"
       type: Conference
       topics: [mobile-cellular]
-      summary: "CCS talk on VoLTE hidden data channels and mis-implementations in LTE networks."
       keywords: "VoLTE CCS LTE IMS mobile cellular security"
       links:
         - type: slides
@@ -234,7 +219,6 @@
       location: "Atlanta, USA"
       type: Invited
       topics: [mobile-cellular]
-      summary: "Invited talk on VoLTE hidden data channels and LTE/IMS implementation flaws."
       keywords: "VoLTE LTE IMS mobile cellular security"
 
     - title: "BurnFit: Analyzing and Exploiting Wearable Devices"
@@ -245,7 +229,6 @@
       type: Conference
       topics: [cyber-physical-sensor-security, firmware-binary-analysis]
       award: "Best Paper Award"
-      summary: "Conference talk on BurnFit and security analysis of wearable embedded devices."
       keywords: "BurnFit wearable devices embedded security cyber-physical firmware analysis"
       links:
         - type: slides
@@ -258,7 +241,6 @@
       location: "Daejeon, South Korea"
       type: Invited
       topics: [mobile-cellular]
-      summary: "Talk on mitigations for VoLTE security vulnerabilities in operational LTE networks."
       keywords: "VoLTE LTE IMS mobile cellular security mitigations"
 
 - year: 2013
@@ -270,3 +252,4 @@
       location: "Seoul, South Korea"
       type: Invited
       topics: [other]
+      keywords: "CTF attack-defense competition NetSec-KR security training"

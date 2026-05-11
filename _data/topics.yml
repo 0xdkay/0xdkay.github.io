@@ -1,8 +1,8 @@
 - slug: ai-security
   label: "AI Security"
-  short_label: "AI"
+  short_label: "AI Sec"
   icon: "fas fa-robot"
-  description: "LLM agents, cyber reasoning systems, fuzzing, exploit generation, program analysis, red teaming, and scalable defenses."
+  description: "LLM agents, cyber reasoning systems, ML-assisted vulnerability analysis, fuzzing, exploit generation, program analysis, red teaming, and scalable defenses."
   keywords: "인공지능 AI 보안 취약점 자동화 익스플로잇 AIxCC ATLANTIS OSS-CRS LLM agents cyber reasoning system CRS red team"
 
 - slug: mobile-cellular
@@ -30,5 +30,5 @@
   label: "Other"
   short_label: "Other"
   icon: "fas fa-folder-open"
-  description: "Security work and blog posts outside the four focused research areas."
-  keywords: "기타 보안"
+  description: "Cross-domain, legacy, and CTF-related work outside the four focused research areas."
+  keywords: "기타 보안 legacy cross-domain CTF blockchain biomedical optics patch gap"

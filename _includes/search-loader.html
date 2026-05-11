@@ -192,7 +192,7 @@
     }
 
     function queryTerms(query) {
-      return normalizeText(query).split(/\s+/).filter(Boolean);
+      return normalizeText(query).split(/[\s,.;:!?()[\]{}"'~<>|\/\\_-]+/).filter(Boolean);
     }
 
     function hasSearchableTerms(query) {
@@ -338,6 +338,7 @@
 
     function renderCard(entry) {
       const tags = entry.tags ? `<span class="search-card-tags">${escapeHtml(entry.tags)}</span>` : '';
+      const meta = entry.meta ? `<div class="search-card-context">${escapeHtml(entry.meta)}</div>` : '';
 
       return `
         <article class="search-card" data-category="${escapeHtml(entry.type || entry.categories)}">
@@ -346,6 +347,7 @@
             ${tags}
           </div>
           <h3 class="search-card-title"><a href="${escapeHtml(entry.url)}">${escapeHtml(entry.title)}</a></h3>
+          ${meta}
           <p class="search-card-detail">${escapeHtml(entry.summary)}</p>
         </article>
       `;
