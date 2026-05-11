@@ -13,6 +13,7 @@
     const resultsContainer = document.getElementById('search-results');
     let allEntries = [];
     let searchStartScrollY = window.scrollY || 0;
+    let skipNextSearchCancelRestore = false;
 
     if (!searchInput || !resultsContainer) {
       return;
@@ -33,6 +34,57 @@
 
     function restoreSearchStart() {
       window.scrollTo(0, searchStartScrollY);
+    }
+
+    function isPlainPrimaryClick(event) {
+      return event.button === 0 &&
+        !event.metaKey &&
+        !event.ctrlKey &&
+        !event.shiftKey &&
+        !event.altKey;
+    }
+
+    function isSamePageHashLink(link) {
+      return link.origin === window.location.origin &&
+        link.pathname === window.location.pathname &&
+        link.search === window.location.search &&
+        Boolean(link.hash);
+    }
+
+    function targetFromHash(hash) {
+      const rawId = hash.replace(/^#/, '');
+      if (!rawId) {
+        return null;
+      }
+
+      try {
+        return document.getElementById(decodeURIComponent(rawId));
+      } catch (e) {
+        return document.getElementById(rawId);
+      }
+    }
+
+    function closeSearchWithoutScrollRestore() {
+      if (searchCancel) {
+        skipNextSearchCancelRestore = true;
+        searchCancel.click();
+      }
+    }
+
+    function navigateSamePageHash(hash) {
+      closeSearchWithoutScrollRestore();
+
+      window.setTimeout(() => {
+        if (window.location.hash !== hash) {
+          window.location.hash = hash;
+          return;
+        }
+
+        const target = targetFromHash(hash);
+        if (target) {
+          target.scrollIntoView({ block: 'start' });
+        }
+      }, 0);
     }
 
     function normalizeLang(lang) {
@@ -270,17 +322,17 @@
       const trigger = event.target.closest('[data-search-target]');
       if (!trigger) {
         const link = event.target.closest('a[href]');
-        if (
-          link &&
-          event.button === 0 &&
-          !event.metaKey &&
-          !event.ctrlKey &&
-          !event.shiftKey &&
-          !event.altKey &&
-          link.origin === window.location.origin
-        ) {
-          restoreSearchStart();
+        if (!link || !isPlainPrimaryClick(event) || link.origin !== window.location.origin) {
+          return;
         }
+
+        if (isSamePageHashLink(link)) {
+          event.preventDefault();
+          navigateSamePageHash(link.hash);
+          return;
+        }
+
+        restoreSearchStart();
 
         return;
       }
@@ -297,6 +349,11 @@
 
     if (searchCancel) {
       searchCancel.addEventListener('click', () => {
+        if (skipNextSearchCancelRestore) {
+          skipNextSearchCancelRestore = false;
+          return;
+        }
+
         window.setTimeout(restoreSearchStart, 0);
       });
     }
