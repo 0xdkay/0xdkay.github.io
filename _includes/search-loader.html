@@ -8,8 +8,11 @@
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('search-input');
+    const searchTrigger = document.getElementById('search-trigger');
+    const searchCancel = document.getElementById('search-cancel');
     const resultsContainer = document.getElementById('search-results');
     let allEntries = [];
+    let searchStartScrollY = window.scrollY || 0;
 
     if (!searchInput || !resultsContainer) {
       return;
@@ -23,6 +26,14 @@
     ];
 
     const noResultsHtml = {{ not_found | strip_newlines | jsonify }};
+
+    function rememberSearchStart() {
+      searchStartScrollY = window.scrollY || 0;
+    }
+
+    function restoreSearchStart() {
+      window.scrollTo(0, searchStartScrollY);
+    }
 
     function normalizeLang(lang) {
       return lang && lang.indexOf('ko') === 0 ? 'ko' : 'en';
@@ -258,6 +269,19 @@
     resultsContainer.addEventListener('click', (event) => {
       const trigger = event.target.closest('[data-search-target]');
       if (!trigger) {
+        const link = event.target.closest('a[href]');
+        if (
+          link &&
+          event.button === 0 &&
+          !event.metaKey &&
+          !event.ctrlKey &&
+          !event.shiftKey &&
+          !event.altKey &&
+          link.origin === window.location.origin
+        ) {
+          restoreSearchStart();
+        }
+
         return;
       }
 
@@ -266,6 +290,16 @@
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
+
+    if (searchTrigger) {
+      searchTrigger.addEventListener('click', rememberSearchStart, true);
+    }
+
+    if (searchCancel) {
+      searchCancel.addEventListener('click', () => {
+        window.setTimeout(restoreSearchStart, 0);
+      });
+    }
 
     if (searchInput) {
       searchInput.addEventListener('input', renderResults);
