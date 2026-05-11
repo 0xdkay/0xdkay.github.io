@@ -174,7 +174,7 @@
         const label = countLabel(group, count);
 
         if (count > 0) {
-          return `<a href="#${group.id}">${escapeHtml(label)}</a>`;
+          return `<button type="button" data-search-target="${group.id}">${escapeHtml(label)}</button>`;
         }
 
         return `<span>${escapeHtml(label)}</span>`;
@@ -254,6 +254,18 @@
         ...resultGroups.map((group) => renderSection(group, grouped[group.key]))
       ].join('');
     }
+
+    resultsContainer.addEventListener('click', (event) => {
+      const trigger = event.target.closest('[data-search-target]');
+      if (!trigger) {
+        return;
+      }
+
+      const target = document.getElementById(trigger.dataset.searchTarget);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
 
     if (searchInput) {
       searchInput.addEventListener('input', renderResults);
