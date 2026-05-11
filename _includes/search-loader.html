@@ -146,6 +146,10 @@
       return normalizeText(query).split(/\s+/).filter(Boolean);
     }
 
+    function hasSearchableTerms(query) {
+      return queryTerms(query).some((term) => !/^[a-z0-9]$/.test(term));
+    }
+
     function fieldScore(value, query, exactTokenWeight, substringWeight) {
       const text = normalizeText(value);
       if (!text) {
@@ -301,7 +305,7 @@
     function renderResults() {
       const query = searchInput.value.trim();
 
-      if (!query) {
+      if (!query || !hasSearchableTerms(query)) {
         resultsContainer.innerHTML = '';
         return;
       }
