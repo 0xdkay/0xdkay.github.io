@@ -22,7 +22,6 @@ layout: page
       </h3>
       <div class="entry-venue">{{ talk.venue }}</div>
       <div class="entry-authors">{{ talk.type }}{% if talk.location %} · {{ talk.location }}{% endif %}</div>
-      {% if talk.summary %}<p class="entry-summary">{{ talk.summary }}</p>{% endif %}
       {% include topic-labels.html topics=talk.topics %}
       <div class="entry-meta{% unless talk.links %} entry-meta-date-only{% endunless %}">
         {% if talk.links %}

@@ -62,7 +62,10 @@
 
 {% if update_list.size > 0 %}
   <section id="access-lastmod">
-    <h2 class="panel-heading">{{- site.data.locales[include.lang].panel.lastmod -}}</h2>
+    <h2 class="panel-heading">
+      <span class="lang-en">Recent Work</span>
+      <span class="lang-ko" style="display:none;">최근 작업</span>
+    </h2>
     <ul class="content list-unstyled ps-0 pb-1 ms-1 mt-2">
       {% for item in update_list %}
         {% assign fields = item | split: '::' %}

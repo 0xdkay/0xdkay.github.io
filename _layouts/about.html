@@ -28,12 +28,11 @@ layout: page
 <div class="research-grid">
 {% for item in data.research_areas %}
 <div class="research-card">
-<div class="research-icon"><i class="{{ item.icon }}" aria-hidden="true"></i></div>
 {% if item.topic %}
 {% assign topic_url = '/topics/' | append: item.topic | append: '/' %}
-<h3><a href="{{ topic_url | relative_url }}">{{ item.title }}</a></h3>
+<h3><span class="research-icon"><i class="{{ item.icon }}" aria-hidden="true"></i></span><a href="{{ topic_url | relative_url }}">{{ item.title }}</a></h3>
 {% else %}
-<h3>{{ item.title }}</h3>
+<h3><span class="research-icon"><i class="{{ item.icon }}" aria-hidden="true"></i></span>{{ item.title }}</h3>
 {% endif %}
 <p>{{ item.description }}</p>
 {% if item.links %}
