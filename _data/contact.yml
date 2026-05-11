@@ -1,19 +1,24 @@
 - type: email
+  label: Email
   icon: "fas fa-envelope"
   noblank: true
 
 - type: google-scholar
+  label: Google Scholar
   icon: "fas fa-graduation-cap"
   url: "https://scholar.google.com/citations?user=p16UJy8AAAAJ"
 
 - type: orcid
+  label: ORCID
   icon: "fab fa-orcid"
   url: "https://orcid.org/0000-0003-3642-0253"
 
 - type: github
+  label: GitHub
   icon: "fab fa-github"
 
 - type: linkedin
+  label: LinkedIn
   icon: "fab fa-linkedin"
   url: "https://linkedin.com/in/0xdkay"
 
