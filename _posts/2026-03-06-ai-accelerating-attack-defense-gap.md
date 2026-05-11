@@ -14,7 +14,7 @@ thumbnail:
 
 The time from vulnerability disclosure to working exploit code has reportedly shrunk from 2.3 years to [1.6 days](https://zerodayclock.com/).
 
-![From Vulnerability to Exploitation](/assets/img/from_vuln_to_exploit.webp){: w="700" }
+![From Vulnerability to Exploitation](/assets/img/from_vuln_to_exploit.webp){: w="700" h="442" }
 _Source: [zerodayclock.com](https://zerodayclock.com/)_
 
 Tasks like AI-powered vulnerability analysis, exploit writing, and large-scale scanning are getting faster every day. Setting aside whether AI is smarter than humans, in terms of speed, it already seems beyond what humans can keep up with.

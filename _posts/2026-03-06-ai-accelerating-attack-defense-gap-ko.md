@@ -14,7 +14,7 @@ thumbnail:
 
 "취약점 공개 → 실제 공격 코드 등장"까지 걸리는 시간이 2.3년에서 [1.6일](https://zerodayclock.com/)로 줄어들었다고 한다.
 
-![From Vulnerability to Exploitation](/assets/img/from_vuln_to_exploit.webp){: w="700" }
+![From Vulnerability to Exploitation](/assets/img/from_vuln_to_exploit.webp){: w="700" h="442" }
 _Source: [zerodayclock.com](https://zerodayclock.com/)_
 
 AI를 활용한 취약점 분석, exploit 작성, 대규모 스캐닝 같은 작업들이 점점 더 빠르게 이루어지고 있다. AI가 사람보다 더 똑똑한가 하는 문제를 떠나서, 속도 측면에서는 이미 사람이 따라가기 어려운 수준까지 온 것처럼 보인다.

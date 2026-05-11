@@ -46,4 +46,4 @@ The image below was generated with the following prompt:
 
 > draw me an artistic wallpaper. a hacker is in the center. left half of the wallpaper is for whitehat hacker. right half of the wallpaper is for blackhat hacker. also, it should be modern, digital, AI.
 
-![AI-generated hacker wallpaper](/assets/img/hacker.webp){: w="700" }
+![AI-generated hacker wallpaper](/assets/img/hacker.webp){: w="700" h="400" }

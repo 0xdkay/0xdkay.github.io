@@ -16,9 +16,11 @@
   <!-- Setup Open Graph image -->
 
   {% assign preview_image = page.image | default: page.thumbnail %}
+  {% assign seo_image_alt = nil %}
 
   {% if preview_image %}
     {% assign src = preview_image.path | default: preview_image %}
+    {% assign seo_image_alt = preview_image.alt | default: page.title | default: site.title %}
 
     {% unless src contains '://' %}
       {%- capture img_url -%}
@@ -52,6 +54,7 @@
     {%- capture img_url -%}
       {% include media-url.html src=site.social_preview_image absolute=true %}
     {%- endcapture -%}
+    {% assign seo_image_alt = site.title | append: ' social preview' %}
 
     {%- capture og_image -%}
       <meta property="og:image" content="{{ img_url }}" />
@@ -71,6 +74,14 @@
     | replace: 'property="twitter:image"', 'name="twitter:image"'
     | replace: 'property="twitter:title"', 'name="twitter:title"'
   %}
+
+  {% if img_url and seo_image_alt %}
+    {%- capture image_alt_meta -%}
+      <meta property="og:image:alt" content="{{ seo_image_alt | escape }}" />
+      <meta name="twitter:image:alt" content="{{ seo_image_alt | escape }}" />
+    {%- endcapture -%}
+    {% assign seo_tags = seo_tags | append: image_alt_meta %}
+  {% endif %}
 
   {% if page.collection != 'posts' and page.layout != 'post' %}
     {% assign article_published_time = page.date | default: site.time | date_to_xmlschema %}
@@ -99,6 +110,10 @@
   {% endif %}
 
   {{ seo_tags }}
+
+  {% if page.layout == 'tag' or page.layout == 'category' %}
+    <meta name="robots" content="noindex,follow">
+  {% endif %}
 
   {% comment %} Auto hreflang for bilingual posts. Posts are paired by translation_key. {% endcomment %}
   {% if page.collection == 'posts' %}

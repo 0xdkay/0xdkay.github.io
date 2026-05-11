@@ -17,14 +17,14 @@ thumbnail:
 
 **Team Atlanta** won **1st place** in DARPA's AI Cyber Challenge (AIxCC). I worked on the CRS-Multilang effort behind ATLANTIS, our cyber reasoning system for automated vulnerability discovery and patching.
 
-![Team Atlanta announced as the 1st-place winner of DARPA AIxCC](/assets/img/aixcc/aixcc-first-place-announcement-preview.webp){: w="700" }
+![Team Atlanta announced as the 1st-place winner of DARPA AIxCC](/assets/img/aixcc/aixcc-first-place-announcement-preview.webp){: w="700" h="368" }
 _Team Atlanta announced as the 1st-place winner of DARPA AIxCC._
 
 ## About AIxCC
 
 The [AI Cyber Challenge (AIxCC)](https://aicyberchallenge.com/) is DARPA's competition to develop AI systems that autonomously discover and patch vulnerabilities. We built **ATLANTIS**, a multi-agent system combining LLMs with program analysis techniques (symbolic execution, directed fuzzing, static analysis) to find and fix bugs at scale under competition constraints.
 
-![AIxCC scoreboard breakdown](/assets/img/aixcc/aixcc-scoreboard.webp){: w="700" }
+![AIxCC scoreboard breakdown](/assets/img/aixcc/aixcc-scoreboard.webp){: w="700" h="525" }
 _AIxCC final scoreboard breakdown._
 
 For more details, check out the [Team Atlanta website](https://team-atlanta.github.io/) and [media coverage](https://team-atlanta.github.io/news/). For technical details, see our paper: [ATLANTIS](https://arxiv.org/abs/2509.14589). All teams' source code is available at the [AIxCC Archive](https://archive.aicyberchallenge.com/).
@@ -67,12 +67,12 @@ Led by Professor [Taesoo Kim](https://taesoo.kim/) at Georgia Tech, we are explo
 
 I was fortunate to work alongside the talented colleagues of Team Atlanta. What makes this especially meaningful is that many of us were former CTF teammates who reunited from our respective positions to pursue a bigger goal together.
 
-![Team Atlanta group photo at DEF CON 33](/assets/img/aixcc/team-atlanta-group.webp){: w="700" }
+![Team Atlanta group photo at DEF CON 33](/assets/img/aixcc/team-atlanta-group.webp){: w="700" h="525" }
 _Team Atlanta at DEF CON 33 after winning DARPA AIxCC._
 
 One interesting observation: teammates who were initially skeptical of AI became much more positive about its potential over the course of the competition. This shift in perspective was fascinating to witness.
 
 This achievement would not have been possible without the collaboration of all Team Atlanta members and the support from Georgia Tech.
 
-![Me with the DARPA AIxCC first-place trophy and prize check](/assets/img/aixcc/aixcc-first-place-winner.webp){: w="700" }
+![Me with the DARPA AIxCC first-place trophy and prize check](/assets/img/aixcc/aixcc-first-place-winner.webp){: w="700" h="525" }
 _Me with the DARPA AIxCC first-place trophy and prize check._
