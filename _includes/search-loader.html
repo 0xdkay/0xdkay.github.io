@@ -71,8 +71,22 @@
       }
     }
 
+    function revealFilteredTarget(hash) {
+      const target = targetFromHash(hash);
+      if (!target || !target.hidden) {
+        return;
+      }
+
+      const filterRoot = target.closest('[data-topic-filter-root]');
+      const allFilter = filterRoot && filterRoot.querySelector('[data-topic-filter="all"]');
+      if (allFilter) {
+        allFilter.click();
+      }
+    }
+
     function navigateSamePageHash(hash) {
       closeSearchWithoutScrollRestore();
+      revealFilteredTarget(hash);
 
       window.setTimeout(() => {
         if (window.location.hash !== hash) {
