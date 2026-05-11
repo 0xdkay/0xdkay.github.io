@@ -3,6 +3,7 @@ icon: fas fa-briefcase
 order: 6
 title: CV
 description: "CV of Dongkwan Kim: Microsoft security researcher working on AI-powered security automation, red teaming, mobile security, and systems security."
+last_modified_at: 2026-05-10
 ---
 
 <div class="cv-links">
@@ -72,6 +73,34 @@ Conducted red team assessments at Samsung Security Center across Samsung affilia
 Led systems security research on cellular baseband and cyber-physical systems, resulting in USENIX Security and NDSS publications.
 
 - Advisor: Prof. Yongdae Kim
+
+</div>
+</div>
+
+<div class="timeline-item" markdown="1">
+<div class="timeline-marker"></div>
+<div class="timeline-content" markdown="1">
+
+### Pinion Industries
+
+<p class="timeline-title"><strong>Research Intern</strong></p>
+<p class="timeline-date">Dec 2013 - Feb 2014</p>
+
+Worked on automotive software and security, including CAN bus analysis, in-vehicle systems, AVN, telematics, smart keys, and ECU security.
+
+</div>
+</div>
+
+<div class="timeline-item" markdown="1">
+<div class="timeline-marker"></div>
+<div class="timeline-content" markdown="1">
+
+### KAIST CERT
+
+<p class="timeline-title"><strong>Student CERT Team Lead</strong></p>
+<p class="timeline-date">Sep 2010 - Aug 2012</p>
+
+Led KAIST Student CERT activities, including threat analysis and incident investigation for campus infrastructure.
 
 </div>
 </div>
