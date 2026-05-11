@@ -47,28 +47,6 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
 
-    buttons.forEach(function(button) {
-      button.addEventListener('click', function() {
-        var topic = button.dataset.topicFilter;
-        applyFilter(topic);
-
-        var url = new URL(window.location.href);
-        var hashTopic = decodeURIComponent(url.hash.replace(/^#/, ''));
-        if (validTopics.indexOf(hashTopic) !== -1) {
-          url.hash = '';
-        }
-
-        if (topic === 'all') {
-          url.searchParams.delete('topic');
-        } else {
-          url.searchParams.set('topic', topic);
-        }
-
-        var historyMethod = button.dataset.topicFilterHistory === 'replace' ? 'replaceState' : 'pushState';
-        history[historyMethod](null, '', url.pathname + url.search + url.hash);
-      });
-    });
-
     function decodeHash(hash) {
       var rawHash = hash.replace(/^#/, '');
       try {
@@ -87,6 +65,51 @@ document.addEventListener('DOMContentLoaded', function() {
       return document.getElementById(id);
     }
 
+    function targetVisibleForTopic(target, topic) {
+      if (!target) {
+        return true;
+      }
+
+      var item = target.matches('[data-topics]') ? target : target.closest('[data-topics]');
+      if (!item) {
+        return true;
+      }
+
+      var topics = (item.dataset.topics || '').split(/\s+/);
+      return topic === 'all' || topics.indexOf(topic) !== -1;
+    }
+
+    root.applyTopicFilter = applyFilter;
+
+    buttons.forEach(function(button) {
+      button.addEventListener('click', function() {
+        var topic = button.dataset.topicFilter;
+        applyFilter(topic);
+
+        var url = new URL(window.location.href);
+        var hashTopic = decodeHash(url.hash);
+        var hashTarget = targetFromHash(url.hash);
+        if (validTopics.indexOf(hashTopic) !== -1 || !targetVisibleForTopic(hashTarget, topic)) {
+          url.hash = '';
+        }
+
+        if (topic === 'all') {
+          url.searchParams.delete('topic');
+        } else {
+          url.searchParams.set('topic', topic);
+        }
+
+        var nextUrl = url.pathname + url.search + url.hash;
+        var currentUrl = window.location.pathname + window.location.search + window.location.hash;
+        if (nextUrl === currentUrl) {
+          return;
+        }
+
+        var historyMethod = button.dataset.topicFilterHistory === 'replace' ? 'replaceState' : 'pushState';
+        history[historyMethod](null, '', nextUrl);
+      });
+    });
+
     function scrollToHashTarget(hash) {
       var target = targetFromHash(hash);
       if (!target) {
@@ -104,7 +127,11 @@ document.addEventListener('DOMContentLoaded', function() {
       if (validTopics.indexOf(queryTopic) !== -1) {
         applyFilter(queryTopic);
         if (window.location.hash) {
-          scrollToHashTarget(window.location.hash);
+          if (targetVisibleForTopic(targetFromHash(window.location.hash), queryTopic)) {
+            scrollToHashTarget(window.location.hash);
+          } else {
+            history.replaceState(null, '', window.location.pathname + window.location.search);
+          }
         }
         return;
       }

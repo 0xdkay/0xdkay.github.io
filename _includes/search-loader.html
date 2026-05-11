@@ -78,10 +78,10 @@
 
       const filterRoot = target.closest('[data-topic-filter-root]');
       const allFilter = filterRoot && filterRoot.querySelector('[data-topic-filter="all"]');
-      if (allFilter) {
-        allFilter.dataset.topicFilterHistory = 'replace';
+      if (filterRoot && typeof filterRoot.applyTopicFilter === 'function') {
+        filterRoot.applyTopicFilter('all');
+      } else if (allFilter) {
         allFilter.click();
-        delete allFilter.dataset.topicFilterHistory;
       }
     }
 
@@ -325,11 +325,13 @@
     }
 
     function renderCard(entry) {
+      const tags = entry.tags ? `<span class="search-card-tags">${escapeHtml(entry.tags)}</span>` : '';
+
       return `
         <article class="search-card" data-category="${escapeHtml(entry.type || entry.categories)}">
           <div class="search-card-meta">
-            <span>${escapeHtml(entry.type || entry.categories)}</span>
-            <span>${escapeHtml(entry.tags)}</span>
+            <span class="search-card-type">${escapeHtml(entry.type || entry.categories)}</span>
+            ${tags}
           </div>
           <h3 class="search-card-title"><a href="${escapeHtml(entry.url)}">${escapeHtml(entry.title)}</a></h3>
           <p class="search-card-detail">${escapeHtml(entry.summary)}</p>
@@ -359,6 +361,11 @@
       const query = searchInput.value.trim();
 
       if (!query || !hasSearchableTerms(query)) {
+        resultsContainer.innerHTML = '';
+        return;
+      }
+
+      if (allEntries.length === 0) {
         resultsContainer.innerHTML = '';
         return;
       }
@@ -446,11 +453,31 @@
 
     document.addEventListener('site-lang-change', renderResults);
 
-    fetch('{{ '/assets/js/data/search.json' | relative_url }}')
-      .then((response) => response.json())
-      .then((entries) => {
-        allEntries = entries;
-        renderResults();
-      });
+    let searchEntriesRequest = null;
+
+    function loadSearchEntries() {
+      if (allEntries.length > 0) {
+        return Promise.resolve(allEntries);
+      }
+
+      if (!searchEntriesRequest) {
+        searchEntriesRequest = fetch('{{ '/assets/js/data/search.json' | relative_url }}')
+          .then((response) => response.json())
+          .then((entries) => {
+            allEntries = entries;
+            renderResults();
+            return entries;
+          });
+      }
+
+      return searchEntriesRequest;
+    }
+
+    if (searchTrigger) {
+      searchTrigger.addEventListener('click', loadSearchEntries);
+    }
+
+    searchInput.addEventListener('focus', loadSearchEntries);
+    searchInput.addEventListener('input', loadSearchEntries);
   });
 </script>
