@@ -3,7 +3,7 @@ icon: fas fa-briefcase
 order: 6
 title: CV
 description: "CV of Dongkwan Kim: Microsoft security researcher working on AI-powered security automation, red teaming, mobile security, and systems security."
-last_modified_at: 2026-05-10
+last_modified_at: 2026-05-13
 ---
 
 <div class="cv-links">
@@ -23,7 +23,7 @@ last_modified_at: 2026-05-10
 
 ### Microsoft
 
-<p class="timeline-title"><strong>Principal Security Researcher</strong></p>
+<p class="timeline-title"><strong>Principal Security Researcher</strong> &mdash; Autonomous Code Security</p>
 <p class="timeline-date">Apr 2026 - Present</p>
 
 Building AI-powered security automation for vulnerability discovery, exploit generation, and scalable defenses.
