@@ -23,6 +23,8 @@
       media:
         - label: "OpenSSF Announcement"
           url: "https://openssf.org/blog/2026/04/02/from-aixcc-to-openssf-welcoming-oss-crs-to-advance-ai-driven-open-source-security/"
+        - label: "OpenSSF Impact: 25 Vulns / 16 Projects"
+          url: "https://openssf.org/blog/2026/05/12/hack-to-the-future-the-impact-and-legacy-of-the-darpa-aixcc-challenge/"
 
     - title: "SoK: DARPA's AI Cyber Challenge (AIxCC): Competition Design, Architectures, and Lessons Learned"
       id: "2026-2-sok-darpa-s-ai-cyber-challenge-aixcc-competition-design-architectures-and-lessons-learned"
