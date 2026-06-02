@@ -2,9 +2,9 @@
   papers:
     - title: "OSS-CRS: Liberating AIxCC Cyber Reasoning Systems for Real-World Open-Source Security"
       id: "2026-1-oss-crs-liberating-aixcc-cyber-reasoning-systems-for-real-world-open-source-security"
-      date: "2026-03-09"
+      date: "2026-08-10"
       authors: "Andrew Chin, <strong>Dongkwan Kim</strong>, Yu-Fu Fu, Fabian Fleischer, Youngjoon Kim, HyungSeok Han, Cen Zhang, Brian Junekyu Lee, Hanqing Zhao, Taesoo Kim"
-      venue: "arXiv"
+      venue: "USENIX WOOT 2026 (to appear)"
       topics: [ai-security]
       keywords: "OSS-CRS OpenSSF AIxCC CRS cyber reasoning system vulnerability discovery patching open source security"
       links:
@@ -28,9 +28,9 @@
 
     - title: "SoK: DARPA's AI Cyber Challenge (AIxCC): Competition Design, Architectures, and Lessons Learned"
       id: "2026-2-sok-darpa-s-ai-cyber-challenge-aixcc-competition-design-architectures-and-lessons-learned"
-      date: "2026-02-07"
+      date: "2026-08-12"
       authors: "Cen Zhang, Younggi Park, Fabian Fleischer, Yu-Fu Fu, Jiho Kim, <strong>Dongkwan Kim</strong>, Youngjoon Kim, Qingxiao Xu, Andrew Chin, Ze Sheng, Hanqing Zhao, Brian J. Lee, Joshua Wang, Michael Pelican, David J. Musliner, Jeff Huang, Jon Silliman, Mikel Mcdaniel, Jefferson Casavant, Isaac Goldthwaite, Nicholas Vidovich, Matthew Lehman, Taesoo Kim"
-      venue: "arXiv"
+      venue: "USENIX Security 2026 (to appear)"
       topics: [ai-security]
       keywords: "AIxCC DARPA AI Cyber Challenge CRS ATLANTIS cyber reasoning system LLM agents vulnerability discovery patching competition design"
       links:
