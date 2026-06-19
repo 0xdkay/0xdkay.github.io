@@ -1,5 +1,16 @@
 - year: 2026
   papers:
+    - title: "CtxFuzz: Context-Aware Directed Fuzzing via Runtime Fuzzer-Agent Cooperation"
+      id: "2026-3-ctxfuzz-context-aware-directed-fuzzing-via-runtime-fuzzer-agent-cooperation"
+      date: "2026-10-12"
+      authors: "Jiho Kim, <strong>Dongkwan Kim</strong>, HyungSeok Han, Youngjoon Kim, Soyeon Park, Sangwoo Ji, Joshua Wang, Dae R. Jeong, Taesoo Kim"
+      venue: "ASE 2026 (to appear)"
+      topics: [ai-security]
+      keywords: "CtxFuzz directed fuzzing context-aware fuzzer agent cooperation LLM agent runtime vulnerability discovery automated software engineering ASE"
+      links:
+        - type: bibtex
+          url: "kim-2026-ctxfuzz"
+
     - title: "OSS-CRS: Liberating AIxCC Cyber Reasoning Systems for Real-World Open-Source Security"
       id: "2026-1-oss-crs-liberating-aixcc-cyber-reasoning-systems-for-real-world-open-source-security"
       date: "2026-08-10"

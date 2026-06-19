@@ -1,3 +1,13 @@
+kim-2026-ctxfuzz: |
+  @InProceedings{kim:ctxfuzz,
+    title         = {{CtxFuzz}: Context-Aware Directed Fuzzing via Runtime Fuzzer-Agent Cooperation},
+    author        = {Jiho Kim and Dongkwan Kim and HyungSeok Han and Youngjoon Kim and Soyeon Park and Sangwoo Ji and Joshua Wang and Dae R. Jeong and Taesoo Kim},
+    booktitle     = {Proceedings of the 41st IEEE/ACM International Conference on Automated Software Engineering (ASE)},
+    year          = 2026,
+    month         = oct,
+    address       = {Munich, Germany},
+  }
+
 chin-2026-osscrs: |
   @Article{chin:oss-crs,
     title         = {{OSS-CRS}: Liberating {AIxCC} Cyber Reasoning Systems for Real-World Open-Source Security},
