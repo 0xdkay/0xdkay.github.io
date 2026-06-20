@@ -7,9 +7,6 @@
       venue: "ASE 2026 (to appear)"
       topics: [ai-security]
       keywords: "CtxFuzz directed fuzzing context-aware fuzzer agent cooperation LLM agent runtime vulnerability discovery automated software engineering ASE"
-      links:
-        - type: bibtex
-          url: "kim-2026-ctxfuzz"
 
     - title: "OSS-CRS: Liberating AIxCC Cyber Reasoning Systems for Real-World Open-Source Security"
       id: "2026-1-oss-crs-liberating-aixcc-cyber-reasoning-systems-for-real-world-open-source-security"
