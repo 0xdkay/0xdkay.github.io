@@ -1,3 +1,20 @@
+- year: 2026
+  talks:
+    - title: "AI Agents for Security: Lessons from AIxCC and AI Security Research"
+      id: "2026-1-ai-agents-for-security-lessons-from-aixcc-and-ai-security-research"
+      date: "2026-06-23"
+      venue: "Bay K-AI 2026 5th Seminar, Bay Area K Group"
+      location: "San Francisco Bay Area (Hybrid)"
+      type: Invited
+      topics: [ai-security]
+      keywords: "AI agents AIxCC Team Atlanta security automation vulnerability analysis AI security red teaming"
+      links:
+        - type: slides
+          url: "/pub/2026/kim-baykai26-ai-agents-security-slides.pdf"
+        - type: website
+          url: "https://bayareakgroup.org/events/bay-k-ai-2026-5th-seminar-ai-agents-are-all-you-need-from-hyperscale-systems-to-ai-security-red-teaming/"
+          label: "Event Page"
+
 - year: 2025
   talks:
     - title: "Inside the AI Cyber Challenge"
