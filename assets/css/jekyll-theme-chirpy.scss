@@ -789,6 +789,17 @@ button:focus-visible,
   }
 }
 
+/* Poster Button - Purple */
+.pub-btn-poster {
+  background: #6f42c1;
+  color: #fff !important;
+
+  &:hover {
+    background: #59359a;
+    color: #fff !important;
+  }
+}
+
 /* Website Button - Teal */
 .pub-btn-website {
   background: #08765d;

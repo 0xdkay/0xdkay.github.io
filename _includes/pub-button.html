@@ -16,6 +16,10 @@
     {%- assign default_label = 'Slides' -%}
     {%- assign icon_class = 'fas fa-file-powerpoint' -%}
     {%- assign button_class = 'pub-btn pub-btn-slides' -%}
+  {%- when 'poster' -%}
+    {%- assign default_label = 'Poster' -%}
+    {%- assign icon_class = 'fas fa-image' -%}
+    {%- assign button_class = 'pub-btn pub-btn-poster' -%}
   {%- when 'code' -%}
     {%- assign default_label = 'Code' -%}
     {%- assign icon_class = 'fas fa-code' -%}

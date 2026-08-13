@@ -133,7 +133,7 @@ document.addEventListener('keydown', function(e) {
 {% include entry-date-vars.html date=item.date year=year_group.year %}
 <div class="entry-meta">
 <div class="entry-links">
-{% assign link_order = "pdf,arxiv,bibtex,slides,website,code,tool,benchmark" | split: "," %}
+{% assign link_order = "pdf,bibtex,slides,poster,website,code,tool,benchmark,arxiv" | split: "," %}
 {% for type in link_order %}{% for link in item.links %}{% if link.type == type %}{% include pub-button.html type=link.type url=link.url label=link.label title=item.title %}{% endif %}{% endfor %}{% endfor %}
 {% for link in item.links %}{% unless link_order contains link.type %}{% include pub-button.html type=link.type url=link.url label=link.label title=item.title %}{% endunless %}{% endfor %}
 </div>
