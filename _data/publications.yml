@@ -14,6 +14,9 @@
       authors: "Cen Zhang, Younggi Park, Fabian Fleischer, Yu-Fu Fu, Jiho Kim, <strong>Dongkwan Kim</strong>, Youngjoon Kim, Qingxiao Xu, Andrew Chin, Ze Sheng, Hanqing Zhao, Michael Pelican, David J. Musliner, Jeff Huang, Jon Silliman, Mikel Mcdaniel, Jefferson Casavant, Isaac Goldthwaite, Nicholas Vidovich, Matthew Lehman, Taesoo Kim"
       venue: "USENIX Security 2026"
       topics: [ai-security]
+      badge: "Distinguished Paper Runner-up"
+      badge_url: "https://www.usenix.org/sites/default/files/sec26_runners_up.pdf"
+      badge_title: "Official USENIX Security 2026 Distinguished Paper Award runner-up list"
       keywords: "AIxCC DARPA AI Cyber Challenge CRS ATLANTIS cyber reasoning system LLM agents vulnerability discovery patching competition design"
       links:
         - type: pdf

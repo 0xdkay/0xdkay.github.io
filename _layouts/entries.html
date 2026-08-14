@@ -126,7 +126,7 @@ document.addEventListener('keydown', function(e) {
 {% assign generated_item_anchor = year_group.year | append: '-' | append: forloop.index | append: '-' | append: item.title | slugify %}
 {% assign item_anchor = item.id | default: generated_item_anchor %}
 <article id="{{ item_anchor }}" class="entry-card" data-topics="{{ item.topics | join: ' ' }}">
-<h3 class="entry-title">{{ item.title }}{% if item.badge %}<span class="entry-badge"><i class="fas fa-award" aria-hidden="true"></i> {{ item.badge }}</span>{% endif %}</h3>
+<h3 class="entry-title">{{ item.title }}{% if item.badge %}{% if item.badge_url %}<a class="entry-badge" href="{{ item.badge_url }}" target="_blank" rel="noopener noreferrer"{% if item.badge_title %} title="{{ item.badge_title }}"{% endif %}><i class="fas fa-award" aria-hidden="true"></i> {{ item.badge }}</a>{% else %}<span class="entry-badge"><i class="fas fa-award" aria-hidden="true"></i> {{ item.badge }}</span>{% endif %}{% endif %}</h3>
 <div class="entry-authors">{{ item.authors | default: item.speaker }}</div>
 <div class="entry-venue">{{ item.venue }}</div>
 {% include topic-labels.html topics=item.topics %}
