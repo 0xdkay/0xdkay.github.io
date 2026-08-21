@@ -1,5 +1,20 @@
 - year: 2026
   papers:
+    - title: "COIN: A Live, Large-scale Benchmark for Semantics-to-Input Code Reasoning"
+      id: "2026-4-coin-a-live-large-scale-benchmark-for-semantics-to-input-code-reasoning"
+      date: "2026-10-24"
+      authors: "Jiho Kim, Cen Zhang, Youngjoon Kim, <strong>Dongkwan Kim</strong>, Brian Junekyu Lee, Dae R. Jeong, Taesoo Kim"
+      venue: "EMNLP 2026 Main Conference (to appear)"
+      topics: [ai-security]
+      keywords: "COIN code reasoning semantics-to-input benchmark LLM agents code models OSS-Fuzz reachability dynamic analysis EMNLP"
+      links:
+        - type: website
+          url: "https://coin-bench.github.io/"
+          label: "Project Website"
+        - type: benchmark
+          url: "https://github.com/COIN-Bench/coin"
+          label: "Benchmark: COIN"
+
     - title: "CtxFuzz: Context-Aware Directed Fuzzing via Runtime Fuzzer-Agent Cooperation"
       id: "2026-3-ctxfuzz-context-aware-directed-fuzzing-via-runtime-fuzzer-agent-cooperation"
       date: "2026-10-12"
