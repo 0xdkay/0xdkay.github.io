@@ -19,9 +19,9 @@ permissions:
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment
+# One shared group for deployments (newer runs cancel older ones); PR checks get their own group.
 concurrency:
-  group: "pages-${{ github.event_name }}-${{ github.ref }}"
+  group: ${{ github.event_name == 'pull_request' && format('pages-pr-{0}', github.ref) || 'pages' }}
   cancel-in-progress: true
 
 jobs:

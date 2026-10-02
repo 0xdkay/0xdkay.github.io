@@ -32,7 +32,8 @@ FONTS = ("fa-solid-900", "fa-regular-400", "fa-brands-400")
 
 TOKEN_RE = re.compile(r"(?<![\w-])fa-([a-z0-9]+(?:-[a-z0-9]+)*)")
 CONTENT_RE = re.compile(r'"\\([ef][0-9a-f]{3})"')
-ICON_RULE_RE = re.compile(r'([^{}]+)\{--fa:"(\\[0-9a-f]+|\\.|[^"\\])"\}')
+# Icon content is a hex escape (optionally space-terminated, e.g. "\30 "), an escaped char ("\#"), or a literal char.
+ICON_RULE_RE = re.compile(r'([^{}]+)\{--fa:"(\\[0-9a-f]{1,6} ?|\\[^0-9a-f]|[^"\\])"\}')
 FONT_FACE_RE = re.compile(r"@font-face\{[^}]*\}")
 
 
@@ -80,10 +81,8 @@ def generate(site: Path):
             return ""
         icon_names.update(s[4:] for s in kept)
         content = match.group(2)
-        if re.fullmatch(r"\\[0-9a-f]+", content):
-            used_codes.add(content[1:])
-        else:
-            used_codes.add(format(ord(content[-1]), "x"))
+        hex_escape = re.fullmatch(r"\\([0-9a-f]+) ?", content)
+        used_codes.add(hex_escape.group(1) if hex_escape else format(ord(content[-1]), "x"))
         return ",".join(kept) + '{--fa:"' + content + '"}'
 
     css = ICON_RULE_RE.sub(keep_icon_rule, css)
