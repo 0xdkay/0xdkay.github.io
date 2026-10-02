@@ -1,10 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-  var backToTop = document.getElementById('back-to-top');
-  if (backToTop && !backToTop.getAttribute('aria-label')) {
-    backToTop.setAttribute('aria-label', 'Back to top');
-    backToTop.setAttribute('title', 'Back to top');
-  }
-
   document.querySelectorAll('h2 .anchor, h3 .anchor, h4 .anchor, h5 .anchor, h6 .anchor').forEach(function(anchor) {
     if (anchor.getAttribute('aria-label')) {
       return;
@@ -37,7 +31,6 @@ document.addEventListener('DOMContentLoaded', function() {
   var searchInput = document.getElementById('search-input');
   var searchWrapper = document.getElementById('search-result-wrapper');
   var searchTrigger = document.getElementById('search-trigger');
-  var modeToggle = document.getElementById('mode-toggle');
   var sidebarTrigger = document.getElementById('sidebar-trigger');
   var sidebar = document.getElementById('sidebar');
   var mainWrapper = document.getElementById('main-wrapper');
@@ -114,33 +107,6 @@ document.addEventListener('DOMContentLoaded', function() {
       searchTrigger && searchTrigger.getAttribute('aria-expanded') === 'true'
     );
   }
-
-  function currentModeIsDark() {
-    var explicitMode = document.documentElement.getAttribute('data-mode');
-    if (explicitMode) {
-      return explicitMode === 'dark';
-    }
-
-    return Boolean(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
-  }
-
-  function syncModeToggle() {
-    if (!modeToggle) {
-      return;
-    }
-
-    var isDark = currentModeIsDark();
-    modeToggle.setAttribute('aria-pressed', isDark ? 'true' : 'false');
-    modeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-    modeToggle.setAttribute('title', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-  }
-
-  if (modeToggle) {
-    modeToggle.addEventListener('click', function() {
-      window.setTimeout(syncModeToggle, 0);
-    });
-  }
-  syncModeToggle();
 
   if (sidebarTrigger) {
     sidebarTrigger.addEventListener('click', function() {

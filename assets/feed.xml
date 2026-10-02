@@ -25,7 +25,7 @@ permalink: /feed.xml
 {% assign rendered_keys = '' | split: '' %}
 {% assign shown = 0 %}
 {% for source_post in site.posts %}
-  {% if shown >= 5 %}
+  {% if shown >= 20 %}
     {% break %}
   {% endif %}
 

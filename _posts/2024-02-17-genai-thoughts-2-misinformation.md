@@ -33,7 +33,7 @@ Accordingly, since last year, big tech companies like MS, Google, and Meta have 
 
 In this situation, important questions arise. Will attaching watermarks to generated GenAI outputs be sufficient? How might this develop in other ways in the future? And what methods can respond to direct attacks using open source or self-built models?
 
-The fact that OpenAI explicitly stated content related to model safety on the main page when announcing the Sora model suggests that such efforts are ongoing. Looking briefly at the [Sora safety section](https://openai.com/sora/), you can see that they are considering model safety from various perspectives:
+The fact that OpenAI explicitly stated content related to model safety on the main page when announcing the Sora model suggests that such efforts are ongoing. Looking briefly at the [Sora safety section](https://web.archive.org/web/20240217235945/https://openai.com/sora), you can see that they are considering model safety from various perspectives:
 
 > We'll be taking several important safety steps ahead of making Sora available in OpenAI's products.
 

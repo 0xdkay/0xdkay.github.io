@@ -11,11 +11,11 @@ timezone: America/New_York
 
 # jekyll-seo-tag settings
 title: Dongkwan Kim
-tagline: Security Researcher
+tagline: Principal Security Researcher
 affiliation: Microsoft
 description: >-
-  Personal website of Dongkwan Kim, a security researcher working on
-  AI-powered security automation, grounded in real-world systems security.
+  Personal website of Dongkwan Kim, a Principal Security Researcher at Microsoft
+  working on AI-powered security automation, grounded in real-world systems security.
 
 url: "https://0xdkay.me"
 
@@ -155,18 +155,10 @@ compress_html:
     envs: [development]
 
 exclude:
-  - "*.gem"
-  - "*.gemspec"
-  - docs
+  - templates
+  - .writer-room
+  - mise.toml
   - tools
-  - README.md
-  - LICENSE
-  - purgecss.js
-  - "*.config.js"
-  - "package*.json"
-  - "assets/img/dkay.jpg"
-  - "assets/img/from_vuln_to_exploit.png"
-  - "assets/img/hacker.jpg"
 
 jekyll-archives:
   enabled: [categories, tags]

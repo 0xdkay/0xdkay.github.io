@@ -82,7 +82,7 @@ swcache: true
       {% endif %}
       {% assign item_topic_labels = item_topic_labels | push: topic_label %}
     {% endfor %}
-    {% capture item_meta -%}{{ item.venue }}{% if entry_date_display %} · {{ entry_date_display }}{% endif %}{%- endcapture -%}
+    {% capture item_meta -%}{% include paper-venue.html venue=item.venue date=item.date %}{% if entry_date_display %} · {{ entry_date_display }}{% endif %}{%- endcapture -%}
     {% capture content -%}
       {{ item.title }}
       {{ item.authors | strip_html }}

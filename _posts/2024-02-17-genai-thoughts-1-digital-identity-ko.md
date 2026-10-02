@@ -27,7 +27,7 @@ description: "AI가 인간의 오감을 모방하고 나와 같은 데이터를 
 
 - [전자 코](https://www.chosun.com/economy/science/2023/10/19/A5XW46KB3RGXTJVTX3M4HYRKZU/)
 
-최근 공개된 OpenAI의 [Sora](https://openai.com/sora/)는 AI가 프롬프트 입력만으로 비디오를 생성할 수 있는 단계에 이르렀음을 보여준다. OpenAI에서 Sora를 표현한 소개 문구가 재밌는데,
+최근 공개된 OpenAI의 [Sora](https://web.archive.org/web/20240217235945/https://openai.com/sora)는 AI가 프롬프트 입력만으로 비디오를 생성할 수 있는 단계에 이르렀음을 보여준다. OpenAI에서 Sora를 표현한 소개 문구가 재밌는데,
 
 > We're teaching AI to understand and simulate the physical world in motion, with the goal of training models that help people solve problems that require real-world interaction.
 

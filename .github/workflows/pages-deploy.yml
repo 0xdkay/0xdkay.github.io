@@ -9,6 +9,8 @@ on:
       - README.md
       - LICENSE
 
+  pull_request:
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -19,7 +21,7 @@ permissions:
 
 # Allow only one concurrent deployment
 concurrency:
-  group: "pages"
+  group: "pages-${{ github.event_name }}-${{ github.ref }}"
   cancel-in-progress: true
 
 jobs:
@@ -28,24 +30,27 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v6
 
+      # Ruby version comes from mise.toml
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3
           bundler-cache: true
 
       - name: Build site
         run: bundle exec jekyll b -d "_site${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: "production"
+
+      - name: Check Font Awesome subset
+        run: python3 tools/fontawesome-subset.py check "_site${{ steps.pages.outputs.base_path }}"
 
       - name: Test site
         run: |
@@ -55,11 +60,13 @@ jobs:
             --allow-hash-href
 
       - name: Upload site artifact
-        uses: actions/upload-pages-artifact@v3
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v5
         with:
           path: "_site${{ steps.pages.outputs.base_path }}"
 
   deploy:
+    if: github.event_name != 'pull_request'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -68,4 +75,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

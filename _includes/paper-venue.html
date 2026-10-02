@@ -1,0 +1,8 @@
+{%- comment -%}
+  Paper venue; appends "(to appear)" while the publication date is after the build time.
+  Params: venue, date
+{%- endcomment -%}
+{%- assign venue_ts = include.date | date: '%s' | plus: 0 -%}
+{%- assign build_ts = site.time | date: '%s' | plus: 0 -%}
+{{- include.venue -}}
+{%- if venue_ts > build_ts %} (to appear){% endif -%}

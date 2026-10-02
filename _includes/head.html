@@ -2,8 +2,6 @@
   <meta charset="utf-8">
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f7">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b1b1e">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
@@ -204,26 +202,23 @@
 
   {% include_cached favicons.html %}
 
-  <!-- Resource Hints -->
-  {% unless site.assets.self_host.enabled %}
-    {% for hint in site.data.origin.cors.resource_hints %}
-      {% for link in hint.links %}
-        <link rel="{{ link.rel }}" href="{{ hint.url }}" {{ link.opts | join: ' ' }}>
-      {% endfor %}
-    {% endfor %}
-  {% endunless %}
+  <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ '/feed.xml' | absolute_url }}">
 
-  <!-- Bootstrap - Always load from CDN -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+  <!-- Resource Hints (web fonts and icons are self-hosted; remaining libraries come from jsDelivr) -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+  <link rel="preload" href="{{ '/assets/fonts/source-sans-pro-400-latin.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+
+  <!-- Bootstrap (production uses the purged copy bundled into the theme stylesheet) -->
+  {% unless jekyll.environment == 'production' %}
+    <link rel="stylesheet" href="{{ site.data.origin.cors.bootstrap.css }}">
+  {% endunless %}
 
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ '/assets/css/:THEME.css' | replace: ':THEME', site.theme | relative_url }}">
 
-  <!-- Web Font -->
-  <link rel="stylesheet" href="{{ site.data.origin[type].webfonts | relative_url }}">
-
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="{{ site.data.origin[type].fontawesome.css | relative_url }}">
+  <!-- Font Awesome Icons (subset, see tools/fontawesome-subset.py) -->
+  <link rel="stylesheet" href="{{ '/assets/vendor/fontawesome/fontawesome.min.css' | relative_url }}">
 
   <!-- 3rd-party Dependencies -->
 

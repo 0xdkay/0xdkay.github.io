@@ -1,0 +1,28 @@
+<!-- Google Analytics (gtag.js): only on the live host, loaded after the page has rendered -->
+<script>
+  (function () {
+    if (location.hostname !== {{ site.url | split: '://' | last | split: '/' | first | jsonify }}) return;
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () {
+      dataLayer.push(arguments);
+    };
+    gtag('js', new Date());
+    gtag('config', '{{ site.analytics.google.id }}');
+
+    function loadGtag() {
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id={{ site.analytics.google.id }}';
+      document.head.appendChild(script);
+    }
+
+    window.addEventListener('load', function () {
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadGtag, { timeout: 3000 });
+      } else {
+        setTimeout(loadGtag, 1);
+      }
+    });
+  })();
+</script>

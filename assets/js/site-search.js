@@ -1,0 +1,523 @@
+// Site search UI. Config comes from the loading <script> tag's data attributes
+// (see _includes/search-loader.html).
+const searchScriptData = document.currentScript.dataset;
+
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.getElementById('search-input');
+  const searchTrigger = document.getElementById('search-trigger');
+  const searchCancel = document.getElementById('search-cancel');
+  const resultsContainer = document.getElementById('search-results');
+  let allEntries = [];
+  let searchStartScrollY = window.scrollY || 0;
+  let skipNextSearchCancelRestore = false;
+
+  if (!searchInput || !resultsContainer) {
+    return;
+  }
+
+  const resultGroups = [
+    { key: 'Topic', id: 'search-topics', title: 'Topics', titleKo: '주제', singular: 'Topic', plural: 'Topics', labelKo: '주제' },
+    { key: 'Paper', id: 'search-publications', title: 'Publications', titleKo: '논문', singular: 'Publication', plural: 'Publications', labelKo: '논문' },
+    { key: 'Talk', id: 'search-talks', title: 'Talks', titleKo: '발표', singular: 'Talk', plural: 'Talks', labelKo: '발표' },
+    { key: 'Blog', id: 'search-blog', title: 'Blog', titleKo: '블로그', singular: 'Blog Post', plural: 'Blog Posts', labelKo: '블로그 글' }
+  ];
+
+  const noResultsHtml = searchScriptData.noResults;
+
+  function rememberSearchStart() {
+    searchStartScrollY = window.scrollY || 0;
+  }
+
+  function restoreSearchStart() {
+    window.scrollTo(0, searchStartScrollY);
+  }
+
+  function isPlainPrimaryClick(event) {
+    return event.button === 0 &&
+      !event.metaKey &&
+      !event.ctrlKey &&
+      !event.shiftKey &&
+      !event.altKey;
+  }
+
+  function isSamePageHashLink(link) {
+    return link.origin === window.location.origin &&
+      link.pathname === window.location.pathname &&
+      Boolean(link.hash);
+  }
+
+  function targetFromHash(hash) {
+    const rawId = hash.replace(/^#/, '');
+    if (!rawId) {
+      return null;
+    }
+
+    try {
+      return document.getElementById(decodeURIComponent(rawId));
+    } catch (e) {
+      return document.getElementById(rawId);
+    }
+  }
+
+  function closeSearchWithoutScrollRestore() {
+    if (searchCancel) {
+      skipNextSearchCancelRestore = true;
+      searchCancel.click();
+    }
+  }
+
+  function revealFilteredTarget(link) {
+    const hash = link.hash;
+    const target = targetFromHash(hash);
+    if (!target) {
+      return;
+    }
+
+    const filterRoot = target.closest('[data-topic-filter-root]');
+    const allFilter = filterRoot && filterRoot.querySelector('[data-topic-filter="all"]');
+    const shouldRevealAll = target.hidden;
+
+    if (!shouldRevealAll) {
+      return;
+    }
+
+    if (filterRoot && typeof filterRoot.applyTopicFilter === 'function') {
+      filterRoot.applyTopicFilter('all');
+    } else if (allFilter) {
+      allFilter.click();
+    }
+  }
+
+  function navigateSamePageLink(link) {
+    closeSearchWithoutScrollRestore();
+    revealFilteredTarget(link);
+
+    window.setTimeout(() => {
+      const nextUrl = link.pathname + link.search + link.hash;
+      const currentUrl = window.location.pathname + window.location.search + window.location.hash;
+
+      if (currentUrl !== nextUrl) {
+        history.pushState(null, '', nextUrl);
+      }
+
+      const target = targetFromHash(link.hash);
+      if (target) {
+        if (!target.hasAttribute('tabindex')) {
+          target.setAttribute('tabindex', '-1');
+        }
+        target.scrollIntoView({ block: 'start' });
+        target.focus({ preventScroll: true });
+      }
+    }, 0);
+  }
+
+  function normalizeLang(lang) {
+    return lang && lang.indexOf('ko') === 0 ? 'ko' : 'en';
+  }
+
+  function currentLang() {
+    const postLangData = document.getElementById('post-lang-data');
+    if (postLangData && postLangData.dataset.current) {
+      return normalizeLang(postLangData.dataset.current);
+    }
+
+    try {
+      return normalizeLang(document.documentElement.getAttribute('data-lang') || localStorage.getItem('site-lang') || document.documentElement.lang || 'en');
+    } catch (e) {
+      return normalizeLang(document.documentElement.getAttribute('data-lang') || document.documentElement.lang || 'en');
+    }
+  }
+
+  function buildGroups(entries) {
+    const groups = new Map();
+
+    entries.forEach((entry) => {
+      const key = entry.translation_key || entry.url;
+      if (!groups.has(key)) {
+        groups.set(key, []);
+      }
+      groups.get(key).push(entry);
+    });
+
+    return groups;
+  }
+
+  function preferredEntry(group) {
+    const lang = currentLang();
+
+    return group.find((entry) => normalizeLang(entry.lang) === lang) ||
+      group.find((entry) => normalizeLang(entry.lang) === 'en') ||
+      group[0];
+  }
+
+  function matchingEntry(group, query) {
+    const matched = group.filter((entry) => matches(entry, query));
+    if (matched.length === 0) {
+      return null;
+    }
+
+    return preferredEntry(matched);
+  }
+
+  function normalizeText(value) {
+    return String(value || '').toLowerCase();
+  }
+
+  function tokens(value) {
+    return normalizeText(value).split(/[^a-z0-9]+/).filter(Boolean);
+  }
+
+  function isShortAsciiTerm(term) {
+    return /^[a-z0-9]{1,2}$/.test(term);
+  }
+
+  function isCompactAsciiTerm(term) {
+    return /^[a-z0-9]{3,4}$/.test(term);
+  }
+
+  function tokenMatchesShortQuery(fieldTokens, queryText) {
+    if (isShortAsciiTerm(queryText)) {
+      return fieldTokens.includes(queryText);
+    }
+
+    if (isCompactAsciiTerm(queryText)) {
+      return fieldTokens.some((token) => token === queryText || token.startsWith(queryText));
+    }
+
+    return false;
+  }
+
+  function queryTerms(query) {
+    return normalizeText(query).split(/[\s,.;:!?()[\]{}"'~<>|\/\\_-]+/).filter(Boolean);
+  }
+
+  function hasSearchableTerms(query) {
+    return queryTerms(query).some((term) => !/^[a-z0-9]$/.test(term));
+  }
+
+  function fieldScore(field, query, exactTokenWeight, substringWeight) {
+    const value = field.value;
+    const text = normalizeText(value);
+    if (!text) {
+      return 0;
+    }
+
+    const queryText = normalizeText(query);
+    const fieldTokens = tokens(text);
+    const compactQuery = isShortAsciiTerm(queryText) || isCompactAsciiTerm(queryText);
+
+    if (fieldTokens.includes(queryText) && (!compactQuery || field.allowCompactExact !== false)) {
+      return exactTokenWeight;
+    }
+
+    if (field.allowCompactPrefix && tokenMatchesShortQuery(fieldTokens, queryText)) {
+      return Math.round(exactTokenWeight * 0.75);
+    }
+
+    if (isShortAsciiTerm(queryText) || isCompactAsciiTerm(queryText)) {
+      return 0;
+    }
+
+    return text.includes(queryText) ? substringWeight : 0;
+  }
+
+  function categoryWeight(entry) {
+    if (entry.type === 'Paper') return 30;
+    if (entry.type === 'Talk') return 20;
+    if (entry.type === 'Topic') return 10;
+    return 0;
+  }
+
+  function topicTitleBoost(entry, query) {
+    if (entry.type !== 'Topic') {
+      return 0;
+    }
+
+    return fieldScore({ value: entry.title, allowCompactPrefix: true }, query, 100, 40);
+  }
+
+  function relevanceForTerm(entry, query) {
+    const fields = searchableFields(entry);
+
+    return categoryWeight(entry) + topicTitleBoost(entry, query) + Math.max(
+      fieldScore(fields.title, query, 600, 250),
+      fieldScore(fields.tags, query, 500, 180),
+      fieldScore(fields.categories, query, 420, 120),
+      fieldScore(fields.keywords, query, 360, 140),
+      fieldScore(fields.summary, query, 250, 80),
+      fieldScore(fields.content, query, 120, 20)
+    );
+  }
+
+  function relevance(entry, query) {
+    const terms = queryTerms(query);
+    const termScore = terms.reduce((sum, term) => sum + relevanceForTerm(entry, term), 0);
+    return Math.max(relevanceForTerm(entry, query), termScore);
+  }
+
+  function searchableFields(entry) {
+    return {
+      title: { value: entry.title, allowCompactPrefix: true },
+      type: { value: entry.type, allowCompactPrefix: false },
+      categories: { value: entry.categories, allowCompactPrefix: true },
+      tags: { value: entry.tags, allowCompactPrefix: true },
+      keywords: { value: entry.keywords, allowCompactPrefix: true },
+      summary: { value: entry.summary, allowCompactPrefix: true },
+      content: { value: entry.content, allowCompactPrefix: false, allowCompactExact: true }
+    };
+  }
+
+  function fieldMatches(field, query) {
+    const value = field.value;
+    const text = normalizeText(value);
+    if (!text) {
+      return false;
+    }
+
+    const fieldTokens = tokens(text);
+    if (isShortAsciiTerm(query) || isCompactAsciiTerm(query)) {
+      if (fieldTokens.includes(query) && field.allowCompactExact !== false) {
+        return true;
+      }
+
+      return Boolean(field.allowCompactPrefix) && tokenMatchesShortQuery(fieldTokens, query);
+    }
+
+    return text.includes(query);
+  }
+
+  function matches(entry, query) {
+    const fields = Object.values(searchableFields(entry));
+    return queryTerms(query).every((term) => fields.some((field) => fieldMatches(field, term)));
+  }
+
+  function entryTime(entry) {
+    const parsed = Date.parse(entry.date || '1970-01-01');
+    return Number.isNaN(parsed) ? 0 : parsed;
+  }
+
+  function escapeHtml(value) {
+    return String(value || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function countLabel(group, count) {
+    if (currentLang() === 'ko') {
+      return `${count} ${group.labelKo}`;
+    }
+
+    return `${count} ${count === 1 ? group.singular : group.plural}`;
+  }
+
+  function groupTitle(group) {
+    return currentLang() === 'ko' ? group.titleKo : group.title;
+  }
+
+  function renderStats(grouped) {
+    const items = resultGroups.map((group) => {
+      const count = grouped[group.key].length;
+      const label = countLabel(group, count);
+
+      if (count > 0) {
+        return `<button type="button" data-search-target="${group.id}">${escapeHtml(label)}</button>`;
+      }
+
+      return `<span class="search-stat-static">${escapeHtml(label)}</span>`;
+    });
+
+    return `<div class="search-stats">${items.join('')}</div>`;
+  }
+
+  function renderCard(entry) {
+    const tags = entry.tags ? `<span class="search-card-tags">${escapeHtml(entry.tags)}</span>` : '';
+    const meta = entry.meta ? `<div class="search-card-context">${escapeHtml(entry.meta)}</div>` : '';
+    const detail = entry.summary ? `<p class="search-card-detail">${escapeHtml(entry.summary)}</p>` : '';
+    const entryLang = normalizeLang(entry.lang || currentLang());
+
+    return `
+      <article class="search-card" data-category="${escapeHtml(entry.type || entry.categories)}" lang="${escapeHtml(entryLang)}">
+        <div class="search-card-meta">
+          <span class="search-card-type">${escapeHtml(entry.type || entry.categories)}</span>
+          ${tags}
+        </div>
+        <h3 class="search-card-title"><a href="${escapeHtml(entry.url)}">${escapeHtml(entry.title)}</a></h3>
+        ${meta}
+        ${detail}
+      </article>
+    `;
+  }
+
+  function renderSection(group, entries) {
+    if (entries.length === 0) {
+      return '';
+    }
+
+    return `
+      <section id="${group.id}" class="search-section">
+        <div class="search-section-header">
+          <h2>${escapeHtml(groupTitle(group))}</h2>
+          <span>${escapeHtml(countLabel(group, entries.length))}</span>
+        </div>
+        <div class="search-card-list">
+          ${entries.map(renderCard).join('')}
+        </div>
+      </section>
+    `;
+  }
+
+  function renderResults() {
+    const query = searchInput.value.trim();
+
+    if (!query || !hasSearchableTerms(query)) {
+      resultsContainer.innerHTML = '';
+      return;
+    }
+
+    if (allEntries.length === 0) {
+      resultsContainer.innerHTML = '';
+      return;
+    }
+
+    const matchesByScore = Array.from(buildGroups(allEntries).values())
+      .map((group) => matchingEntry(group, query))
+      .filter(Boolean)
+      .map((entry) => ({ entry, score: relevance(entry, query) }))
+      .sort((a, b) => {
+        if (b.score !== a.score) {
+          return b.score - a.score;
+        }
+        return entryTime(b.entry) - entryTime(a.entry);
+      });
+
+    if (matchesByScore.length === 0) {
+      resultsContainer.innerHTML = noResultsHtml;
+      return;
+    }
+
+    const grouped = resultGroups.reduce((acc, group) => {
+      acc[group.key] = [];
+      return acc;
+    }, {});
+    const groupScores = resultGroups.reduce((acc, group) => {
+      acc[group.key] = 0;
+      return acc;
+    }, {});
+
+    matchesByScore.forEach(({ entry, score }) => {
+      if (grouped[entry.type]) {
+        grouped[entry.type].push(entry);
+        groupScores[entry.type] = Math.max(groupScores[entry.type], score);
+      }
+    });
+    const sectionGroups = resultGroups.slice().sort((a, b) => {
+      const scoreDiff = groupScores[b.key] - groupScores[a.key];
+      if (scoreDiff !== 0) {
+        return scoreDiff;
+      }
+
+      return resultGroups.indexOf(a) - resultGroups.indexOf(b);
+    });
+
+    resultsContainer.innerHTML = [
+      renderStats(grouped),
+      ...sectionGroups.map((group) => renderSection(group, grouped[group.key]))
+    ].join('');
+  }
+
+  resultsContainer.addEventListener('click', (event) => {
+    const trigger = event.target.closest('[data-search-target]');
+    if (!trigger) {
+      const link = event.target.closest('a[href]');
+      if (!link || !isPlainPrimaryClick(event) || link.origin !== window.location.origin) {
+        return;
+      }
+
+      if (isSamePageHashLink(link)) {
+        event.preventDefault();
+        navigateSamePageLink(link);
+        return;
+      }
+
+      restoreSearchStart();
+
+      return;
+    }
+
+    const target = document.getElementById(trigger.dataset.searchTarget);
+    if (target) {
+      if (!target.hasAttribute('tabindex')) {
+        target.setAttribute('tabindex', '-1');
+      }
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      target.focus({ preventScroll: true });
+    }
+  });
+
+  if (searchTrigger) {
+    searchTrigger.addEventListener('click', rememberSearchStart, true);
+  }
+
+  searchInput.addEventListener('focus', () => {
+    if (!searchInput.value.trim()) {
+      rememberSearchStart();
+    }
+  }, true);
+
+  if (searchCancel) {
+    searchCancel.addEventListener('click', () => {
+      if (skipNextSearchCancelRestore) {
+        skipNextSearchCancelRestore = false;
+        return;
+      }
+
+      window.setTimeout(restoreSearchStart, 0);
+    });
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', renderResults);
+  }
+
+  document.addEventListener('site-lang-change', renderResults);
+
+  let searchEntriesRequest = null;
+
+  function loadSearchEntries() {
+    if (allEntries.length > 0) {
+      return Promise.resolve(allEntries);
+    }
+
+    if (!searchEntriesRequest) {
+      searchEntriesRequest = fetch(searchScriptData.url)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`search data: HTTP ${response.status}`);
+          }
+          return response.json();
+        })
+        .then((entries) => {
+          allEntries = entries;
+          renderResults();
+          return entries;
+        })
+        .catch((error) => {
+          searchEntriesRequest = null;
+          console.error(error);
+          return [];
+        });
+    }
+
+    return searchEntriesRequest;
+  }
+
+  if (searchTrigger) {
+    searchTrigger.addEventListener('click', loadSearchEntries);
+  }
+
+  searchInput.addEventListener('focus', loadSearchEntries);
+  searchInput.addEventListener('input', loadSearchEntries);
+});

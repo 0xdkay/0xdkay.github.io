@@ -1,7 +1,68 @@
 ---
 ---
 
-@use 'main';
+@use 'abstracts/variables' with (
+  $theme: '{{ site.theme_mode }}'
+);
+
+/* prettier-ignore */
+@use 'main
+{%- if jekyll.environment == 'production' -%}
+  .bundle
+{%- endif -%}
+';
+@use 'vendor-fonts';
+
+/* Dark-mode rules: the resolved theme attribute, or the OS preference before/without JS. */
+@mixin dark-theme {
+  :root[data-bs-theme='dark'] & {
+    @content;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-bs-theme]) & {
+      @content;
+    }
+  }
+}
+
+/* Bootstrap utilities used by local templates but purged from the theme bundle. */
+.d-inline-flex {
+  display: inline-flex !important;
+}
+
+.px-0 {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.stretched-link::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  content: '';
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.dropdown-menu-end {
+  --bs-position: end;
+
+  &[data-bs-popper] {
+    right: 0;
+    left: auto;
+  }
+}
 
 #main-wrapper,
 #main-wrapper > .container,
@@ -18,6 +79,33 @@ button:focus-visible,
   box-shadow: 0 0 0 3px rgba(var(--link-color-rgb, 79, 156, 243), 0.18);
 }
 
+#sidebar .nav-link:focus-visible {
+  outline: 2px solid var(--link-color);
+  outline-offset: -2px;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 1100;
+  padding: 0.5rem 0.9rem;
+  border-radius: 0.375rem;
+  background: var(--main-bg);
+  color: var(--link-color);
+  font-weight: 600;
+  box-shadow: 0 0 0 2px var(--link-color);
+  transform: translateY(-200%);
+
+  &:focus {
+    transform: none;
+  }
+}
+
+#main-content:focus {
+  outline: none;
+}
+
 #topbar-title {
   flex: 1 1 0 !important;
   max-width: none !important;
@@ -26,6 +114,50 @@ button:focus-visible,
   text-overflow: ellipsis;
   white-space: nowrap;
   width: auto !important;
+  font-family: inherit;
+}
+
+#mode-toggle,
+#lang-toggle {
+  color: inherit;
+}
+
+#mode-toggle {
+  > i {
+    display: none;
+  }
+
+  @at-root :root[data-bs-theme='light'][data-theme-persisted] & > i[data-theme-mode='light'],
+    :root[data-bs-theme='dark'][data-theme-persisted] & > i[data-theme-mode='dark'],
+    :root:not([data-theme-persisted]) & > i[data-theme-mode='system'] {
+    display: inline-block;
+  }
+
+  + .dropdown-menu {
+    background-color: var(--card-bg);
+    border-color: var(--main-border-color);
+    min-width: 8.5rem;
+
+    .dropdown-item {
+      border-radius: 0.5rem;
+      color: var(--text-color);
+      font-size: 0.9rem;
+
+      > i {
+        margin-right: 0.5rem;
+      }
+
+      &:hover,
+      &:focus-visible,
+      &.active {
+        background-color: var(--sidebar-hover-bg, rgba(127, 127, 127, 0.15));
+      }
+
+      &.active {
+        font-weight: 600;
+      }
+    }
+  }
 }
 
 @media (max-width: 576px) {
@@ -40,17 +172,7 @@ button:focus-visible,
   }
 
   #topbar-title {
-    left: 50%;
-    max-width: calc(100% - 11rem) !important;
-    position: absolute;
-    transform: translateX(-50%);
-  }
-
-  #topbar > .d-flex.align-items-center {
-    position: absolute;
-    right: 0.25rem;
-    top: 50%;
-    transform: translateY(-50%);
+    text-align: center;
   }
 
   #topbar button:not(#search-cancel) {
@@ -124,11 +246,16 @@ button:focus-visible,
   }
 }
 
-/* Sidebar tagline */
-.site-subtitle {
-  @media (max-width: 576px) {
-    font-size: 0.9rem;
-  }
+/* Sidebar tagline and affiliation: one line each ("Principal Security Researcher" fits the 200px column at 14px) */
+#sidebar .site-subtitle,
+#sidebar .site-affiliation {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35em;
+  height: auto;
+  font-size: 0.875rem;
+  word-spacing: normal;
+  white-space: nowrap;
 }
 
 /* CV Download links at top */
@@ -497,67 +624,6 @@ button:focus-visible,
   }
 }
 
-/* Highlight Stats Grid */
-.highlights-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 1rem;
-  margin: 1.5rem 0;
-
-  @media (max-width: 576px) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
-  }
-
-  @media (max-width: 360px) {
-    grid-template-columns: 1fr;
-  }
-}
-
-.highlight-card {
-  background: var(--card-bg);
-  border: 1px solid var(--main-border-color);
-  border-radius: 0.75rem;
-  padding: 1.25rem;
-  text-align: center;
-  transition: all 0.2s ease;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  }
-
-  .highlight-icon {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .highlight-stat {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--heading-color);
-    line-height: 1.2;
-  }
-
-  .highlight-label {
-    font-size: 0.8rem;
-    color: var(--text-muted-color);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-top: 0.25rem;
-  }
-}
-
-/* Award highlight special styling */
-.highlight-card.award {
-  border-color: #ffc107;
-  background: linear-gradient(135deg, rgba(255, 193, 7, 0.05), transparent);
-
-  .highlight-icon {
-    color: #ffc107;
-  }
-}
-
 /* Timeline Styles - compatible with Bootstrap 5 */
 .timeline {
   position: relative;
@@ -822,17 +888,6 @@ button:focus-visible,
   }
 }
 
-/* Cite Button - Orange */
-.pub-btn-cite {
-  background: #9a4f00;
-  color: #fff !important;
-
-  &:hover {
-    background: #783d00;
-    color: #fff !important;
-  }
-}
-
 /* Video Button - Red */
 .pub-btn-video {
   background: #dc3545;
@@ -944,31 +999,6 @@ button:focus-visible,
 .bibtex-modal-footer {
   margin-top: 1rem;
   text-align: right;
-}
-
-/* Publication Entry Styling */
-.pub-entry {
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
-
-  .pub-title {
-    font-weight: 600;
-    color: var(--heading-color);
-    margin-bottom: 0.25rem;
-  }
-
-  .pub-authors {
-    font-size: 0.95rem;
-    color: var(--text-color);
-    margin-bottom: 0.25rem;
-  }
-
-  .pub-venue {
-    font-size: 0.9rem;
-    font-style: italic;
-    color: var(--text-muted-color);
-    margin-bottom: 0.5rem;
-  }
 }
 
 /* Publication/Talk Page Entry Cards */
@@ -1146,8 +1176,8 @@ button:focus-visible,
   padding: 0.08rem 0.32rem;
   background: rgba(202, 138, 4, 0.12);
   border: 1px solid rgba(202, 138, 4, 0.28);
-  color: #a16207;
-  font-size: 0.62rem;
+  color: #854d0e;
+  font-size: 0.72rem;
   font-weight: 600;
   border-radius: 999px;
   margin-left: 0.35rem;
@@ -1158,7 +1188,7 @@ button:focus-visible,
   transition: background-color 0.2s ease, border-color 0.2s ease;
 
   i {
-    font-size: 0.58rem;
+    font-size: 0.66rem;
   }
 
   &[href]:hover,
@@ -1166,17 +1196,17 @@ button:focus-visible,
     background: rgba(202, 138, 4, 0.2);
     border-color: rgba(202, 138, 4, 0.42);
   }
-}
 
-[data-mode="dark"] .entry-badge {
-  background: rgba(250, 204, 21, 0.16);
-  border-color: rgba(250, 204, 21, 0.34);
-  color: #facc15;
+  @include dark-theme {
+    background: rgba(250, 204, 21, 0.16);
+    border-color: rgba(250, 204, 21, 0.34);
+    color: #facc15;
 
-  &[href]:hover,
-  &[href]:focus-visible {
-    background: rgba(250, 204, 21, 0.24);
-    border-color: rgba(250, 204, 21, 0.5);
+    &[href]:hover,
+    &[href]:focus-visible {
+      background: rgba(250, 204, 21, 0.24);
+      border-color: rgba(250, 204, 21, 0.5);
+    }
   }
 }
 
@@ -1209,58 +1239,6 @@ button:focus-visible,
     justify-content: center;
     min-height: 44px;
     min-width: 44px;
-  }
-}
-
-/* References Section - Card Style */
-.references-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1rem;
-  margin: 1.5rem 0;
-
-  @media (max-width: 576px) {
-    grid-template-columns: 1fr;
-  }
-}
-
-.reference-card {
-  background: var(--card-bg);
-  border: 1px solid var(--main-border-color);
-  border-radius: 0.75rem;
-  padding: 1rem 1.25rem;
-  transition: all 0.2s ease;
-
-  &:hover {
-    border-color: var(--link-color);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  }
-
-  .ref-name {
-    font-weight: 600;
-    color: var(--heading-color);
-    margin-bottom: 0.25rem;
-  }
-
-  .ref-position {
-    font-size: 0.85rem;
-    color: var(--text-muted-color);
-    margin-bottom: 0.5rem;
-  }
-
-  .ref-contact {
-    font-size: 0.85rem;
-
-    a {
-      color: var(--link-color);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
   }
 }
 
@@ -1345,31 +1323,6 @@ button:focus-visible,
       min-height: 44px;
       padding-left: 0.35rem;
       padding-right: 0.35rem;
-    }
-  }
-}
-
-.explore-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin: 1rem 0;
-
-  a {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.45rem 0.85rem;
-    border: 1px solid var(--main-border-color);
-    border-radius: 0.75rem;
-    color: var(--heading-color);
-    text-decoration: none;
-    transition: all 0.2s ease;
-
-    &:hover {
-      color: var(--link-color);
-      border-color: var(--link-color);
-      transform: translateY(-1px);
     }
   }
 }
@@ -1493,18 +1446,6 @@ button:focus-visible,
     border-bottom: none;
   }
 
-  .post-title {
-    font-size: 1.4rem;
-    font-weight: 600;
-    margin: 0 0 0.5rem 0;
-    color: var(--heading-color);
-    transition: color 0.2s ease;
-  }
-
-  a:hover .post-title {
-    color: var(--link-color);
-  }
-
   .post-desc {
     font-size: 0.95rem;
     color: var(--text-muted-color);
@@ -1594,12 +1535,11 @@ button:focus-visible,
     border-color: var(--link-color);
     background: var(--link-color);
     color: #fff;
-  }
-}
 
-[data-mode="dark"] .topic-filter:hover,
-[data-mode="dark"] .topic-filter.active {
-  color: #111827;
+    @include dark-theme {
+      color: #111827;
+    }
+  }
 }
 
 .entry-topics {

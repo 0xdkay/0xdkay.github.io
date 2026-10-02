@@ -81,7 +81,7 @@ layout: page
             <h3 class="topic-card-title">
               <a href="{{ '/publications/#' | append: paper_anchor | relative_url }}">{{ paper.title }}</a>
             </h3>
-            <div class="topic-card-detail">{{ paper.venue }}</div>
+            <div class="topic-card-detail">{% include paper-venue.html venue=paper.venue date=paper.date %}</div>
           </article>
         {% endif %}
       {% endfor %}

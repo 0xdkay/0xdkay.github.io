@@ -29,7 +29,7 @@ Current AI mainly relies on sight and hearing, but if AI gains the ability to im
 
 - [Electronic nose research](https://www.chosun.com/economy/science/2023/10/19/A5XW46KB3RGXTJVTX3M4HYRKZU/)
 
-OpenAI's recently released [Sora](https://openai.com/sora/) shows that AI has reached a stage where it can generate videos from just prompt input. The introduction on OpenAI's website is interesting:
+OpenAI's recently released [Sora](https://web.archive.org/web/20240217235945/https://openai.com/sora) shows that AI has reached a stage where it can generate videos from just prompt input. The introduction on OpenAI's website is interesting:
 
 > We're teaching AI to understand and simulate the physical world in motion, with the goal of training models that help people solve problems that require real-world interaction.
 

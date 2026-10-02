@@ -33,7 +33,7 @@ AI의 발전은 사이버 보안 영역에서도 중요한 의미를 가진다. 
 
 이러한 상황에서 중요한 질문은, 생성된 GenAI 결과물에 워터마크를 부착하는 조치가 충분할지, 향후 어떤 다른 방법으로 발전할 수 있을지, 그리고 오픈 소스나 자체 모델을 이용한 직접적인 공격에 대응할 수 있는 방법은 무엇인지에 대한 논의가 필요하지 않을까?
 
-OpenAI가 Sora 모델을 발표하면서 홈페이지 메인에 모델의 안정성(Safety)과 관련된 내용을 명시한 것은, 이러한 노력이 진행하고 있다는 것을 시사한다. [Sora safety 섹션](https://openai.com/sora/)의 내용을 간단히 살펴보면 다양한 관점에서 모델의 안정성과 관련된 고민을 하고 있다는 것을 느낄 수 있다.
+OpenAI가 Sora 모델을 발표하면서 홈페이지 메인에 모델의 안정성(Safety)과 관련된 내용을 명시한 것은, 이러한 노력이 진행하고 있다는 것을 시사한다. [Sora safety 섹션](https://web.archive.org/web/20240217235945/https://openai.com/sora)의 내용을 간단히 살펴보면 다양한 관점에서 모델의 안정성과 관련된 고민을 하고 있다는 것을 느낄 수 있다.
 
 > We'll be taking several important safety steps ahead of making Sora available in OpenAI's products.
 
