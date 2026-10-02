@@ -21,6 +21,7 @@
       authors: "Jiho Kim, <strong>Dongkwan Kim</strong>, HyungSeok Han, Youngjoon Kim, Soyeon Park, Sangwoo Ji, Joshua Wang, Dae R. Jeong, Taesoo Kim"
       venue: "ASE 2026 (to appear)"
       topics: [ai-security]
+      badge: "Distinguished Paper Award"
       keywords: "CtxFuzz directed fuzzing context-aware fuzzer agent cooperation LLM agent runtime vulnerability discovery automated software engineering ASE"
 
     - title: "SoK: DARPA's AI Cyber Challenge (AIxCC): Competition Design, Architectures, and Lessons Learned"
@@ -477,7 +478,7 @@
       authors: "<strong>Dongkwan Kim</strong>, Suwan Park, Kibum Choi, Yongdae Kim"
       venue: "WISA 2015"
       topics: [cyber-physical-sensor-security, firmware-binary-analysis]
-      badge: "Best Paper"
+      badge: "Best Paper Award"
       keywords: "BurnFit wearable devices embedded security cyber-physical firmware analysis"
       links:
         - type: pdf

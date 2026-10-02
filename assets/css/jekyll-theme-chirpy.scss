@@ -996,6 +996,14 @@ button:focus-visible,
     line-height: 1.4;
   }
 
+  .entry-award {
+    margin: -0.1rem 0 0.4rem;
+
+    .entry-badge {
+      margin-left: 0;
+    }
+  }
+
   .entry-authors {
     font-size: 0.86rem;
     color: var(--text-color);

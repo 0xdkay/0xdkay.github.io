@@ -23,8 +23,8 @@ layout: page
       {% endif %}
       <h3 class="entry-title">
         {{ talk.title }}
-        {% if talk.award %}<span class="entry-badge"><i class="fas fa-award" aria-hidden="true"></i> {{ talk.award }}</span>{% endif %}
       </h3>
+      {% if talk.award %}<div class="entry-award"><span class="entry-badge"><i class="fas fa-award" aria-hidden="true"></i> {{ talk.award }}</span></div>{% endif %}
       <div class="entry-venue">{{ talk.venue }}</div>
       {% include topic-labels.html topics=talk.topics %}
       {% if talk.links %}

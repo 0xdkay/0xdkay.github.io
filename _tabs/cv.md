@@ -3,7 +3,7 @@ icon: fas fa-briefcase
 order: 6
 title: CV
 description: "CV of Dongkwan Kim: Microsoft security researcher working on AI-powered security automation, red teaming, mobile security, and systems security."
-last_modified_at: 2026-05-13
+last_modified_at: 2026-10-01
 ---
 
 <div class="cv-links">
@@ -26,7 +26,9 @@ last_modified_at: 2026-05-13
 <p class="timeline-title"><strong>Principal Security Researcher</strong> &mdash; Autonomous Code Security</p>
 <p class="timeline-date">Apr 2026 - Present</p>
 
-Building AI-powered security automation for vulnerability discovery, exploit generation, and scalable defenses.
+Developed and productized MDASH, a multi-model agentic system orchestrating 100+ AI agents to discover, validate, and remediate vulnerabilities across Windows, Hyper-V, Azure, and identity systems; launched within three months. Also building a next-generation agentic system for binary analysis of Windows kernel drivers.
+
+- Manager: Taesoo Kim
 
 </div>
 </div>
@@ -40,9 +42,11 @@ Building AI-powered security automation for vulnerability discovery, exploit gen
 <p class="timeline-title"><strong>Postdoctoral Fellow</strong> &mdash; School of Cybersecurity and Privacy</p>
 <p class="timeline-date">Feb 2025 - Apr 2026</p>
 
-Worked on AI agents and LLM infrastructure for Team Atlanta, which won DARPA's AI Cyber Challenge (AIxCC).
+DARPA AIxCC 1st Place Winner (Team Atlanta): Built LLM-based autonomous fuzzing and exploit agents.
 
-- Advisor: Prof. Taesoo Kim
+Led real-world AI offensive-capability evaluations and continued research on applying AI for security, yielding five papers, including USENIX Security, WOOT, EMNLP, and ASE (Distinguished Paper Award).
+
+- Manager: Prof. Taesoo Kim
 
 </div>
 </div>
@@ -72,7 +76,7 @@ Conducted red team assessments at Samsung Security Center across Samsung affilia
 
 Led systems security research on cellular baseband and cyber-physical systems, resulting in USENIX Security and NDSS publications.
 
-- Advisor: Prof. Yongdae Kim
+- Manager: Prof. Yongdae Kim
 
 </div>
 </div>
@@ -151,7 +155,7 @@ Thesis: *Dissecting VoLTE: Exploiting Free Data Channels and Security Problems*
 
 ### EURECOM
 
-<p class="timeline-title"><strong>Visiting Scientist</strong> &mdash; Software and System Security</p>
+<p class="timeline-title"><strong>Visiting Scholar</strong> &mdash; Software and System Security</p>
 <p class="timeline-date">Jun 2014 - Jul 2014</p>
 
 - Advisor: Prof. Aurélien Francillon
@@ -179,8 +183,17 @@ Thesis: *Dissecting VoLTE: Exploiting Free Data Channels and Security Problems*
 
 ## Awards & Recognition
 
-| Award | Result | Team | Date |
-|-------|--------|------|------|
+### Academic Awards
+
+| Award | Venue | Paper | Date |
+|-------|-------|-------|------|
+| Distinguished Paper Award | ASE 2026 | CtxFuzz | Oct 2026 |
+| Distinguished Paper Runner-up | USENIX Security 2026 | SoK: DARPA's AI Cyber Challenge | Aug 2026 |
+
+### Security Competitions
+
+| Competition | Result | Team | Date |
+|-------------|--------|------|------|
 | DARPA AIxCC | 1st Place ($4M) | Team Atlanta | Aug 2025 |
 | DEF CON 27 CTF | Finals (12th/16) | KaisHack GoN | Aug 2019 |
 | DEF CON 26 CTF | Finals (21st/24) | KaisHack+PLUS+GoN | Aug 2018 |
@@ -188,11 +201,11 @@ Thesis: *Dissecting VoLTE: Exploiting Free Data Channels and Security Problems*
 | HDCON | 1st Place ($20K) | maxlen | Nov 2017 |
 | Codegate CTF | 3rd Place ($5K) | Old GoatskiN | Apr 2017 |
 | DEF CON 24 CTF | Finals (5th/15) | KaisHack GoN | Aug 2016 |
-| WhiteHat Contest | 1st Place ($20K) | Syssec | Nov 2014 |
+| WhiteHat Contest | 1st Place ($20K) | SysSec | Nov 2014 |
 | DEF CON 22 CTF | Finals (10th/20) | KAIST GoN | Aug 2014 |
-| WhiteHat Contest | 1st Place ($20K) | KAIST GoN | Oct 2013 |
 | HDCON | Silver ($2K) | GoN | Dec 2013 |
-| DEF CON 20 CTF | Finals (17th/20) | KAIST GoN | Aug 2012 |
+| WhiteHat Contest | 1st Place ($20K) | KAIST GoN | Oct 2013 |
+| DEF CON 20 CTF | Finals (17th/20) | KAIST GoN | Jul 2012 |
 | HDCON | Silver ($2K) | KAIST GoN | Jul 2012 |
 | Codegate CTF | 3rd Place ($5K) | KAIST GoN | Apr 2012 |
 | ISEC CTF | 1st Place ($10K) | GoN | Sep 2011 |

@@ -4,5 +4,5 @@ title: Mobile & Cellular
 topic: mobile-cellular
 permalink: /topics/mobile-cellular/
 description: "Dongkwan Kim's mobile and cellular security work, including cellular baseband, VoLTE/IMS, LTE networks, protocol reversing, and mobile platform security."
-last_modified_at: 2026-05-10
+last_modified_at: 2026-10-01
 ---

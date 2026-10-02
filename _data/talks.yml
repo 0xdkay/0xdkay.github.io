@@ -35,7 +35,7 @@
     - title: "AI Security 101: Red Team's Perspective on Navigating New Threats in AI Frontier"
       id: "2025-2-ai-security-101-red-team-s-perspective-on-navigating-new-threats-in-ai-frontier"
       date: "2025-01-10"
-      venue: "Hyundai Motors Group Security Center"
+      venue: "Hyundai Motor Group Security Center"
       location: "Seoul, South Korea"
       type: Invited
       topics: [ai-security]
@@ -76,7 +76,7 @@
     - title: "Scaling up Vulnerability Analysis of IoT Devices with Heuristics and Binary Code Similarity"
       id: "2024-4-scaling-up-vulnerability-analysis-of-iot-devices-with-heuristics-and-binary-code-similarity"
       date: "2024-07-24"
-      venue: "Samsung Mobile Security & Hyundai Motors Group Security Tech Workshop"
+      venue: "Technology Exchange Meeting between Samsung Mobile Security Team and Hyundai Motor Company Vehicle Cyber Security Team"
       location: "Seoul, South Korea"
       type: Invited
       topics: [firmware-binary-analysis]
@@ -127,10 +127,10 @@
           url: "https://security.korea.ac.kr/m06_04/22"
           label: "Schedule"
 
-    - title: "Peeking Over Industry's Patch Gap"
+    - title: "Peeking over Industry's Patch Gap: Case Study of Samsung SmartTV's Web Browser"
       id: "2023-2-peeking-over-industry-s-patch-gap"
       date: "2023-03-16"
-      venue: "Samsung SDS - KAIST Tech Seminar"
+      venue: "Samsung SDS-KAIST Tech Seminar"
       location: "Daejeon, South Korea"
       type: Invited
       topics: [other]
@@ -155,12 +155,23 @@
           url: "https://www.ndss-symposium.org/ndss-program/ndss-2021/"
           label: "Schedule"
 
+- year: 2019
+  talks:
+    - title: "BaseSpec: Comparative Analysis of Baseband Software and Cellular Specifications for L3 Protocols"
+      id: "2019-1-basespec-comparative-analysis-of-baseband-software-and-cellular-specifications-for-l3-protocols"
+      date: "2019-08"
+      venue: "KAIST-CISPA Workshop"
+      location: "Virtual"
+      type: Invited
+      topics: [mobile-cellular, firmware-binary-analysis]
+      keywords: "BaseSpec cellular baseband L3 protocols mobile security firmware binary analysis"
+
 - year: 2016
   talks:
-    - title: "Breaking & Fixing VoLTE: Exploiting Hidden Data Channels and Mis-implementations"
+    - title: "Breaking and Fixing VoLTE: Exploiting Hidden Data Channels and Mis-implementations"
       id: "2016-1-breaking-fixing-volte-exploiting-hidden-data-channels-and-mis-implementations"
       date: "2016-09-26"
-      venue: "GSMA VoLTE/RCS Security Workshop"
+      venue: "GSMA RCS/VoLTE Security Regulatory Workshop"
       location: "Toronto, Canada"
       type: Invited
       topics: [mobile-cellular]
@@ -190,7 +201,7 @@
         - type: video
           url: "https://media.ccc.de/v/32c3-7502-dissecting_volte#t=1304"
 
-    - title: "Breaking and Fixing VoLTE"
+    - title: "Breaking and Fixing VoLTE: Exploiting Hidden Data Channels and Mis-implementations"
       id: "2015-3-breaking-and-fixing-volte"
       date: "2015-11-19"
       venue: "National Security Research Institute (NSR)"
