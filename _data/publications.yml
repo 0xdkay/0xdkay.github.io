@@ -26,6 +26,8 @@
       badge: "Distinguished Paper Award"
       keywords: "CtxFuzz directed fuzzing context-aware fuzzer agent cooperation LLM agent runtime vulnerability discovery automated software engineering ASE"
       links:
+        - type: pdf
+          url: "/pub/2026/kim-ase26-ctxfuzz.pdf"
         - type: bibtex
           url: "kim-2026-ctxfuzz"
 
