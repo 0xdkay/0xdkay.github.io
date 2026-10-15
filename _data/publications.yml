@@ -30,6 +30,8 @@
           url: "/pub/2026/kim-ase26-ctxfuzz.pdf"
         - type: bibtex
           url: "kim-2026-ctxfuzz"
+        - type: slides
+          url: "/pub/2026/kim-ase26-ctxfuzz-slides.pdf"
 
     - title: "SoK: DARPA's AI Cyber Challenge (AIxCC): Competition Design, Architectures, and Lessons Learned"
       id: "2026-2-sok-darpa-s-ai-cyber-challenge-aixcc-competition-design-architectures-and-lessons-learned"
