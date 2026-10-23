@@ -2,7 +2,7 @@
 title: "Thoughts on GenAI (2/4): Fake Information, Scams, and Phishing"
 date: 2024-02-17 10:01:00 +0900
 categories: [Blog]
-tags: [ai, genai]
+tags: [ai, security, genai]
 topics: [ai-security]
 lang: en
 translation_key: genai-thoughts-2-misinformation

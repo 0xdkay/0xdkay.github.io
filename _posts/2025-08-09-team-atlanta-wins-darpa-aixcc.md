@@ -3,7 +3,7 @@ title: "Team Atlanta Wins DARPA AI Cyber Challenge (AIxCC)"
 date: 2025-08-09 12:00:00 -0400
 last_modified_at: 2025-12-14
 categories: [Blog]
-tags: [aixcc, darpa, team-atlanta, ai-security]
+tags: [ai, security, vulnerability, aixcc, team-atlanta]
 keywords: "ATLANTIS CRS-Multilang MLLA BCDA BGA context engineering exploit generation patch generation vulnerability discovery cyber reasoning system"
 topics: [ai-security]
 lang: en

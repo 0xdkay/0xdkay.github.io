@@ -2,7 +2,7 @@
 title: "GenAI에 대한 잡생각 (3/4): Safe, Secure AI"
 date: 2024-02-17 10:02:00 +0900
 categories: [Blog]
-tags: [ai, genai]
+tags: [ai, security, genai, aixcc]
 topics: [ai-security]
 lang: ko
 translation_key: genai-thoughts-3-safe-secure-ai
