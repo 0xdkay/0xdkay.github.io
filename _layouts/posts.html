@@ -6,13 +6,18 @@ layout: default
 <h1 class="dynamic-title">Blog</h1>
 
 <p class="writing-note">
-  For a compact date-based index, see <a href="{{ '/archives/' | relative_url }}">Archives</a>.
+  <span class="lang-en">For a compact date-based index, see <a href="{{ '/archives/' | relative_url }}">Archives</a>. Browse by topic in <a href="{{ '/tags/' | relative_url }}">Tags</a>.</span>
+  <span class="lang-ko" style="display:none;">날짜별로 간단히 보려면 <a href="{{ '/archives/' | relative_url }}">아카이브</a>, 주제별로 찾으려면 <a href="{{ '/tags/' | relative_url }}">태그</a>를 보세요.</span>
 </p>
 
 <div id="post-list" class="px-0">
   {% assign rendered_keys = '' | split: '' %}
+  {% assign visible_posts = site.posts | where_exp: 'item', 'item.hidden != true' %}
+  {% assign pinned_posts = visible_posts | where: 'pin', true %}
+  {% assign normal_posts = visible_posts | where_exp: 'item', 'item.pin != true' %}
+  {% assign ordered_posts = pinned_posts | concat: normal_posts %}
 
-  {% for post in site.posts %}
+  {% for post in ordered_posts %}
     {% include post-group-vars.html post=post %}
 
     {% if rendered_keys contains post_key %}
@@ -26,12 +31,18 @@ layout: default
       <div class="card-body">
         <div class="writing-meta">
           <i class="far fa-calendar-alt me-1"></i>
-          <time>{{ display_post.date | date: "%b %d, %Y" }}</time>
+          <time datetime="{{ display_post.date | date_to_xmlschema }}">{% include bi-date.html date=display_post.date %}</time>
           {% assign categories_label = display_post.categories | join: ", " %}
           {% if display_post.categories.size > 0 and categories_label != "Blog" %}
           <span>
             <i class="far fa-folder-open me-1"></i>
             {{ categories_label }}
+          </span>
+          {% endif %}
+          {% if post.pin %}
+          <span class="writing-pin">
+            <i class="fas fa-thumbtack me-1" aria-hidden="true"></i>
+            <span class="lang-en">Pinned</span><span class="lang-ko" style="display:none;">고정됨</span>
           </span>
           {% endif %}
         </div>
@@ -63,9 +74,10 @@ layout: default
         </p>
       </div>
       {% if thumbnail %}
+        {% assign thumbnail_src = thumbnail.path | default: thumbnail %}
         <img
           class="writing-thumb"
-          src="{{ thumbnail.path | default: thumbnail | relative_url }}"
+          src="{% include media-url.html src=thumbnail_src subpath=display_post.media_subpath %}"
           alt=""
           aria-hidden="true"
           loading="lazy"

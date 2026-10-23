@@ -30,5 +30,6 @@
   label: "Other"
   short_label: "Other"
   icon: "fas fa-folder-open"
+  sidebar_hidden: true
   description: "Cross-domain, legacy, and CTF-related work outside the four focused research areas."
   keywords: "기타 보안 legacy cross-domain CTF blockchain biomedical optics patch gap"

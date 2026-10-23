@@ -18,6 +18,7 @@
     "database",
     "display",
     "envelope",
+    "facebook-square",
     "file-alt",
     "file-pdf",
     "file-powerpoint",
@@ -43,12 +44,15 @@
     "scroll",
     "search",
     "shield-alt",
+    "square-x-twitter",
     "sun",
     "tag",
     "tags",
+    "thumbtack",
     "video"
   ],
   "ignored": [
+    "brands",
     "fw",
     "regular",
     "solid"
@@ -56,6 +60,7 @@
   "codes": [
     "23",
     "e163",
+    "e61a",
     "f002",
     "f00c",
     "f015",
@@ -67,7 +72,9 @@
     "f073",
     "f07b",
     "f07c",
+    "f082",
     "f08c",
+    "f08d",
     "f09b",
     "f0ac",
     "f0b1",

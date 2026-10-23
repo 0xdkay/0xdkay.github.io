@@ -1,0 +1,25 @@
+---
+layout: page
+# All the Tags of posts.
+# Overrides the gem layout: counts a KO/EN translation pair as one post.
+---
+
+<div id="tags" class="d-flex flex-wrap mx-xl-2">
+  {% assign tags = '' | split: '' %}
+  {% for t in site.tags %}
+    {% assign tags = tags | push: t[0] %}
+  {% endfor %}
+
+  {% assign sorted_tags = tags | sort_natural %}
+
+  {% for t in sorted_tags %}
+    {% assign tag_posts = site.tags[t] %}
+    {% include post-group-count.html posts=tag_posts %}
+    <div>
+      <a class="tag" href="{{ t | slugify | url_encode | prepend: '/tags/' | append: '/' | relative_url }}">
+        {{ t -}}
+        <span class="text-muted">{{ post_group_count }}</span>
+      </a>
+    </div>
+  {% endfor %}
+</div>

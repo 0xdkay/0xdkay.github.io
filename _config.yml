@@ -60,6 +60,13 @@ avatar: /assets/img/dkay.webp
 # boolean type, the global switch for TOC in posts
 toc: true
 
+# "Edit this post" link at the bottom of each post
+actions:
+  edit_post:
+    enabled: true
+    url: https://github.com/0xdkay/0xdkay.github.io/edit/master
+    static_url: false
+
 # Comments configuration - Giscus (disabled for now)
 # To enable: uncomment below and configure repo_id/category_id from https://giscus.app
 # comments:

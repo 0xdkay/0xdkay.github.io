@@ -1,15 +1,64 @@
-<!-- Curated cross-content topics. Blog tags stay available through hidden tag pages. -->
+<!-- Curated research areas plus Chirpy's standard trending blog tags. -->
 
 {% if site.data.topics.size > 0 %}
   <section>
-    <h2 class="panel-heading">Topics</h2>
+    <h2 class="panel-heading">{% include bi.html en="Research Areas" ko="연구 분야" %}</h2>
     <div class="d-flex flex-wrap mt-3 mb-1 me-3">
       {% for topic in site.data.topics %}
+        {% if topic.sidebar_hidden %}
+          {% continue %}
+        {% endif %}
         {% assign topic_url = '/topics/' | append: topic.slug | append: '/' %}
         <a class="post-tag btn btn-outline-primary" href="{{ topic_url | relative_url }}">
           {% if topic.icon %}<i class="{{ topic.icon }}" aria-hidden="true"></i>{% endif %}
           {{ topic.short_label | default: topic.label }}
         </a>
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}
+
+{% comment %}
+  Rank tags by distinct posts (a KO/EN translation pair counts once),
+  then by the newest post that uses the tag.
+{% endcomment %}
+{% assign MAX = 10 %}
+{% assign ranked = '' | split: '' %}
+
+{% for tag in site.tags %}
+  {% assign tag_posts = tag | last %}
+  {% assign post_keys = '' | split: '' %}
+  {% assign latest = 0 %}
+  {% for post in tag_posts %}
+    {% assign post_key = post.translation_key | default: post.url %}
+    {% assign post_keys = post_keys | push: post_key %}
+    {% assign post_ts = post.date | date: '%s' | plus: 0 %}
+    {% if post_ts > latest %}
+      {% assign latest = post_ts %}
+    {% endif %}
+  {% endfor %}
+  {% assign padded_count = post_keys | uniq | size | plus: 10000 %}
+  {% assign entry = padded_count | append: '::' | append: latest | append: '::' | append: tag[0] %}
+  {% assign ranked = ranked | push: entry %}
+{% endfor %}
+
+{% assign ranked = ranked | sort | reverse %}
+{% assign trending_tags = '' | split: '' %}
+
+{% for entry in ranked limit: MAX %}
+  {% assign tag_name = entry | split: '::' | last %}
+  {% assign trending_tags = trending_tags | push: tag_name %}
+{% endfor %}
+
+{% if trending_tags.size > 0 %}
+  <section>
+    <h2 class="panel-heading">
+      {%- include bi.html en=site.data.locales.en.panel.trending_tags ko=site.data.locales.ko-KR.panel.trending_tags -%}
+    </h2>
+    <div class="d-flex flex-wrap mt-3 mb-1 me-3">
+      {% for tag_name in trending_tags %}
+        {% assign url = tag_name | slugify | url_encode | prepend: '/tags/' | append: '/' %}
+        <a class="post-tag btn btn-outline-primary" href="{{ url | relative_url }}">{{ tag_name }}</a>
       {% endfor %}
     </div>
   </section>

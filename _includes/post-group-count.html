@@ -1,0 +1,10 @@
+{% comment %}
+  Sets `post_group_count`: distinct articles in `include.posts`,
+  counting a KO/EN translation pair once (same key as post-group-vars.html).
+{% endcomment %}
+{% assign group_keys = '' | split: '' %}
+{% for group_post in include.posts %}
+  {% assign group_key = group_post.translation_key | default: group_post.url %}
+  {% assign group_keys = group_keys | push: group_key %}
+{% endfor %}
+{% assign post_group_count = group_keys | uniq | size %}
