@@ -5,11 +5,11 @@ layout: page
 
 {% include lang.html %}
 
-{% assign df_strftime_m = site.data.locales[lang].df.archives.strftime | default: '/ %m' %}
-{% assign df_dayjs_m = site.data.locales[lang].df.archives.dayjs | default: '/ MM' %}
+{% assign df_strftime_m = site.data.locales['en'].df.archives.strftime | default: '%b' %}
 
 <p class="writing-note">
-  A compact date-based index of blog posts. For richer summaries, see <a href="{{ '/posts/' | relative_url }}">Blog</a>.
+  <span class="lang-en">A compact date-based index of blog posts. For richer summaries, see <a href="{{ '/posts/' | relative_url }}">Blog</a>.</span>
+  <span class="lang-ko" style="display:none;">블로그 글을 날짜순으로 모은 목록입니다. 요약과 함께 보려면 <a href="{{ '/posts/' | relative_url }}">Blog</a>를 보세요.</span>
 </p>
 
 <div id="archives" class="pl-xl-3">
@@ -30,7 +30,7 @@ layout: page
     {% if cur_year != last_year %}
       {% if last_year %}</ul>{% endif %}
 
-      <time class="year lead d-block">{{ cur_year }}</time>
+      <time class="year lead d-block" datetime="{{ cur_year }}">{{ cur_year }}</time>
       {{ '<ul class="list-unstyled">' }}
 
       {% assign last_year = cur_year %}
@@ -38,9 +38,11 @@ layout: page
 
     <li>
       {% assign ts = display_post.date | date: '%s' %}
+      {% assign month_en = display_post.date | date: df_strftime_m %}
       <span class="date day" data-ts="{{ ts }}" data-df="DD">{{ display_post.date | date: '%d' }}</span>
-      <span class="date month small text-muted ms-1" data-ts="{{ ts }}" data-df="{{ df_dayjs_m }}">
-        {{ display_post.date | date: df_strftime_m }}
+      <span class="date month small text-muted ms-1">
+        {%- assign month_ko = display_post.date | date: '%-m' | append: '월' -%}
+        {%- include bi.html en=month_en ko=month_ko -%}
       </span>
       <a href="{{ display_post.url | relative_url }}"{% if ko_post %} class="lang-en"{% endif %}>{{ display_post.title }}</a>
       {% if ko_post %}

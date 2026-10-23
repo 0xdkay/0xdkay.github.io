@@ -76,7 +76,12 @@
         {% assign ko_title = fields[5] %}
 
         <li class="text-truncate lh-lg update-entry">
-          <span class="update-kind">{{ kind }}</span>
+          {% case kind %}
+            {% when 'Paper' %}{% assign kind_ko = '논문' %}
+            {% when 'Talk' %}{% assign kind_ko = '발표' %}
+            {% else %}{% assign kind_ko = '블로그' %}
+          {% endcase %}
+          <span class="update-kind">{% include bi.html en=kind ko=kind_ko %}</span>
           <a href="{{ url | relative_url }}"{% if ko_url and ko_title %} class="lang-en"{% endif %}>{{ title }}</a>
           {% if ko_url and ko_title %}
             <a href="{{ ko_url | relative_url }}" class="lang-ko" style="display:none;">{{ ko_title }}</a>

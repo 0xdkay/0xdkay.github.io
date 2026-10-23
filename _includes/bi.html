@@ -1,0 +1,5 @@
+{%- comment -%}
+  Inline EN/KO label pair; lang-toggle.js and the [data-lang] rules in head.html pick the visible one.
+  Usage: {% include bi.html en="Tags" ko="태그" %}
+{%- endcomment -%}
+<span class="lang-en">{{ include.en }}</span><span class="lang-ko" style="display:none;">{{ include.ko }}</span>

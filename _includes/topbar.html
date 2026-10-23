@@ -14,23 +14,27 @@
   >
     <nav id="breadcrumb" aria-label="Breadcrumb">
       {% assign paths = page.url | split: '/' %}
+      {% assign en_ui = site.data.locales['en'] %}
+      {% assign ko_ui = site.data.locales['ko-KR'] %}
 
       {% if paths.size == 0 or page.layout == 'home' %}
         <!-- index page -->
-        <span>{{ site.data.locales[include.lang].tabs.home | capitalize }}</span>
+        <span>{% include bi.html en=en_ui.tabs.home ko=ko_ui.tabs.home %}</span>
 
       {% else %}
         {% for item in paths %}
           {% if forloop.first %}
             <span>
               <a href="{{ '/' | relative_url }}">
-                {{- site.data.locales[include.lang].tabs.home | capitalize -}}
+                {%- include bi.html en=en_ui.tabs.home ko=ko_ui.tabs.home -%}
               </a>
             </span>
 
           {% elsif forloop.last %}
             {% if page.collection == 'tabs' %}
-              <span>{{ site.data.locales[include.lang].tabs[item] | default: page.title }}</span>
+              {% assign en_tab = en_ui.tabs[item] %}
+              {% assign ko_tab = ko_ui.tabs[item] %}
+              <span>{% if en_tab and ko_tab %}{% include bi.html en=en_tab ko=ko_tab %}{% else %}{{ page.title }}{% endif %}</span>
             {% else %}
               <span>
                 {% if topic_icon %}<i class="{{ topic_icon }} topic-breadcrumb-icon" aria-hidden="true"></i>{% endif %}
@@ -41,7 +45,9 @@
           {% elsif page.layout == 'category' or page.layout == 'tag' %}
             <span>
               <a href="{{ item | append: '/' | relative_url }}">
-                {{- site.data.locales[include.lang].tabs[item] | default: page.title -}}
+                {%- assign en_tab = en_ui.tabs[item] -%}
+                {%- assign ko_tab = ko_ui.tabs[item] -%}
+                {%- if en_tab and ko_tab -%}{% include bi.html en=en_tab ko=ko_tab %}{%- else -%}{{ page.title }}{%- endif -%}
               </a>
             </span>
           {% endif %}
@@ -59,7 +65,9 @@
         {{- site.data.locales[include.lang].title | default: site.title -}}
       {% elsif page.collection == 'tabs' or page.layout == 'page' %}
         {%- capture tab_key -%}{{ page.url | split: '/' }}{%- endcapture -%}
-        {{- site.data.locales[include.lang].tabs[tab_key] | default: page.title -}}
+        {%- assign en_tab = en_ui.tabs[tab_key] -%}
+        {%- assign ko_tab = ko_ui.tabs[tab_key] -%}
+        {%- if en_tab and ko_tab -%}{% include bi.html en=en_tab ko=ko_tab %}{%- else -%}{{ page.title }}{%- endif -%}
       {% elsif page.layout == 'topic' %}
         {% if topic_icon %}<i class="{{ topic_icon }} topic-breadcrumb-icon" aria-hidden="true"></i>{% endif %}
         {{- page.title -}}
@@ -100,19 +108,19 @@
             <li>
               <button class="dropdown-item d-flex align-items-center" type="button" data-theme-mode="light">
                 {{- icon_light -}}
-                {{- site.data.locales[include.lang].theme.light -}}
+                {%- include bi.html en=en_ui.theme.light ko=ko_ui.theme.light -%}
               </button>
             </li>
             <li>
               <button class="dropdown-item d-flex align-items-center" type="button" data-theme-mode="dark">
                 {{- icon_dark -}}
-                {{- site.data.locales[include.lang].theme.dark -}}
+                {%- include bi.html en=en_ui.theme.dark ko=ko_ui.theme.dark -%}
               </button>
             </li>
             <li>
               <button class="dropdown-item d-flex align-items-center" type="button" data-theme-mode="system">
                 {{- icon_system -}}
-                {{- site.data.locales[include.lang].theme.system -}}
+                {%- include bi.html en=en_ui.theme.system ko=ko_ui.theme.system -%}
               </button>
             </li>
           </ul>

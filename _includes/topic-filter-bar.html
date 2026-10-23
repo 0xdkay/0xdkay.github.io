@@ -1,5 +1,5 @@
 <div class="topic-filter-bar">
-  <button type="button" class="topic-filter active" data-topic-filter="all" aria-pressed="true">All</button>
+  <button type="button" class="topic-filter active" data-topic-filter="all" aria-pressed="true">{% include bi.html en="All" ko="전체" %}</button>
   {% for topic in site.data.topics %}
     <button type="button" class="topic-filter" data-topic-filter="{{ topic.slug }}" aria-pressed="false">
       {% if topic.icon %}<i class="{{ topic.icon }}" aria-hidden="true"></i>{% endif %}

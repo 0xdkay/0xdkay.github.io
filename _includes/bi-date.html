@@ -1,0 +1,7 @@
+{%- comment -%}
+  EN/KO date text pair for pages whose language is switched client-side.
+  Args: date (required), en_format (default "%b %d, %Y"). KO uses the ko-KR locale post format.
+{%- endcomment -%}
+{%- assign en_format = include.en_format | default: '%b %d, %Y' -%}
+{%- assign ko_format = site.data.locales['ko-KR'].df.post.strftime -%}
+<span class="lang-en">{{ include.date | date: en_format }}</span><span class="lang-ko" style="display:none;">{{ include.date | date: ko_format }}</span>

@@ -1,0 +1,61 @@
+<!-- The Footer: gem footer with EN/KO strings switched by the site language toggle. -->
+
+{% assign en_ui = site.data.locales['en'] %}
+{% assign ko_ui = site.data.locales['ko-KR'] %}
+
+<footer
+  aria-label="Site Info"
+  class="
+    d-flex flex-column justify-content-center text-muted
+    flex-lg-row justify-content-lg-between align-items-lg-center pb-lg-3
+  "
+>
+  <p>
+    {{- '©' }}
+    <time>{{ 'now' | date: '%Y' }}</time>
+
+    {% if site.social.links %}
+      <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>.
+    {% else %}
+      <em class="fst-normal">{{ site.social.name }}</em>.
+    {% endif %}
+
+    <span
+      class="lang-en"
+      data-bs-toggle="tooltip"
+      data-bs-placement="top"
+      title="{{ en_ui.copyright.verbose }}"
+    >
+      {{- en_ui.copyright.brief -}}
+    </span>
+    <span
+      class="lang-ko"
+      style="display:none;"
+      data-bs-toggle="tooltip"
+      data-bs-placement="top"
+      title="{{ ko_ui.copyright.verbose }}"
+    >
+      {{- ko_ui.copyright.brief -}}
+    </span>
+  </p>
+
+  <p>
+    {%- capture _platform -%}
+      <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a>
+    {%- endcapture -%}
+
+    {%- capture _theme -%}
+      <a
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        title="v{{ theme.version }}"
+        href="https://github.com/cotes2020/jekyll-theme-chirpy"
+        target="_blank"
+        rel="noopener"
+      >Chirpy</a>
+    {%- endcapture -%}
+
+    <span class="lang-en">{{ en_ui.meta | replace: ':PLATFORM', _platform | replace: ':THEME', _theme }}</span>
+    <span class="lang-ko" style="display:none;">{{ _platform }}과 {{ _theme }} 테마로 만들었습니다.</span>
+  </p>
+</footer>

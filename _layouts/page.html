@@ -1,0 +1,26 @@
+---
+layout: default
+# Overrides the gem layout: tab titles with a Korean locale entry switch with the site language toggle.
+---
+
+{% include lang.html %}
+
+<article class="px-1">
+  {% if page.layout == 'page' or page.collection == 'tabs' %}
+    {% assign tab_key = page.title | downcase %}
+    {% assign en_title = site.data.locales['en'].tabs[tab_key] %}
+    {% assign ko_title = site.data.locales['ko-KR'].tabs[tab_key] %}
+    <h1 class="dynamic-title">
+      {% if en_title and ko_title %}
+        {% include bi.html en=en_title ko=ko_title %}
+      {% else %}
+        {{ site.data.locales[lang].tabs[tab_key] | default: page.title }}
+      {% endif %}
+    </h1>
+    <div class="content">
+      {{ content }}
+    </div>
+  {% else %}
+    {{ content }}
+  {% endif %}
+</article>

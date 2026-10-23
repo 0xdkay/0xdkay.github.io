@@ -48,20 +48,26 @@ layout: page
       <p class="topic-description">{{ topic.description }}</p>
     {% endif %}
     <div class="topic-stats">
+      {% capture publication_en %}{{ publication_count }} {% if publication_count == 1 %}Publication{% else %}Publications{% endif %}{% endcapture %}
+      {% capture publication_ko %}논문 {{ publication_count }}편{% endcapture %}
+      {% capture talk_en %}{{ talk_count }} {% if talk_count == 1 %}Talk{% else %}Talks{% endif %}{% endcapture %}
+      {% capture talk_ko %}발표 {{ talk_count }}건{% endcapture %}
+      {% capture writing_en %}{{ writing_count }} {% if writing_count == 1 %}Blog Post{% else %}Blog Posts{% endif %}{% endcapture %}
+      {% capture writing_ko %}블로그 글 {{ writing_count }}편{% endcapture %}
       {% if publication_count > 0 %}
-        <a href="#publications">{{ publication_count }} {% if publication_count == 1 %}Publication{% else %}Publications{% endif %}</a>
+        <a href="#publications">{% include bi.html en=publication_en ko=publication_ko %}</a>
       {% else %}
-        <span>{{ publication_count }} Publications</span>
+        <span>{% include bi.html en=publication_en ko=publication_ko %}</span>
       {% endif %}
       {% if talk_count > 0 %}
-        <a href="#talks">{{ talk_count }} {% if talk_count == 1 %}Talk{% else %}Talks{% endif %}</a>
+        <a href="#talks">{% include bi.html en=talk_en ko=talk_ko %}</a>
       {% else %}
-        <span>{{ talk_count }} Talks</span>
+        <span>{% include bi.html en=talk_en ko=talk_ko %}</span>
       {% endif %}
       {% if writing_count > 0 %}
-        <a href="#blog">{{ writing_count }} {% if writing_count == 1 %}Blog Post{% else %}Blog Posts{% endif %}</a>
+        <a href="#blog">{% include bi.html en=writing_en ko=writing_ko %}</a>
       {% else %}
-        <span>{{ writing_count }} Blog Posts</span>
+        <span>{% include bi.html en=writing_en ko=writing_ko %}</span>
       {% endif %}
     </div>
   </div>
@@ -75,7 +81,7 @@ layout: page
           {% include entry-date-vars.html date=paper.date year=year_group.year %}
           <article class="topic-card topic-card-publication">
             <div class="topic-card-meta">
-              <span class="topic-card-type">Publication</span>
+              <span class="topic-card-type">{% include bi.html en="Publication" ko="논문" %}</span>
               <span>{{ entry_date_display }}</span>
             </div>
             <h3 class="topic-card-title">
@@ -93,7 +99,7 @@ layout: page
     <section id="publications" class="topic-section">
       <div class="topic-section-header">
         <h2>Publications</h2>
-        <a href="{{ '/publications/' | relative_url }}">All publications</a>
+        <a href="{{ '/publications/' | relative_url }}">{% include bi.html en="All publications" ko="논문 전체 보기" %}</a>
       </div>
       <div class="topic-card-list">
         {{ publications_content }}
@@ -110,7 +116,7 @@ layout: page
           {% include entry-date-vars.html date=talk.date year=year_group.year %}
           <article class="topic-card topic-card-talk">
             <div class="topic-card-meta">
-              <span class="topic-card-type">Talk</span>
+              <span class="topic-card-type">{% include bi.html en="Talk" ko="발표" %}</span>
               <span>{{ entry_date_display }}</span>
             </div>
             <h3 class="topic-card-title">
@@ -128,7 +134,7 @@ layout: page
     <section id="talks" class="topic-section">
       <div class="topic-section-header">
         <h2>Talks</h2>
-        <a href="{{ '/talks/' | relative_url }}">All talks</a>
+        <a href="{{ '/talks/' | relative_url }}">{% include bi.html en="All talks" ko="발표 전체 보기" %}</a>
       </div>
       <div class="topic-card-list">
         {{ talks_content }}
@@ -149,7 +155,7 @@ layout: page
       {% if display_post.topics contains topic_slug %}
         <article class="topic-card topic-card-writing">
           <div class="topic-card-meta">
-            <span class="topic-card-type">Blog</span>
+            <span class="topic-card-type">{% include bi.html en="Blog" ko="블로그" %}</span>
             {% include datetime.html date=display_post.date class='text-muted small' lang=lang %}
           </div>
           <h3 class="topic-card-title">
@@ -171,7 +177,7 @@ layout: page
     <section id="blog" class="topic-section">
       <div class="topic-section-header">
         <h2>Blog</h2>
-        <a href="{{ '/posts/' | relative_url }}">All blog posts</a>
+        <a href="{{ '/posts/' | relative_url }}">{% include bi.html en="All blog posts" ko="블로그 글 전체 보기" %}</a>
       </div>
       <div class="topic-card-list">
         {{ writing_content }}

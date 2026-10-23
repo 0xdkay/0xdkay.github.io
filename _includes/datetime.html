@@ -1,0 +1,34 @@
+<!--
+  Date format snippet. Overrides the gem include:
+  - post pages keep the gem behavior (fixed page language, formatted by locale-datetime.js);
+  - other pages render static EN/KO text switched by the site language toggle.
+  Both add the machine-readable `datetime` attribute.
+-->
+
+{% if page.collection == 'posts' %}
+  {% assign df_strftime = site.data.locales[include.lang].df.post.strftime | default: '%d/%m/%Y' %}
+  {% assign df_dayjs = site.data.locales[include.lang].df.post.dayjs | default: 'DD/MM/YYYY' %}
+
+  <time
+    {% if include.class %}
+      class="{{ include.class }}"
+    {% endif %}
+    datetime="{{ include.date | date_to_xmlschema }}"
+    data-ts="{{ include.date | date: '%s' }}"
+    data-df="{{ df_dayjs }}"
+    {% if include.tooltip %}
+      data-bs-toggle="tooltip" data-bs-placement="bottom"
+    {% endif %}
+  >
+    {{ include.date | date: df_strftime }}
+  </time>
+{% else %}
+  <time
+    {% if include.class %}
+      class="{{ include.class }}"
+    {% endif %}
+    datetime="{{ include.date | date_to_xmlschema }}"
+  >
+    {%- include bi-date.html date=include.date en_format=site.data.locales.en.df.post.strftime -%}
+  </time>
+{% endif %}
