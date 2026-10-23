@@ -8,7 +8,6 @@ keywords: "ATLANTIS CRS-Multilang MLLA BCDA BGA context engineering exploit gene
 topics: [ai-security]
 lang: en
 translation_key: team-atlanta-wins-darpa-aixcc
-pin: true
 description: "Team Atlanta wins 1st place in DARPA's AI Cyber Challenge (AIxCC), demonstrating AI-driven vulnerability detection and patching."
 thumbnail:
   path: /assets/img/aixcc/aixcc-first-place-announcement-preview.webp
