@@ -29,7 +29,7 @@ description: "친구 회사가 eCh0raix 랜섬웨어에 걸려서 간접적으�
 - 해당 NAS 서버에 존재하는 기존 취약점을 활용하여 서버를 공격하고, 서버 내부의 파일을 암호화.
 - 2019년 초기 버전이 나왔고, 2021년 변종이 나왔음. 이번에 당한건 2021년에 발견된 변종.
 - 이미 분석 글들이 많다.
-  - [2019년형 분석글](https://www.anomali.com/blog/threat-actors-utilizing-ech0raix-ransomware-change-nas-targeting) (Anomali)
+  - [2019년형 분석글](https://web.archive.org/web/20211025074017/https://www.anomali.com/blog/threat-actors-utilizing-ech0raix-ransomware-change-nas-targeting) (Anomali, 보관본)
   - [2021년형 분석글](https://unit42.paloaltonetworks.com/ech0raix-ransomware-soho/) (Unit 42)
 
 ## 2. 랜섬웨어 동작

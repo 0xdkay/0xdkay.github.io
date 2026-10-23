@@ -28,7 +28,7 @@ I went to the company immediately, but the recovery company that the CEO had alr
 - It exploits known vulnerabilities in these NAS servers to attack and encrypt files inside.
 - The initial version appeared in early 2019, and a variant emerged in 2021. This incident involved the 2021 variant.
 - There are already many analysis articles available:
-  - [2019 version analysis](https://www.anomali.com/blog/threat-actors-utilizing-ech0raix-ransomware-change-nas-targeting) by Anomali
+  - [2019 version analysis](https://web.archive.org/web/20211025074017/https://www.anomali.com/blog/threat-actors-utilizing-ech0raix-ransomware-change-nas-targeting) by Anomali (archived)
   - [2021 version analysis](https://unit42.paloaltonetworks.com/ech0raix-ransomware-soho/) by Unit 42
 
 ## How the Ransomware Works
