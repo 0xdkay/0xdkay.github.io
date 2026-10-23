@@ -6,6 +6,7 @@ tags: [ai, genai]
 topics: [ai-security]
 lang: en
 translation_key: genai-thoughts-4-speculation
+ai_translated: true
 description: "Why Jensen Huang emphasizes biology, how training data quantity affects AI behavior, jailbreaking LLMs with low-resource languages, and why understanding AI needs more than just coding."
 thumbnail:
   path: /assets/img/hacker.webp

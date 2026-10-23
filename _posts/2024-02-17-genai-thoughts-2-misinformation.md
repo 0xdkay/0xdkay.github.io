@@ -6,6 +6,7 @@ tags: [ai, genai]
 topics: [ai-security]
 lang: en
 translation_key: genai-thoughts-2-misinformation
+ai_translated: true
 description: "How generative AI is making fake information, scams, and phishing more convincing and harder to detect."
 ---
 

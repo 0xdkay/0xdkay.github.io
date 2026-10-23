@@ -163,7 +163,11 @@ script_includes:
     {% assign alt_post = alt_matches | first %}
 
     {% if alt_post %}
-      <p class="post-lang-switch"><em>Read this post in <a href="{{ alt_post.url | relative_url }}">{{ alt_label }}</a>.</em></p>
+      {% if page.ai_translated and alt_lang == 'ko' %}
+        <p class="post-lang-switch small text-muted"><em>This post was originally written in <a href="{{ alt_post.url | relative_url }}">Korean</a> and translated into English with AI.</em></p>
+      {% else %}
+        <p class="post-lang-switch"><em>Read this post in <a href="{{ alt_post.url | relative_url }}">{{ alt_label }}</a>.</em></p>
+      {% endif %}
     {% endif %}
     <span
       id="post-lang-data"

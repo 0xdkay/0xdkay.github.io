@@ -6,6 +6,7 @@ tags: [ransomware, incident-response]
 topics: [other]
 lang: en
 translation_key: my-first-ransomware-experience
+ai_translated: true
 description: "A friend's company got hit by eCh0raix ransomware. Here's what I learned about ransomware recovery, negotiation models, and community debates."
 ---
 

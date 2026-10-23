@@ -6,6 +6,7 @@ tags: [ai, genai]
 topics: [ai-security]
 lang: en
 translation_key: genai-thoughts-1-digital-identity
+ai_translated: true
 description: "If AI gains human-like senses and learns from the same data as you, how do we prove who's real? Thoughts on AI creativity, sensory development, and digital identity."
 ---
 

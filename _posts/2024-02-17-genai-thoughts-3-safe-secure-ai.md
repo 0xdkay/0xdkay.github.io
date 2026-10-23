@@ -6,6 +6,7 @@ tags: [ai, genai]
 topics: [ai-security]
 lang: en
 translation_key: genai-thoughts-3-safe-secure-ai
+ai_translated: true
 description: "AI Red Teams at Microsoft, Google, and NVIDIA. Why AI security must consider safety too, lessons from DARPA AIxCC, and experiences reviewing AI services at Samsung."
 ---
 

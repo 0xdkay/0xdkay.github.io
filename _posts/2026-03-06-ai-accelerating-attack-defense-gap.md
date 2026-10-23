@@ -6,6 +6,7 @@ tags: [ai, security, vulnerability, patch-gap]
 topics: [ai-security]
 lang: en
 translation_key: ai-accelerating-attack-defense-gap
+ai_translated: true
 description: "The time from vulnerability disclosure to exploit has shrunk from 2.3 years to 1.6 days. AI is widening the gap between attack and defense."
 thumbnail:
   path: /assets/img/from_vuln_to_exploit.webp
