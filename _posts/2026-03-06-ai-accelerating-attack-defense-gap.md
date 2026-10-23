@@ -2,7 +2,7 @@
 title: "The Accelerating Gap Between Attack and Defense in the Age of AI"
 date: 2026-03-06 00:00:00 -0500
 categories: [Blog]
-tags: [ai, security, vulnerability, patch-gap]
+tags: [ai, security, vulnerability, patch-gap, blast-radius]
 topics: [ai-security]
 lang: en
 translation_key: ai-accelerating-attack-defense-gap
