@@ -44,6 +44,9 @@ jobs:
         with:
           bundler-cache: true
 
+      - name: Check footnote citations
+        run: python3 tools/check-footnotes.py
+
       - name: Build site
         run: bundle exec jekyll b -d "_site${{ steps.pages.outputs.base_path }}"
         env:
