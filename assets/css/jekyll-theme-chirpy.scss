@@ -1781,3 +1781,80 @@ button:focus-visible,
   padding: 0.15rem 0.3rem;
   text-transform: uppercase;
 }
+
+/* Post header image: show the whole picture at its own aspect ratio (the theme forces 40:21 with object-fit: cover). */
+article header .preview-img {
+  aspect-ratio: auto;
+  height: auto;
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+}
+
+/* Footnote citations: show in-text markers and the reference list as [1], [2], … like a paper. */
+a.footnote {
+  margin: 0 0 0 1px;
+  padding: 0;
+
+  &::before {
+    content: "[";
+  }
+
+  &::after {
+    content: "]";
+  }
+}
+
+.footnotes > ol {
+  counter-reset: footnote;
+  list-style: none;
+  padding-left: 2.5rem;
+
+  > li {
+    counter-increment: footnote;
+    position: relative;
+
+    &::before {
+      content: "[" counter(footnote) "]";
+      left: -2.5rem;
+      position: absolute;
+      text-align: right;
+      width: 2rem;
+    }
+  }
+}
+
+/* Hover/focus preview for footnote markers (assets/js/site-ui.js). */
+.fn-preview {
+  background: var(--card-bg);
+  border: 1px solid var(--main-border-color);
+  border-radius: 0.5rem;
+  box-shadow: var(--card-shadow);
+  color: var(--text-color);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  max-width: min(26rem, calc(100vw - 16px));
+  padding: 0.5rem 0.75rem;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1080;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.fn-preview-title {
+  display: block;
+  font-weight: 600;
+}
+
+.fn-preview-meta {
+  color: var(--text-muted-color);
+  display: block;
+  font-size: 0.75rem;
+  margin-top: 0.15rem;
+}

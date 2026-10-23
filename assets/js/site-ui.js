@@ -236,4 +236,81 @@ document.addEventListener('DOMContentLoaded', function() {
       first.focus();
     }
   });
+
+  // Footnote citations: clicking [n] opens the cited source directly and hovering/focusing
+  // previews it. The numbered reference list at the bottom stays as rendered by kramdown.
+  // A trailing "(…year…)" in the link text, e.g. "(2025-09-16)" or "(Science, 2024)", is the
+  // citation date; the preview shows it next to the host instead of in the title.
+  var fnMarkers = document.querySelectorAll('a.footnote[href^="#fn:"]');
+  if (fnMarkers.length) {
+    var fnPreview = document.createElement('div');
+    fnPreview.className = 'fn-preview';
+    fnPreview.id = 'fn-preview';
+    fnPreview.setAttribute('role', 'tooltip');
+    fnPreview.hidden = true;
+    var fnPreviewTitle = document.createElement('span');
+    fnPreviewTitle.className = 'fn-preview-title';
+    var fnPreviewMeta = document.createElement('span');
+    fnPreviewMeta.className = 'fn-preview-meta';
+    fnPreview.appendChild(fnPreviewTitle);
+    fnPreview.appendChild(fnPreviewMeta);
+    document.body.appendChild(fnPreview);
+
+    var fnDateRe = /\s*\(([^()]*\b(?:19|20)\d\d\b[^()]*)\)$/;
+
+    var showFnPreview = function(marker) {
+      fnPreviewTitle.textContent = marker.dataset.fnTitle;
+      fnPreviewMeta.textContent = marker.dataset.fnDate
+        ? marker.dataset.fnHost + ' · ' + marker.dataset.fnDate
+        : marker.dataset.fnHost;
+      fnPreview.hidden = false;
+
+      var rect = marker.getBoundingClientRect();
+      var margin = 8;
+      var width = fnPreview.offsetWidth;
+      var height = fnPreview.offsetHeight;
+      var left = Math.min(
+        Math.max(margin, rect.left + rect.width / 2 - width / 2),
+        document.documentElement.clientWidth - width - margin
+      );
+      var top = rect.top - height - margin;
+      if (top < margin) {
+        top = rect.bottom + margin;
+      }
+      fnPreview.style.left = (left + window.scrollX) + 'px';
+      fnPreview.style.top = (top + window.scrollY) + 'px';
+    };
+
+    var hideFnPreview = function() {
+      fnPreview.hidden = true;
+    };
+
+    fnMarkers.forEach(function(marker) {
+      var note = document.getElementById(decodeURIComponent(marker.getAttribute('href').slice(1)));
+      var source = note && note.querySelector('a[href]:not(.reversefootnote)');
+      if (!source) {
+        return;
+      }
+
+      marker.href = source.href;
+      marker.removeAttribute('rel');
+      marker.removeAttribute('role');
+      var title = source.textContent.trim();
+      var date = title.match(fnDateRe);
+      marker.dataset.fnTitle = date ? title.slice(0, date.index) : title;
+      marker.dataset.fnDate = date ? date[1] : '';
+      marker.dataset.fnHost = source.hostname.replace(/^www\./, '') || source.href;
+      marker.setAttribute('aria-describedby', fnPreview.id);
+      marker.addEventListener('mouseenter', function() { showFnPreview(marker); });
+      marker.addEventListener('focus', function() { showFnPreview(marker); });
+      marker.addEventListener('mouseleave', hideFnPreview);
+      marker.addEventListener('blur', hideFnPreview);
+    });
+
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        hideFnPreview();
+      }
+    });
+  }
 });
