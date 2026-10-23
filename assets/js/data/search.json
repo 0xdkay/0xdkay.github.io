@@ -58,7 +58,7 @@ swcache: true
     "lang": {{ post_lang | jsonify }},
     "translation_key": {{ post_key | jsonify }},
     "summary": {{ summary | jsonify }},
-    "content": {{ content | strip | truncate: 3500 | jsonify }}
+    "content": {{ content | strip | jsonify }}
   }
   {% endcapture %}
 
