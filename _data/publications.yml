@@ -461,7 +461,7 @@
       id: "2015-1-breaking-and-fixing-volte-exploiting-hidden-data-channels-and-mis-implementations"
       date: "2015-10-13"
       authors: "<strong>Dongkwan Kim</strong>*, Hongil Kim*, Minhee Kwon, Hyungseok Han, Yeongjin Jang, Dongsu Han, Taesoo Kim, and Yongdae Kim"
-      venue: "ACM SIGSAC Conference on Computer and Communications Security (CCS) 2015"
+      venue: "ACM Conference on Computer and Communications Security (CCS) 2015"
       topics: [mobile-cellular]
       keywords: "VoLTE LTE IMS hidden data channels charging bypass CVE-2015-6614 CERT VU#943167 mobile cellular security"
       links:
