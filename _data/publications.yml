@@ -301,7 +301,7 @@
       id: "2022-3-improving-large-scale-vulnerability-analysis-of-iot-devices-with-heuristics-and-binary-code-similarity"
       date: "2022-02-18"
       authors: "<strong>Dongkwan Kim</strong>"
-      venue: "Ph.D. Thesis"
+      venue: "Ph.D. Thesis, KAIST"
       topics: [firmware-binary-analysis, ai-security]
       keywords: "FirmKit IoT firmware vulnerability analysis binary code similarity emulation heuristics FirmAE BinKit TikNib AI security"
       links:
@@ -446,7 +446,7 @@
       id: "2016-2-dissecting-volte-exploiting-free-data-channels-and-security-problems"
       date: "2016-02-19"
       authors: "<strong>Dongkwan Kim</strong>"
-      venue: "M.S. Thesis"
+      venue: "M.S. Thesis, KAIST"
       topics: [mobile-cellular]
       keywords: "VoLTE LTE IMS mobile cellular security hidden data channels mis-implementations"
       links:
@@ -461,7 +461,7 @@
       id: "2015-1-breaking-and-fixing-volte-exploiting-hidden-data-channels-and-mis-implementations"
       date: "2015-10-13"
       authors: "<strong>Dongkwan Kim</strong>*, Hongil Kim*, Minhee Kwon, Hyungseok Han, Yeongjin Jang, Dongsu Han, Taesoo Kim, and Yongdae Kim"
-      venue: "ACM Conference on Computer and Communications Security (CCS) 2015"
+      venue: "ACM SIGSAC Conference on Computer and Communications Security (CCS) 2015"
       topics: [mobile-cellular]
       keywords: "VoLTE LTE IMS hidden data channels charging bypass CVE-2015-6614 CERT VU#943167 mobile cellular security"
       links:
@@ -576,11 +576,14 @@
       id: "2013-1-high-speed-automatic-segmentation-of-intravascular-stent-struts-in-optical-coherence-tomography-images"
       date: "2013-02-02"
       authors: "Myounghee Han, <strong>Dongkwan Kim</strong>, Wang-Yuhl Oh, and Sukyoung Ryu"
-      venue: "SPIE Biomedical Optics (BiOS) 2013"
+      venue: "SPIE Photonics West, Biomedical Optics (BiOS) 2013"
       topics: [other]
       keywords: "BiOS SPIE biomedical optics OCT intravascular stent strut segmentation"
       links:
         - type: pdf
           url: "/pub/2013/han-bios2013.pdf"
+        - type: venue
+          url: "https://doi.org/10.1117/12.2004335"
+          label: "SPIE"
         - type: bibtex
           url: "han-2013-bios"
