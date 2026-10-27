@@ -1,10 +1,15 @@
 kim-2026-coin: |
-  @InProceedings{kim:coin,
+  @InProceedings{kim-etal-2026-coin,
     title     = {{COIN}: A Live, Large-scale Benchmark for Semantics-to-Input Code Reasoning},
     author    = {Jiho Kim and Cen Zhang and Youngjoon Kim and Dongkwan Kim and Brian Junekyu Lee and Dae R. Jeong and Taesoo Kim},
-    booktitle = {Proceedings of the 2026 Conference on Empirical Methods in Natural Language Processing (EMNLP)},
+    editor    = {Hung-Yi Lee and Sunipa Dev and Jessy Li and Desmond Elliott},
+    booktitle = {Proceedings of the 2026 Conference on Empirical Methods in Natural Language Processing},
     year      = {2026},
+    isbn      = {979-8-89176-459-0},
     address   = {Budapest, Hungary},
+    pages     = {48428--48453},
+    publisher = {Association for Computational Linguistics},
+    url       = {https://aclanthology.org/2026.emnlp-main.2130/},
     month     = oct,
   }
 

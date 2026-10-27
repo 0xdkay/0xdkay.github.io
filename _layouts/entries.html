@@ -129,12 +129,12 @@ document.addEventListener('keydown', function(e) {
 <h3 class="entry-title">{{ item.title }}</h3>
 {% if item.badge %}<div class="entry-award">{% if item.badge_url %}<a class="entry-badge" href="{{ item.badge_url }}" target="_blank" rel="noopener noreferrer"{% if item.badge_title %} title="{{ item.badge_title }}"{% endif %}><i class="fas fa-award" aria-hidden="true"></i> {{ item.badge }}</a>{% else %}<span class="entry-badge"><i class="fas fa-award" aria-hidden="true"></i> {{ item.badge }}</span>{% endif %}</div>{% endif %}
 <div class="entry-authors">{{ item.authors | default: item.speaker }}</div>
-<div class="entry-venue">{% include paper-venue.html venue=item.venue date=item.date %}</div>
+<div class="entry-venue">{% include paper-venue.html venue=item.venue %}</div>
 {% include topic-labels.html topics=item.topics %}
 {% include entry-date-vars.html date=item.date year=year_group.year %}
 <div class="entry-meta">
 <div class="entry-links">
-{% assign link_order = "pdf,bibtex,slides,poster,website,code,tool,benchmark,arxiv" | split: "," %}
+{% assign link_order = "pdf,bibtex,slides,poster,website,code,tool,benchmark,arxiv,venue" | split: "," %}
 {% for type in link_order %}{% for link in item.links %}{% if link.type == type %}{% include pub-button.html type=link.type url=link.url label=link.label title=item.title %}{% endif %}{% endfor %}{% endfor %}
 {% for link in item.links %}{% unless link_order contains link.type %}{% include pub-button.html type=link.type url=link.url label=link.label title=item.title %}{% endunless %}{% endfor %}
 </div>
