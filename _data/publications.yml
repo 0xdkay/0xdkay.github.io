@@ -4,10 +4,17 @@
       id: "2026-4-coin-a-live-large-scale-benchmark-for-semantics-to-input-code-reasoning"
       date: "2026-10-24"
       authors: "Jiho Kim, Cen Zhang, Youngjoon Kim, <strong>Dongkwan Kim</strong>, Brian Junekyu Lee, Dae R. Jeong, Taesoo Kim"
-      venue: "EMNLP 2026 Main Conference"
+      venue: "Conference on Empirical Methods in Natural Language Processing (EMNLP) 2026"
       topics: [ai-security]
       keywords: "COIN code reasoning semantics-to-input benchmark LLM agents code models OSS-Fuzz reachability dynamic analysis EMNLP"
       links:
+        - type: pdf
+          url: "/pub/2026/kim-emnlp26-coin.pdf"
+        - type: poster
+          url: "/pub/2026/kim-emnlp26-coin-poster.pdf"
+        - type: venue
+          url: "https://aclanthology.org/2026.emnlp-main.2130/"
+          label: "ACL Anthology"
         - type: website
           url: "https://coin-bench.github.io/"
           label: "Project Website"
@@ -21,7 +28,7 @@
       id: "2026-3-ctxfuzz-context-aware-directed-fuzzing-via-runtime-fuzzer-agent-cooperation"
       date: "2026-10-12"
       authors: "Jiho Kim, <strong>Dongkwan Kim</strong>, HyungSeok Han, Youngjoon Kim, Soyeon Park, Sangwoo Ji, Joshua Wang, Dae R. Jeong, Taesoo Kim"
-      venue: "ASE 2026"
+      venue: "IEEE/ACM International Conference on Automated Software Engineering (ASE) 2026"
       topics: [ai-security]
       badge: "Distinguished Paper Award"
       keywords: "CtxFuzz directed fuzzing context-aware fuzzer agent cooperation LLM agent runtime vulnerability discovery automated software engineering ASE"
@@ -32,12 +39,15 @@
           url: "kim-2026-ctxfuzz"
         - type: slides
           url: "/pub/2026/kim-ase26-ctxfuzz-slides.pdf"
+        - type: venue
+          url: "https://conf.researchr.org/details/ase-2026/ase-2026-research-track/35/CtxFuzz-Context-Aware-Directed-Fuzzing-via-Runtime-Fuzzer-Agent-Cooperation"
+          label: "ASE"
 
     - title: "SoK: DARPA's AI Cyber Challenge (AIxCC): Competition Design, Architectures, and Lessons Learned"
       id: "2026-2-sok-darpa-s-ai-cyber-challenge-aixcc-competition-design-architectures-and-lessons-learned"
       date: "2026-08-13"
       authors: "Cen Zhang, Younggi Park, Fabian Fleischer, Yu-Fu Fu, Jiho Kim, <strong>Dongkwan Kim</strong>, Youngjoon Kim, Qingxiao Xu, Andrew Chin, Ze Sheng, Hanqing Zhao, Michael Pelican, David J. Musliner, Jeff Huang, Jon Silliman, Mikel Mcdaniel, Jefferson Casavant, Isaac Goldthwaite, Nicholas Vidovich, Matthew Lehman, Taesoo Kim"
-      venue: "USENIX Security 2026"
+      venue: "USENIX Security Symposium (USENIX Security) 2026"
       topics: [ai-security]
       badge: "Distinguished Paper Runner-up"
       badge_url: "https://www.usenix.org/sites/default/files/sec26_runners_up.pdf"
@@ -55,7 +65,7 @@
         - type: website
           url: "https://occia.github.io/aixcc-sok-webpage/"
           label: "Project Website"
-        - type: website
+        - type: venue
           url: "https://www.usenix.org/conference/usenixsecurity26/presentation/zhang-cen"
           label: "USENIX"
 
@@ -63,7 +73,7 @@
       id: "2026-1-oss-crs-liberating-aixcc-cyber-reasoning-systems-for-real-world-open-source-security"
       date: "2026-08-11"
       authors: "Andrew Chin, <strong>Dongkwan Kim</strong>, Yu-Fu Fu, Fabian Fleischer, Youngjoon Kim, HyungSeok Han, Cen Zhang, Brian Junekyu Lee, Hanqing Zhao, Taesoo Kim"
-      venue: "USENIX WOOT 2026"
+      venue: "USENIX WOOT Conference on Offensive Technologies (WOOT) 2026"
       topics: [ai-security]
       keywords: "OSS-CRS OpenSSF AIxCC CRS cyber reasoning system vulnerability discovery patching open source security"
       links:
@@ -71,7 +81,7 @@
           url: "https://www.usenix.org/system/files/woot26-chin.pdf"
         - type: slides
           url: "/pub/2026/chin-woot26-oss-crs-slides.pdf"
-        - type: website
+        - type: venue
           url: "https://www.usenix.org/conference/woot26/presentation/chin"
           label: "USENIX"
         - type: website
@@ -157,7 +167,7 @@
       id: "2023-1-basecomp-a-comparative-analysis-for-integrity-protection-in-cellular-baseband-software"
       date: "2023-08-10"
       authors: "Eunsoo Kim*, Min Woo Baek*, CheolJun Park, <strong>Dongkwan Kim</strong>, Yongdae Kim, Insu Yun"
-      venue: "USENIX Security 2023"
+      venue: "USENIX Security Symposium (USENIX Security) 2023"
       topics: [mobile-cellular, firmware-binary-analysis]
       keywords: "BaseComp cellular baseband firmware binary analysis integrity protection mobile security"
       links:
@@ -176,7 +186,7 @@
       date: "2023-03-02"
       keywords: "UnRocker drone drones acoustic injection sensor recovery mitigation 드론 음향 주입 센서 복구"
       authors: "Jinseob Jeong, <strong>Dongkwan Kim</strong>, Joonha Jang, Juhwan Noh, Changhun Song, and Yongdae Kim"
-      venue: "NDSS 2023"
+      venue: "Network and Distributed System Security Symposium (NDSS) 2023"
       topics: [cyber-physical-sensor-security]
       links:
         - type: pdf
@@ -199,7 +209,7 @@
       date: "2023-03-02"
       keywords: "Paralyzing Drones EMI signal injection sensory communication channels drone drones embedded sensors 드론 EMI 전자기파 주입 센서"
       authors: "Joonha Jang*, ManGi Cho*, Jaehoon Kim, <strong>Dongkwan Kim</strong>, and Yongdae Kim"
-      venue: "NDSS 2023"
+      venue: "Network and Distributed System Security Symposium (NDSS) 2023"
       topics: [cyber-physical-sensor-security]
       links:
         - type: pdf
@@ -252,7 +262,7 @@
       id: "2022-1-watching-the-watchers-practical-video-identification-attack-in-lte-networks"
       date: "2022-08-10"
       authors: "Sangwook Bae, Mincheol Son, <strong>Dongkwan Kim</strong>, CheolJun Park, Jiho Lee, Sooel Son, and Yongdae Kim"
-      venue: "USENIX Security 2022"
+      venue: "USENIX Security Symposium (USENIX Security) 2022"
       topics: [mobile-cellular]
       keywords: "Watching the Watchers SCAT LTE cellular mobile video identification attack closed network diagnosis"
       links:
@@ -291,7 +301,7 @@
       id: "2022-3-improving-large-scale-vulnerability-analysis-of-iot-devices-with-heuristics-and-binary-code-similarity"
       date: "2022-02-18"
       authors: "<strong>Dongkwan Kim</strong>"
-      venue: "Ph.D. Thesis"
+      venue: "Ph.D. Thesis, KAIST"
       topics: [firmware-binary-analysis, ai-security]
       keywords: "FirmKit IoT firmware vulnerability analysis binary code similarity emulation heuristics FirmAE BinKit TikNib AI security"
       links:
@@ -315,7 +325,9 @@
       topics: [firmware-binary-analysis]
       keywords: "IoT firmware emulation heuristic workarounds dynamic analysis FirmAE firmware analysis"
       links:
-        - type: website
+        - type: pdf
+          url: "/pub/2021/kim-sp2021.pdf"
+        - type: venue
           url: "https://ieeexplore.ieee.org/abstract/document/9431371"
           label: "IEEE"
         - type: bibtex
@@ -325,7 +337,7 @@
       id: "2021-2-basespec-comparative-analysis-of-baseband-software-and-cellular-specifications-for-l3-protocols"
       date: "2021-02-24"
       authors: "<strong>Dongkwan Kim</strong>*, Eunsoo Kim*, CheolJun Park, Insu Yun, and Yongdae Kim"
-      venue: "NDSS 2021"
+      venue: "Network and Distributed System Security Symposium (NDSS) 2021"
       topics: [mobile-cellular, firmware-binary-analysis]
       keywords: "BaseSpec cellular baseband software L3 protocols specification comparison mobile security firmware binary analysis"
       links:
@@ -345,7 +357,7 @@
       id: "2020-1-firmae-towards-large-scale-emulation-of-iot-firmware-for-dynamic-analysis"
       date: "2020-12-11"
       authors: "Mingeun Kim, <strong>Dongkwan Kim</strong>, Eunsoo Kim, Suryeon Kim, Yeongjin Jang, and Yongdae Kim"
-      venue: "ACSAC 2020"
+      venue: "Annual Computer Security Applications Conference (ACSAC) 2020"
       topics: [firmware-binary-analysis]
       keywords: "FirmAE IoT firmware emulation dynamic analysis firmware vulnerability discovery CVE PoC"
       links:
@@ -368,7 +380,7 @@
       id: "2019-1-who-spent-my-eos-on-the-in-security-of-resource-management-of-eos-io"
       date: "2019-08-13"
       authors: "Sangsup Lee, Daejun Kim, <strong>Dongkwan Kim</strong>, Sooel Son, and Yongdae Kim"
-      venue: "USENIX WOOT 2019"
+      venue: "USENIX Workshop on Offensive Technologies (WOOT) 2019"
       topics: [other]
       keywords: "EOS EOSIO blockchain smart contract resource management security WOOT"
       links:
@@ -403,11 +415,13 @@
       id: "2017-1-when-cellular-networks-met-ipv6-security-problems-of-middleboxes-in-ipv6-cellular-networks"
       date: "2017-04-28"
       authors: "Hyunwook Hong, Hyunwoo Choi, <strong>Dongkwan Kim</strong>, Hongil Kim, Byeongdo Hong, Jiseong Noh, and Yongdae Kim"
-      venue: "IEEE EuroS&P 2017"
+      venue: "IEEE European Symposium on Security and Privacy (EuroS&P) 2017"
       topics: [mobile-cellular]
       keywords: "IPv6 cellular networks middleboxes mobile security LTE operational network"
       links:
-        - type: website
+        - type: pdf
+          url: "/pub/2017/hong-eurosp2017.pdf"
+        - type: venue
           url: "https://ieeexplore.ieee.org/abstract/document/7962005/"
           label: "IEEE"
         - type: bibtex
@@ -419,7 +433,7 @@
       id: "2016-1-pay-as-you-want-bypassing-charging-system-in-operational-cellular-networks"
       date: "2016-08-26"
       authors: "Hyunwook Hong, Hongil Kim, Byeongdo Hong, <strong>Dongkwan Kim</strong>, Hyunwoo Choi, Eunkyu Lee and Yongdae Kim"
-      venue: "WISA 2016"
+      venue: "International Workshop on Information Security Applications (WISA) 2016"
       topics: [mobile-cellular]
       keywords: "cellular charging bypass operational networks LTE mobile security billing"
       links:
@@ -432,7 +446,7 @@
       id: "2016-2-dissecting-volte-exploiting-free-data-channels-and-security-problems"
       date: "2016-02-19"
       authors: "<strong>Dongkwan Kim</strong>"
-      venue: "M.S. Thesis"
+      venue: "M.S. Thesis, KAIST"
       topics: [mobile-cellular]
       keywords: "VoLTE LTE IMS mobile cellular security hidden data channels mis-implementations"
       links:
@@ -447,7 +461,7 @@
       id: "2015-1-breaking-and-fixing-volte-exploiting-hidden-data-channels-and-mis-implementations"
       date: "2015-10-13"
       authors: "<strong>Dongkwan Kim</strong>*, Hongil Kim*, Minhee Kwon, Hyungseok Han, Yeongjin Jang, Dongsu Han, Taesoo Kim, and Yongdae Kim"
-      venue: "ACM CCS 2015"
+      venue: "ACM SIGSAC Conference on Computer and Communications Security (CCS) 2015"
       topics: [mobile-cellular]
       keywords: "VoLTE LTE IMS hidden data channels charging bypass CVE-2015-6614 CERT VU#943167 mobile cellular security"
       links:
@@ -485,7 +499,7 @@
       id: "2015-2-burnfit-analyzing-and-exploiting-wearable-devices"
       date: "2015-08-26"
       authors: "<strong>Dongkwan Kim</strong>, Suwan Park, Kibum Choi, Yongdae Kim"
-      venue: "WISA 2015"
+      venue: "International Workshop on Information Security Applications (WISA) 2015"
       topics: [cyber-physical-sensor-security, firmware-binary-analysis]
       badge: "Best Paper Award"
       keywords: "BurnFit wearable devices embedded security cyber-physical firmware analysis"
@@ -502,7 +516,7 @@
       date: "2015-08-14"
       keywords: "Rocking Drones drone drones acoustic sound noise gyroscope sensors cyber-physical 드론 음향 소음 자이로스코프 센서"
       authors: "Yunmok Son, Hocheol Shin, <strong>Dongkwan Kim</strong>, Youngseok Park, Juhwan Noh, Kibum Choi, Jungwoo Choi, and Yongdae Kim"
-      venue: "USENIX Security 2015"
+      venue: "USENIX Security Symposium (USENIX Security) 2015"
       topics: [cyber-physical-sensor-security]
       links:
         - type: pdf
@@ -547,7 +561,7 @@
       id: "2014-1-analyzing-security-of-korean-usim-based-pki-certificate-service"
       date: "2014-08-26"
       authors: "Shinjo Park, Suwan Park, Insu Yun, <strong>Dongkwan Kim</strong>, Yongdae Kim"
-      venue: "WISA 2014"
+      venue: "International Workshop on Information Security Applications (WISA) 2014"
       topics: [mobile-cellular]
       keywords: "USIM PKI certificate mobile authentication security Korea WISA"
       links:
@@ -562,11 +576,14 @@
       id: "2013-1-high-speed-automatic-segmentation-of-intravascular-stent-struts-in-optical-coherence-tomography-images"
       date: "2013-02-02"
       authors: "Myounghee Han, <strong>Dongkwan Kim</strong>, Wang-Yuhl Oh, and Sukyoung Ryu"
-      venue: "Proceedings of SPIE Biomedical Optics, Photonics West 2013 (BiOS 2013)"
+      venue: "SPIE Photonics West, Biomedical Optics (BiOS) 2013"
       topics: [other]
       keywords: "BiOS SPIE biomedical optics OCT intravascular stent strut segmentation"
       links:
         - type: pdf
           url: "/pub/2013/han-bios2013.pdf"
+        - type: venue
+          url: "https://doi.org/10.1117/12.2004335"
+          label: "SPIE"
         - type: bibtex
           url: "han-2013-bios"
