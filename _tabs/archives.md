@@ -5,5 +5,5 @@ order: 5
 title: Archives
 nav_hidden: true
 description: "Date index of Dongkwan Kim's blog posts on AI security, vulnerability research, and systems security."
-last_modified_at: 2026-10-28
+last_modified_at: 2026-10-30
 ---
