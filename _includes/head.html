@@ -158,6 +158,10 @@
     {% endif %}
   {% endif %}
 
+  {% if page.collection == 'posts' %}
+    {% include post-schema-meta.html %}
+  {% endif %}
+
   {%- if site.social.fediverse_handle %}
     <!-- Fediverse handle/creator -->
     <meta name="fediverse:creator" content="{{ site.social.fediverse_handle }}">

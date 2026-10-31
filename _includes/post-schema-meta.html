@@ -1,0 +1,16 @@
+{%- comment -%}
+  schema.org BlogPosting metadata for every post, as <meta> tags.
+  The same facts are in jekyll-seo-tag's JSON-LD; this copy is for reference
+  managers that read <meta> tags but not JSON-LD.
+  rdf:type BlogPosting gives the item type; og:site_name, already emitted by
+  jekyll-seo-tag, gives the blog name. No citation_* tags: those mark a page as
+  a journal article.
+{%- endcomment -%}
+{%- assign meta_author_parts = site.social.name | split: ' ' -%}
+{%- assign meta_surname = meta_author_parts | last -%}
+{%- assign meta_given = meta_author_parts | pop | join: ' ' -%}
+<meta name="rdf:type" content="http://schema.org/BlogPosting">
+<meta name="so:headline" content="{{ page.title | escape }}">
+<meta name="so:author" content="{{ meta_surname }}, {{ meta_given }}">
+<meta name="so:datePublished" content="{{ page.date | date: '%Y-%m-%d' }}">
+<meta name="so:inLanguage" content="{{ page.lang | default: site.lang }}">
