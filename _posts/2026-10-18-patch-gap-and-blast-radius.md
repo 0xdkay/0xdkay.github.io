@@ -2,7 +2,7 @@
 title: "Vulnerabilities Are Pouring In. Will Patches Reach Users in Time?"
 date: 2026-10-18 00:00:00 -0400
 categories: [Blog]
-tags: [ai, security, vulnerability, patch-gap, sbom, blast-radius, agents]
+tags: [ai, security, vulnerability, patch-gap, sbom, supply-chain, blast-radius, agents]
 topics: [ai-security]
 lang: en
 ai_translated: true

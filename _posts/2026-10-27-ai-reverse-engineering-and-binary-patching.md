@@ -2,7 +2,7 @@
 title: "AI Reverse Engineering Can Copy Software, but Vulnerabilities Need an Exact Look"
 date: 2026-10-27 00:00:00 -0400
 categories: [Blog]
-tags: [ai, security, vulnerability, reverse-engineering, binary-patching, patch-gap, agents, context-engineering]
+tags: [ai, security, vulnerability, reverse-engineering, binary-patching, obfuscation, patch-gap, agents, context-engineering]
 topics: [ai-security, firmware-binary-analysis]
 lang: en
 ai_translated: true

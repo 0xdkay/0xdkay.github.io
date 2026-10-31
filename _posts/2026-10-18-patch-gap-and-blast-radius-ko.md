@@ -2,7 +2,7 @@
 title: "취약점이 쏟아지는 시대, 패치는 사용자에게 제때 도착할까?"
 date: 2026-10-18 00:00:00 -0400
 categories: [Blog]
-tags: [ai, security, vulnerability, patch-gap, sbom, blast-radius, agents]
+tags: [ai, security, vulnerability, patch-gap, sbom, supply-chain, blast-radius, agents]
 topics: [ai-security]
 lang: ko
 translation_key: patch-gap-and-blast-radius

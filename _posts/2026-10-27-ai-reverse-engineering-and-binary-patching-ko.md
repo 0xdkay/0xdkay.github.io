@@ -2,7 +2,7 @@
 title: "AI 리버싱으로 베낄 수는 있어도, 취약점은 정확히 봐야 한다"
 date: 2026-10-27 00:00:00 -0400
 categories: [Blog]
-tags: [ai, security, vulnerability, reverse-engineering, binary-patching, patch-gap, agents, context-engineering]
+tags: [ai, security, vulnerability, reverse-engineering, binary-patching, obfuscation, patch-gap, agents, context-engineering]
 topics: [ai-security, firmware-binary-analysis]
 lang: ko
 translation_key: ai-reverse-engineering-and-binary-patching
