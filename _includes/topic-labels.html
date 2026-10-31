@@ -7,13 +7,13 @@
   {% endfor %}
 
   {% if visible_topic_count > 0 %}
-    <div class="entry-topics">
+    <div class="entry-topics{% if include.class %} {{ include.class }}{% endif %}">
     {% for topic_slug in include.topics %}
       {% unless include.current_topic and topic_slug == include.current_topic %}
         {% assign topic_matches = site.data.topics | where: 'slug', topic_slug %}
         {% assign topic = topic_matches | first %}
         {% if topic %}
-          <a href="{{ '/topics/' | append: topic.slug | append: '/' | relative_url }}">{{ topic.short_label | default: topic.label }}</a>
+          <a href="{{ '/topics/' | append: topic.slug | append: '/' | relative_url }}">{% if include.show_icon and topic.icon %}<i class="{{ topic.icon }} me-1" aria-hidden="true"></i>{% endif %}{{ topic.short_label | default: topic.label }}</a>
         {% endif %}
       {% endunless %}
     {% endfor %}

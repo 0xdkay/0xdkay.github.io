@@ -1574,6 +1574,17 @@ button:focus-visible,
   }
 }
 
+/* Post tail: research topics on their own row above the tags */
+.post-tail-wrapper .post-topics {
+  margin: 0 0 0.6rem;
+
+  a {
+    font-size: 0.85rem;
+    line-height: 1.3rem;
+    padding: 0 0.55rem;
+  }
+}
+
 .topic-page {
   .topic-hero {
     background:
