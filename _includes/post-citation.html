@@ -1,0 +1,44 @@
+{%- comment -%}
+  BibTeX data and modal for the cite (quote) button in post-sharing.html.
+  KO and EN pages of a translation pair show the same BibTeX entry, built from
+  the English post; a post without an English pair cites itself.
+{%- endcomment -%}
+
+{%- assign cite_post = nil -%}
+{%- if page.translation_key -%}
+  {%- assign cite_group = site.posts | where: 'translation_key', page.translation_key -%}
+  {%- assign cite_post = cite_group | where: 'lang', 'en' | first -%}
+{%- endif -%}
+{%- unless cite_post -%}
+  {%- assign cite_post = page -%}
+{%- endunless -%}
+
+{%- assign cite_author = site.social.name -%}
+{%- assign cite_surname = cite_author | split: ' ' | last | downcase -%}
+{%- assign cite_year = cite_post.date | date: '%Y' -%}
+{%- assign cite_month = cite_post.date | date: '%b' | downcase -%}
+{%- assign cite_title = cite_post.title
+  | replace: '\', '\textbackslash{}'
+  | replace: '&', '\&'
+  | replace: '%', '\%'
+  | replace: '#', '\#'
+  | replace: '_', '\_'
+-%}
+{%- comment -%} Extra braces keep the title's capitalization in styles that lowercase titles. {%- endcomment -%}
+{%- assign cite_title = cite_title | prepend: '{' | append: '}' -%}
+
+{%- capture cite_bibtex -%}
+@misc{{ '{' }}{{ cite_surname }}-{{ cite_year }}-{{ cite_post.slug }},
+  author       = {{ '{' }}{{ cite_author }}},
+  title        = {{ '{' }}{{ cite_title }}},
+  year         = {{ '{' }}{{ cite_year }}},
+  month        = {{ cite_month }},
+  howpublished = {\url{{ '{' }}{{ cite_post.url | absolute_url }}}}
+}
+{%- endcapture -%}
+
+<script>
+{%- comment -%} \u0020 keeps the alignment; the production HTML compressor collapses runs of spaces. {%- endcomment -%}
+var bibtexData = { "post": {{ cite_bibtex | jsonify | replace: ' ', '\u0020' }} };
+</script>
+{% include bibtex-modal.html %}

@@ -234,9 +234,12 @@ script_includes:
         {% endif %}
       </div>
 
-      {% include post-sharing.html lang=lang %}
+      {% include post-sharing.html lang=lang cite=true %}
     </div>
     <!-- .post-tail-bottom -->
+
+    <!-- BibTeX data and modal for the cite button in the share row -->
+    {% include post-citation.html %}
   </div>
   <!-- div.post-tail-wrapper -->
 </article>
